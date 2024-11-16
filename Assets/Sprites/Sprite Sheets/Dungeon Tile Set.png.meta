@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2614,8 +2614,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dungeon Tile Set_111: -240550946
       Dungeon Tile Set_115: 1670289434
+      Dungeon Tile Set_111: -240550946
       Dungeon Tile Set_32: -445355553
       Dungeon Tile Set_122: -1781706819
       Dungeon Tile Set_105: -1059895050
@@ -2647,12 +2647,12 @@ TextureImporter:
       Dungeon Tile Set_24: 141350561
       Dungeon Tile Set_57: 869255613
       Dungeon Tile Set_1: 961078486
-      Dungeon Tile Set_68: -915956430
       Dungeon Tile Set_131: 736060606
+      Dungeon Tile Set_68: -915956430
       Dungeon Tile Set_2: 1964074414
-      Dungeon Tile Set_13: 508404045
       Dungeon Tile Set_52: 156915253
       Dungeon Tile Set_70: -1565612647
+      Dungeon Tile Set_13: 508404045
       Dungeon Tile Set_37: -1317811001
       Dungeon Tile Set_107: -1662937276
       Dungeon Tile Set_29: -477711948
@@ -2696,9 +2696,10 @@ TextureImporter:
       Dungeon Tile Set_84: 539343116
       Dungeon Tile Set_36: -1072758352
       Dungeon Tile Set_30: 38723129
-      Dungeon Tile Set_48: 182420849
-      Dungeon Tile Set_65: 418601495
       Dungeon Tile Set_119: -2051076983
+      Dungeon Tile Set_65: 418601495
+      Dungeon Tile Set_48: 182420849
+      Dungeon Tile Set_121: 1986585042
       Dungeon Tile Set_118: 1539529039
       Dungeon Tile Set_69: 1571253751
       Dungeon Tile Set_113: 1051234870
@@ -2707,7 +2708,6 @@ TextureImporter:
       Dungeon Tile Set_78: -1531628900
       Dungeon Tile Set_123: -1913722113
       Dungeon Tile Set_64: 1237284928
-      Dungeon Tile Set_121: 1986585042
       Dungeon Tile Set_103: 315718673
       Dungeon Tile Set_44: -657299481
       Dungeon Tile Set_74: 66554422
