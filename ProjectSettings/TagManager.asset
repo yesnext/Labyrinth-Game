@@ -47,3 +47,15 @@ TagManager:
   - name: forground
     uniqueID: 2418068021
     locked: 0
+  - name: backgroundlayer2
+    uniqueID: 3944136879
+    locked: 0
+  - name: backgroundlayer3
+    uniqueID: 918575205
+    locked: 0
+  - name: oakbg
+    uniqueID: 812436045
+    locked: 0
+  - name: ground
+    uniqueID: 1007192345
+    locked: 0
