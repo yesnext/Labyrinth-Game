@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -3973,8 +3973,8 @@ TextureImporter:
       Medieval_tiles_free2_124: -481348061
       Medieval_tiles_free2_44: -168832218
       Medieval_tiles_free2_148: -1848214079
-      Medieval_tiles_free2_46: -1416446678
       Medieval_tiles_free2_147: -162075521
+      Medieval_tiles_free2_46: -1416446678
       Medieval_tiles_free2_153: -1645312844
       Medieval_tiles_free2_21: -1775566609
       Medieval_tiles_free2_33: -1264739008
@@ -4045,9 +4045,9 @@ TextureImporter:
       Medieval_tiles_free2_103: -364478917
       Medieval_tiles_free2_13: -1495659617
       Medieval_tiles_free2_86: -1692663519
+      Medieval_tiles_free2_141: -1142091474
       Medieval_tiles_free2_49: -536508024
       Medieval_tiles_free2_16: 1271343540
-      Medieval_tiles_free2_141: -1142091474
       Medieval_tiles_free2_125: 154934630
       Medieval_tiles_free2_83: -1817656175
       Medieval_tiles_free2_126: 399956243
