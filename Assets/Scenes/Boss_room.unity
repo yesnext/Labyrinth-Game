@@ -450,6 +450,7 @@ MonoBehaviour:
   AttackReady: 0
   triggerbox: {fileID: 882283897}
   scale: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0}
 --- !u!61 &882283897
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2698,7 +2699,7 @@ MonoBehaviour:
     m_Bits: 256
   attackanim: 0
   element: 0
-  chosenelement: 0
+  chosenelement: 324
   rb: {fileID: 1267983017}
   groundCheck: {fileID: 2118658539}
   groundLayer:

@@ -25,6 +25,7 @@ public class BasicEnemy : MonoBehaviour
     public BoxCollider2D triggerbox;
     public Vector3 scale;
     public Vector2 direction;
+    public int decision;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,7 @@ public class BasicEnemy : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = (player.transform.position - transform.position).normalized;
-        Ghangedirection();
+        GhangedirectionFollow();
         if (enemystate == 0)
         {
             if (this.isFacingRight == true)
@@ -62,6 +63,10 @@ public class BasicEnemy : MonoBehaviour
             {
                 Followplayer();
             }
+             decision =Random.Range(1,2);
+             if(decision == 1){
+                RandomChangeInDirectionOrIdle();
+             }
         }
         else if (enemystate == 1)
         {
@@ -79,9 +84,11 @@ public class BasicEnemy : MonoBehaviour
    
     public void Followplayer()
     {
+        animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
         enemystate = 1;
         if (distance < 4.0f){
+            animator.SetBool("Walking", false);
             animator.SetBool("attack",true);
         }
         else{
@@ -105,11 +112,18 @@ public class BasicEnemy : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player"){
             Invoke(nameof(meleeAttack),Random.Range(0.01f,0.09f));
-        }else if(other.tag == "Environment"){
+        }else if(other.tag == "Environment" || other.tag == "Enemy"){
             Ghangedirection();
         }
+        
     }
     public void Ghangedirection(){
+        scale =transform.localScale;
+            scale.x *= -1;
+            isFacingRight = !isFacingRight;
+            transform.localScale=scale;
+    }
+    public void GhangedirectionFollow(){
         if (direction.x > 0 && !isFacingRight)
         {
             scale =transform.localScale;
@@ -124,6 +138,16 @@ public class BasicEnemy : MonoBehaviour
             scale.x *= -1;
             isFacingRight = false;
             transform.localScale=scale;
+        }
+    }
+    public void RandomChangeInDirectionOrIdle(){
+        decision =Random.Range(1,2);
+        if ( decision == 1){
+            animator.SetBool("Idle", true);
+            Invoke(nameof(Update),10.0f);
+        }
+        else if(decision == 2){
+            Ghangedirection();
         }
     }
 }
