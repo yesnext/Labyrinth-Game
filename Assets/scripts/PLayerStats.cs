@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PLayerStats : MonoBehaviour
 {
+    public int totalpointsP1 = 0;
     // Start is called before the first frame update
     void Start()
     {
