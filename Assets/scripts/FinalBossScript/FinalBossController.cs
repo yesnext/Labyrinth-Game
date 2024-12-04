@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinalBossController : MonoBehaviour
+public class FinalBossController : BasicEnemy
 {
     /*
     added projectile count variable to the script that will
@@ -13,19 +13,16 @@ public class FinalBossController : MonoBehaviour
     edited the bullet controller so that when in contact with boss while immune it doesn't do anything
     */
     // Start is called before the first frame update
-    private controls player;
-    public bool isFacingRight = false;
-    public float BossSpeed = 0.1f;
     public float BossDodgeSpeed = 0.1f;
     public bool IsImmune=true;
-    public int Health;
+    
     public Transform ProjectilePoint;
     public GameObject Projectile;
     public int BossPhase = 1;
-    private SpriteRenderer spriteRenderer;
     
     public float RangeAttackDistance=10.0f;
-    public float RangAttackCooldown = 5f; //time in seconds for the cooldown
+    public float RangAttackCooldown = 5f; 
+    public int RangeAttackDamage=6;    //time in seconds for the cooldown
     private float LastRangAttackTime = 0f;
     public bool Rangeanim;
 
@@ -36,15 +33,19 @@ public class FinalBossController : MonoBehaviour
     
 
     public float ShadoAttackDistance=5.0f;
+    public int ShadoAttackDamage=6;
     public float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
     private float lastRShadoSwordSlashesTime = 0f;
     public bool shadoslashanim;
-    public int ShadoSlashDamage = 0;
-  
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<controls>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class FinalBossController : MonoBehaviour
     {
         Vector2 direction = (player.transform.position - transform.position).normalized;
         Move();
-        float distance = Vector2.Distance(transform.position,player.transform.position);
+        distance = Vector2.Distance(transform.position,player.transform.position);
         if (direction.x > 0)
             {
                 spriteRenderer.flipX = false;
@@ -63,57 +64,65 @@ public class FinalBossController : MonoBehaviour
                 spriteRenderer.flipX = true;  
                  isFacingRight = false;
             }
-        
-        
+            animator.GetComponent<Animator>();
+    }
+    public void FixedUpdate(){
         if(distance>=RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown){
            RangeAttack();
         }
-        else if(distance>=LungAttackDistance){
+        else if(distance>=LungAttackDistance && Time.time-lastRShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
         LungAttack();
-        }
-        else if(distance<ShadoAttackDistance){
-            ShadoAttack();
-            shadoslashanim = false;
-        }
         
+        }
+        else if(distance<ShadoAttackDistance && Time.time-lastRShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
+            ShadoAttack();
+        }
     }
 
     public IEnumerator RangeAttack(){
             Rangeanim = true;
+            animator.SetBool("RangeAnimation", Rangeanim);
             for (int i = 0;i<3;i++){
             Instantiate(Projectile,ProjectilePoint.position,ProjectilePoint.rotation);
             yield return new WaitForSeconds(0.2f);
             } 
             LastRangAttackTime = Time.time;
             Rangeanim = false;
+            animator.SetBool("RangeAnimation", Rangeanim);
     }
     public void LungAttack(){
         if (Time.time-LastLungAttackTime > LungAttackCooldown){
             LastRangAttackTime = Time.time;
             lunganim = true;
-            BossSpeed = BossSpeed*1.5f;
-            ShadoAttack();
+            animator.SetBool("LungAnimation", lunganim);
+            EnemySpeed = EnemySpeed*1.5f;
         }
     }
     public void ShadoAttack(){
-        if (Time.time-lastRShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
             lastRShadoSwordSlashesTime = Time.time;
-            lunganim=false;
-            shadoslashanim = true;
-            BossSpeed=BossSpeed/1.5f;
-        }
+                lunganim=false;
+                animator.SetBool("LungAnimation", lunganim);
+                shadoslashanim = true;
+                animator.SetBool("ShadoAnimation", shadoslashanim);
+                distance = Vector2.Distance(transform.position,player.transform.position);
+                if (distance<MeleeAttackDistance){
+                player.TakeDamage(MeleeAttackDamage);
+                }
+                EnemySpeed=EnemySpeed/1.5f;
+                shadoslashanim=false;
+                animator.SetBool("ShadoAnimation", shadoslashanim);
     }
     public void Dodge(){
         if (controls.projectileCount<3){
         IsImmune=true;
-        Vector3 dodgeDirection = new Vector3(1, 0, 0);  // Move right for simplicity
+        Vector3 dodgeDirection = new Vector3(3, 0, 0);  // Move right for simplicity
         transform.position += dodgeDirection * BossDodgeSpeed * Time.deltaTime;
         }
     }
     public void Move(){
-        transform.position = Vector3.MoveTowards(transform.position,player.transform.position, BossSpeed *Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position,player.transform.position, EnemySpeed *Time.deltaTime);
     }
-    public void TakeDamage(int damage){
+    public new void TakeDamage(int damage){
         Health=Health-damage;
         if (Health <= 0 && BossPhase>3){
             Destroy(this.gameObject);

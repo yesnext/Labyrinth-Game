@@ -8,6 +8,7 @@ public class EnemyProjectile : MonoBehaviour
     public FinalBossController enemy;
     public controls player;
     private Vector3 playerpos;
+    public int Damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,8 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if(other.tag == "Player"){
-            player
+            player.TakeDamage(enemy.RangeAttackDamage);
+            Destroy(this.gameObject);
         }
     }
 }
