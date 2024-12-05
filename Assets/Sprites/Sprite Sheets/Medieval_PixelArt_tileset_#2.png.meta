@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -8847,8 +8847,8 @@ TextureImporter:
       Medieval_PixelArt_tileset_#2_404: 84427677
       Medieval_PixelArt_tileset_#2_346: 1297826114
       Medieval_PixelArt_tileset_#2_289: -220363989
-      Medieval_PixelArt_tileset_#2_323: -1670894931
       Medieval_PixelArt_tileset_#2_133: 1806475784
+      Medieval_PixelArt_tileset_#2_323: -1670894931
       Medieval_PixelArt_tileset_#2_212: 493206758
       Medieval_PixelArt_tileset_#2_80: -889227300
       Medieval_PixelArt_tileset_#2_358: 688031631

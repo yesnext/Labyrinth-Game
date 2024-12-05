@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -7757,8 +7757,8 @@ TextureImporter:
       Medieval_props_208: -1570461298
       Medieval_props_65: -531088656
       Medieval_props_153: 1966012959
-      Medieval_props_91: 1803280824
       Medieval_props_248: -518613664
+      Medieval_props_91: 1803280824
       Medieval_props_264: 1497521608
       Medieval_props_94: -1381865790
       Medieval_props_232: -1008414775
@@ -7768,10 +7768,10 @@ TextureImporter:
       Medieval_props_180: -565855094
       Medieval_props_214: 1825327613
       Medieval_props_15: -2139890023
-      Medieval_props_17: -1508859341
       Medieval_props_126: -1484465286
       Medieval_props_88: -819870165
       Medieval_props_316: 2053674969
+      Medieval_props_17: -1508859341
       Medieval_props_263: -2105613267
       Medieval_props_203: 1313889737
       Medieval_props_42: 1185692817
@@ -7842,8 +7842,8 @@ TextureImporter:
       Medieval_props_335: 1951759468
       Medieval_props_73: 1892450216
       Medieval_props_132: -35359609
-      Medieval_props_123: -761572851
       Medieval_props_143: -225010146
+      Medieval_props_123: -761572851
       Medieval_props_292: -1570215531
       Medieval_props_323: 725087636
       Medieval_props_181: 558337558
@@ -7971,10 +7971,10 @@ TextureImporter:
       Medieval_props_188: -703821845
       Medieval_props_183: 1849244335
       Medieval_props_221: -458703754
-      Medieval_props_37: -260488653
+      Medieval_props_233: -836763366
       Medieval_props_348: -485135973
       Medieval_props_197: -471110382
-      Medieval_props_233: -836763366
+      Medieval_props_37: -260488653
       Medieval_props_133: -1931764269
       Medieval_props_31: 796259874
       Medieval_props_124: -610214143
@@ -8022,10 +8022,10 @@ TextureImporter:
       Medieval_props_320: -892528514
       Medieval_props_328: 293474819
       Medieval_props_93: -343202615
-      Medieval_props_185: 1109933864
       Medieval_props_207: 84445818
-      Medieval_props_317: 2008879932
       Medieval_props_258: 772032799
+      Medieval_props_185: 1109933864
+      Medieval_props_317: 2008879932
       Medieval_props_20: -2080494
       Medieval_props_87: 1684040725
       Medieval_props_196: 1485251007
