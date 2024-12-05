@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1298,9 +1298,9 @@ TextureImporter:
       NightBorne_44: -722124204
       NightBorne_1: -217610045
       NightBorne_8: -2023570103
-      NightBorne_46: 435908908
-      NightBorne_20: -497559707
       NightBorne_54: 713524913
+      NightBorne_20: -497559707
+      NightBorne_46: 435908908
       NightBorne_19: -2037268850
       NightBorne_21: -1048947119
       NightBorne_43: -2094749239
@@ -1309,9 +1309,9 @@ TextureImporter:
       NightBorne_22: -1927759755
       NightBorne_29: -523170441
       NightBorne_7: -347250432
-      NightBorne_37: 230213918
-      NightBorne_45: 2034624798
       NightBorne_51: 755154206
+      NightBorne_45: 2034624798
+      NightBorne_37: 230213918
       NightBorne_2: -1324423097
       NightBorne_16: -1079468459
       NightBorne_18: -1801895587

@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2615,7 +2615,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Dungeon Tile Set_115: 1670289434
-      Dungeon Tile Set_111: -240550946
+      Dungeon Tile Set_59: -2113817780
       Dungeon Tile Set_32: -445355553
       Dungeon Tile Set_122: -1781706819
       Dungeon Tile Set_105: -1059895050
@@ -2746,7 +2746,7 @@ TextureImporter:
       Dungeon Tile Set_109: 806230141
       Dungeon Tile Set_128: -1183808879
       Dungeon Tile Set_40: -798000561
-      Dungeon Tile Set_59: -2113817780
+      Dungeon Tile Set_111: -240550946
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

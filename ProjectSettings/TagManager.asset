@@ -15,7 +15,7 @@ TagManager:
   - UI
   - forground
   - ground
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -48,4 +48,13 @@ TagManager:
     locked: 0
   - name: forground
     uniqueID: 2418068021
+    locked: 0
+  - name: Props
+    uniqueID: 765799419
+    locked: 0
+  - name: NPC
+    uniqueID: 2520489381
+    locked: 0
+  - name: Platform
+    uniqueID: 1367721685
     locked: 0
