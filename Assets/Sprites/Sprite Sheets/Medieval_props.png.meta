@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -7757,8 +7757,8 @@ TextureImporter:
       Medieval_props_208: -1570461298
       Medieval_props_65: -531088656
       Medieval_props_153: 1966012959
-      Medieval_props_91: 1803280824
       Medieval_props_248: -518613664
+      Medieval_props_91: 1803280824
       Medieval_props_264: 1497521608
       Medieval_props_94: -1381865790
       Medieval_props_232: -1008414775
