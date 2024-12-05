@@ -53,3 +53,6 @@ TagManager:
   - name: NPC
     uniqueID: 2520489381
     locked: 0
+  - name: Platform
+    uniqueID: 1367721685
+    locked: 0
