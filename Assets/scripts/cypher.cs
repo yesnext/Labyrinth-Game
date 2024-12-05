@@ -7,6 +7,7 @@ public class cypher : MonoBehaviour
     public GameObject CypherScreen;
     public static bool opened;
     public KeyCode opening;
+    public PuzzleKey pk;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class cypher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(opening) && !opened && this.GetComponent<PuzzleKey>().istriggered == true){
+        if(Input.GetKeyDown(opening) && !opened && pk.istriggered == true){
             Open();
         }else if(Input.GetKeyDown(opening) && opened){
             Close();

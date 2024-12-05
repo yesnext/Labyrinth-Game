@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WrongTileKill : MonoBehaviour
 {
+    public GameObject beginPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class WrongTileKill : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player"){
-            
+            FindObjectOfType<controls2d>().transform.position = beginPoint.transform.position;
         }
     }
 }

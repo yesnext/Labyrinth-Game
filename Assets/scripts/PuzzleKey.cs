@@ -20,8 +20,10 @@ public class PuzzleKey : MonoBehaviour
     {
         if (collision.tag == "Player"){
             istriggered = true;
-        }else{
-            istriggered = false;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision){
+            istriggered = false;
     }
 }
