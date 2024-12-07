@@ -1,4 +1,4 @@
-using System.Collections;
+                                                   using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +26,8 @@ public class BasicEnemy : MonoBehaviour
     public Vector3 scale;
     public Vector2 direction;
     public int decision;
+    public float decisioncooldown = 3f;
+    public float lastdecisioncooldown = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,6 @@ public class BasicEnemy : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = (player.transform.position - transform.position).normalized;
-        GhangedirectionFollow();
         if (enemystate == 0)
         {
             if (this.isFacingRight == true)
@@ -63,13 +64,18 @@ public class BasicEnemy : MonoBehaviour
             {
                 Followplayer();
             }
-             decision =Random.Range(1,2);
+            if (Time.time - lastdecisioncooldown>decisioncooldown){
+             lastdecisioncooldown = Time.time;
+             decision =Random.Range(1,3);
+             Debug.Log("decision "+decision);
              if(decision == 1){
                 RandomChangeInDirectionOrIdle();
              }
+            }
         }
         else if (enemystate == 1)
         {
+            EnemySpeed = 1f;
                 Followplayer();
         }
     }
@@ -87,6 +93,7 @@ public class BasicEnemy : MonoBehaviour
         animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
         enemystate = 1;
+        GhangedirectionFollow();
         if (distance < 4.0f){
             animator.SetBool("Walking", false);
             animator.SetBool("attack",true);
@@ -112,16 +119,15 @@ public class BasicEnemy : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player"){
             Invoke(nameof(meleeAttack),Random.Range(0.01f,0.09f));
-        }else if(other.tag == "Environment" || other.tag == "Enemy"){
-            Ghangedirection();
         }
-        
     }
     public void Ghangedirection(){
-        scale =transform.localScale;
+        Debug.Log("in change");
+        scale =this.transform.localScale;
             scale.x *= -1;
             isFacingRight = !isFacingRight;
-            transform.localScale=scale;
+            this.transform.localScale=scale;
+        Debug.Log ("not in change direction");
     }
     public void GhangedirectionFollow(){
         if (direction.x > 0 && !isFacingRight)
@@ -141,12 +147,13 @@ public class BasicEnemy : MonoBehaviour
         }
     }
     public void RandomChangeInDirectionOrIdle(){
-        decision =Random.Range(1,2);
+        decision =Random.Range(1,3);
         if ( decision == 1){
             animator.SetBool("Idle", true);
-            Invoke(nameof(Update),10.0f);
+            EnemySpeed = 0f;
         }
         else if(decision == 2){
+            EnemySpeed = 1f;
             Ghangedirection();
         }
     }
