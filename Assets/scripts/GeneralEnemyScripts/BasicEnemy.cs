@@ -6,23 +6,19 @@ using UnityEngine.UIElements;
 
 public class BasicEnemy : MonoBehaviour
 {
-    protected controls player;
+    protected PlayerStates player;
     public bool isFacingRight = true;
     public float EnemySpeed = 0.1f;
     public int Health = 20;
     protected Animator animator;
-    protected SpriteRenderer spriteRenderer;
     public float MeleeAttackDistance = 5.0f;
     public int MeleeAttackDamage = 6;
     public float MeleeAttackCooldown = 5.0f; //time in seconds for the cooldown
     public float lastMeleeAttackTime = -5.0f;
-    public bool Meleeanim;
     public float distance;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
     public short enemystate;
-    public bool AttackReady;
-    public BoxCollider2D triggerbox;
     public Vector3 scale;
     public Vector2 direction;
     public int decision;
@@ -31,8 +27,7 @@ public class BasicEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<controls>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<PlayerStates>();
         animator = GetComponent<Animator>();
 
     }
@@ -42,6 +37,7 @@ public class BasicEnemy : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = (player.transform.position - transform.position).normalized;
+        GhangedirectionFollow();
         if (enemystate == 0)
         {
             if (this.isFacingRight == true)
@@ -67,7 +63,7 @@ public class BasicEnemy : MonoBehaviour
             if (Time.time - lastdecisioncooldown>decisioncooldown){
              lastdecisioncooldown = Time.time;
              decision =Random.Range(1,3);
-             Debug.Log("decision "+decision);
+            
              if(decision == 1){
                 RandomChangeInDirectionOrIdle();
              }
@@ -90,44 +86,44 @@ public class BasicEnemy : MonoBehaviour
    
     public void Followplayer()
     {
-        animator.SetBool("Walking", true);
+        // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
         enemystate = 1;
         GhangedirectionFollow();
         if (distance < 4.0f){
-            animator.SetBool("Walking", false);
-            animator.SetBool("attack",true);
+            // animator.SetBool("Walking", false);
+            // animator.SetBool("attack",true);
         }
         else{
-            animator.SetBool("attack",false);
+            // animator.SetBool("attack",false);
         }
     }
     public void TakeDamage(int damage,bool element)
     {
         if (element!=Element){
             Health = Health - damage;
-            Debug.Log("enemy Helath" + Health);
+            
             if (Health < 0)
             {
                 Destroy(this.gameObject);
             }
         }
         else{
-            Debug.Log("wrong element");
+           
         }
     }
     public void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player"){
-            Invoke(nameof(meleeAttack),Random.Range(0.01f,0.09f));
+            meleeAttack();
         }
     }
     public void Ghangedirection(){
-        Debug.Log("in change");
+        
         scale =this.transform.localScale;
             scale.x *= -1;
             isFacingRight = !isFacingRight;
             this.transform.localScale=scale;
-        Debug.Log ("not in change direction");
+       
     }
     public void GhangedirectionFollow(){
         if (direction.x > 0 && !isFacingRight)

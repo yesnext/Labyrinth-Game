@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class FinalBossController : BasicEnemy
+public class FinalBossController : MonoBehaviour
 {
     /*
     added projectile count variable to the script that will
@@ -13,8 +14,22 @@ public class FinalBossController : BasicEnemy
     edited the bullet controller so that when in contact with boss while immune it doesn't do anything
     */
     // Start is called before the first frame update
-    public float BossDodgeSpeed = 0.1f;
+    public PlayerStates player;
+    public bool isFacingRight = true;
+    public float EnemySpeed = 0.1f;
+    public int Health = 20;
+    private Animator animator;
+    public float distance;
+
+    public float BossDodgeSpeed = 8f;
+    public float dodgeDuration=0.1f;
+    public float DodgeDurationCounter = 0.0f;
+    public bool dodge;
+
     public bool IsImmune=true;
+    public Vector3 scale;
+    public Vector2 direction;
+
     
     public Transform ProjectilePoint;
     public GameObject Projectile;
@@ -23,118 +38,171 @@ public class FinalBossController : BasicEnemy
     public float RangeAttackDistance=10.0f;
     public float RangAttackCooldown = 5f; 
     public int RangeAttackDamage=6;    //time in seconds for the cooldown
-    private float LastRangAttackTime = 0f;
+    private float LastRangAttackTime = -5.0f;
     public bool Rangeanim;
 
-    public float LungAttackDistance=5.0f;
+    public float LungAttackDistance=10.0f;
     public float LungAttackCooldown = 5f; //time in seconds for the cooldown
-    private float LastLungAttackTime = 0f;
+    private float LastLungAttackTime = -5.0f;
     public bool lunganim;
     
 
-    public float ShadoAttackDistance=5.0f;
+    public float ShadoAttackDistance=2.0f;
     public int ShadoAttackDamage=6;
     public float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
-    private float lastRShadoSwordSlashesTime = 0f;
+    private float lastShadoSwordSlashesTime = -5.0f;
     public bool shadoslashanim;
     
+    public float AriseCooldown = 45.0f;
+    public float LastArisetime = -45.0f;
+    public float spwanduration = 10f;
+    public float lastspawnduration = 0;
+    public float Timebetweenspawns = 1f;
+    public float LastTimebetweenspawns =0f;
+    public AriseEnemies[] ariseEnemies = new AriseEnemies[10];
+    public Transform SpawnLocation;
+
     
     
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<controls>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<PlayerStates>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = (player.transform.position - transform.position).normalized;
-        Move();
-        distance = Vector2.Distance(transform.position,player.transform.position);
-        if (direction.x > 0)
-            {
-                spriteRenderer.flipX = false;
-                isFacingRight = true;
-            }
-            else if (direction.x < 0)
-            {
-                spriteRenderer.flipX = true;  
-                 isFacingRight = false;
-            }
-            animator.GetComponent<Animator>();
-    }
-    public void FixedUpdate(){
-        if(distance>=RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown){
+        if(dodge==true){
+            StartCoroutine(Dodge());
+        }
+        if(Time.time -LastArisetime > AriseCooldown){
+            StartCoroutine(Arise());
+        }
+       GhangedirectionFollow();
+       Followplayer();
+       if(distance>=RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown){
            RangeAttack();
         }
-        else if(distance>=LungAttackDistance && Time.time-lastRShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
+        else if(distance>=LungAttackDistance && Time.time-lastShadoSwordSlashesTime>ShadoSwordSlashesCooldown&& Time.time - LastLungAttackTime>LungAttackCooldown){
         LungAttack();
         
         }
-        else if(distance<ShadoAttackDistance && Time.time-lastRShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
-            ShadoAttack();
-        }
+        else if(distance<ShadoAttackDistance && Time.time-lastShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
+        ShadoAttack();
+        } 
+        
+    }
+    public void FixedUpdate(){
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position,player.transform.position);
+        
     }
 
     public IEnumerator RangeAttack(){
-            Rangeanim = true;
-            animator.SetBool("RangeAnimation", Rangeanim);
+            // Rangeanim = true;
+            // animator.SetBool("RangeAnimation", Rangeanim);
             for (int i = 0;i<3;i++){
             Instantiate(Projectile,ProjectilePoint.position,ProjectilePoint.rotation);
             yield return new WaitForSeconds(0.2f);
             } 
             LastRangAttackTime = Time.time;
-            Rangeanim = false;
-            animator.SetBool("RangeAnimation", Rangeanim);
+            // Rangeanim = false;
+            // animator.SetBool("RangeAnimation", Rangeanim);
     }
     public void LungAttack(){
         if (Time.time-LastLungAttackTime > LungAttackCooldown){
-            LastRangAttackTime = Time.time;
-            lunganim = true;
-            animator.SetBool("LungAnimation", lunganim);
-            EnemySpeed = EnemySpeed*1.5f;
+            LastLungAttackTime = Time.time;
+            EnemySpeed*=1.5f;
+            // lunganim = true;
+            // animator.SetBool("LungAnimation", lunganim);
         }
     }
     public void ShadoAttack(){
-            lastRShadoSwordSlashesTime = Time.time;
-                lunganim=false;
-                animator.SetBool("LungAnimation", lunganim);
-                shadoslashanim = true;
-                animator.SetBool("ShadoAnimation", shadoslashanim);
+            lastShadoSwordSlashesTime = Time.time;
+                // lunganim=false;
+                // animator.SetBool("LungAnimation", lunganim);
+                // shadoslashanim = true;
+                // animator.SetBool("ShadoAnimation", shadoslashanim);
                 distance = Vector2.Distance(transform.position,player.transform.position);
-                if (distance<MeleeAttackDistance){
-                player.TakeDamage(MeleeAttackDamage);
+                if (distance<ShadoAttackDistance){
+                player.TakeDamage(ShadoAttackDamage);
                 }
                 EnemySpeed=EnemySpeed/1.5f;
-                shadoslashanim=false;
-                animator.SetBool("ShadoAnimation", shadoslashanim);
+                // shadoslashanim=false;
+                // animator.SetBool("ShadoAnimation", shadoslashanim);
     }
-    public void Dodge(){
-        if (controls.projectileCount<3){
-        IsImmune=true;
-        Vector3 dodgeDirection = new Vector3(3, 0, 0);  // Move right for simplicity
+    public IEnumerator Dodge()
+{   Debug.Log("inside Dodge"+dodge);
+    dodge=false;
+    
+    if (PlayerStates.ProjectileCount < 3)
+    {
+        Debug.Log("inside Dodge"+dodge);
+        IsImmune = true;
+        Vector3 dodgeDirection = (transform.position - player.transform.position).normalized;
+        DodgeDurationCounter = 0f;
+        float originalspeed = EnemySpeed;
+        EnemySpeed *=6; 
+        while (DodgeDurationCounter < dodgeDuration)
+        {
+            Followplayer();
+            DodgeDurationCounter += Time.deltaTime;
+            yield return null;
+        }
+        EnemySpeed = originalspeed;
         transform.position += dodgeDirection * BossDodgeSpeed * Time.deltaTime;
+    }
+}
+    public new void Followplayer()
+    {
+        // animator.SetBool("Walking", true);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
+       
+        GhangedirectionFollow();
+        if (distance < 4.0f){
+            // animator.SetBool("Walking", false);
+            // animator.SetBool("attack",true);
+        }
+        else{
+            // animator.SetBool("attack",false);
         }
     }
-    public void Move(){
-        transform.position = Vector3.MoveTowards(transform.position,player.transform.position, EnemySpeed *Time.deltaTime);
+    public void GhangedirectionFollow(){
+        if (direction.x > 0 && !isFacingRight)
+        {
+            Debug.Log("inchnage direction");
+            scale =transform.localScale;
+            scale.x *= -1;
+            isFacingRight = true;
+            transform.localScale=scale;
+            
+        }
+        else if (direction.x < 0 && isFacingRight)
+        {
+            scale =transform.localScale;
+            scale.x *= -1;
+            isFacingRight = false;
+            transform.localScale=scale;
+        }
     }
-    public new void TakeDamage(int damage){
+    public void TakeDamage(int damage){
         Health=Health-damage;
-        if (Health <= 0 && BossPhase>3){
-            Destroy(this.gameObject);
-        }
-        else if(Health<=0){
-            Health=100;
-            BossPhase++;
+        
+        if(!IsBossImmune()){
+            if (Health <= 0 && BossPhase>3){
+                Destroy(this.gameObject);
+            }
+            else if(Health<=0){
+                Health=100;
+                BossPhase++;
+            }
         }
     }
     public bool IsBossImmune(){
         if (BossPhase == 1){
-            if(controls.projectileCount>=3){
+            if(PlayerStates.ProjectileCount>=3){
                 return IsImmune=false;
             }
             else{
@@ -145,30 +213,44 @@ public class FinalBossController : BasicEnemy
             return IsImmune=false;
         }
     }
+    public void OnTriggerEnter2D(Collider2D other){
+        if (other.tag=="Player"){
+            player= other.GetComponent<PlayerStates>();
+            if(Time.time-lastShadoSwordSlashesTime>ShadoSwordSlashesCooldown){
+            ShadoAttack();   
+            }
+        }
+    }
+    public void Heal(){
+        Health+=40;
+        if(Health>500){
+            Health=500;
+        }
+    }
+    public IEnumerator Arise(){
+        Debug.Log("inside");
+        IsImmune = true;
+    DodgeDurationCounter = 0f;
+    float originalSpeed = EnemySpeed;
+    EnemySpeed = 0f;
+    lastspawnduration = 0f;
+        while (lastspawnduration < spwanduration)
+        {
+
+            if (Time.time - LastTimebetweenspawns > Timebetweenspawns)
+            {
+                LastTimebetweenspawns = Time.time;
+                int randomIndex = Random.Range(0, ariseEnemies.Length);
+                Instantiate(ariseEnemies[randomIndex], SpawnLocation.position, SpawnLocation.rotation);
+            }
+
+            lastspawnduration += Time.deltaTime;
+            yield return null;
+
+        LastArisetime = Time.time;
+        EnemySpeed = originalSpeed;
+        Debug.Log("Arise function completed.");
+        }
+    }
 }
-//code to be added to player controller
-// public class PlayerShooting : MonoBehaviour
-// {
-//     public GameObject projectilePrefab;
-//     public Transform shootPoint;
-//     public static int projectileCount = 0; // Accessible static count for enemies to check
 
-//     public float shootCooldown = 0.5f;
-//     private float nextShootTime = 0f;
-
-//     void Update()
-//     {
-//         if (Input.GetButtonDown("Fire1") && Time.time >= nextShootTime)
-//         {
-//             Shoot();
-//             nextShootTime = Time.time + shootCooldown;
-//         }
-//     }
-
-//     void Shoot()
-//     {
-//         Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-//         projectileCount++; // Increment the projectile count on each shot
-//         Debug.Log("Projectile count: " + projectileCount);
-//     }
-// }

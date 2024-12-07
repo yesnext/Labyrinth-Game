@@ -17,7 +17,7 @@ public class CollideChangedirection : MonoBehaviour
         
     }
     public void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Environment" || other.tag == "Enemy"){
+        if(other.tag == "Environment"){
             enemy.Ghangedirection();
         }
         }

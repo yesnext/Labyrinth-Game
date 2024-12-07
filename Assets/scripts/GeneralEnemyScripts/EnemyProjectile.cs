@@ -6,12 +6,12 @@ public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
     public FinalBossController enemy;
-    public controls player;
+    public PlayerStates player;
     private Vector3 playerpos;
     public int Damage;
     // Start is called before the first frame update
     void Start()
-    {
+    {   player = FindObjectOfType<PlayerStates>(); 
         
         enemy=FindObjectOfType<FinalBossController>();
            if(enemy.isFacingRight==false){
@@ -31,9 +31,8 @@ public class EnemyProjectile : MonoBehaviour
        if(other.tag == "Environment"){
             Destroy(this.gameObject);
         }
-        else if(other.tag == "Player"){
-            player.TakeDamage(enemy.RangeAttackDamage);
-            Destroy(this.gameObject);
+        else if (other.tag == "Player"){
+            player.TakeDamage(Damage);
         }
     }
 }
