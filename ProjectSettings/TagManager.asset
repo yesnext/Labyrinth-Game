@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - cypher
+  - interactable object
+  - InteractObject
   layers:
   - Default
   - TransparentFX
@@ -52,11 +54,11 @@ TagManager:
   - name: background
     uniqueID: 3737085463
     locked: 0
-  - name: forground
-    uniqueID: 2418068021
-    locked: 0
   - name: propbehind
     uniqueID: 2511677459
+    locked: 0
+  - name: forground
+    uniqueID: 2418068021
     locked: 0
   - name: Props
     uniqueID: 765799419
@@ -75,4 +77,7 @@ TagManager:
     locked: 0
   - name: maze
     uniqueID: 1113701241
+    locked: 0
+  - name: mc
+    uniqueID: 1172231183
     locked: 0
