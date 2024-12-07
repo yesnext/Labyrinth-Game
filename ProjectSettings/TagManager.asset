@@ -16,7 +16,7 @@ TagManager:
   - forground
   - ground
   - Enemy
-  - 
+  - spike
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
   - name: forground
     uniqueID: 2418068021
     locked: 0
+  - name: propbehind
+    uniqueID: 2511677459
+    locked: 0
   - name: Props
     uniqueID: 765799419
     locked: 0
@@ -63,4 +66,13 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1367721685
+    locked: 0
+  - name: spike
+    uniqueID: 3043559921
+    locked: 0
+  - name: Items
+    uniqueID: 3686060169
+    locked: 0
+  - name: maze
+    uniqueID: 1113701241
     locked: 0
