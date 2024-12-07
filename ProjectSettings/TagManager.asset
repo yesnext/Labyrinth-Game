@@ -14,7 +14,7 @@ TagManager:
   - forground
   - ground
   - Enemy
-  - 
+  - spike
   - 
   - 
   - 
@@ -61,4 +61,10 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1367721685
+    locked: 0
+  - name: spike
+    uniqueID: 3043559921
+    locked: 0
+  - name: Items
+    uniqueID: 3686060169
     locked: 0
