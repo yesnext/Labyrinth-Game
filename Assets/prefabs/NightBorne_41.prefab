@@ -101,10 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePoint: {fileID: 0}
   speed: 8
+  speedMultiplier: 0
   direction: {x: 0, y: 0, z: 0}
   mousePosition: {x: 0, y: 0, z: 0}
   element: 0
-  Damage: 3
+  Damage: 50
+  Player: {fileID: 0}
 --- !u!50 &-381432380519230667
 Rigidbody2D:
   serializedVersion: 4

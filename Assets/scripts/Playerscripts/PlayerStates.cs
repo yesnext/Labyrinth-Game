@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Data;
 using UnityEngine;
 
 public class PlayerStates : MonoBehaviour
@@ -9,9 +11,10 @@ public class PlayerStates : MonoBehaviour
     public Transform ProjectilePoint;
     public GameObject Projectile;
     public static int ProjectileCount=0;
-     public int ProjectileCountVis;
     public KeyCode RangeAttackKey;
     public int Health =100;
+    public float HealCooldown=10.0f;
+    public float LastHealCooldown=10.0f;
     protected Animator animator;
     public KeyCode MeleeAttackkey;
     public float MeleeAttackDistance=5.0f;
@@ -23,9 +26,7 @@ public class PlayerStates : MonoBehaviour
     public KeyCode SwitchElement;
     public BasicEnemy enemy;
     public FinalBossController Boss;
-
-    public Vector3 direction;
-     public  Vector3 mousePosition;
+    public BoxCollider2D attackbox;
  void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,7 +34,6 @@ public class PlayerStates : MonoBehaviour
 
     void Update()
     {
-        ProjectileCountVis=ProjectileCount;
        if (Input.GetKeyDown(MeleeAttackkey)){
             // animator.SetBool("iceattack",true);
         }
@@ -41,6 +41,7 @@ public class PlayerStates : MonoBehaviour
             ChangeElement();
         }
         if(Input.GetKeyDown(RangeAttackKey)){
+            ProjectileCount++;
             Shoot();
         }
     }
@@ -49,17 +50,18 @@ public class PlayerStates : MonoBehaviour
     {
         element= !element;
     }
-
+    public int projectileController(){
+        return ProjectileCount;
+    }
    
     public void Shoot(){
-        ProjectileCount++;
         GameObject projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
         PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
         projectileController.Intialize(ProjectilePoint);
     }
     public void TakeDamage(int damage){
         Health=Health-damage;
-        Debug.Log("Health = "+Health);
+        Debug.Log("Health"+ Health);
     }
     public void BasicMeleeAttack(){
         if(Time.time - lastMeleeAttackTime>MeleeAttackCooldown){
@@ -70,26 +72,40 @@ public class PlayerStates : MonoBehaviour
     }
     public void BossMeleeAttack(){
         if(Time.time - lastMeleeAttackTime>MeleeAttackCooldown){
+            
             lastMeleeAttackTime = Time.time;
             Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
             // animator.SetTrigger("Attack");
         }
     }
-    public void OnTriggerEnter2D(Collider2D other){
+    private void OnTriggerEnter2D(Collider2D other){
         if (other.tag=="Enemy"){
             enemy = other.GetComponent<BasicEnemy>();
             BasicMeleeAttack();
         }
         else if (other.tag=="Boss"){
+            if(attackbox.enabled){
             Boss = other.GetComponent<FinalBossController>();
             BossMeleeAttack();
+            }
         }
+    }
+    public bool CheckIfHealIsAvailable(){
+        if (Time.time - LastHealCooldown>HealCooldown){
+            return true;
+            LastHealCooldown = Time.time;
+        }else{
+            return false;
+        }
+
     }
     public void Heal (){
         Health+=40;
         if (Health>100){
             Health = 100;
         }
+        LastHealCooldown = Time.time;
+        
     }
 
 }

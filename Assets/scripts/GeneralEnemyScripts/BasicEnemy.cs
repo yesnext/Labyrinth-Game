@@ -24,6 +24,7 @@ public class BasicEnemy : MonoBehaviour
     public int decision;
     public float decisioncooldown = 3f;
     public float lastdecisioncooldown = 0;
+    public BoxCollider2D attackbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -114,7 +115,9 @@ public class BasicEnemy : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player"){
+            if(attackbox.enabled){
             meleeAttack();
+            }
         }
     }
     public void Ghangedirection(){

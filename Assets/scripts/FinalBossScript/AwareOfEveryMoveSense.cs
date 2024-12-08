@@ -8,19 +8,40 @@ public class AwareOfEveryMoveSense : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
-     public void OnTriggerEnter2D(Collider2D other){
-        if (enemy.BossPhase== 1){
-            if(other.tag == "Projectile"){
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+
+        Debug.Log("in trigger dodge every");
+
+        if (other.tag == "Projectile")
+        {
+
+            if (enemy.BossPhase == 1)
+            {
                 enemy.dodge = true;
             }
+            else
+            {
+                int rand = Random.Range(1, 101);
+                Debug.Log("random number" + rand);
+                if (rand < 34)
+                {
+                    enemy.dodge = true;
+                    enemy.IsImmune = true;
+                }
+                else
+                {
+                    enemy.IsImmune = false;
+                    enemy.dodge = false;
+                }
+            }
         }
-     }
+    }
 }
