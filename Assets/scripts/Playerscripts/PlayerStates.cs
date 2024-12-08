@@ -5,9 +5,8 @@ using System.ComponentModel.Design;
 using System.Data;
 using UnityEngine;
 
-public class PlayerStates : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
-
     public Transform ProjectilePoint;
     public GameObject Projectile;
     public static int ProjectileCount=0;

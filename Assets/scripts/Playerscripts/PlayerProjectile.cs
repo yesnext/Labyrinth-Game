@@ -12,14 +12,14 @@ public class PlayerProjectile : MonoBehaviour
      public  Vector3 mousePosition;
      public bool element;
      public int Damage=3;
-     public PlayerStates Player;
+     public PlayerStats Player;
     public void Intialize (Transform Firepoint){
         ProjectilePoint = Firepoint;
         
     }
     void Start()
     {
-        Player = FindObjectOfType<PlayerStates>();
+        Player = FindObjectOfType<PlayerStats>();
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0; 
         direction = (mousePosition - ProjectilePoint.position).normalized;
@@ -34,24 +34,24 @@ public class PlayerProjectile : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Enemy"){
             other.GetComponent<BasicEnemy>().TakeDamage(Damage,element);
-            PlayerStates.ProjectileCount--;
+            PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
         else if(other.tag == "Boss"){
             if(other.GetComponent<FinalBossController>().BossPhase==1){
                 if( !other.GetComponent<FinalBossController>().IsImmune){
                     other.GetComponent<FinalBossController>().TakeDamage(Damage);
-                    PlayerStates.ProjectileCount--;
+                    PlayerStats.ProjectileCount--;
                     Destroy(this.gameObject);
                 }
             }
         }
         else if (other.tag == "Environment"){
-            PlayerStates.ProjectileCount--;
+            PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         } else if (other.tag == "Arise Enemy"){
             other.GetComponent<AriseEnemies>().TakeDamage(Damage);
-            PlayerStates.ProjectileCount--;
+            PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
 

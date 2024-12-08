@@ -6,12 +6,12 @@ public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
     public FinalBossController enemy;
-    public PlayerStates player;
+    public PlayerStats player;
     private Vector3 playerpos;
     public int Damage;
     // Start is called before the first frame update
     void Start()
-    {   player = FindObjectOfType<PlayerStates>(); 
+    {   player = FindObjectOfType<PlayerStats>(); 
         
         enemy=FindObjectOfType<FinalBossController>();
            if(enemy.isFacingRight==false){

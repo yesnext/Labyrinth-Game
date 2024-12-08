@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FinalBossController : MonoBehaviour
 {
-    public PlayerStates player;
+    public PlayerStats player;
     public bool isFacingRight = true;
     public float EnemySpeed = 0.1f;
     public int Health = 500;
@@ -66,7 +66,7 @@ public class FinalBossController : MonoBehaviour
     void Start()
     {
         originalSpeed = EnemySpeed;
-        player = FindObjectOfType<PlayerStates>();
+        player = FindObjectOfType<PlayerStats>();
 
     }
 
@@ -108,7 +108,7 @@ public class FinalBossController : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         if (BossPhase == 1)
         {
-            IsImmune = PlayerStates.ProjectileCount < 3;
+            IsImmune = PlayerStats.ProjectileCount < 3;
         }
     }
 
@@ -267,7 +267,7 @@ public class FinalBossController : MonoBehaviour
             if (other.tag == "Player")
                 if (attackbox.enabled)
                 {
-                    player = other.GetComponent<PlayerStates>();
+                    player = other.GetComponent<PlayerStats>();
                     if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
                     {
                         ShadoAttack();

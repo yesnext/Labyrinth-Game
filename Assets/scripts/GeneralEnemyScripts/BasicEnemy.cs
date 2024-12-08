@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class BasicEnemy : MonoBehaviour
 {
-    protected PlayerStates player;
+    protected PlayerStats player;
     public bool isFacingRight = true;
     public float EnemySpeed = 0.1f;
     public int Health = 20;
@@ -28,7 +28,7 @@ public class BasicEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerStates>();
+        player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
 
     }

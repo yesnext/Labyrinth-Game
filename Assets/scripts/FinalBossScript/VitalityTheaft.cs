@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class VitalityTheaft : MonoBehaviour
 {
     public FinalBossController Boss;
-    public PlayerStates player;
+    public PlayerStats player;
     public KeyCode healing;
     public int heal = 40;
     // Start is called before the first frame update

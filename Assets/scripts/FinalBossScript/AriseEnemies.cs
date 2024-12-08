@@ -7,7 +7,7 @@ public class AriseEnemies : BasicEnemy
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerStates>();
+        player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
     }
 
