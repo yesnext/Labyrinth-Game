@@ -4,6 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
+  - Coin
+  - cypher
+  - interactable object
+  - InteractObject
+  - WallSlot
   - Enemy
   - Environment
   - Boss
@@ -20,7 +26,7 @@ TagManager:
   - forground
   - ground
   - Enemy
-  - 
+  - spike
   - 
   - 
   - 
@@ -44,12 +50,45 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: New Layer 12
+    uniqueID: 509840677
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 2493936887
+    locked: 0
+  - name: New Layer 7
+    uniqueID: 801507249
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: background
     uniqueID: 3737085463
     locked: 0
+  - name: propbehind
+    uniqueID: 2511677459
+    locked: 0
   - name: forground
     uniqueID: 2418068021
+    locked: 0
+  - name: Props
+    uniqueID: 765799419
+    locked: 0
+  - name: NPC
+    uniqueID: 2520489381
+    locked: 0
+  - name: Platform
+    uniqueID: 1367721685
+    locked: 0
+  - name: spike
+    uniqueID: 3043559921
+    locked: 0
+  - name: Items
+    uniqueID: 3686060169
+    locked: 0
+  - name: maze
+    uniqueID: 1113701241
+    locked: 0
+  - name: mc
+    uniqueID: 1172231183
     locked: 0

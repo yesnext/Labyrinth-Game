@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1207,8 +1207,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_16: 950920278
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_51: 1762029903
+      8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_8: 1930423827
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_15: 184261498
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_25: 874142768
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_20: 849146559
@@ -1258,7 +1258,7 @@ TextureImporter:
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_45: -1690923195
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_32: -1796492293
       8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_11: 1848296955
-      8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_8: 1930423827
+      8f9cf050-6dfb-4838-91d5-7d3fcbc949a8-removebg-preview_16: 950920278
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
