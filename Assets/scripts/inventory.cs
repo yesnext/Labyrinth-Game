@@ -7,7 +7,10 @@ public class inventory : MonoBehaviour
     public GameObject[] Inventory = new GameObject[15];  // Array to store inventory items
     public InventoryUI inventoryUI;  // Reference to InventoryUI (this will be set in the Inspector)
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);  // Persist UI across scenes
+    }
     void Start()
     {
         if (inventoryUI == null)
@@ -19,7 +22,7 @@ public class inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void AddItem(GameObject item)
@@ -33,6 +36,7 @@ public class inventory : MonoBehaviour
                 Debug.Log(item.name + " was added to inventory slot " + i);
                 itemadded = true;
                 item.SendMessage("DoInteraction");
+                inventoryUI.OnItemAdded(item);
 
                 // Update the UI after adding the item
                 if (inventoryUI != null)

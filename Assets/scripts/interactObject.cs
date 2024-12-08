@@ -20,6 +20,5 @@ public class interactObject : MonoBehaviour
 
     public void DoInteraction(){
         gameObject.SetActive(false);
-
     }
 }

@@ -66,27 +66,58 @@ public class InventoryUI : MonoBehaviour
 
 public void OpenInventory(System.Action<GameObject> onItemSelected)
 {
-    // Enable inventory UI
-    inventoryPanel.SetActive(true);
-
-    // Add functionality to select an item
-    foreach (GameObject slot in slots)
+    if (inventoryPanel != null)
     {
-        Button button = slot.GetComponent<Button>();
-        if (button != null)
+        inventoryPanel.SetActive(true);  // Enable the inventory UI panel
+
+        // Add functionality for selecting an item
+        foreach (GameObject slot in slots)
         {
-            button.onClick.AddListener(() =>
+            Button button = slot.GetComponent<Button>();
+            if (button != null)
             {
-                GameObject selectedItem = slot.GetComponent<ItemSlot>()?.GetItem();
-                if (selectedItem != null)
+                button.onClick.RemoveAllListeners();  // Clear previous listeners
+                button.onClick.AddListener(() =>
                 {
-                    inventoryPanel.SetActive(false);  // Close inventory UI
-                    onItemSelected?.Invoke(selectedItem);
-                }
-            });
+                    GameObject selectedItem = slot.GetComponent<ItemSlot>()?.GetItem();
+                    if (selectedItem != null)
+                    {
+                        inventoryPanel.SetActive(false);  // Close the inventory
+                        onItemSelected?.Invoke(selectedItem);
+                    }
+                });
+            }
         }
+    }
+    else
+    {
+        Debug.LogError("Inventory panel is not assigned in the InventoryUI script!");
     }
 }
 
+public void RemoveItem(GameObject item)
+    {
+        if (inventoryScript != null && item != null)
+        {
+            for (int i = 0; i < inventoryScript.Inventory.Length; i++)
+            {
+                if (inventoryScript.Inventory[i] == item)
+                {
+                    // Remove the item from the backend array
+                    inventoryScript.Inventory[i] = null;
+
+                    // Clear the corresponding UI slot
+                    slots[i].GetComponent<Image>().sprite = null;
+                    slots[i].SetActive(false);
+
+                    Debug.Log($"{item.name} removed from inventory.");
+                    UpdateUI(); // Refresh the inventory UI
+                    return;
+                }
+            }
+
+            Debug.LogWarning("Item not found in inventory!");
+        }
+    }
 }
 
