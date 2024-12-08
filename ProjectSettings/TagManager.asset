@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
   - Coin
   - cypher
   - interactable object
@@ -43,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: New Layer 12
+    uniqueID: 509840677
+    locked: 0
   - name: New Layer 6
     uniqueID: 2493936887
     locked: 0
