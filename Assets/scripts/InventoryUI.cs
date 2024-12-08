@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    public GameObject inventoryPanel;
     public GameObject[] slots;  // UI slots (for each inventory slot)
     private inventory inventoryScript;
 
@@ -61,7 +62,31 @@ public class InventoryUI : MonoBehaviour
     {
         UpdateUI();  // Update the UI when an item is added from the inventrory script
     }
+
+
+public void OpenInventory(System.Action<GameObject> onItemSelected)
+{
+    // Enable inventory UI
+    inventoryPanel.SetActive(true);
+
+    // Add functionality to select an item
+    foreach (GameObject slot in slots)
+    {
+        Button button = slot.GetComponent<Button>();
+        if (button != null)
+        {
+            button.onClick.AddListener(() =>
+            {
+                GameObject selectedItem = slot.GetComponent<ItemSlot>()?.GetItem();
+                if (selectedItem != null)
+                {
+                    inventoryPanel.SetActive(false);  // Close inventory UI
+                    onItemSelected?.Invoke(selectedItem);
+                }
+            });
+        }
+    }
 }
 
-
+}
 

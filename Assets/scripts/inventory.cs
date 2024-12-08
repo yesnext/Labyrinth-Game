@@ -19,7 +19,7 @@ public class inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AddItem(GameObject item)
@@ -48,4 +48,23 @@ public class inventory : MonoBehaviour
             Debug.Log("Inventory full - item not added");
         }
     }
+    
+    public void RemoveItem(GameObject item)
+{
+    for (int i = 0; i < Inventory.Length; i++)
+    {
+        if (Inventory[i] == item)
+        {
+            Inventory[i] = null;
+            Debug.Log(item.name + " removed from inventory");
+            break;
+        }
+    }
+    // Refresh the UI
+    InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
+    if (inventoryUI != null)
+    {
+        inventoryUI.UpdateUI();
+    }
+}
 }
