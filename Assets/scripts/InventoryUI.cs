@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject[] slots;  // UI slots (for each inventory slot)
     private inventory inventoryScript;
+    private WallSlot currentWallSlot;
 
     void Awake()
     {
@@ -41,6 +42,13 @@ public class InventoryUI : MonoBehaviour
                     slotImage.sprite = itemSprite;
                     slots[i].SetActive(true);  // Make the slot visible
                     Debug.Log("Item sprite set for slot " + i);  // Debug log
+
+                    Button button = slots[i].GetComponent<Button>();
+                    if (button != null)
+                    {
+                        button.onClick.RemoveAllListeners(); // Clear previous listeners
+                        button.onClick.AddListener(() => TransferItemToWallSlot(slotImage.gameObject));
+                    }
                 }
                 else
                 {
@@ -64,36 +72,6 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-public void OpenInventory(System.Action<GameObject> onItemSelected)
-{
-    if (inventoryPanel != null)
-    {
-        inventoryPanel.SetActive(true);  // Enable the inventory UI panel
-
-        // Add functionality for selecting an item
-        foreach (GameObject slot in slots)
-        {
-            Button button = slot.GetComponent<Button>();
-            if (button != null)
-            {
-                button.onClick.RemoveAllListeners();  // Clear previous listeners
-                button.onClick.AddListener(() =>
-                {
-                    GameObject selectedItem = slot.GetComponent<ItemSlot>()?.GetItem();
-                    if (selectedItem != null)
-                    {
-                        inventoryPanel.SetActive(false);  // Close the inventory
-                        onItemSelected?.Invoke(selectedItem);
-                    }
-                });
-            }
-        }
-    }
-    else
-    {
-        Debug.LogError("Inventory panel is not assigned in the InventoryUI script!");
-    }
-}
 
 public void RemoveItem(GameObject item)
     {
@@ -119,5 +97,98 @@ public void RemoveItem(GameObject item)
             Debug.LogWarning("Item not found in inventory!");
         }
     }
+
+
+public void OpenInventory(System.Action<GameObject> onItemSelected)
+{
+    if (inventoryPanel != null)
+    {
+        if (inventoryPanel.activeSelf)
+        {
+            // If the inventory is already open, close it
+            inventoryPanel.SetActive(false);
+            Debug.Log("Closing inventory panel...");
+        }
+        else
+        {
+            // If the inventory is closed, open it
+            inventoryPanel.SetActive(true);
+            Debug.Log("Opening inventory panel...");
+        }
+
+        // Add functionality for selecting an item when the inventory is open
+        foreach (GameObject slot in slots)
+        {
+            Button button = slot.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();  // Clear previous listeners
+                button.onClick.AddListener(() =>
+                {
+                    GameObject selectedItem = slot.GetComponent<ItemSlot>()?.GetItem();
+                    if (selectedItem != null)
+                    {
+                        Debug.Log($"Selected item: {selectedItem.name}");
+                        RemoveItem(selectedItem);
+                        inventoryPanel.SetActive(false);  // Close the inventory
+                        onItemSelected?.Invoke(selectedItem);
+                    }
+                });
+            }
+        }
+    }
+    else
+    {
+        Debug.LogError("Inventory panel is not assigned in the InventoryUI script!");
+    }
+}
+
+
+public void SetCurrentWallSlot(WallSlot wallSlot)
+    {
+        currentWallSlot = wallSlot;
+        Debug.Log($"Current wall slot set: {currentWallSlot?.name}");
+    }
+
+
+public void TransferItemToWallSlot(GameObject buttonSlot)
+{
+    if (currentWallSlot == null)
+        {
+            Debug.LogError("No wall slot is currently active!");
+            return;
+        }
+
+    if (buttonSlot != null)
+    {
+        Image slotImage = buttonSlot.GetComponent<Image>();
+        if (slotImage != null && slotImage.sprite != null)
+        {
+            SpriteRenderer itemFrameRenderer = currentWallSlot?.GetComponentInChildren<SpriteRenderer>();
+            if (itemFrameRenderer != null)
+            {
+                itemFrameRenderer.sprite = slotImage.sprite;
+                Debug.Log($"Transferred item {slotImage.sprite.name} to the wall slot.");
+
+                // Optionally clear the inventory slot
+                slotImage.sprite = null;
+                slotImage.gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.LogWarning("No SpriteRenderer found on the WallSlot's ItemFrame.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("The selected inventory slot is empty or missing an image.");
+        }
+    }
+    else
+    {
+        Debug.LogError("No button slot was clicked.");
+    }
+}
+
 }
 

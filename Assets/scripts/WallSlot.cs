@@ -10,7 +10,7 @@ public class WallSlot : MonoBehaviour
     void Start()
     {
         // Get the SpriteRenderer from the GameObject this script is attached to
-        itemFrameRenderer = GetComponent<SpriteRenderer>();
+        itemFrameRenderer = GetComponentInChildren<SpriteRenderer>();
         if (itemFrameRenderer == null)
         {
             Debug.LogError("SpriteRenderer not found on the WallSlot object!");
@@ -20,18 +20,25 @@ public class WallSlot : MonoBehaviour
     // Assign an item to this slot
     public void SetItem(GameObject item)
     {
-        currentItem = item;
-
-        // Update the sprite on the item frame
-        SpriteRenderer itemSpriteRenderer = item?.GetComponent<SpriteRenderer>();
-        if (itemSpriteRenderer != null && itemFrameRenderer != null)
+        if (item != null)
         {
-            itemFrameRenderer.sprite = itemSpriteRenderer.sprite;
-            Debug.Log($"Assigned {item.name} to this slot.");
+            currentItem = item;
+
+            // Get the sprite from the item and assign it to the frame
+            Sprite itemSprite = item.GetComponent<SpriteRenderer>()?.sprite;
+            if (itemSprite != null)
+            {
+                itemFrameRenderer.sprite = itemSprite; // Display the item's sprite
+                Debug.Log($"Item {item.name} added to the wall slot.");
+            }
+            else
+            {
+                Debug.LogWarning($"Item {item.name} does not have a SpriteRenderer or the sprite is missing.");
+            }
         }
         else
         {
-            Debug.LogWarning("Failed to assign item: Missing SpriteRenderer.");
+            Debug.LogWarning("Tried to assign a null item to the wall slot.");
         }
     }
 
