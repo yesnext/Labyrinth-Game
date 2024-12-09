@@ -59,14 +59,17 @@ public class PlayerStats : MonoBehaviour
 
     public void Shoot()
     {
-        if (!element){
-        GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
-        PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-        projectileController.Intialize(ProjectilePoint);
-        }else{
-        GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
-        PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-        projectileController.Intialize(ProjectilePoint);
+        if (!element)
+        {
+            GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
+            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
+            projectileController.Intialize(ProjectilePoint);
+        }
+        else
+        {
+            GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
+            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
+            projectileController.Intialize(ProjectilePoint);
         }
     }
     public void TakeDamage(int damage)

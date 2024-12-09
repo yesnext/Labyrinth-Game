@@ -12,7 +12,7 @@ public class ChainedGirlBoss : FinalBossController
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
-        IsImmune=false;
+        IsImmune = false;
     }
 
     // Update is called once per frame
@@ -30,9 +30,11 @@ public class ChainedGirlBoss : FinalBossController
         distance = Vector2.Distance(transform.position, player.transform.position);
         ready = Time.time - LastRangAttackTime > RangAttackCooldown;
     }
-    public void BegoneThot(){
-        if(Chain1==null && Chain2==null){
-        Destroy(this.gameObject);
+    public void BegoneThot()
+    {
+        if (Chain1 == null && Chain2 == null)
+        {
+            Destroy(this.gameObject);
         }
     }
     public void RangeAttack()
