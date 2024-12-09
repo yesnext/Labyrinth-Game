@@ -23,6 +23,7 @@ public class ChainedGirlBoss : FinalBossController
         {
             RangeAttack();
         }
+        BegoneThot();
     }
     public void FixedUpdate()
     {

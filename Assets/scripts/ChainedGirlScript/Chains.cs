@@ -9,7 +9,7 @@ public class Chains : MonoBehaviour
     public int Health;
     public float distance;
     public PlayerStats player;
-    public float ChainWhipDistance = 4.0f;
+    public float ChainWhipDistance = 1.0f;
     public int ChainWhipDamage = 0;
     public float ChainWhipCooldown = 2.0f;
     public float LastChainWhipCooldown = 0.0f;
@@ -20,13 +20,14 @@ public class Chains : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
+        TheChainedGirl = FindObjectOfType<ChainedGirlBoss>();
     }
 
     // Update is called once per frame
     void Update()
     {
         GhangedirectionFollow();
-        if (distance < ChainWhipDistance)
+        if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown)
         {
             ChainWhipAttack();
         }
@@ -51,6 +52,7 @@ public class Chains : MonoBehaviour
     private void ChainWhipAttack()
     {
         player.TakeDamage(ChainWhipDamage);
+        LastChainWhipCooldown = Time.time;
     }
      public void GhangedirectionFollow()
     {
