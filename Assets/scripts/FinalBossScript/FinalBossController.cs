@@ -30,7 +30,7 @@ public class FinalBossController : MonoBehaviour
 
     public float RangeAttackDistance = 5.0f;
     public float RangAttackCooldown = 5f;
-    private float LastRangAttackTime = -5.0f;
+    protected float LastRangAttackTime = -5.0f;
     public bool Rangeanim;
 
     public float LungAttackDistance = 10.0f;
@@ -81,7 +81,7 @@ public class FinalBossController : MonoBehaviour
         {
             StartCoroutine(Dodge());
         }
-        if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3 )
+        if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3)
         {
             StartCoroutine(Arise());
         }
@@ -114,15 +114,8 @@ public class FinalBossController : MonoBehaviour
 
     public void RangeAttack()
     {
-
-        // Rangeanim = true;
-        // animator.SetBool("RangeAnimation", Rangeanim);
-
         Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
-
         LastRangAttackTime = Time.time;
-        // Rangeanim = false;
-        // animator.SetBool("RangeAnimation", Rangeanim);
     }
     public void LungAttack()
     {
@@ -131,8 +124,6 @@ public class FinalBossController : MonoBehaviour
             LastLungAttackTime = Time.time;
             EnemySpeed *= 1.5f;
             IsLunging = true;
-            // lunganim = true;
-            // animator.SetBool("LungAnimation", lunganim);
         }
     }
     public void ShadoAttack()

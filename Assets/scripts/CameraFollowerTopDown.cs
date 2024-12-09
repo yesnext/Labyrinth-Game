@@ -9,6 +9,7 @@ public class CameraFollowerTopDown : MonoBehaviour
 
     public float minX, maxX;
     public float minY, maxY;
+    public float offset=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class CameraFollowerTopDown : MonoBehaviour
             float ClampX = Mathf.Clamp(newCamPosition.x, minX, maxX);
             float ClampY = Mathf.Clamp(newCamPosition.y, minY, maxY);
 
-            transform.position = new Vector3(ClampX, ClampY, -10f);
+            transform.position = new Vector3(ClampX, ClampY+offset, -10f);
         }
     }
 }

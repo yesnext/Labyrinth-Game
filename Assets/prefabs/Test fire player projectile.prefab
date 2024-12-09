@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -381432380519230667}
   - component: {fileID: -4714228315718995133}
   m_Layer: 0
-  m_Name: NightBorne_41
+  m_Name: Test fire player projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
