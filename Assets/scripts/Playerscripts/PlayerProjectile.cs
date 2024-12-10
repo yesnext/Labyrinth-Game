@@ -68,7 +68,7 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if(other.tag == "Obelisk"){
-            if(other.GetComponent<WardenObelisks>().state){
+            if(WardenObelisks.state){
             other.GetComponent<WardenObelisks>().TakeDamage(Damage);
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);

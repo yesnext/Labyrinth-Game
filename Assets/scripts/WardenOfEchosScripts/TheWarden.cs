@@ -17,7 +17,6 @@ public class TheWarden : MonoBehaviour
     {
             spawnlocation = FindObjectOfType<SummonsSpawnLocatiopn>().transform;
             CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
-        
     }
 
     // Update is called once per frame
@@ -51,10 +50,6 @@ public class TheWarden : MonoBehaviour
     public void OnTriggerEnter2D()
     {
         state = true;
-        Obelisk = FindObjectsOfType<WardenObelisks>();
-        foreach (WardenObelisks obelis in Obelisk)
-        {
-            obelis.state = true;
-        }
+        WardenObelisks.state=true;
     }
 }

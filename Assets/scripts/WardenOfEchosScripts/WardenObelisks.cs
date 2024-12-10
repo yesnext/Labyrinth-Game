@@ -5,12 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class WardenObelisks : MonoBehaviour
+public class WardenObelisks : FinalBossController
 {
     public GameObject Projectile;
     public int Damage = 3;
     public int Damageincreaseby = 3;
-    public int Health;
+    public int Health = 100;
     public float distance;
     public PlayerStats player;
     public float AttackCooldown = 1.0f;
@@ -20,12 +20,11 @@ public class WardenObelisks : MonoBehaviour
     public bool isFacingRight;
     public Vector3 scale;
     public int CurrentNumOfObelisks;
-    public bool state;
+    public static bool state;
     void Start()
     {
         CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
         player = FindObjectOfType<PlayerStats>();
-        ProjectilePoint = GameObject.FindObjectOfType<EnemyProjectilePoint>().transform;
     }
 
     // Update is called once per frame
@@ -48,7 +47,7 @@ public class WardenObelisks : MonoBehaviour
     public void Shoot()
     {
         LastAttackCooldown = Time.time;
-        GameObject projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(Damage);
     }

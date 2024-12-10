@@ -21,6 +21,7 @@ TagManager:
   - PlayerCheckPoint
   - PlayerProjectilePoint
   - Obelisk
+  - Without element or Phases
   layers:
   - Default
   - TransparentFX

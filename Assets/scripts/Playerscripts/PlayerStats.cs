@@ -131,7 +131,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health = Health - damage;
-
+        Debug.Log("Health" + Health);
     }
     public void TakeDamagefromigris(int damage)
     {

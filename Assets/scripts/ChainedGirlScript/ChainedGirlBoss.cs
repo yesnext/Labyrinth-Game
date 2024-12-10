@@ -23,7 +23,7 @@ public class ChainedGirlBoss : FinalBossController
         {
             RangeAttack();
         }
-        BegoneThot();
+        Begone();
     }
     public void FixedUpdate()
     {
@@ -31,7 +31,7 @@ public class ChainedGirlBoss : FinalBossController
         distance = Vector2.Distance(transform.position, player.transform.position);
         ready = Time.time - LastRangAttackTime > RangAttackCooldown;
     }
-    public void BegoneThot()
+    public void Begone()
     {
         if (Chain1 == null && Chain2 == null)
         {

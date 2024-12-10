@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
-    public WardenObelisks enemy;
+    public UniversalEnemyNeeds enemy;
     public PlayerStats player;
     private Vector3 playerpos;
     public int Damage;
@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         player = FindObjectOfType<PlayerStats>();
 
-        enemy = FindObjectOfType<WardenObelisks>();
+        enemy = FindObjectOfType<UniversalEnemyNeeds>();
         if (enemy.isFacingRight == false)
         {
             playerpos = (player.transform.position - transform.position).normalized;

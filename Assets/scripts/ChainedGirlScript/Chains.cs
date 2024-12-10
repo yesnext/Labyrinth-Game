@@ -46,7 +46,7 @@ public class Chains : MonoBehaviour
         }
         if (Health <= 0)
         {
-            TheChainedGirl.BegoneThot();
+            TheChainedGirl.Begone();
             Destroy(this.gameObject);
         }
     }

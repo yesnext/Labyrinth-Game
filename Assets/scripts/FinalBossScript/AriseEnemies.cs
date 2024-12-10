@@ -8,7 +8,6 @@ public class AriseEnemies : BasicEnemy
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

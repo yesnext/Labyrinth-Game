@@ -7,60 +7,56 @@ using UnityEngine.UI;
 
 public class FinalBossController : MonoBehaviour
 {
-    public PlayerStats player;
+    protected PlayerStats player;
     public bool isFacingRight = true;
-    public float EnemySpeed = 0.1f;
+    protected float EnemySpeed = 0.1f;
     public int Health = 500;
     private Animator animator;
-    public float distance;
+    protected float distance;
 
-    public float BossDodgeSpeed = 8f;
-    public float dodgeDuration = 0.1f;
-    public float DodgeDurationCounter = 0.0f;
+    protected float BossDodgeSpeed = 8f;
+    protected float dodgeDuration = 0.1f;
+    protected float DodgeDurationCounter = 0.0f;
     public bool dodge;
 
     public bool IsImmune = true;
-    public Vector3 scale;
-    public Vector2 direction;
+    protected Vector3 scale;
+    protected Vector2 direction;
 
 
-    public Transform ProjectilePoint;
+    protected Transform ProjectilePoint;
     public GameObject Projectile;
     public int BossPhase = 1;
 
-    public float RangeAttackDistance = 5.0f;
-    public float RangAttackCooldown = 5f;
+    protected float RangeAttackDistance = 5.0f;
+    protected float RangAttackCooldown = 5f;
     protected float LastRangAttackTime = -5.0f;
-    public bool Rangeanim;
+    protected bool Rangeanim;
 
-    public float LungAttackDistance = 5.0f;
-    public float LungAttackCooldown = 5f; //time in seconds for the cooldown
+    protected float LungAttackDistance = 5.0f;
+    protected float LungAttackCooldown = 5f; //time in seconds for the cooldown
     protected float LastLungAttackTime = -5.0f;
-    public bool IsLunging = false;
-    public bool lunganim;
+    protected bool IsLunging = false;
+    protected bool lunganim;
 
 
-    public float ShadoAttackDistance = 4.0f;
-    public int ShadoAttackDamage = 6;
-    public float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
-    public float lastShadoSwordSlashesTime = -5.0f;
-    public bool shadowslashenabled;
-    public bool shadoslashanim;
-
-    public float AriseCooldown = 45.0f;
-    public float LastArisetime = -45.0f;
-    public float spwanduration = 10f;
-    public float lastspawnduration = 0;
-    public float Timebetweenspawns = 1f;
-    public float LastTimebetweenspawns = 0f;
+    protected float ShadoAttackDistance = 4.0f;
+    protected int ShadoAttackDamage = 6;
+    protected float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
+    protected float lastShadoSwordSlashesTime = -5.0f;
+    protected float AriseCooldown = 45.0f;
+    protected float LastArisetime = -45.0f;
+    protected float spwanduration = 10f;
+    protected float lastspawnduration = 0;
+    protected float Timebetweenspawns = 1f;
+    protected float LastTimebetweenspawns = 0f;
     public AriseEnemies[] ariseEnemies = new AriseEnemies[10];
     public Transform SpawnLocation;
-    public bool disable = false;
     public BoxCollider2D attackbox;
     public BoxCollider2D BodyBox;
-    public bool onetime = true;
-     public bool secondtime = true;
-    public float OriginalSpeed;
+    protected bool onetime = true;
+    protected bool secondtime = true;
+    protected float OriginalSpeed;
 
 
     // Start is called before the first frame update
@@ -68,7 +64,8 @@ public class FinalBossController : MonoBehaviour
     {
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
-
+        ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
+        SpawnLocation =FindObjectOfType<SummonsSpawnLocatiopn>().transform;
     }
 
     // Update is called once per frame
@@ -124,7 +121,7 @@ public class FinalBossController : MonoBehaviour
         {
             LastLungAttackTime = Time.time;
             EnemySpeed *= 1.5f;
-             if (!IsLunging)
+            if (!IsLunging)
             {
                 IsLunging = true;
             }
@@ -281,6 +278,7 @@ public class FinalBossController : MonoBehaviour
     }
     public IEnumerator Arise()
     {
+        LastArisetime = Time.time;
         Rigidbody2D BossRB = GetComponent<Rigidbody2D>();
         RigidbodyConstraints2D originalRB = BossRB.constraints;
         BossRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
