@@ -55,15 +55,24 @@ public class inventory : MonoBehaviour
     
     public void RemoveItem(GameObject item)
 {
+    bool itemFound = false;
     for (int i = 0; i < Inventory.Length; i++)
     {
         if (Inventory[i] == item)
         {
             Inventory[i] = null;
+            itemFound = true;
             Debug.Log(item.name + " removed from inventory");
             break;
         }
     }
+
+    if (!itemFound)
+    {
+        Debug.LogWarning($"{item.name} was not found in the inventory.");
+        return;
+    }
+
     // Refresh the UI
     InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
     if (inventoryUI != null)

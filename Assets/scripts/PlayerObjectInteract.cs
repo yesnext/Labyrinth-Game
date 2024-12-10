@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerObjectInteract : MonoBehaviour
 {
@@ -33,34 +34,37 @@ public class PlayerObjectInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && CurrentInterObject){
-            if(currentInterObjectscript.inventory){
-                i.AddItem(CurrentInterObject);
-            }
-        }
-
-        if (canInteract && Input.GetKeyDown(KeyCode.E))
+        
+        if (Input.GetButtonDown("Interact") && CurrentInterObject)
+    {
+        if (currentInterObjectscript.inventory)
         {
-            if (!isInventoryOpen)
-            {
-                OpenInventoryForWallSlot(currentWallSlot);
-                submitBox.SetActive(true);
-                isInventoryOpen = true;
-            }
-            else
-            {
-                CloseInventory();
-                submitBox.SetActive(false);
-                isInventoryOpen = false;
-            }
+            i.AddItem(CurrentInterObject);
         }
+    }
 
-    if (isInventoryOpen && Input.GetKeyDown(KeyCode.Escape))
+    // Handle wall slot interaction
+    if (canInteract && Input.GetKeyDown(KeyCode.E))
+    {
+        if (!isInventoryOpen)
         {
-            CloseInventory();
-            submitBox.SetActive(false);
-            isInventoryOpen = false;
+            OpenInventoryForWallSlot(currentWallSlot);
+            isInventoryOpen = true;
+            submitBox?.SetActive(true);  // Show the submit box
         }
+    }
+
+    // Ensure submitBox is hidden when inventory is closed
+    if (!isInventoryOpen && submitBox.activeSelf)
+    {
+        submitBox.SetActive(false);
+    }
+
+    // Prevent UI buttons from being ignored
+    if (isInventoryOpen && EventSystem.current.currentSelectedGameObject == null)
+    {
+        EventSystem.current.SetSelectedGameObject(null); // Reset selection to prevent stuck UI
+    }
 
         
     } 
@@ -106,32 +110,31 @@ public class PlayerObjectInteract : MonoBehaviour
     
 
     void OpenInventoryForWallSlot(WallSlot wallSlot)
+{
+    Debug.Log("Trying to open inventory for wall slot...");
+    if (inventoryUI == null || wallSlot == null)
     {
-        Debug.Log("Trying to open inventory for wall slot...");
-        if (inventoryUI != null)
-        {
-            Debug.Log("Opening inventory panel for item selection...");
-            inventoryUI.OpenInventory((selectedItem) =>
-            {
-                if (selectedItem != null && wallSlot != null)
-                {
-                    Debug.Log($"Placing {selectedItem.name} into the wall slot.");
-                    wallSlot.SetItem(selectedItem);  // Assign item to the wall slot
-                    i.RemoveItem(selectedItem);      // Remove the item from the inventory
-                }
-                else
-                {
-                    Debug.LogWarning("Selected item or wall slot is null!");
-                }
+        Debug.LogError("InventoryUI or WallSlot is not assigned!");
+        return;
+    }
 
-                CloseInventory(); // Close the inventory after selection
-            });
+    isInventoryOpen = true; // Mark inventory as open
+    inventoryUI.OpenInventory((selectedItem) =>
+    {
+        if (selectedItem != null)
+        {
+            Debug.Log($"Placing {selectedItem.name} into the wall slot.");
+            wallSlot.SetItem(selectedItem);  // Assign item to the wall slot
+            i.RemoveItem(selectedItem);      // Remove the item from the inventory
         }
         else
         {
-            Debug.LogError("InventoryUI is not assigned.");
+            Debug.LogWarning("Selected item is null or wall slot is null!");
         }
-    }
+
+        CloseInventory(); // Close the inventory after selection
+    });
+}
 
 void CloseInventory()
     {

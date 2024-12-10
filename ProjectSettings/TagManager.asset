@@ -10,6 +10,7 @@ TagManager:
   - interactable object
   - InteractObject
   - WallSlot
+  - knife
   layers:
   - Default
   - TransparentFX

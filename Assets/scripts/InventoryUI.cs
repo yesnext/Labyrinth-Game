@@ -109,13 +109,12 @@ public void OpenInventory(System.Action<GameObject> onItemSelected)
             // If the inventory is already open, close it
             inventoryPanel.SetActive(false);
             Debug.Log("Closing inventory panel...");
+            return; // Exit the function to avoid updating buttons
         }
-        else
-        {
-            // If the inventory is closed, open it
-            inventoryPanel.SetActive(true);
-            Debug.Log("Opening inventory panel...");
-        }
+
+        // If the inventory is closed, open it
+        inventoryPanel.SetActive(true);
+        Debug.Log("Opening inventory panel...");
 
         // Add functionality for selecting an item when the inventory is open
         foreach (GameObject slot in slots)
@@ -130,9 +129,7 @@ public void OpenInventory(System.Action<GameObject> onItemSelected)
                     if (selectedItem != null)
                     {
                         Debug.Log($"Selected item: {selectedItem.name}");
-                        RemoveItem(selectedItem);
-                        inventoryPanel.SetActive(false);  // Close the inventory
-                        onItemSelected?.Invoke(selectedItem);
+                        onItemSelected?.Invoke(selectedItem); // Invoke the callback
                     }
                 });
             }
