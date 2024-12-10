@@ -5,19 +5,23 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
-    public FinalBossController enemy;
+    public WardenObelisks enemy;
     public PlayerStats player;
     private Vector3 playerpos;
     public int Damage;
+    public void Intialize(int damage)
+    {
+        Damage = damage;
+    }
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
 
-        enemy = FindObjectOfType<FinalBossController>();
+        enemy = FindObjectOfType<WardenObelisks>();
         if (enemy.isFacingRight == false)
         {
-            
+            playerpos = (player.transform.position - transform.position).normalized;
             this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         else
@@ -25,7 +29,7 @@ public class EnemyProjectile : MonoBehaviour
             playerpos = (player.transform.position - transform.position).normalized;
             this.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
-        
+
     }
 
     // Update is called once per frame
@@ -35,7 +39,6 @@ public class EnemyProjectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("inside enemy projectile");
         if (other.tag == "Environment")
         {
             Destroy(this.gameObject);

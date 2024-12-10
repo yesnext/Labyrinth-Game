@@ -20,6 +20,7 @@ TagManager:
   - IgrisCheckPoint
   - PlayerCheckPoint
   - PlayerProjectilePoint
+  - Obelisk
   layers:
   - Default
   - TransparentFX

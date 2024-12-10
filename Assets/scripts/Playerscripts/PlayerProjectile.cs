@@ -24,7 +24,6 @@ public class PlayerProjectile : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         direction = (mousePosition - ProjectilePoint.position).normalized;
-
     }
 
     // Update is called once per frame
@@ -67,6 +66,13 @@ public class PlayerProjectile : MonoBehaviour
              other.GetComponent<Chains>().TakeDamage(Damage,element);
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
+        }
+        else if(other.tag == "Obelisk"){
+            if(other.GetComponent<WardenObelisks>().state){
+            other.GetComponent<WardenObelisks>().TakeDamage(Damage);
+            PlayerStats.ProjectileCount--;
+            Destroy(this.gameObject);
+            }
         }
 
 

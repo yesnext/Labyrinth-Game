@@ -35,19 +35,19 @@ public class PlayerStats : MonoBehaviour
     public bool firstencounter = true;
     private static PlayerStats instance;
 
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
+    // void Awake()
+    // {
+    //     // if (instance != null && instance != this)
+    //     // {
+    //     //     Destroy(gameObject);
+    //     // }
+    //     // else
+    //     // {
 
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    //     //     instance = this;
+    //     //     DontDestroyOnLoad(gameObject);
+    //     // }
+    // }
     void Start()
     {
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
