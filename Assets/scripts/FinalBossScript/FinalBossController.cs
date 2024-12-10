@@ -33,10 +33,10 @@ public class FinalBossController : MonoBehaviour
     protected float LastRangAttackTime = -5.0f;
     public bool Rangeanim;
 
-    public float LungAttackDistance = 10.0f;
+    public float LungAttackDistance = 5.0f;
     public float LungAttackCooldown = 5f; //time in seconds for the cooldown
-    private float LastLungAttackTime = -5.0f;
-    private bool IsLunging = false;
+    protected float LastLungAttackTime = -5.0f;
+    public bool IsLunging = false;
     public bool lunganim;
 
 
@@ -59,13 +59,14 @@ public class FinalBossController : MonoBehaviour
     public BoxCollider2D attackbox;
     public BoxCollider2D BodyBox;
     public bool onetime = true;
-    public float originalSpeed;
+     public bool secondtime = true;
+    public float OriginalSpeed;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        originalSpeed = EnemySpeed;
+        OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
 
     }
@@ -123,7 +124,10 @@ public class FinalBossController : MonoBehaviour
         {
             LastLungAttackTime = Time.time;
             EnemySpeed *= 1.5f;
-            IsLunging = true;
+             if (!IsLunging)
+            {
+                IsLunging = true;
+            }
         }
     }
     public void ShadoAttack()
@@ -165,7 +169,7 @@ public class FinalBossController : MonoBehaviour
                 DodgeDurationCounter += Time.deltaTime;
                 yield return null;
             }
-            EnemySpeed = originalSpeed;
+            EnemySpeed = OriginalSpeed;
             transform.position += dodgeDirection * BossDodgeSpeed * Time.deltaTime;
         }
     }
@@ -239,13 +243,13 @@ public class FinalBossController : MonoBehaviour
                 BossPhase++;
                 if (BossPhase == 2 && onetime)
                 {
-                    originalSpeed *= 1.5f;
+                    OriginalSpeed *= 1.5f;
                     onetime = false;
                     IsImmune = false;
                 }
-                if (BossPhase == 3 && onetime)
+                else if (BossPhase == 3 && secondtime)
                 {
-                    originalSpeed /= 1.5f;
+                    OriginalSpeed /= 1.5f;
                     onetime = false;
                 }
             }
@@ -306,7 +310,7 @@ public class FinalBossController : MonoBehaviour
         BodyBox.enabled = true;
         LastArisetime = Time.time;
         IsImmune = false;
-        EnemySpeed = originalSpeed;
+        EnemySpeed = OriginalSpeed;
 
     }
 }

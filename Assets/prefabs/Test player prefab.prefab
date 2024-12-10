@@ -108,8 +108,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1876899275
-  m_SortingLayer: 3
+  m_SortingLayerID: 1172231183
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 891808773, guid: ecb1d784b4cd22e4ba28a9906f1fc761, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,7 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePoint: {fileID: 4947733945876137572}
-  Projectile: {fileID: 1175118396386991621, guid: e77bcac1e30d387429b19b0d7cad3dee, type: 3}
+  Projectile:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   RangeAttackKey: 323
   Health: 100
   HealCooldown: 10

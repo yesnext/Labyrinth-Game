@@ -318,6 +318,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &710592142 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4947733945724240205, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+  m_PrefabInstance: {fileID: 4947733946924983293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &918180978
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +512,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   ProjectilePoint: {fileID: 1708000271}
   Projectile: {fileID: 8833993242792073901, guid: 5885993b426f9b042b65a7e430ff74af, type: 3}
-  BossPhase: 1
+  BossPhase: 2
   RangeAttackDistance: 10
   RangAttackCooldown: 5
   Rangeanim: 0
@@ -542,7 +547,8 @@ MonoBehaviour:
   attackbox: {fileID: 918180981}
   BodyBox: {fileID: 918180979}
   onetime: 1
-  originalSpeed: 0
+  secondtime: 1
+  OriginalSpeed: 0
 --- !u!50 &918180985
 Rigidbody2D:
   serializedVersion: 4
@@ -2953,6 +2959,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1676137155856941729, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: attackbox
+      value: 
+      objectReference: {fileID: 710592142}
+    - target: {fileID: 4947733945724240205, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_RootOrder
       value: 2

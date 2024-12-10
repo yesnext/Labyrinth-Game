@@ -17,6 +17,9 @@ TagManager:
   - Arise Enemy
   - Enemy Projectile
   - Chains
+  - IgrisCheckPoint
+  - PlayerCheckPoint
+  - PlayerProjectilePoint
   layers:
   - Default
   - TransparentFX

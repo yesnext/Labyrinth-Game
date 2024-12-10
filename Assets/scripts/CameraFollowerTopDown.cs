@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CameraFollowerTopDown : MonoBehaviour
@@ -13,7 +14,7 @@ public class CameraFollowerTopDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

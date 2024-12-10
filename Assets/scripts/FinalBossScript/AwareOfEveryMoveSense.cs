@@ -17,9 +17,6 @@ public class AwareOfEveryMoveSense : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-
-        Debug.Log("in trigger dodge every");
-
         if (other.tag == "Projectile")
         {
 

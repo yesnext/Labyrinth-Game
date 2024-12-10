@@ -44,6 +44,9 @@ public class DimentionalSlashProjectile : MonoBehaviour
             player.TakeDamage(Damage);
             if (enemy.BossPhase == 1)
             {
+                
+                Destroy(this.gameObject);
+            }else{
                 enemy.Heal(Damage);
                 Destroy(this.gameObject);
             }

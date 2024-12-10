@@ -26,6 +26,25 @@ public class PlayerStats : MonoBehaviour
     public BasicEnemy enemy;
     public FinalBossController Boss;
     public BoxCollider2D attackbox;
+    public BoxCollider2D fistmode;
+    public KeyCode FightMode;
+    public bool ThrowingHands = false;
+    public bool firstencounter = true;
+    private static PlayerStats instance;
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -35,26 +54,51 @@ public class PlayerStats : MonoBehaviour
     {
         if (Input.GetKeyDown(MeleeAttackkey))
         {
-            // animator.SetBool("iceattack",true);
+            
+            MeleeAnimation();
         }
         if (Input.GetKeyDown(SwitchElement))
         {
-            ChangeElement();
+            if (!ThrowingHands)
+            {
+                ChangeElement();
+            }
         }
         if (Input.GetKeyDown(RangeAttackKey))
         {
-            ProjectileCount++;
-            Shoot();
+            if (!ThrowingHands)
+            {
+                ProjectileCount++;
+                Shoot();
+            }
         }
+        if (Input.GetKeyDown(FightMode))
+        {
+            ChangeFightMode();
+        }
+    }
+
+    private void MeleeAnimation()
+    {
+        //decide which animation to run
+        if (ThrowingHands)
+        {
+            
+        }
+        else
+        {
+
+        }
+    }
+
+    private void ChangeFightMode()
+    {
+        ThrowingHands = !ThrowingHands;
     }
 
     private void ChangeElement()
     {
         element = !element;
-    }
-    public int projectileController()
-    {
-        return ProjectileCount;
     }
 
     public void Shoot()
@@ -75,7 +119,15 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health = Health - damage;
+       
+    }
+    public void TakeDamagefromigris (int damage){
+        Health = Health - damage;
         Debug.Log("Health" + Health);
+        if(Health<=0 && firstencounter){
+            firstencounter = false;
+            Health= 100; ;
+        }
     }
     public void BasicMeleeAttack()
     {
@@ -90,10 +142,18 @@ public class PlayerStats : MonoBehaviour
     {
         if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
-
             lastMeleeAttackTime = Time.time;
+            if(GameObject.FindObjectOfType<IgrisController>() == null){
             Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
             // animator.SetTrigger("Attack");
+            }
+            else{
+                Debug.Log(Boss.GetComponent<FinalBossController>().IsImmune);
+                if(ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune){
+                Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
+                }
+            }
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -107,8 +167,14 @@ public class PlayerStats : MonoBehaviour
         {
             if (attackbox.enabled)
             {
+                if(GameObject.FindObjectOfType<IgrisController>() == null){
                 Boss = other.GetComponent<FinalBossController>();
                 BossMeleeAttack();
+                }
+                else {
+                    Boss = other.GetComponent<IgrisController>();
+                BossMeleeAttack();
+                }
             }
         }
     }

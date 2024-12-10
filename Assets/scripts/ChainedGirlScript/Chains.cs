@@ -16,6 +16,7 @@ public class Chains : MonoBehaviour
     public Vector2 direction;
     public bool isFacingRight;
     public Vector3 scale;
+    public BoxCollider2D attackbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +75,9 @@ public class Chains : MonoBehaviour
         }
     }
     public void OnTriggerEnter2D(){
-        ChainWhipAttack();
+        if (attackbox.enabled)
+                {
+                    ChainWhipAttack();
+                }
     }
 }
