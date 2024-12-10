@@ -46,6 +46,7 @@ public class InventoryUI : MonoBehaviour
                     Button button = slots[i].GetComponent<Button>();
                     if (button != null)
                     {
+                        Debug.Log("found button " + button);
                         button.onClick.RemoveAllListeners(); // Clear previous listeners
                         button.onClick.AddListener(() => TransferItemToWallSlot(slotImage.gameObject));
                     }
@@ -153,6 +154,7 @@ public void SetCurrentWallSlot(WallSlot wallSlot)
 
 public void TransferItemToWallSlot(GameObject buttonSlot)
 {
+    Debug.Log("pressed");
     if (currentWallSlot == null)
         {
             Debug.LogError("No wall slot is currently active!");
