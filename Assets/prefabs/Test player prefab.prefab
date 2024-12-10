@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4947733945724240212}
   - component: {fileID: 4947733945724240210}
   - component: {fileID: 4947733945724240205}
+  - component: {fileID: 1021187486}
   m_Layer: 0
   m_Name: Test player prefab
   m_TagString: Player
@@ -134,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe89f77d1038dca4cb741cd00f05971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingRight: 1
   rb: {fileID: 4947733945724240212}
   groundCheck: {fileID: 4947733944881826326}
   groundLayer:
@@ -151,12 +153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a625fe9f382b6d34fa23f8f718b26a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePoint: {fileID: 4947733945876137572}
+  controls: {fileID: 0}
+  ProjectilePoint: {fileID: 0}
   Projectile:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1175118396386991621, guid: e77bcac1e30d387429b19b0d7cad3dee, type: 3}
+  - {fileID: 1175118396386991621, guid: eb46761bd8c0442429fe2147c8d64308, type: 3}
   RangeAttackKey: 323
+  direction: {x: 0, y: 0, z: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
   Health: 100
   HealCooldown: 10
   LastHealCooldown: 10
@@ -169,7 +173,11 @@ MonoBehaviour:
   SwitchElement: 324
   enemy: {fileID: 0}
   Boss: {fileID: 0}
-  attackbox: {fileID: 0}
+  attackbox: {fileID: 4947733945724240205}
+  fistmode: {fileID: 1021187486}
+  FightMode: 116
+  ThrowingHands: 0
+  firstencounter: 1
 --- !u!50 &4947733945724240212
 Rigidbody2D:
   serializedVersion: 4
@@ -243,6 +251,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57109565, y: 0.52606994}
   m_EdgeRadius: 0
+--- !u!61 &1021187486
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947733945724240218}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4109953, y: 0.16426805}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.28, y: 0.71}
+    newSize: {x: 0.5, y: 1.03}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4679393, y: 0.38146394}
+  m_EdgeRadius: 0
 --- !u!1 &4947733945876137573
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4947733945876137572}
+  - component: {fileID: 1455237208}
   m_Layer: 0
   m_Name: ProjectileFirePoint
   m_TagString: Untagged
@@ -274,3 +309,15 @@ Transform:
   m_Father: {fileID: 4947733945724240209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1455237208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947733945876137573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1bcb4d389e88e4a9f89c882d3d1827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
