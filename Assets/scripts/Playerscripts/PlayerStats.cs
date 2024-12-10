@@ -7,10 +7,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public controls controls;
     public Transform ProjectilePoint;
     public GameObject[] Projectile = new GameObject[2];
     public static int ProjectileCount = 0;
     public KeyCode RangeAttackKey;
+    public Vector3 direction;
+    public Vector3 mousePosition;
     public int Health = 100;
     public float HealCooldown = 10.0f;
     public float LastHealCooldown = 10.0f;
@@ -40,13 +43,15 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            
+
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
     void Start()
     {
+        ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
+        controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
     }
 
@@ -54,7 +59,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (Input.GetKeyDown(MeleeAttackkey))
         {
-            
+
             MeleeAnimation();
         }
         if (Input.GetKeyDown(SwitchElement))
@@ -68,8 +73,15 @@ public class PlayerStats : MonoBehaviour
         {
             if (!ThrowingHands)
             {
-                ProjectileCount++;
-                Shoot();
+                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0;
+                direction = (mousePosition - ProjectilePoint.position).normalized;
+                bool IsMouseOnRight = mousePosition.x > transform.position.x;
+                if (controls.isFacingRight == IsMouseOnRight)
+                {
+                    ProjectileCount++;
+                    Shoot();
+                }
             }
         }
         if (Input.GetKeyDown(FightMode))
@@ -83,7 +95,7 @@ public class PlayerStats : MonoBehaviour
         //decide which animation to run
         if (ThrowingHands)
         {
-            
+
         }
         else
         {
@@ -119,14 +131,16 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health = Health - damage;
-       
+
     }
-    public void TakeDamagefromigris (int damage){
+    public void TakeDamagefromigris(int damage)
+    {
         Health = Health - damage;
         Debug.Log("Health" + Health);
-        if(Health<=0 && firstencounter){
+        if (Health <= 0 && firstencounter)
+        {
             firstencounter = false;
-            Health= 100; ;
+            Health = 100; ;
         }
     }
     public void BasicMeleeAttack()
@@ -143,17 +157,20 @@ public class PlayerStats : MonoBehaviour
         if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             lastMeleeAttackTime = Time.time;
-            if(GameObject.FindObjectOfType<IgrisController>() == null){
-            Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
-            // animator.SetTrigger("Attack");
-            }
-            else{
-                Debug.Log(Boss.GetComponent<FinalBossController>().IsImmune);
-                if(ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune){
+            if (GameObject.FindObjectOfType<IgrisController>() == null)
+            {
                 Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
+                // animator.SetTrigger("Attack");
+            }
+            else
+            {
+                Debug.Log(Boss.GetComponent<FinalBossController>().IsImmune);
+                if (ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune)
+                {
+                    Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
                 }
             }
-            
+
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -167,13 +184,15 @@ public class PlayerStats : MonoBehaviour
         {
             if (attackbox.enabled)
             {
-                if(GameObject.FindObjectOfType<IgrisController>() == null){
-                Boss = other.GetComponent<FinalBossController>();
-                BossMeleeAttack();
+                if (GameObject.FindObjectOfType<IgrisController>() == null)
+                {
+                    Boss = other.GetComponent<FinalBossController>();
+                    BossMeleeAttack();
                 }
-                else {
+                else
+                {
                     Boss = other.GetComponent<IgrisController>();
-                BossMeleeAttack();
+                    BossMeleeAttack();
                 }
             }
         }

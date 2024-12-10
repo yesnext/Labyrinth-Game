@@ -19,7 +19,7 @@ public class PlayerProjectile : MonoBehaviour
     }
     void Start()
     {
-        ProjectilePoint = GameObject.FindGameObjectWithTag("PlayerProjectilePoint").transform;
+        ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
         Player = FindObjectOfType<PlayerStats>();
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
