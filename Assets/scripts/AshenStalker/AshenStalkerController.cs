@@ -22,7 +22,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     public float appeardistance = 1;
     public GameObject minions;
     public GameObject Projectile;
-    private SummonsSpawnLocatiopn[] SpawnLocation;
+    private SummonsSpawnLocation[] SpawnLocation;
     private Transform ProjectilePoint;
     private Rigidbody2D ShadoStep;
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
         Disappear = GetComponent<SpriteRenderer>();
         ShadoStep = GetComponent<Rigidbody2D>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
-        SpawnLocation = FindObjectsOfType<SummonsSpawnLocatiopn>();
+        SpawnLocation = FindObjectsOfType<SummonsSpawnLocation>();
     }
 
     // Update is called once per frame
@@ -82,9 +82,13 @@ public class AshenStalkerController : UniversalEnemyNeeds
     public void Summon()
     {
         lastSummonscooldown = Time.time;
-        foreach (SummonsSpawnLocatiopn spawnloc in SpawnLocation)
+        foreach (SummonsSpawnLocation spawnloc in SpawnLocation)
         {
-            Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
+            if(!spawnloc.ocupied){
+            GameObject minion = Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
+            RangedAttackEnemies minioncontroller = minion.GetComponent<RangedAttackEnemies>();
+            minioncontroller.Intialize(spawnloc);
+            }
         }
     }
 

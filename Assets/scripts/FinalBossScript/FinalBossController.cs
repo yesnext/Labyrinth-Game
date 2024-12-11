@@ -47,7 +47,7 @@ public class FinalBossController : UniversalEnemyNeeds
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
-        SpawnLocation =FindObjectOfType<SummonsSpawnLocatiopn>().transform;
+        SpawnLocation =FindObjectOfType<SummonsSpawnLocation>().transform;
     }
 
     // Update is called once per frame

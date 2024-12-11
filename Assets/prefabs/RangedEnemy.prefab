@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6063d8a2b656a4e8d71dcff28ba8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFacingRight: 0
+  isFacingRight: 1
   EnemySpeed: 0
   OriginalSpeed: 0
   Health: 0
