@@ -82,7 +82,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     public IEnumerator ReversingTime()
     {
         Timerevered = true;
-        TimeStopHourGlass.Health = 100; //resetting hour glass health to 100;
+        ReversingTimeHourGlass.Health = 100; //resetting hour glass health to 100;
         yield return new WaitForSeconds(ReversingTimeinturuptionDuration);
         Timerevered = false;
         if (ReversingTimeHourGlass.Health > 0)
