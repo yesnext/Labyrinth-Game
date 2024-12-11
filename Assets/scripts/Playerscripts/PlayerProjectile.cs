@@ -57,13 +57,26 @@ public class PlayerProjectile : MonoBehaviour
             other.GetComponent<AshenStalkerController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
-
-
         else if (GameObject.FindObjectOfType<CalistaController>() != null && other.tag == "Boss")
         {
             FindObjectOfType<CalistaController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
+        else if (GameObject.FindObjectOfType<HealingOrion>() != null && other.tag == "Boss")
+        {
+            if (other.GetComponent<HealingOrion>().agrue)
+            {
+                other.GetComponent<HealingOrion>().TakeDamage(Damage);
+            }
+            Destroy(this.gameObject);
+
+        }
+        else if (GameObject.FindObjectOfType<AttackingOrion>() != null && other.tag == "AttackOrion")
+        {
+            other.GetComponent<AttackingOrion>().TakeDamage(Damage);
+            Destroy(this.gameObject);
+        }
+
         else if (other.tag == "Environment")
         {
             PlayerStats.ProjectileCount--;
@@ -90,9 +103,9 @@ public class PlayerProjectile : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        else if (other.tag == "Without element or Phases")
+        else if (other.tag == "Without element or Phases" && other.GetComponent<FakeOrionImage>() != null)
         {
-            other.GetComponent<UniversalEnemyNeeds>().TakeDamage(Damage);
+            other.GetComponent<FakeOrionImage>().TakeDamage(Damage);
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }

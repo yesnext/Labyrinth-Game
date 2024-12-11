@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1599502769006058505}
   m_Layer: 0
   m_Name: EnemySpawnPoints
-  m_TagString: Untagged
+  m_TagString: TeleportLocations
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b754026eb71ca504cb71912be2577ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ocupied: 0

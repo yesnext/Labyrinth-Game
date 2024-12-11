@@ -22,6 +22,8 @@ TagManager:
   - PlayerProjectilePoint
   - Obelisk
   - Without element or Phases
+  - TeleportLocations
+  - SpawnLocation
   layers:
   - Default
   - TransparentFX

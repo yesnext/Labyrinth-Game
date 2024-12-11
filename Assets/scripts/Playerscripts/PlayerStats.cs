@@ -182,6 +182,13 @@ public class PlayerStats : MonoBehaviour
                     {
                         other.GetComponent<CalistaController>().TakeDamage(MeleeAttackDamage);
                     }
+                    else if (GameObject.FindObjectOfType<HealingOrion>() != null)
+                    {
+                        if (other.GetComponent<HealingOrion>().agrue)
+                        {
+                            other.GetComponent<HealingOrion>().TakeDamage(MeleeAttackDamage);
+                        }
+                    }
 
                 }
                 else if (other.tag == "Chains")
@@ -194,9 +201,16 @@ public class PlayerStats : MonoBehaviour
                     if (WardenObelisks.state)
                     {
                         other.GetComponent<WardenObelisks>().TakeDamage(MeleeAttackDamage);
-                        PlayerStats.ProjectileCount--;
-                        Destroy(this.gameObject);
                     }
+                }
+                else if (GameObject.FindObjectOfType<AttackingOrion>() != null && other.tag == "AttackOrion")
+                {
+                    other.GetComponent<AttackingOrion>().TakeDamage(MeleeAttackDamage);
+                }
+                else if (other.tag == "Without element or Phases")
+                {
+                    other.GetComponent<UniversalEnemyNeeds>().TakeDamage(MeleeAttackDamage);
+                    PlayerStats.ProjectileCount--;
                 }
 
             }

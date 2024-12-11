@@ -46,6 +46,5 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
             spawnlocation.ocupied = false;
             Destroy(this.gameObject);
         }
-
     }
 }

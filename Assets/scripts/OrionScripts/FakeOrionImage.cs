@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class FakeOrionImage : UniversalEnemyNeeds
 {
-    
-    // Start is called before the first frame update
+    public SummonsSpawnLocation spawnlocation;
+    public void Intialize(SummonsSpawnLocation spawnloc)
+    {
+        spawnloc.ocupied = true;
+        spawnlocation = spawnloc;
+    }
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GhangedirectionFollow();
+    }
+    public void TakeDamage(int damage)
+    {
+        Health = Health - damage;
+        if (Health <= 0)
+        {
+            spawnlocation.ocupied = false;
+            Destroy(this.gameObject);
+        }
     }
 }
