@@ -4,27 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BasicEnemy : MonoBehaviour
+public class BasicEnemy : UniversalEnemyNeeds
 {
-    protected PlayerStats player;
-    public bool isFacingRight = true;
-    public float EnemySpeed = 0.1f;
-    public int Health = 20;
     protected Animator animator;
     public float MeleeAttackDistance = 5.0f;
-    public int MeleeAttackDamage = 6;
-    public float MeleeAttackCooldown = 5.0f; //time in seconds for the cooldown
-    public float lastMeleeAttackTime = -5.0f;
-    public float distance;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
     public short enemystate;
-    public Vector3 scale;
-    public Vector2 direction;
     public int decision;
     public float decisioncooldown = 3f;
     public float lastdecisioncooldown = 0;
-    public BoxCollider2D attackbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,20 +74,7 @@ public class BasicEnemy : MonoBehaviour
         
     }
    
-    public void Followplayer()
-    {
-        // animator.SetBool("Walking", true);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
-        enemystate = 1;
-        GhangedirectionFollow();
-        if (distance < 4.0f){
-            // animator.SetBool("Walking", false);
-            // animator.SetBool("attack",true);
-        }
-        else{
-            // animator.SetBool("attack",false);
-        }
-    }
+    
     public void TakeDamage(int damage,bool element)
     {
         if (element!=Element){
@@ -127,23 +103,6 @@ public class BasicEnemy : MonoBehaviour
             isFacingRight = !isFacingRight;
             this.transform.localScale=scale;
        
-    }
-    public void GhangedirectionFollow(){
-        if (direction.x > 0 && !isFacingRight)
-        {
-            scale =transform.localScale;
-            scale.x *= -1;
-            isFacingRight = true;
-            transform.localScale=scale;
-            
-        }
-        else if (direction.x < 0 && isFacingRight)
-        {
-            scale =transform.localScale;
-            scale.x *= -1;
-            isFacingRight = false;
-            transform.localScale=scale;
-        }
     }
     public void RandomChangeInDirectionOrIdle(){
         decision =Random.Range(1,3);

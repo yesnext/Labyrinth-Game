@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class IgrisController : FinalBossController
+public class IgrisController : UniversalEnemyNeeds
 {
     public BoxCollider2D FistAttackBox;
     public float AgrueDistance = 10.0f;
     public bool state;
+    public int BossPhase = 1;
+    public bool dodge;
+    protected float DodgeDurationCounter = 0.0f;
+    protected float dodgeDuration = 0.1f;
+    protected float BossDodgeSpeed = 8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,16 +33,16 @@ public class IgrisController : FinalBossController
             {
                 StartCoroutine(Awareofeverymovedodge());
             }
-            if (distance >= LungAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && Time.time - LastLungAttackTime > LungAttackCooldown)
+            if (distance >= LungAttackDistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && Time.time - LastLungAttackTime > LungAttackCooldown)
             {
                 LungAttack();
 
             }
-            else if (BossPhase == 1 && distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && player.firstencounter)
+            else if (BossPhase == 1 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && player.firstencounter)
             {
                 SwordSlash();
             }
-            else if (BossPhase == 2 && distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && !player.firstencounter)
+            else if (BossPhase == 2 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && !player.firstencounter)
             {
                 Debug.Log("inside fist");
                 FistSwing();
@@ -57,7 +62,23 @@ public class IgrisController : FinalBossController
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
     }
-
+    public IEnumerator Awareofeverymovedodge()
+    {
+        dodge = false;
+        if (IsImmune)
+        {
+            Vector3 dodgeDirection = (transform.position - player.transform.position).normalized;
+            DodgeDurationCounter = 0f;
+            EnemySpeed *= 4f;
+            while (DodgeDurationCounter < dodgeDuration)
+            {
+                DodgeDurationCounter += Time.deltaTime;
+                yield return null;
+            }
+            EnemySpeed = OriginalSpeed;
+            transform.position += dodgeDirection * BossDodgeSpeed * Time.deltaTime;
+        }
+    }
     public void LungAttack()
     {
         if (Time.time - LastLungAttackTime > LungAttackCooldown)
@@ -73,24 +94,24 @@ public class IgrisController : FinalBossController
     public void SwordSlash()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             EnemySpeed = OriginalSpeed;
             IsLunging = false;
-            player.TakeDamage(ShadoAttackDamage);
+            player.TakeDamage(MeleeAttackDamage);
         }
-        lastShadoSwordSlashesTime = Time.time;
+        lastMeleeAttackTime = Time.time;
     }
     public void FistSwing()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             EnemySpeed = OriginalSpeed;
             IsLunging = false;
-            player.TakeDamage(ShadoAttackDamage);
+            player.TakeDamage(MeleeAttackDamage);
         }
-        lastShadoSwordSlashesTime = Time.time;
+        lastMeleeAttackTime = Time.time;
     }
     public new void TakeDamage(int damage)
     {
@@ -112,7 +133,7 @@ public class IgrisController : FinalBossController
             if (other.tag == "Player")
 
                 player = other.GetComponent<PlayerStats>();
-            if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+            if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
             {
                 SwordSlash();
             }
@@ -122,7 +143,7 @@ public class IgrisController : FinalBossController
         {
             if (other.tag == "Player")
                 player = other.GetComponent<PlayerStats>();
-            if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+            if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
             {
                 FistSwing();
             }

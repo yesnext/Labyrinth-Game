@@ -3,20 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chains : MonoBehaviour
+public class Chains : UniversalEnemyNeeds
 {
     public ChainedGirlBoss TheChainedGirl;
-    public int Health;
-    public float distance;
-    public PlayerStats player;
     public float ChainWhipDistance = 1.0f;
     public int ChainWhipDamage = 0;
     public float ChainWhipCooldown = 2.0f;
     public float LastChainWhipCooldown = 0.0f;
-    public Vector2 direction;
-    public bool isFacingRight;
-    public Vector3 scale;
-    public BoxCollider2D attackbox;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -26,8 +27,7 @@ public class PlayerStats : MonoBehaviour
     public bool attackanim = false;
     public bool element = false; // if false it will be fire if tru will be ice
     public KeyCode SwitchElement;
-    public BasicEnemy enemy;
-    public FinalBossController Boss;
+    public UniversalEnemyNeeds Boss;
     public BoxCollider2D attackbox;
     public BoxCollider2D fistmode;
     public KeyCode FightMode;
@@ -143,58 +143,47 @@ public class PlayerStats : MonoBehaviour
             Health = 100; ;
         }
     }
-    public void BasicMeleeAttack()
-    {
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            lastMeleeAttackTime = Time.time;
-            enemy.TakeDamage(MeleeAttackDamage, element);
-            // animator.SetTrigger("Attack");
-        }
-    }
-    public void BossMeleeAttack()
-    {
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            lastMeleeAttackTime = Time.time;
-            if (GameObject.FindObjectOfType<IgrisController>() == null)
-            {
-                Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
-                // animator.SetTrigger("Attack");
-            }
-            else
-            {
-                Debug.Log(Boss.GetComponent<FinalBossController>().IsImmune);
-                if (ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune)
-                {
-                    Boss.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
-                }
-            }
 
-        }
+    public void MeleeAttack()
+    {
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
-            enemy = other.GetComponent<BasicEnemy>();
-            BasicMeleeAttack();
-        }
-        else if (other.tag == "Boss")
-        {
-            if (attackbox.enabled)
+            if (other.tag == "Enemy")
             {
-                if (GameObject.FindObjectOfType<IgrisController>() == null)
+                other.GetComponent<BasicEnemy>().TakeDamage(MeleeAttackDamage, element);
+
+            }
+            else if (other.tag == "Boss")
+            {
+                if (attackbox.enabled)
                 {
-                    Boss = other.GetComponent<FinalBossController>();
-                    BossMeleeAttack();
-                }
-                else
-                {
-                    Boss = other.GetComponent<IgrisController>();
-                    BossMeleeAttack();
+                    if (GameObject.FindObjectOfType<FinalBossController>() != null)
+                    {
+                        other.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
+
+                    }
+                    else if (GameObject.FindObjectOfType<IgrisController>() != null)
+                    {
+                        if (ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune)
+                        {
+                            other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
+                        }
+                    }
+                    else if(GameObject.FindObjectOfType<AshenStalkerController>() != null){
+                        other.GetComponent<AshenStalkerController>().TakeDamage(MeleeAttackDamage);
+                    }
                 }
             }
+            else if (other.tag == "Chains")
+            {
+                other.GetComponent<Chains>().TakeDamage(MeleeAttackDamage, element);
+
+            }
+
         }
     }
     public void Heal()

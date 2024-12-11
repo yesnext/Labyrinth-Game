@@ -11,8 +11,17 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected Vector3 scale;
     public float EnemySpeed;
     public float OriginalSpeed;
-    protected int Health;
-    protected bool IsImmune;
+    public int Health;
+    public bool IsImmune;
+    public int MeleeAttackDamage;
+    protected float meleeattackdistance;
+    protected float lastMeleeAttackTime;
+    protected float MeleeAttackCooldown = 3.0f;
+    protected float LungAttackDistance = 5.0f;
+    protected float LungAttackCooldown = 5f; //time in seconds for the cooldown
+    protected float LastLungAttackTime = -5.0f;
+    protected bool IsLunging = false;
+    public BoxCollider2D attackbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +32,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     {
 
     }
-    
+
     public new void Followplayer()
     {
         // animator.SetBool("Walking", true);
@@ -43,7 +52,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health = Health - damage;
-        if (Health <= 0 )
+        if (Health <= 0)
         {
             Destroy(this.gameObject);
         }

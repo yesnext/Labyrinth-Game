@@ -6329,6 +6329,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle 1_0
       objectReference: {fileID: 0}
+    - target: {fileID: 4307296316687342590, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380447084604301156, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: Health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5380447084604301156, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
       propertyPath: minions
       value: 

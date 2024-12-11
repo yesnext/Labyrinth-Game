@@ -62,17 +62,26 @@ public class PlayerProjectile : MonoBehaviour
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
-        else if(other.tag == "Chains"){
-             other.GetComponent<Chains>().TakeDamage(Damage,element);
+        else if (other.tag == "Chains")
+        {
+            other.GetComponent<Chains>().TakeDamage(Damage, element);
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
-        else if(other.tag == "Obelisk"){
-            if(WardenObelisks.state){
-            other.GetComponent<WardenObelisks>().TakeDamage(Damage);
+        else if (other.tag == "Obelisk")
+        {
+            if (WardenObelisks.state)
+            {
+                other.GetComponent<WardenObelisks>().TakeDamage(Damage);
+                PlayerStats.ProjectileCount--;
+                Destroy(this.gameObject);
+            }
+        }
+        else if (other.tag == "Without element or Phases")
+        {
+            other.GetComponent<UniversalEnemyNeeds>().TakeDamage(Damage);
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
-            }
         }
 
 

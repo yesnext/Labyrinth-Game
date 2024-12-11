@@ -5,25 +5,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class FinalBossController : MonoBehaviour
+public class FinalBossController : UniversalEnemyNeeds
 {
-    protected PlayerStats player;
-    public bool isFacingRight = true;
-    protected float EnemySpeed = 0.1f;
-    public int Health = 500;
     private Animator animator;
-    protected float distance;
 
     protected float BossDodgeSpeed = 8f;
     protected float dodgeDuration = 0.1f;
     protected float DodgeDurationCounter = 0.0f;
     public bool dodge;
-
-    public bool IsImmune = true;
-    protected Vector3 scale;
-    protected Vector2 direction;
-
-
     protected Transform ProjectilePoint;
     public GameObject Projectile;
     public int BossPhase = 1;
@@ -32,11 +21,6 @@ public class FinalBossController : MonoBehaviour
     protected float RangAttackCooldown = 5f;
     protected float LastRangAttackTime = -5.0f;
     protected bool Rangeanim;
-
-    protected float LungAttackDistance = 5.0f;
-    protected float LungAttackCooldown = 5f; //time in seconds for the cooldown
-    protected float LastLungAttackTime = -5.0f;
-    protected bool IsLunging = false;
     protected bool lunganim;
 
 
@@ -52,11 +36,9 @@ public class FinalBossController : MonoBehaviour
     protected float LastTimebetweenspawns = 0f;
     public AriseEnemies[] ariseEnemies = new AriseEnemies[10];
     public Transform SpawnLocation;
-    public BoxCollider2D attackbox;
     public BoxCollider2D BodyBox;
     protected bool onetime = true;
     protected bool secondtime = true;
-    protected float OriginalSpeed;
 
 
     // Start is called before the first frame update
@@ -203,25 +185,6 @@ public class FinalBossController : MonoBehaviour
         else
         {
             // animator.SetBool("attack",false);
-        }
-    }
-    public void GhangedirectionFollow()
-    {
-        if (direction.x > 0 && !isFacingRight)
-        {
-
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = true;
-            transform.localScale = scale;
-
-        }
-        else if (direction.x < 0 && isFacingRight)
-        {
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = false;
-            transform.localScale = scale;
         }
     }
     public void TakeDamage(int damage)

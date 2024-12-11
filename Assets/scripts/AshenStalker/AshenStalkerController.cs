@@ -9,11 +9,6 @@ public class AshenStalkerController : UniversalEnemyNeeds
     protected float summondistance = 15;
     protected float lastSummonscooldown = -100;
 
-    protected float meleeattackdistance;
-    protected float lastMeleeAttackTime;
-    protected float MeleeAttackCooldown = 3.0f;
-    public int MeleeAttackDamage;
-
     protected float SurpriseMeleeAttackCooldown = 3.0f;
     protected float LastSurpriseMeleeAttackTime;
     protected float SurpriseAttackDistance = 7.0f;
@@ -22,13 +17,11 @@ public class AshenStalkerController : UniversalEnemyNeeds
     protected float RangAttackCooldown = 2.0f;
     public int RangeAttackDamage = 3;
     public float RangeAttackDistance = 5;
-    protected bool IsLunging;
 
     public SpriteRenderer Disappear;
     public float appeardistance = 1;
     public GameObject minions;
     public GameObject Projectile;
-    public BoxCollider2D attackbox;
     private SummonsSpawnLocatiopn[] SpawnLocation;
     private Transform ProjectilePoint;
     private Rigidbody2D ShadoStep;
@@ -49,16 +42,16 @@ public class AshenStalkerController : UniversalEnemyNeeds
 
         GhangedirectionFollow();
         Followplayer();
-        if (distance > SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown && 
+        if (distance > SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
         Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             SurpriseAttack();
         }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && player.firstencounter)
+        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             MeleeAttack();
         }
-        else if (Time.time - LastRangAttackTime > RangAttackCooldown&& distance>SurpriseAttackDistance)
+        else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance)
         {
             Shoot();
         }
@@ -67,30 +60,34 @@ public class AshenStalkerController : UniversalEnemyNeeds
             Disappear.enabled = true;
             ShadoStep.gravityScale = 1;
         }
-        if(Time.time - lastSummonscooldown>Summonscooldown){
+        if (Time.time - lastSummonscooldown > Summonscooldown)
+        {
             lastSummonscooldown = Time.time;
             Summon();
         }
     }
-public void FixedUpdate()
+    public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
-        if(EnemySpeed > OriginalSpeed){
+        if (EnemySpeed > OriginalSpeed)
+        {
             IsImmune = true;
         }
-        else{
+        else
+        {
             IsImmune = false;
         }
     }
     public void Summon()
     {
         lastSummonscooldown = Time.time;
-        foreach (SummonsSpawnLocatiopn spawnloc in SpawnLocation){
-        Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
+        foreach (SummonsSpawnLocatiopn spawnloc in SpawnLocation)
+        {
+            Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
         }
     }
-    
+
     public void SurpriseAttack()
     {
         Disappear.enabled = false;
@@ -127,16 +124,16 @@ public void FixedUpdate()
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-            if (other.tag == "Player")
-                if (attackbox.enabled)
+        if (other.tag == "Player")
+        {
+            if (attackbox.enabled)
+            {
+                player = other.GetComponent<PlayerStats>();
+                if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
                 {
-                    player = other.GetComponent<PlayerStats>();
-                    if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-                    {
-                        MeleeAttack();
-                    }
+                    MeleeAttack();
                 }
-        
-
+            }
+        }
     }
 }
