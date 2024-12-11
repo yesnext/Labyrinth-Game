@@ -24,6 +24,7 @@ TagManager:
   - Without element or Phases
   - TeleportLocations
   - SpawnLocation
+  - AttackOrion
   layers:
   - Default
   - TransparentFX
