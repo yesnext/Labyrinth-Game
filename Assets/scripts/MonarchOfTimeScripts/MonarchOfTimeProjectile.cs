@@ -22,12 +22,10 @@ public class MonarchOfTimeProjectile : MonoBehaviour
         enemy = FindObjectOfType<UniversalEnemyNeeds>();
         if (enemy.isFacingRight == false)
         {
-             
             this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         else
-        {
-            
+        {   
             this.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }

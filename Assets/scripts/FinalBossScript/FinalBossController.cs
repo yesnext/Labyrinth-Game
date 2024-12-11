@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class FinalBossController : UniversalEnemyNeeds
 {
+    
     private Animator animator;
 
     protected float BossDodgeSpeed = 8f;
@@ -82,7 +83,7 @@ public class FinalBossController : UniversalEnemyNeeds
         }
 
     }
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -92,7 +93,7 @@ public class FinalBossController : UniversalEnemyNeeds
         }
     }
 
-    public void RangeAttack()
+    public virtual void RangeAttack()
     {
         Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         LastRangAttackTime = Time.time;
@@ -171,23 +172,7 @@ public class FinalBossController : UniversalEnemyNeeds
 
     }
 
-    public new void Followplayer()
-    {
-        // animator.SetBool("Walking", true);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
-
-        GhangedirectionFollow();
-        if (distance < 4.0f)
-        {
-            // animator.SetBool("Walking", false);
-            // animator.SetBool("attack",true);
-        }
-        else
-        {
-            // animator.SetBool("attack",false);
-        }
-    }
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         Health = Health - damage;
 

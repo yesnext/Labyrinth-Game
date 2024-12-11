@@ -49,7 +49,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
             // animator.SetBool("attack",false);
         }
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Health = Health - damage;
         if (Health <= 0)
@@ -57,7 +57,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -82,4 +82,5 @@ public class UniversalEnemyNeeds : MonoBehaviour
             transform.localScale = scale;
         }
     }
+    
 }

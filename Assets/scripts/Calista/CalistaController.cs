@@ -33,7 +33,7 @@ public class CalistaController : UniversalEnemyNeeds
         }
 
     }
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -52,7 +52,7 @@ public class CalistaController : UniversalEnemyNeeds
         }
         lastMeleeAttackTime = Time.time;
     }
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (Random.Range(1, 101) > 29)
         {

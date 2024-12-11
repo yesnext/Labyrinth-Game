@@ -25,7 +25,7 @@ public class ChainedGirlBoss : FinalBossController
         }
         Begone();
     }
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -38,7 +38,7 @@ public class ChainedGirlBoss : FinalBossController
             Destroy(this.gameObject);
         }
     }
-    public void RangeAttack()
+    public override void RangeAttack()
     {
         Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         LastRangAttackTime = Time.time;

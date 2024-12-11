@@ -57,7 +57,7 @@ public class IgrisController : UniversalEnemyNeeds
         }
 
     }
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -113,7 +113,7 @@ public class IgrisController : UniversalEnemyNeeds
         }
         lastMeleeAttackTime = Time.time;
     }
-    public new void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (!IsImmune)
         {

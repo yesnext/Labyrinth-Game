@@ -20,7 +20,7 @@ public class FakeOrionImage : UniversalEnemyNeeds
     {
         GhangedirectionFollow();
     }
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         Health = Health - damage;
         if (Health <= 0)

@@ -33,7 +33,6 @@ public class PlayerStats : MonoBehaviour
     public KeyCode FightMode;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
-    private float freezintimeduration = 5f;
 
     // void Awake()
     // {
