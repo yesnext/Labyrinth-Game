@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonarchOfTimeProjectile : EnemyProjectile
+public class MonarchOfTimeProjectile : MonoBehaviour
 {
+    public float speed;
+    public UniversalEnemyNeeds enemy;
+    public PlayerStats player;
     private Vector3 playerpos;
+    public int Damage;
     public float SlowRate;
+    public void Intialize(int damage)
+    {
+        Damage = damage;
+    }
+
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
@@ -13,12 +22,12 @@ public class MonarchOfTimeProjectile : EnemyProjectile
         enemy = FindObjectOfType<UniversalEnemyNeeds>();
         if (enemy.isFacingRight == false)
         {
-            playerpos = (player.transform.position - transform.position).normalized;
+             
             this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         else
         {
-            playerpos = (player.transform.position - transform.position).normalized;
+            
             this.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }
@@ -26,7 +35,7 @@ public class MonarchOfTimeProjectile : EnemyProjectile
     // Update is called once per frame
     void Update()
     {
-        transform.position += playerpos * speed * Time.deltaTime;
+        transform.position += (player.transform.position - transform.position).normalized * speed * Time.deltaTime;
     }
     void OnTriggerEnter2D(Collider2D other)
     {

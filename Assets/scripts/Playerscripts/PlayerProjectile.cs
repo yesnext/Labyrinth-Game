@@ -105,7 +105,7 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null && other.tag == "Boss")
         {
-            FindObjectOfType<CalistaController>().TakeDamage(Damage);
+            FindObjectOfType<MonarchOfTimeController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
         else if(other.tag == "HourGlass"){

@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -502,18 +502,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 1
   EnemySpeed: 0
-  OriginalSpeed: 0
   Health: 0
   IsImmune: 0
   MeleeAttackDamage: 0
   attackbox: {fileID: 0}
   rangeAttackCooldown: 2
   RangeAttackDamage: 0
-  Projectile: {fileID: 7488248292638114177, guid: a351859c1602d1b43adf76b8bee55d90, type: 3}
-  Timestopduration: 0
+  Projectile: {fileID: 2064610299192653703, guid: a351859c1602d1b43adf76b8bee55d90, type: 3}
+  TimestopInturuptionDuration: 5
+  ReversingTimeinturuptionDuration: 5
   TimestopChooldown: 0
   TimeStopHourGlass: {fileID: 18949880}
-  ReversingTimeHourGlass: {fileID: 0}
+  ReversingTimeHourGlass: {fileID: 835202347}
 --- !u!212 &329713000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -666,6 +666,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835202347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4790619019701794584, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+  m_PrefabInstance: {fileID: 1945118187}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2fb0cc31d5e534992332ad17dcda3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &917946403
 GameObject:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ public class PlayerStats : MonoBehaviour
                     }
                     else if (GameObject.FindObjectOfType<IgrisController>() != null)
                     {
-                        if (ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune)
+                        if (ThrowingHands && !Boss.GetComponent<IgrisController>().IsImmune)
                         {
                             other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
                         }
@@ -191,6 +191,11 @@ public class PlayerStats : MonoBehaviour
                         {
                             other.GetComponent<HealingOrion>().TakeDamage(MeleeAttackDamage);
                         }
+                    }
+                    else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null)
+                    {
+                        FindObjectOfType<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
+                        Destroy(this.gameObject);
                     }
 
                 }

@@ -8,40 +8,51 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     public float rangeAttackCooldown = 2.0f;
     private float LastRangeAttackTime;
     public int RangeAttackDamage;
-    public EnemyProjectile Projectile;
-    private float TimeStopTimer;
-    public float TimestopInturuptionDuration =5;
+    public MonarchOfTimeProjectile Projectile;
+    public float TimestopInturuptionDuration = 5f;
     private float LastTimeStop;
-    public float TimestopChooldown;    
+    public float TimestopChooldown = 20f;
     public HourGlass TimeStopHourGlass;
     public HourGlass ReversingTimeHourGlass;
     private bool TimeStopped;
-    private float freezintimeduration = 5f;
+    private bool Timerevered;
+    public float ReversingTimeinturuptionDuration = 5f;
+    public float ReversingTimeCooldown = 20.0f;
+    private float LastTimeTimeReversal;
+    private float freezintimeduration = 2.0f;
+    private int originalhealth;
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
         LastTimeStop -= TimestopChooldown;
+        LastTimeTimeReversal -= ReversingTimeCooldown;
+        originalhealth = Health;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         GhangedirectionFollow();
-        if (Time.time - LastRangeAttackTime > rangeAttackCooldown && false)
+        if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
         {
             Shoot();
         }
-        if (Time.time - LastTimeStop > TimestopChooldown && !TimeStopped)
+        if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
         {
             StartCoroutine(StopingTime());
+        }
+        if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
+        {
+            StartCoroutine(ReversingTime());
         }
     }
     public void Shoot()
     {
         LastRangeAttackTime = Time.time;
-        EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
-        EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
+        MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
         projectileController.Intialize(RangeAttackDamage);
     }
     public void FixedUpdate()
@@ -53,34 +64,32 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     {
         TimeStopped = true;
         TimeStopHourGlass.Health = 100; //resetting hour glass health to 100;
-        TimeStopTimer = Time.time;
-        while (Time.time - TimeStopTimer < TimestopInturuptionDuration)
+        yield return new WaitForSeconds(TimestopInturuptionDuration);
+        if (TimeStopHourGlass.Health > 0)
         {
-            if (TimeStopHourGlass.Health <= 0)
-            {
-                TimeStopped = false;
-                LastTimeStop = Time.time;
-                yield break;
-            }
+            player.GetComponent<controls>().frozen = true;
+            Rigidbody2D playerrb = player.GetComponent<Rigidbody2D>();
+            RigidbodyConstraints2D originalRB = playerrb.constraints;
+            playerrb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            yield return new WaitForSeconds(freezintimeduration);
+            playerrb.constraints = originalRB | RigidbodyConstraints2D.FreezeRotation;
+            player.GetComponent<controls>().frozen = false;
         }
-        GetComponent<controls>().frozen = true;
-        Rigidbody2D playerrb = player.GetComponent<Rigidbody2D>();
-        RigidbodyConstraints2D originalRB = playerrb.constraints;
-        playerrb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-        float frozenintime = Time.time;
-        while (Time.time - frozenintime < freezintimeduration)
-        {
-        }
-        playerrb.constraints = originalRB;
-        playerrb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        GetComponent<controls>().frozen = false;
-        yield return null;
-
+        TimeStopped = false;
+        LastTimeStop = Time.time;
 
     }
-    public void ReversingTime()
+    public IEnumerator ReversingTime()
     {
-
+        Timerevered = true;
+        TimeStopHourGlass.Health = 100; //resetting hour glass health to 100;
+        yield return new WaitForSeconds(ReversingTimeinturuptionDuration);
+        Timerevered = false;
+        if (ReversingTimeHourGlass.Health > 0)
+        {
+            Health = originalhealth;
+        }
+        LastTimeTimeReversal = Time.time;
     }
 
 }

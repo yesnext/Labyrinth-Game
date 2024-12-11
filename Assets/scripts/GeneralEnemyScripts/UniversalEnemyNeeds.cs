@@ -10,7 +10,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected float distance;
     protected Vector3 scale;
     public float EnemySpeed;
-    public float OriginalSpeed;
+    protected float OriginalSpeed;
     public int Health;
     public bool IsImmune;
     public int MeleeAttackDamage;
@@ -33,7 +33,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
 
     }
 
-    public new void Followplayer()
+    public void Followplayer()
     {
         // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
