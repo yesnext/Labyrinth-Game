@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6076448578153813108}
   m_Layer: 0
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Without element or Phases
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,10 @@ MonoBehaviour:
   isFacingRight: 0
   EnemySpeed: 0
   OriginalSpeed: 0
+  Health: 0
+  IsImmune: 0
+  MeleeAttackDamage: 0
+  attackbox: {fileID: 0}
   Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
 --- !u!1 &6076448579489301346
 GameObject:
