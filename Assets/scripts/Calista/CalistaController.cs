@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class CalistaController : UniversalEnemyNeeds
@@ -22,7 +23,7 @@ public class CalistaController : UniversalEnemyNeeds
     {
         GhangedirectionFollow();
         Followplayer();
-        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank)
+        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && false)
         {
             Shoot();
         }
@@ -36,14 +37,7 @@ public class CalistaController : UniversalEnemyNeeds
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
-        if (EnemySpeed > OriginalSpeed)
-        {
-            IsImmune = true;
-        }
-        else
-        {
-            IsImmune = false;
-        }
+        
     }
     public void MeleeAttack()
     {
@@ -51,7 +45,7 @@ public class CalistaController : UniversalEnemyNeeds
         if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
             EnemySpeed = OriginalSpeed;
-            if(DoubleDamageTime<DoubleDamageTime+10)
+            if(Time.time<DoubleDamageTime+10)
             player.TakeDamage(MeleeAttackDamage*2);
             else
             player.TakeDamage(MeleeAttackDamage);

@@ -152,15 +152,16 @@ public class PlayerStats : MonoBehaviour
     {
         if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
         {
-            if (other.tag == "Enemy")
+            if (attackbox.enabled)
             {
-                other.GetComponent<BasicEnemy>().TakeDamage(MeleeAttackDamage, element);
-
-            }
-            else if (other.tag == "Boss")
-            {
-                if (attackbox.enabled)
+                if (other.tag == "Enemy")
                 {
+                    other.GetComponent<BasicEnemy>().TakeDamage(MeleeAttackDamage, element);
+
+                }
+                else if (other.tag == "Boss")
+                {
+
                     if (GameObject.FindObjectOfType<FinalBossController>() != null)
                     {
                         other.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
@@ -173,14 +174,30 @@ public class PlayerStats : MonoBehaviour
                             other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
                         }
                     }
-                    else if(GameObject.FindObjectOfType<AshenStalkerController>() != null){
+                    else if (GameObject.FindObjectOfType<AshenStalkerController>() != null)
+                    {
                         other.GetComponent<AshenStalkerController>().TakeDamage(MeleeAttackDamage);
                     }
+                    else if (GameObject.FindObjectOfType<CalistaController>() != null)
+                    {
+                        other.GetComponent<CalistaController>().TakeDamage(MeleeAttackDamage);
+                    }
+
                 }
-            }
-            else if (other.tag == "Chains")
-            {
-                other.GetComponent<Chains>().TakeDamage(MeleeAttackDamage, element);
+                else if (other.tag == "Chains")
+                {
+                    other.GetComponent<Chains>().TakeDamage(MeleeAttackDamage, element);
+
+                }
+                else if (other.tag == "Obelisk")
+                {
+                    if (WardenObelisks.state)
+                    {
+                        other.GetComponent<WardenObelisks>().TakeDamage(MeleeAttackDamage);
+                        PlayerStats.ProjectileCount--;
+                        Destroy(this.gameObject);
+                    }
+                }
 
             }
 

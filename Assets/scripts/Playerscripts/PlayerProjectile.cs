@@ -39,7 +39,7 @@ public class PlayerProjectile : MonoBehaviour
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Boss")
+        else if (other.GetComponent<FinalBossController>() != null && other.tag == "Boss")
         {
             if (other.GetComponent<FinalBossController>().BossPhase == 1)
             {
@@ -49,7 +49,20 @@ public class PlayerProjectile : MonoBehaviour
                     PlayerStats.ProjectileCount--;
                     Destroy(this.gameObject);
                 }
+
             }
+        }
+        else if (GameObject.FindObjectOfType<AshenStalkerController>() != null && other.tag == "Boss")
+        {
+            other.GetComponent<AshenStalkerController>().TakeDamage(Damage);
+            Destroy(this.gameObject);
+        }
+
+
+        else if (GameObject.FindObjectOfType<CalistaController>() != null && other.tag == "Boss")
+        {
+            FindObjectOfType<CalistaController>().TakeDamage(Damage);
+            Destroy(this.gameObject);
         }
         else if (other.tag == "Environment")
         {
@@ -83,7 +96,5 @@ public class PlayerProjectile : MonoBehaviour
             PlayerStats.ProjectileCount--;
             Destroy(this.gameObject);
         }
-
-
     }
 }

@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 240864304}
   - component: {fileID: 240864303}
+  - component: {fileID: 240864305}
   - component: {fileID: 240864302}
   - component: {fileID: 240864301}
   - component: {fileID: 240864300}
@@ -305,7 +306,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.26515183, y: 0.0352417}
@@ -415,6 +416,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &240864305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240864299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0767173af36a74a8ebad95d5fb6e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFacingRight: 1
+  EnemySpeed: 1
+  OriginalSpeed: 1
+  Health: 200
+  IsImmune: 0
+  MeleeAttackDamage: 3
+  attackbox: {fileID: 240864301}
+  PointBlank: 2
+  Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
+  RangeAttackDamage: 3
+  DoubleDamageTime: 0
 --- !u!1 &462395940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,17 +1680,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4947733945724240205, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.28
+      value: -7.17
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.93
+      value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1718,9 +1746,9 @@ GameObject:
   - component: {fileID: 2044906673}
   - component: {fileID: 2044906672}
   - component: {fileID: 2044906674}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

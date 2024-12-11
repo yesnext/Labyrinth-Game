@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UniversalEnemyNeeds : MonoBehaviour
 {
-    public bool isFacingRight;
+    public bool isFacingRight = true;
     protected Vector2 direction;
     protected PlayerStats player;
     protected float distance;
