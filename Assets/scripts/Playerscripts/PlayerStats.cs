@@ -33,7 +33,7 @@ public class PlayerStats : MonoBehaviour
     public KeyCode FightMode;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
-    private static PlayerStats instance;
+    private float freezintimeduration = 5f;
 
     // void Awake()
     // {
@@ -57,36 +57,39 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(MeleeAttackkey))
+        if (!GetComponent<controls>().frozen)
         {
+            if (Input.GetKeyDown(MeleeAttackkey))
+            {
 
-            MeleeAnimation();
-        }
-        if (Input.GetKeyDown(SwitchElement))
-        {
-            if (!ThrowingHands)
-            {
-                ChangeElement();
+                MeleeAnimation();
             }
-        }
-        if (Input.GetKeyDown(RangeAttackKey))
-        {
-            if (!ThrowingHands)
+            if (Input.GetKeyDown(SwitchElement))
             {
-                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePosition.z = 0;
-                direction = (mousePosition - ProjectilePoint.position).normalized;
-                bool IsMouseOnRight = mousePosition.x > transform.position.x;
-                if (controls.isFacingRight == IsMouseOnRight)
+                if (!ThrowingHands)
                 {
-                    ProjectileCount++;
-                    Shoot();
+                    ChangeElement();
                 }
             }
-        }
-        if (Input.GetKeyDown(FightMode))
-        {
-            ChangeFightMode();
+            if (Input.GetKeyDown(RangeAttackKey))
+            {
+                if (!ThrowingHands)
+                {
+                    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mousePosition.z = 0;
+                    direction = (mousePosition - ProjectilePoint.position).normalized;
+                    bool IsMouseOnRight = mousePosition.x > transform.position.x;
+                    if (controls.isFacingRight == IsMouseOnRight)
+                    {
+                        ProjectileCount++;
+                        Shoot();
+                    }
+                }
+            }
+            if (Input.GetKeyDown(FightMode))
+            {
+                ChangeFightMode();
+            }
         }
     }
 

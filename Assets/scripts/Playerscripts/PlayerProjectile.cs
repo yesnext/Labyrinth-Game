@@ -103,6 +103,15 @@ public class PlayerProjectile : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null && other.tag == "Boss")
+        {
+            FindObjectOfType<CalistaController>().TakeDamage(Damage);
+            Destroy(this.gameObject);
+        }
+        else if(other.tag == "HourGlass"){
+            other.GetComponent<HourGlass>().Takedamage(Damage);
+            Destroy(this.gameObject);
+        }
         else if (other.tag == "Without element or Phases" && other.GetComponent<FakeOrionImage>() != null)
         {
             other.GetComponent<FakeOrionImage>().TakeDamage(Damage);

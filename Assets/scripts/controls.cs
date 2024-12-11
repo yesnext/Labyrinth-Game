@@ -6,9 +6,10 @@ using UnityEngine;
 public class controls : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
+    public float speed = 8f;
     private float jumpingPower = 16f;
     public bool isFacingRight = true;
+    public bool frozen;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -16,6 +17,7 @@ public class controls : MonoBehaviour
 
     void Update()
     {
+        if(!frozen){
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -29,6 +31,7 @@ public class controls : MonoBehaviour
         }
 
         Flip();
+        }
         
     }
 
