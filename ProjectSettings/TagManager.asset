@@ -25,6 +25,9 @@ TagManager:
   - TeleportLocations
   - SpawnLocation
   - AttackOrion
+  - HourGlass
+  - Checkpoint 1
+  - Checkpoint 2
   layers:
   - Default
   - TransparentFX

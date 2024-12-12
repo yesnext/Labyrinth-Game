@@ -14,7 +14,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public int Health;
     public bool IsImmune;
     public int MeleeAttackDamage;
-    protected float meleeattackdistance;
+    public float meleeattackdistance;
     protected float lastMeleeAttackTime;
     protected float MeleeAttackCooldown = 3.0f;
     protected float LungAttackDistance = 5.0f;
@@ -56,12 +56,6 @@ public class UniversalEnemyNeeds : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-    public virtual void FixedUpdate()
-    {
-        direction = (player.transform.position - transform.position).normalized;
-        distance = Vector2.Distance(transform.position, player.transform.position);
-
     }
     public void GhangedirectionFollow()
     {

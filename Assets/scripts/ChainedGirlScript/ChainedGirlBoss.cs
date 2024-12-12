@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class ChainedGirlBoss : FinalBossController
+public class ChainedGirlBoss : UniversalEnemyNeeds
 {
     public GameObject Chain1;
     public GameObject Chain2;
-    public bool ready;
+    private EnemyProjectilePoint Projectilepoint;
+    public EnemyProjectile projectile;
+    public float RangeAttackDistance;
+    private float LastRangAttackTime;
+    public float RangAttackCooldown;
     // Start is called before the first frame update
     void Start()
     {
+        Projectilepoint = GetComponentInChildren<EnemyProjectilePoint>();
         player = FindObjectOfType<PlayerStats>();
         IsImmune = false;
     }
@@ -19,17 +24,16 @@ public class ChainedGirlBoss : FinalBossController
     void Update()
     {
         GhangedirectionFollow();
-        if (distance >= RangeAttackDistance && ready)
+        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
         {
             RangeAttack();
         }
         Begone();
     }
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
-        ready = Time.time - LastRangAttackTime > RangAttackCooldown;
     }
     public void Begone()
     {
@@ -38,9 +42,9 @@ public class ChainedGirlBoss : FinalBossController
             Destroy(this.gameObject);
         }
     }
-    public override void RangeAttack()
+    public void RangeAttack()
     {
-        Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
+        Instantiate(projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
         LastRangAttackTime = Time.time;
     }
 }

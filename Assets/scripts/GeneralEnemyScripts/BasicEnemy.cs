@@ -89,7 +89,7 @@ public class BasicEnemy : UniversalEnemyNeeds
            
         }
     }
-    public void OnTriggerEnter2D(Collider2D other){
+    public virtual void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player"){
             if(attackbox.enabled){
             meleeAttack();

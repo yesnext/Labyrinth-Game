@@ -66,7 +66,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
             Summon();
         }
     }
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
