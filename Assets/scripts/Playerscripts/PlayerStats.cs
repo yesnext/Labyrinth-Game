@@ -31,6 +31,7 @@ public class PlayerStats : MonoBehaviour
     public BoxCollider2D attackbox;
     public BoxCollider2D fistmode;
     public KeyCode FightMode;
+    public KeyCode Healing;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
 
@@ -88,6 +89,10 @@ public class PlayerStats : MonoBehaviour
             if (Input.GetKeyDown(FightMode))
             {
                 ChangeFightMode();
+            }
+            if (Input.GetKeyDown(Healing))
+            {
+                Heal();
             }
         }
     }
@@ -225,14 +230,17 @@ public class PlayerStats : MonoBehaviour
     }
     public void Heal()
     {
-        if (Time.time - LastHealCooldown > HealCooldown)
+        if (FindObjectOfType<FinalBossController>() == null)
         {
-            Health += 40;
-            if (Health > 100)
+            if (Time.time - LastHealCooldown > HealCooldown)
             {
-                Health = 100;
+                Health += 40;
+                if (Health > 100)
+                {
+                    Health = 100;
+                }
+                LastHealCooldown = Time.time;
             }
-            LastHealCooldown = Time.time;
         }
 
     }
