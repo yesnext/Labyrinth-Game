@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemFrameRenderer: {fileID: 394294348}
   wallSlotUI: {fileID: 504777659}
-  wallSlotUIManager: {fileID: 1163825318}
+  wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: 3d12f22d3a32e424fa632a51973ae4f2, type: 3}
   interactHintText: {fileID: 224490239}
   maxItemSize: {x: 1, y: 1}
@@ -1551,8 +1551,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2126682237
-  m_SortingLayer: 10
+  m_SortingLayerID: -608907127
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemFrameRenderer: {fileID: 481844491}
   wallSlotUI: {fileID: 504777659}
-  wallSlotUIManager: {fileID: 1163825318}
+  wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: da1262d33f94e0d42abb50bf6756a748, type: 3}
   interactHintText: {fileID: 224490239}
   maxItemSize: {x: 1, y: 1}
@@ -1946,8 +1946,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2126682237
-  m_SortingLayer: 10
+  m_SortingLayerID: -608907127
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1999,7 +1999,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504777659
 GameObject:
@@ -2620,7 +2620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemFrameRenderer: {fileID: 768286750}
   wallSlotUI: {fileID: 504777659}
-  wallSlotUIManager: {fileID: 1163825318}
+  wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: 510098041eb4b8740a1e340e1a9e873e, type: 3}
   interactHintText: {fileID: 224490239}
   maxItemSize: {x: 1, y: 1}
@@ -2688,8 +2688,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2126682237
-  m_SortingLayer: 10
+  m_SortingLayerID: -608907127
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2996,7 +2996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemFrameRenderer: {fileID: 837720481}
   wallSlotUI: {fileID: 504777659}
-  wallSlotUIManager: {fileID: 1163825318}
+  wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: bc075c05a9497824990e5c0274e2aceb, type: 3}
   interactHintText: {fileID: 224490239}
   maxItemSize: {x: 1, y: 1}
@@ -3038,8 +3038,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2126682237
-  m_SortingLayer: 10
+  m_SortingLayerID: -608907127
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3091,7 +3091,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996654737
 GameObject:
@@ -3434,7 +3434,7 @@ GameObject:
   - component: {fileID: 1163825321}
   - component: {fileID: 1163825320}
   - component: {fileID: 1163825319}
-  - component: {fileID: 1163825318}
+  - component: {fileID: 1163825322}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3464,30 +3464,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1163825318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163825316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e9f207c7070734d9990f82e5c3912d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemButtons:
-  - {fileID: 191137378}
-  - {fileID: 1786386085}
-  - {fileID: 1663712918}
-  - {fileID: 2070037235}
-  currentWallSlot: {fileID: 0}
-  wallSlotUI: {fileID: 504777659}
-  itemImages:
-  - {fileID: 2144104113}
-  - {fileID: 1953502600}
-  - {fileID: 642189922}
-  - {fileID: 636229763}
 --- !u!114 &1163825319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,6 +3525,30 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1163825322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163825316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ff53351df622041bd5ddbdf749bfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemButtons:
+  - {fileID: 191137378}
+  - {fileID: 1786386085}
+  - {fileID: 1663712918}
+  - {fileID: 2070037235}
+  currentWallSlot: {fileID: 0}
+  wallSlotUI: {fileID: 504777659}
+  itemImages:
+  - {fileID: 2144104113}
+  - {fileID: 1953502600}
+  - {fileID: 642189922}
+  - {fileID: 636229763}
 --- !u!1 &1256751791
 GameObject:
   m_ObjectHideFlags: 0
@@ -7617,7 +7617,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1172231183
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 23
   m_Sprite: {fileID: 891808773, guid: ecb1d784b4cd22e4ba28a9906f1fc761, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
