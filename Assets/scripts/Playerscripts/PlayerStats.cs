@@ -201,7 +201,6 @@ public class PlayerStats : MonoBehaviour
                 else if (other.tag == "Chains")
                 {
                     other.GetComponent<Chains>().TakeDamage(MeleeAttackDamage, element);
-
                 }
                 else if (other.tag == "Obelisk")
                 {

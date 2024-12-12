@@ -5,8 +5,7 @@ using UnityEngine.Analytics;
 
 public class ChainedGirlBoss : UniversalEnemyNeeds
 {
-    public GameObject Chain1;
-    public GameObject Chain2;
+    public Chains[] chains;
     private EnemyProjectilePoint Projectilepoint;
     public EnemyProjectile projectile;
     public float RangeAttackDistance;
@@ -15,9 +14,11 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        chains = FindObjectsOfType<Chains>();
         Projectilepoint = GetComponentInChildren<EnemyProjectilePoint>();
         player = FindObjectOfType<PlayerStats>();
         IsImmune = false;
+        LastRangAttackTime = -RangAttackCooldown;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     }
     public void Begone()
     {
-        if (Chain1 == null && Chain2 == null)
+        if (chains[0] == null && chains[1] == null)
         {
             Destroy(this.gameObject);
         }

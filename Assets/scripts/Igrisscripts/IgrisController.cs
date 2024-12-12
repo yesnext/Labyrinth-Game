@@ -84,9 +84,9 @@ public class IgrisController : UniversalEnemyNeeds
         if (Time.time - LastLungAttackTime > LungAttackCooldown)
         {
             LastLungAttackTime = Time.time;
-            EnemySpeed *= 1.5f;
             if (!IsLunging)
             {
+                EnemySpeed *= 1.5f;
                 IsLunging = true;
             }
         }
