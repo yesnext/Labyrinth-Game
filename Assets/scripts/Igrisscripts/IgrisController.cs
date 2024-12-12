@@ -84,9 +84,9 @@ public class IgrisController : UniversalEnemyNeeds
         if (Time.time - LastLungAttackTime > LungAttackCooldown)
         {
             LastLungAttackTime = Time.time;
-            EnemySpeed *= 1.5f;
             if (!IsLunging)
             {
+                EnemySpeed *= 1.5f;
                 IsLunging = true;
             }
         }
@@ -113,7 +113,7 @@ public class IgrisController : UniversalEnemyNeeds
         }
         lastMeleeAttackTime = Time.time;
     }
-    public new void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (!IsImmune)
         {

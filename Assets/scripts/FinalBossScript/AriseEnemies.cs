@@ -13,14 +13,36 @@ public class AriseEnemies : BasicEnemy
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        direction = (player.transform.position - transform.position).normalized;
         Followplayer();
+        if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        {
+            meleeAttack();
+        }
     }
-    public void TakeDamage(int damage){
-        Health=Health-damage;
-            if (Health <= 0 ){
-                Destroy(this.gameObject);
+    public override void TakeDamage(int damage)
+    {
+        Health = Health - damage;
+        if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
+    }
+    public void getdestroyed(){
+        Destroy(this.gameObject);
+    }
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            if (attackbox.enabled)
+            {
+                meleeAttack();
             }
+        }
     }
 }

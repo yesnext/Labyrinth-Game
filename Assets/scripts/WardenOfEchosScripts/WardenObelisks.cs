@@ -5,20 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class WardenObelisks : FinalBossController
+public class WardenObelisks : UniversalEnemyNeeds
 {
     public GameObject Projectile;
     public int Damage = 3;
     public int Damageincreaseby = 3;
-    public int Health = 100;
-    public float distance;
-    public PlayerStats player;
     public float AttackCooldown = 1.0f;
     public float LastAttackCooldown = 0;
-    public Vector2 direction;
     public Transform ProjectilePoint;
-    public bool isFacingRight;
-    public Vector3 scale;
     public int CurrentNumOfObelisks;
     public static bool state;
     void Start()
@@ -51,7 +45,7 @@ public class WardenObelisks : FinalBossController
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(Damage);
     }
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         Health -= damage;
         if (Health < 0)
@@ -65,25 +59,6 @@ public class WardenObelisks : FinalBossController
         {
             CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
             Damage += Damageincreaseby;
-        }
-    }
-    public void GhangedirectionFollow()
-    {
-        if (direction.x > 0 && !isFacingRight)
-        {
-
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = true;
-            transform.localScale = scale;
-
-        }
-        else if (direction.x < 0 && isFacingRight)
-        {
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = false;
-            transform.localScale = scale;
         }
     }
 

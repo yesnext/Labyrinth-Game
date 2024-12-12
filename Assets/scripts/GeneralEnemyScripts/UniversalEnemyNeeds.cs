@@ -10,11 +10,11 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected float distance;
     protected Vector3 scale;
     public float EnemySpeed;
-    public float OriginalSpeed;
+    protected float OriginalSpeed;
     public int Health;
     public bool IsImmune;
     public int MeleeAttackDamage;
-    protected float meleeattackdistance;
+    public float meleeattackdistance;
     protected float lastMeleeAttackTime;
     protected float MeleeAttackCooldown = 3.0f;
     protected float LungAttackDistance = 5.0f;
@@ -33,7 +33,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
 
     }
 
-    public new void Followplayer()
+    public void Followplayer()
     {
         // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
@@ -49,14 +49,13 @@ public class UniversalEnemyNeeds : MonoBehaviour
             // animator.SetBool("attack",false);
         }
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Health = Health - damage;
         if (Health <= 0)
         {
             Destroy(this.gameObject);
         }
-
     }
     public void GhangedirectionFollow()
     {
@@ -77,4 +76,5 @@ public class UniversalEnemyNeeds : MonoBehaviour
             transform.localScale = scale;
         }
     }
+    
 }

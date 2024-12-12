@@ -49,25 +49,6 @@ public class Chains : UniversalEnemyNeeds
         player.TakeDamage(ChainWhipDamage);
         LastChainWhipCooldown = Time.time;
     }
-     public void GhangedirectionFollow()
-    {
-        if (direction.x > 0 && !isFacingRight)
-        {
-
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = true;
-            transform.localScale = scale;
-
-        }
-        else if (direction.x < 0 && isFacingRight)
-        {
-            scale = transform.localScale;
-            scale.x *= -1;
-            isFacingRight = false;
-            transform.localScale = scale;
-        }
-    }
     public void OnTriggerEnter2D(){
         if (attackbox.enabled)
                 {

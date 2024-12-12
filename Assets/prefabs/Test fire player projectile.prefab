@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1876899275
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1443013906, guid: 4d98a3c5aa248d94e9833eb6e05db4c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +105,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   mousePosition: {x: 0, y: 0, z: 0}
   element: 0
-  Damage: 50
+  Damage: 20
   Player: {fileID: 0}
 --- !u!50 &-381432380519230667
 Rigidbody2D:

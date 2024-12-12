@@ -29,9 +29,6 @@ public class Platforms : MonoBehaviour
         {
             transform.parent.GetComponent<Collider2D>().enabled = OnTop;
         }
-        if(other.tag == "Without element or Phases"&& OnTop)
-        {
-            transform.parent.GetComponent<Collider2D>().enabled = OnTop;
-        }
+        
     }
 }

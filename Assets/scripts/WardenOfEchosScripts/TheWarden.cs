@@ -15,7 +15,7 @@ public class TheWarden : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            spawnlocation = FindObjectOfType<SummonsSpawnLocatiopn>().transform;
+            spawnlocation = FindObjectOfType<SummonsSpawnLocation>().transform;
             CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
     }
 

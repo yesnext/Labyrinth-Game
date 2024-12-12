@@ -19,7 +19,7 @@ public class EnemyProjectile : MonoBehaviour
         player = FindObjectOfType<PlayerStats>();
 
         enemy = FindObjectOfType<UniversalEnemyNeeds>();
-        if (enemy.isFacingRight == false)
+        if (enemy.isFacingRight== false)
         {
             playerpos = (player.transform.position - transform.position).normalized;
             this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);

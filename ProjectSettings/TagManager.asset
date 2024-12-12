@@ -22,6 +22,12 @@ TagManager:
   - PlayerProjectilePoint
   - Obelisk
   - Without element or Phases
+  - TeleportLocations
+  - SpawnLocation
+  - AttackOrion
+  - HourGlass
+  - Checkpoint 1
+  - Checkpoint 2
   layers:
   - Default
   - TransparentFX
@@ -103,7 +109,4 @@ TagManager:
     locked: 0
   - name: mc
     uniqueID: 1172231183
-    locked: 0
-  - name: Wind
-    uniqueID: 909513481
     locked: 0

@@ -9,11 +9,17 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     protected int RangeAttackDamage = 3;
     public GameObject Projectile;
     private Transform ProjectilePoint;
+    private SummonsSpawnLocation spawnlocation;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = GetComponentInChildren<EnemyProjectilePoint>().transform;
+    }
+    public void Intialize(SummonsSpawnLocation spawnloc)
+    {
+        spawnloc.ocupied = true;
+        spawnlocation = spawnloc;
     }
 
     // Update is called once per frame
@@ -31,5 +37,14 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage);
+    }
+    public override void TakeDamage(int damage)
+    {
+        Health = Health - damage;
+        if (Health <= 0)
+        {
+            spawnlocation.ocupied = false;
+            Destroy(this.gameObject);
+        }
     }
 }

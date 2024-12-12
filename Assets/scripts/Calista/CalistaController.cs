@@ -52,7 +52,7 @@ public class CalistaController : UniversalEnemyNeeds
         }
         lastMeleeAttackTime = Time.time;
     }
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (Random.Range(1, 101) > 29)
         {

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271024842749808148}
   - component: {fileID: 1167144527905841314}
+  - component: {fileID: 7893945736697507411}
   m_Layer: 0
   m_Name: ice enemy 0
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1876899275
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 20
   m_Sprite: {fileID: 1036148485, guid: 73826de40aae90d4983f049e12edc447, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7893945736697507411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193638581639678661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aab10326cb22c48b27c62a3a0d794c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

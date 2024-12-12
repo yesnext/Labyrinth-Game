@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonarchOfTimeController : UniversalEnemyNeeds
+{
+    private EnemyProjectilePoint projectilePoint;
+    public float rangeAttackCooldown = 2.0f;
+    private float LastRangeAttackTime;
+    public int RangeAttackDamage;
+    public MonarchOfTimeProjectile Projectile;
+    public float TimestopInturuptionDuration = 5f;
+    private float LastTimeStop;
+    public float TimestopChooldown = 20f;
+    public HourGlass TimeStopHourGlass;
+    public HourGlass ReversingTimeHourGlass;
+    private bool TimeStopped;
+    private bool Timerevered;
+    public float ReversingTimeinturuptionDuration = 5f;
+    public float ReversingTimeCooldown = 20.0f;
+    private float LastTimeTimeReversal;
+    private float freezintimeduration = 2.0f;
+    private int originalhealth;
+    void Start()
+    {
+        player = FindObjectOfType<PlayerStats>();
+        projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
+        LastTimeStop -= TimestopChooldown;
+        LastTimeTimeReversal -= ReversingTimeCooldown;
+        originalhealth = Health;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        GhangedirectionFollow();
+        if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
+        {
+            Shoot();
+        }
+        if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
+        {
+            StartCoroutine(StopingTime());
+        }
+        if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
+        {
+            StartCoroutine(ReversingTime());
+        }
+    }
+    public void Shoot()
+    {
+        LastRangeAttackTime = Time.time;
+        MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
+        projectileController.Intialize(RangeAttackDamage);
+    }
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
+    }
+    public IEnumerator StopingTime()
+    {
+        TimeStopped = true;
+        TimeStopHourGlass.Health = 100; //resetting hour glass health to 100;
+        yield return new WaitForSeconds(TimestopInturuptionDuration);
+        if (TimeStopHourGlass.Health > 0)
+        {
+            player.GetComponent<controls>().frozen = true;
+            Rigidbody2D playerrb = player.GetComponent<Rigidbody2D>();
+            RigidbodyConstraints2D originalRB = playerrb.constraints;
+            playerrb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            yield return new WaitForSeconds(freezintimeduration);
+            playerrb.constraints = originalRB | RigidbodyConstraints2D.FreezeRotation;
+            player.GetComponent<controls>().frozen = false;
+        }
+        TimeStopped = false;
+        LastTimeStop = Time.time;
+
+    }
+    public IEnumerator ReversingTime()
+    {
+        Timerevered = true;
+        ReversingTimeHourGlass.Health = 100; //resetting hour glass health to 100;
+        yield return new WaitForSeconds(ReversingTimeinturuptionDuration);
+        Timerevered = false;
+        if (ReversingTimeHourGlass.Health > 0)
+        {
+            Health = originalhealth;
+        }
+        LastTimeTimeReversal = Time.time;
+    }
+
+}

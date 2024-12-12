@@ -31,9 +31,12 @@ public class PlayerStats : MonoBehaviour
     public BoxCollider2D attackbox;
     public BoxCollider2D fistmode;
     public KeyCode FightMode;
+    public KeyCode Healing;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
-    private static PlayerStats instance;
+
+    //bob addition
+    public HealthBar healthbar;
 
     // void Awake()
     // {
@@ -53,40 +56,51 @@ public class PlayerStats : MonoBehaviour
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
+
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(MeleeAttackkey))
+        if (!GetComponent<controls>().frozen)
         {
+            if (Input.GetKeyDown(MeleeAttackkey))
+            {
 
-            MeleeAnimation();
-        }
-        if (Input.GetKeyDown(SwitchElement))
-        {
-            if (!ThrowingHands)
-            {
-                ChangeElement();
+                MeleeAnimation();
             }
-        }
-        if (Input.GetKeyDown(RangeAttackKey))
-        {
-            if (!ThrowingHands)
+            if (Input.GetKeyDown(SwitchElement))
             {
-                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePosition.z = 0;
-                direction = (mousePosition - ProjectilePoint.position).normalized;
-                bool IsMouseOnRight = mousePosition.x > transform.position.x;
-                if (controls.isFacingRight == IsMouseOnRight)
+                if (!ThrowingHands)
                 {
-                    ProjectileCount++;
-                    Shoot();
+                    ChangeElement();
                 }
             }
-        }
-        if (Input.GetKeyDown(FightMode))
-        {
-            ChangeFightMode();
+            if (Input.GetKeyDown(RangeAttackKey))
+            {
+                if (!ThrowingHands)
+                {
+                    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mousePosition.z = 0;
+                    direction = (mousePosition - ProjectilePoint.position).normalized;
+                    bool IsMouseOnRight = mousePosition.x > transform.position.x;
+                    if (controls.isFacingRight == IsMouseOnRight)
+                    {
+                        ProjectileCount++;
+                        Shoot();
+                    }
+                }
+            }
+            if (Input.GetKeyDown(FightMode))
+            {
+                ChangeFightMode();
+            }
+            if (Input.GetKeyDown(Healing))
+            {
+                Heal();
+            }
         }
     }
 
@@ -132,6 +146,7 @@ public class PlayerStats : MonoBehaviour
     {
         Health = Health - damage;
         Debug.Log("Health" + Health);
+        healthbar.SetHealth(Health);
     }
     public void TakeDamagefromigris(int damage)
     {
@@ -169,7 +184,7 @@ public class PlayerStats : MonoBehaviour
                     }
                     else if (GameObject.FindObjectOfType<IgrisController>() != null)
                     {
-                        if (ThrowingHands && !Boss.GetComponent<FinalBossController>().IsImmune)
+                        if (ThrowingHands && !Boss.GetComponent<IgrisController>().IsImmune)
                         {
                             other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
                         }
@@ -182,21 +197,39 @@ public class PlayerStats : MonoBehaviour
                     {
                         other.GetComponent<CalistaController>().TakeDamage(MeleeAttackDamage);
                     }
+                    else if (GameObject.FindObjectOfType<HealingOrion>() != null)
+                    {
+                        if (other.GetComponent<HealingOrion>().agrue)
+                        {
+                            other.GetComponent<HealingOrion>().TakeDamage(MeleeAttackDamage);
+                        }
+                    }
+                    else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null)
+                    {
+                        FindObjectOfType<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
+                        Destroy(this.gameObject);
+                    }
 
                 }
                 else if (other.tag == "Chains")
                 {
                     other.GetComponent<Chains>().TakeDamage(MeleeAttackDamage, element);
-
                 }
                 else if (other.tag == "Obelisk")
                 {
                     if (WardenObelisks.state)
                     {
                         other.GetComponent<WardenObelisks>().TakeDamage(MeleeAttackDamage);
-                        PlayerStats.ProjectileCount--;
-                        Destroy(this.gameObject);
                     }
+                }
+                else if (GameObject.FindObjectOfType<AttackingOrion>() != null && other.tag == "AttackOrion")
+                {
+                    other.GetComponent<AttackingOrion>().TakeDamage(MeleeAttackDamage);
+                }
+                else if (other.tag == "Without element or Phases")
+                {
+                    other.GetComponent<UniversalEnemyNeeds>().TakeDamage(MeleeAttackDamage);
+                    PlayerStats.ProjectileCount--;
                 }
 
             }
@@ -205,14 +238,17 @@ public class PlayerStats : MonoBehaviour
     }
     public void Heal()
     {
-        if (Time.time - LastHealCooldown > HealCooldown)
+        if (FindObjectOfType<FinalBossController>() == null)
         {
-            Health += 40;
-            if (Health > 100)
+            if (Time.time - LastHealCooldown > HealCooldown)
             {
-                Health = 100;
+                Health += 40;
+                if (Health > 100)
+                {
+                    Health = 100;
+                }
+                LastHealCooldown = Time.time;
             }
-            LastHealCooldown = Time.time;
         }
 
     }

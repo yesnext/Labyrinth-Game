@@ -17,7 +17,9 @@ public class Spikes : MonoBehaviour
     {
         
     }
-    public void OnTriggerEnter2D(){
+    public void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == "Player"){
         levelManager.respawnplayer();
+        }
     }
 }
