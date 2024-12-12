@@ -69,7 +69,11 @@ public class PlayerProjectile : MonoBehaviour
                 other.GetComponent<HealingOrion>().TakeDamage(Damage);
             }
             Destroy(this.gameObject);
-
+        }
+        else if (GameObject.FindObjectOfType<WyvernControler>() != null && other.tag == "Boss")
+        {
+            FindObjectOfType<WyvernControler>().TakeDamage(Damage);
+            Destroy(this.gameObject);
         }
         else if (GameObject.FindObjectOfType<AttackingOrion>() != null && other.tag == "AttackOrion")
         {
@@ -108,7 +112,8 @@ public class PlayerProjectile : MonoBehaviour
             FindObjectOfType<MonarchOfTimeController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
-        else if(other.tag == "HourGlass"){
+        else if (other.tag == "HourGlass")
+        {
             other.GetComponent<HourGlass>().Takedamage(Damage);
             Destroy(this.gameObject);
         }

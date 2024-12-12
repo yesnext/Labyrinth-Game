@@ -206,8 +206,14 @@ public class PlayerStats : MonoBehaviour
                     else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null)
                     {
                         FindObjectOfType<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
-                        Destroy(this.gameObject);
+
                     }
+                    else if (GameObject.FindObjectOfType<WyvernControler>() != null)
+                    {
+                        FindObjectOfType<WyvernControler>().TakeDamage(MeleeAttackDamage);
+
+                    }
+
 
                 }
                 else if (other.tag == "Chains")
@@ -228,7 +234,6 @@ public class PlayerStats : MonoBehaviour
                 else if (other.tag == "Without element or Phases")
                 {
                     other.GetComponent<UniversalEnemyNeeds>().TakeDamage(MeleeAttackDamage);
-                    PlayerStats.ProjectileCount--;
                 }
 
             }

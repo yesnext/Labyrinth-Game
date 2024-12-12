@@ -10,7 +10,7 @@ public class WyvernControler : UniversalEnemyNeeds
     public float attackRange = 10.0f;
     public float attackCooldown = 2.0f;
     public float attackDuration = 1.0f;
-    private ProjectilePoint projectilePoint;
+    private EnemyProjectilePoint projectilePoint;
     public EnemyProjectile projectile;
     private int CurrentPatrolPoint = 0;
     private float lastAttackTime = 0.0f;
@@ -24,7 +24,8 @@ public class WyvernControler : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         PatrolPoints = FindObjectsOfType<PatrolPoints>();
         numberofpatrolpoints = PatrolPoints.Length;
-        projectilePoint = FindObjectOfType<ProjectilePoint>();
+        projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
+        Debug.Log (FindObjectsOfType<EnemyProjectilePoint>().Length);
     }
 
     // Update is called once per frame
@@ -87,7 +88,7 @@ public class WyvernControler : UniversalEnemyNeeds
     {
         if (distance < 6.0f)
         {
-            Instantiate(projectile, projectile.transform.position, projectilePoint.transform.rotation);
+            Instantiate(projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
             lastAttackTime = Time.time;
         }
     }

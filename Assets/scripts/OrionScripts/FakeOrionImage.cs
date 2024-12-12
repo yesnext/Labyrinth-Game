@@ -20,6 +20,11 @@ public class FakeOrionImage : UniversalEnemyNeeds
     {
         GhangedirectionFollow();
     }
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
+    }
     public override void TakeDamage(int damage)
     {
         Health = Health - damage;
