@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour
     public KeyCode Healing;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
+    public float rangeattaccooldown;
+    public float lastrangeattack;
 
     // void Awake()
     // {
@@ -53,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
+        lastrangeattack = -rangeattaccooldown;
     }
 
     void Update()
@@ -73,16 +76,19 @@ public class PlayerStats : MonoBehaviour
             }
             if (Input.GetKeyDown(RangeAttackKey))
             {
-                if (!ThrowingHands)
+                if (Time.time - lastrangeattack > rangeattaccooldown)
                 {
-                    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    mousePosition.z = 0;
-                    direction = (mousePosition - ProjectilePoint.position).normalized;
-                    bool IsMouseOnRight = mousePosition.x > transform.position.x;
-                    if (controls.isFacingRight == IsMouseOnRight)
+                    if (!ThrowingHands)
                     {
-                        ProjectileCount++;
-                        Shoot();
+                        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        mousePosition.z = 0;
+                        direction = (mousePosition - ProjectilePoint.position).normalized;
+                        bool IsMouseOnRight = mousePosition.x > transform.position.x;
+                        if (controls.isFacingRight == IsMouseOnRight)
+                        {
+                            ProjectileCount++;
+                            Shoot();
+                        }
                     }
                 }
             }
@@ -134,6 +140,7 @@ public class PlayerStats : MonoBehaviour
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
             projectileController.Intialize(ProjectilePoint);
         }
+        lastrangeattack = Time.time;
     }
     public void TakeDamage(int damage)
     {

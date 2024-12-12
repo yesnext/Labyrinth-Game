@@ -73,8 +73,11 @@ public class BasicEnemy : UniversalEnemyNeeds
         }
         
     }
-   
-    
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
+    }
     public void TakeDamage(int damage,bool element)
     {
         if (element!=Element){

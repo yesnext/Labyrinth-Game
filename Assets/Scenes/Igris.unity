@@ -48037,6 +48037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894806, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Name
       value: TestIgris
