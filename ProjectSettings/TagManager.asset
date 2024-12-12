@@ -10,9 +10,7 @@ TagManager:
   - interactable object
   - InteractObject
   - WallSlot
-  - Redirector
-  - Goal
-  - Wind
+  - knife
   layers:
   - Default
   - TransparentFX
@@ -47,13 +45,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: backest 3
-    uniqueID: 2199787941
-    locked: 0
-  - name: 'backest 2 '
-    uniqueID: 3881364885
-    locked: 0
-  - name: backest 1
+  - name: New Layer 12
     uniqueID: 509840677
     locked: 0
   - name: New Layer 6
@@ -92,9 +84,9 @@ TagManager:
   - name: maze
     uniqueID: 1113701241
     locked: 0
+  - name: hung
+    uniqueID: 2168285059
+    locked: 0
   - name: mc
     uniqueID: 1172231183
-    locked: 0
-  - name: Wind
-    uniqueID: 909513481
     locked: 0
