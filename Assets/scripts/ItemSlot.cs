@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class ItemSlot : MonoBehaviour
 {
-    private GameObject item; // Item assigned to this slot
+    private GameObject item;
 
     public void SetItem(GameObject newItem)
     {
@@ -15,5 +14,10 @@ public class ItemSlot : MonoBehaviour
     public GameObject GetItem()
     {
         return item;
+    }
+
+    public void ClearSlot()
+    {
+        item = null;
     }
 }
