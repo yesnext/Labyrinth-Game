@@ -8,4 +8,79 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Opening Scene.unity
+    guid: aa51a194e1a1c7442bde449a74503e78
+  - enabled: 1
+    path: Assets/Scenes/entering the laborinth.unity
+    guid: d8f309f5b453d024e930cc42a7288cea
+  - enabled: 1
+    path: Assets/Scenes/Weapon hallway.unity
+    guid: 979aefde437512741972671a5c9af852
+  - enabled: 1
+    path: Assets/Scenes/puzzel 1 pressure.unity
+    guid: e0cabe4c3be38d34ab7cbadbe3a5cc51
+  - enabled: 1
+    path: Assets/Scenes/Chained Girl.unity
+    guid: 2ba437fc5f3f2044e9806688c65b8c7b
+  - enabled: 1
+    path: Assets/Scenes/puzzle 2.unity
+    guid: ae4a970094a560143a6c8c87f5bf1a39
+  - enabled: 1
+    path: Assets/Scenes/puzzle 2 top down part.unity
+    guid: d2956cbcd75730c49b0367096a3595d7
+  - enabled: 1
+    path: Assets/Scenes/Harlequin King.unity
+    guid: 8d2e3a2c4246d4143a1daf1c497716b1
+  - enabled: 1
+    path: Assets/Scenes/Post Harl Ice Choice.unity
+    guid: d1e38aef61f1078498150869ed503eb7
+  - enabled: 1
+    path: Assets/Scenes/Igris.unity
+    guid: f684ca60f9093654ab6c388eb90190d3
+  - enabled: 1
+    path: Assets/Scenes/Seraphine.unity
+    guid: 8baea7dd2fd641e46a00b299fe04d945
+  - enabled: 1
+    path: Assets/Scenes/Puzzle 3.unity
+    guid: f04f743396af8994298e6230562e0d1c
+  - enabled: 1
+    path: Assets/Scenes/puzzle 3 top down.unity
+    guid: 6fa379d1d9f66c94e8852c26b80df294
+  - enabled: 1
+    path: Assets/Scenes/Orion.unity
+    guid: d81b1aec9a107b644ae79e687ce166fe
+  - enabled: 1
+    path: Assets/Scenes/Warden.unity
+    guid: 9a12d406bfc1aa54fab2b257ee396293
+  - enabled: 1
+    path: Assets/Scenes/Puzzle 4 Fire.unity
+    guid: bb98a522d30737f47a552f37956953ea
+  - enabled: 1
+    path: Assets/Scenes/Puzzle 4 Air.unity
+    guid: 8ce0c3e6b2c4d174995522a628ab5439
+  - enabled: 1
+    path: Assets/Scenes/Puzzle 4 Water.unity
+    guid: 0aa9c10ef41028b4b93271a2a8f27165
+  - enabled: 1
+    path: Assets/Scenes/Puzzle 4 Earth.unity
+    guid: 5a5a93c344959ab4fb340e36e3075214
+  - enabled: 1
+    path: Assets/Scenes/Outside The Labyrinth.unity
+    guid: 918b5647e1fc2dd418b572817c4d3e7a
+  - enabled: 1
+    path: Assets/Scenes/Ashen Stalker.unity
+    guid: 6e2efaaa2db4e704796523ddf2d62cb3
+  - enabled: 1
+    path: Assets/Scenes/Calista.unity
+    guid: 30e3068aa6b67d1419b8b04a97d657e6
+  - enabled: 1
+    path: Assets/Scenes/Time Monarch.unity
+    guid: c417a963ce7b2e147804157eed824c2f
+  - enabled: 1
+    path: Assets/Scenes/Wyvern.unity
+    guid: 39c048c68bbf3a243a5450b9d441ec7d
+  - enabled: 1
+    path: Assets/Scenes/YOU.unity
+    guid: fb1fb4a84bf952244807a932f68c0a79
   m_configObjects: {}
