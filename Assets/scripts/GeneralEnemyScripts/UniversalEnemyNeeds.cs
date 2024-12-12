@@ -38,7 +38,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
         // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
 
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (distance < 4.0f)
         {
             // animator.SetBool("Walking", false);
@@ -57,7 +57,13 @@ public class UniversalEnemyNeeds : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void GhangedirectionFollow()
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        
+    }
+    public void ChangedDirectionFollow()
     {
         if (direction.x > 0 && !isFacingRight)
         {

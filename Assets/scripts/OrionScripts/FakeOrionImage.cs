@@ -18,7 +18,7 @@ public class FakeOrionImage : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
     }
     public void FixedUpdate()
     {

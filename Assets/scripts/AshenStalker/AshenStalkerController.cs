@@ -40,7 +40,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     void Update()
     {
 
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         Followplayer();
         if (distance > SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
         Time.time - lastMeleeAttackTime > MeleeAttackCooldown)

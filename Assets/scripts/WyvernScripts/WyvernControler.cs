@@ -25,7 +25,7 @@ public class WyvernControler : UniversalEnemyNeeds
         PatrolPoints = FindObjectsOfType<PatrolPoints>();
         numberofpatrolpoints = PatrolPoints.Length;
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
-        Debug.Log (FindObjectsOfType<EnemyProjectilePoint>().Length);
+        Debug.Log(FindObjectsOfType<EnemyProjectilePoint>().Length);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class WyvernControler : UniversalEnemyNeeds
         if (Time.time - lastAttackTime > attackCooldown)
         {
             Followplayer();
-            GhangedirectionFollow();
+            ChangedDirectionFollow();
             Attack();
         }
         else

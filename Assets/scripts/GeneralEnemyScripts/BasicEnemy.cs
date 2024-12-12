@@ -27,7 +27,7 @@ public class BasicEnemy : UniversalEnemyNeeds
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = (player.transform.position - transform.position).normalized;
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (enemystate == 0)
         {
             if (this.isFacingRight == true)

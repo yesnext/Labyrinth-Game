@@ -28,7 +28,7 @@ public class HealingOrion : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (agrue)
         {
             teleport();

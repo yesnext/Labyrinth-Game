@@ -26,7 +26,7 @@ public class WardenObelisks : UniversalEnemyNeeds
     {
         if (state){
         NumOfObelisks();
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (Time.time - LastAttackCooldown > AttackCooldown)
         {
             Shoot();

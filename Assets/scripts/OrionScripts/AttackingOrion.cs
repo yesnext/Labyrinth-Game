@@ -18,7 +18,7 @@ public class AttackingOrion : UniversalEnemyNeeds
     void Update()
     {
         Followplayer();
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (healingorion == null)
         {
             IsImmune = false;

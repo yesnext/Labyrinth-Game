@@ -21,7 +21,7 @@ public class CalistaController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         Followplayer();
         if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && false)
         {

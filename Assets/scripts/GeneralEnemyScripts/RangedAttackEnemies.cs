@@ -25,7 +25,7 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (Time.time - LastRangAttackTime > RangAttackCooldown)
         {
             Shoot();

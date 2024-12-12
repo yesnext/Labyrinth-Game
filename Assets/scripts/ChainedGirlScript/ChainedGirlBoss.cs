@@ -24,7 +24,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
         {
             RangeAttack();

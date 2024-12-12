@@ -21,7 +21,7 @@ public class Chains : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown)
         {
             ChainWhipAttack();

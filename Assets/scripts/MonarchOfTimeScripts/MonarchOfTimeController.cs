@@ -34,7 +34,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
         {
             Shoot();

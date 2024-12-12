@@ -66,7 +66,7 @@ public class FinalBossController : UniversalEnemyNeeds
         {
             StartCoroutine(Arise());
         }
-        GhangedirectionFollow();
+        ChangedDirectionFollow();
         Followplayer();
         if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
         {

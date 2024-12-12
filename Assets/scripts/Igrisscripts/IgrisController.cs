@@ -27,7 +27,7 @@ public class IgrisController : UniversalEnemyNeeds
     {
         if (state)
         {
-            GhangedirectionFollow();
+            ChangedDirectionFollow();
             Followplayer();
             if (BossPhase == 1 && IsImmune && dodge && player.firstencounter)
             {
