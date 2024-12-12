@@ -10,9 +10,18 @@ TagManager:
   - interactable object
   - InteractObject
   - WallSlot
-  - Redirector
-  - Goal
-  - Wind
+  - Enemy
+  - Environment
+  - Boss
+  - Projectile
+  - Arise Enemy
+  - Enemy Projectile
+  - Chains
+  - IgrisCheckPoint
+  - PlayerCheckPoint
+  - PlayerProjectilePoint
+  - Obelisk
+  - Without element or Phases
   layers:
   - Default
   - TransparentFX
@@ -27,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Stairs
   - 
   - 
   - 
