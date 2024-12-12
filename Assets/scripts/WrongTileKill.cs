@@ -5,7 +5,6 @@ using UnityEngine;
 public class WrongTileKill : MonoBehaviour
 {
     public GameObject beginPoint;
-    
     // Start is called before the first frame update
     void Start()
     {
