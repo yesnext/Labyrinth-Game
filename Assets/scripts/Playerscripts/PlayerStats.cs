@@ -35,6 +35,9 @@ public class PlayerStats : MonoBehaviour
     public bool firstencounter = true;
     private static PlayerStats instance;
 
+    //bob addition
+    public HealthBar healthbar;
+
     // void Awake()
     // {
     //     // if (instance != null && instance != this)
@@ -53,6 +56,10 @@ public class PlayerStats : MonoBehaviour
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
+
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
     }
 
     void Update()
@@ -132,6 +139,7 @@ public class PlayerStats : MonoBehaviour
     {
         Health = Health - damage;
         Debug.Log("Health" + Health);
+        healthbar.SetHealth(Health);
     }
     public void TakeDamagefromigris(int damage)
     {
