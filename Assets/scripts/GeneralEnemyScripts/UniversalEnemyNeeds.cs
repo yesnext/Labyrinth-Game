@@ -22,9 +22,15 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected float LastLungAttackTime = -5.0f;
     protected bool IsLunging = false;
     public BoxCollider2D attackbox;
+    //bob addition
+    public HealthBar healthbar;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //bob addition
+        healthbar.SetMaxHealth(Health);
     }
 
     // Update is called once per frame
@@ -55,7 +61,11 @@ public class UniversalEnemyNeeds : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(this.gameObject);
+            //bob addition
+            Destroy(GameObject.FindWithTag("EnemyCanvas"));
         }
+        //bob addition
+            healthbar.SetHealth(Health);
     }
     public void GhangedirectionFollow()
     {
