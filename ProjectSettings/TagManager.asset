@@ -28,6 +28,7 @@ TagManager:
   - HourGlass
   - Checkpoint 1
   - Checkpoint 2
+  - EnemyCanvas
   layers:
   - Default
   - TransparentFX
