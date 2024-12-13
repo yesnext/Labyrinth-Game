@@ -5,10 +5,11 @@ using UnityEngine;
 public class PuzzleKey : MonoBehaviour
 {
     public bool istriggered = false;
+    public GameObject interactHint;
     // Start is called before the first frame update
     void Start()
     {
-        
+        interactHint.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,10 +21,12 @@ public class PuzzleKey : MonoBehaviour
     {
         if (collision.tag == "Player"){
             istriggered = true;
+            interactHint.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision){
             istriggered = false;
+            interactHint.SetActive(false);
     }
 }
