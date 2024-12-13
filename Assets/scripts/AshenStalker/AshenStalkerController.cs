@@ -124,7 +124,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
         LastRangAttackTime = Time.time;
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(RangeAttackDamage);
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
     }
     public void OnTriggerEnter2D(Collider2D other)
     {

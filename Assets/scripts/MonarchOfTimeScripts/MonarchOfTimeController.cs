@@ -7,7 +7,6 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     private EnemyProjectilePoint projectilePoint;
     public float rangeAttackCooldown = 2.0f;
     private float LastRangeAttackTime;
-    public int RangeAttackDamage;
     public MonarchOfTimeProjectile Projectile;
     public float TimestopInturuptionDuration = 5f;
     private float LastTimeStop;
@@ -20,8 +19,8 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     public float ReversingTimeCooldown = 20.0f;
     private float LastTimeTimeReversal;
     private float freezintimeduration = 2.0f;
-    private int originalhealth;
-    void Start()
+    public float SlowRate;
+    private int originalhealth;    void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
@@ -53,7 +52,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         LastRangeAttackTime = Time.time;
         MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
-        projectileController.Intialize(RangeAttackDamage);
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed,SlowRate);
     }
     public void FixedUpdate()
     {

@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 public class WardenObelisks : UniversalEnemyNeeds
 {
     public GameObject Projectile;
-    public int Damage = 3;
     public int Damageincreaseby = 3;
     public float AttackCooldown = 1.0f;
     public float LastAttackCooldown = 0;
@@ -43,7 +42,7 @@ public class WardenObelisks : UniversalEnemyNeeds
         LastAttackCooldown = Time.time;
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(Damage);
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
     }
     public override void TakeDamage(int damage)
     {
@@ -58,7 +57,7 @@ public class WardenObelisks : UniversalEnemyNeeds
         if (FindObjectsOfType<WardenObelisks>().Length < CurrentNumOfObelisks)
         {
             CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
-            Damage += Damageincreaseby;
+            RangeAttackDamage += Damageincreaseby;
         }
     }
 

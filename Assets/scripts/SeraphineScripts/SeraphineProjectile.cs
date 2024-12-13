@@ -10,6 +10,10 @@ public class SeraphineProjectile : MonoBehaviour
     private UniversalEnemyNeeds enemy;
     private Vector3 playerpos;
     public float speed;
+    public void Intialize(float Speed)
+    {
+        speed = Speed;
+    }
     // Start is called before the first frame update
     void Start()
     {

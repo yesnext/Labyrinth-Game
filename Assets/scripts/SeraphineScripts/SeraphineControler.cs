@@ -70,7 +70,9 @@ public class SeraphineControler : UniversalEnemyNeeds
     }
     public void shoot()
     {
-        Instantiate(projectile, projectilepoint.transform.position, projectilepoint.transform.rotation);
+        SeraphineProjectile Projectile = Instantiate(projectile, projectilepoint.transform.position, projectilepoint.transform.rotation);
+        SeraphineProjectile projectileController = Projectile.GetComponent<SeraphineProjectile>();
+        projectileController.Intialize(RangeAttackSpeed);
         lastshoottime = Time.time;
     }
     public IEnumerator MeleeAttack()

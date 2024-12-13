@@ -11,7 +11,7 @@ public class WyvernControler : UniversalEnemyNeeds
     public float attackCooldown = 2.0f;
     public float attackDuration = 1.0f;
     private EnemyProjectilePoint projectilePoint;
-    public EnemyProjectile projectile;
+    public EnemyProjectile Projectile;
     private int CurrentPatrolPoint = 0;
     private float lastAttackTime = 0.0f;
     private bool isAttacking = false;
@@ -88,8 +88,9 @@ public class WyvernControler : UniversalEnemyNeeds
     {
         if (distance < 6.0f)
         {
-            Instantiate(projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
-            lastAttackTime = Time.time;
+            EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
         }
     }
 

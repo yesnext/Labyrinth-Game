@@ -8,7 +8,6 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     protected float LastRangAttackTime;
     public float RangAttackCooldown = 1.0f;
     public float RangeAttackRange = 10f;
-    protected int RangeAttackDamage = 3;
     public GameObject Projectile;
     private Transform ProjectilePoint;
     private SummonsSpawnLocation spawnlocation;
@@ -40,7 +39,7 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
         yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(RangeAttackDamage);
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
         shooting =false;
         LastRangAttackTime = Time.time;
     }

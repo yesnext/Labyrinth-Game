@@ -8,9 +8,9 @@ public class CalistaController : UniversalEnemyNeeds
     public float PointBlank = 2.0f;
     protected float LastRangAttackTime;
     protected float RangAttackCooldown = 2.0f;
-    public GameObject Projectile;
+    public EnemyProjectile Projectile;
     private Transform ProjectilePoint;
-    public int RangeAttackDamage = 3;
+
     public float DoubleDamageTime=0.0f;
     void Start()
     {
@@ -23,7 +23,7 @@ public class CalistaController : UniversalEnemyNeeds
     {
         ChangedDirectionFollow();
         Followplayer();
-        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && false)
+        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank)
         {
             Shoot();
         }
@@ -71,12 +71,12 @@ public class CalistaController : UniversalEnemyNeeds
     public void Shoot()
     {
         LastRangAttackTime = Time.time;
-        GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
+        EnemyProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        if(DoubleDamageTime<DoubleDamageTime+10){
-        projectileController.Intialize(RangeAttackDamage*2);
+        if(Time.time<DoubleDamageTime+10){
+        projectileController.Intialize(RangeAttackDamage*2,RangeAttackSpeed);
         }else{
-        projectileController.Intialize(RangeAttackDamage);
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
         }
     }
     public void OnTriggerEnter2D(Collider2D other)

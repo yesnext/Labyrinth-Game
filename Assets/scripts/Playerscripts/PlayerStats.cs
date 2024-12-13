@@ -36,6 +36,8 @@ public class PlayerStats : MonoBehaviour
     public bool firstencounter = true;
     public float rangeattaccooldown;
     public float lastrangeattack;
+    public int RangeAttackDamage;
+    public float RangeAttackSpeed;
 
     // void Awake()
     // {
@@ -132,13 +134,13 @@ public class PlayerStats : MonoBehaviour
         {
             GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-            projectileController.Intialize(ProjectilePoint);
+            projectileController.Intialize(ProjectilePoint,RangeAttackDamage,RangeAttackSpeed);
         }
         else
         {
             GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-            projectileController.Intialize(ProjectilePoint);
+            projectileController.Intialize(ProjectilePoint,RangeAttackDamage,RangeAttackSpeed);
         }
         lastrangeattack = Time.time;
     }

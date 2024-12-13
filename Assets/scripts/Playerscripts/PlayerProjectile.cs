@@ -13,9 +13,11 @@ public class PlayerProjectile : MonoBehaviour
     public bool element;
     public int Damage = 3;
     public PlayerStats Player;
-    public void Intialize(Transform Firepoint)
+    public void Intialize(Transform Firepoint, int RangeAttackDamage, float RangeAttackSpeed)
     {
         ProjectilePoint = Firepoint;
+        Damage = RangeAttackDamage;
+        speed = RangeAttackSpeed;
     }
     void Start()
     {
@@ -72,10 +74,11 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (GameObject.FindObjectOfType<WyvernControler>() != null && other.tag == "Boss")
         {
-           other.GetComponent<WyvernControler>().TakeDamage(Damage);
+            other.GetComponent<WyvernControler>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
-        else if (GameObject.FindObjectOfType<SeraphineControler>() != null && other.tag == "Boss"){
+        else if (GameObject.FindObjectOfType<SeraphineControler>() != null && other.tag == "Boss")
+        {
             other.GetComponent<SeraphineControler>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }

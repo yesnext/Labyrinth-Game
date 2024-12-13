@@ -7,7 +7,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
 {
     public Chains[] chains;
     private EnemyProjectilePoint Projectilepoint;
-    public EnemyProjectile projectile;
+    public EnemyProjectile Projectile;
     public float RangeAttackDistance;
     private float LastRangAttackTime;
     public float RangAttackCooldown;
@@ -45,7 +45,9 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     }
     public void RangeAttack()
     {
-        Instantiate(projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
+        EnemyProjectile projectile = Instantiate(Projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
+        EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
         LastRangAttackTime = Time.time;
     }
 }

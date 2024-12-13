@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1167144527905841314}
   - component: {fileID: 7893945736697507411}
   m_Layer: 0
-  m_Name: ice enemy 0
+  m_Name: TestHarlequinKing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,7 +29,9 @@ public class Parkour : UniversalEnemyNeeds
     public void Shoot()
     {
         lastMeleeAttackTime = Time.time;
-        Instantiate(projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        EnemyProjectile Projectile = Instantiate(projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        EnemyProjectile projectileController = Projectile.GetComponent<EnemyProjectile>();
+        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
     }
     public void OnTriggerEnter2D(Collider2D other)
     {

@@ -21,6 +21,8 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected float LungAttackCooldown = 5f; //time in seconds for the cooldown
     protected float LastLungAttackTime = -5.0f;
     protected bool IsLunging = false;
+    public float RangeAttackSpeed;
+    public int RangeAttackDamage;
     public BoxCollider2D attackbox;
     // Start is called before the first frame update
     void Start()
