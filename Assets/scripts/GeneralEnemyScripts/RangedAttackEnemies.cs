@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RangedAttackEnemies : UniversalEnemyNeeds
 {
     protected float LastRangAttackTime;
-    protected float RangAttackCooldown = 2.0f;
+    public float RangAttackCooldown = 1.0f;
+    public float RangeAttackRange = 10f;
     protected int RangeAttackDamage = 3;
     public GameObject Projectile;
     private Transform ProjectilePoint;
     private SummonsSpawnLocation spawnlocation;
+    private bool shooting;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +29,25 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     void Update()
     {
         ChangedDirectionFollow();
-        if (Time.time - LastRangAttackTime > RangAttackCooldown)
+        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance < RangeAttackRange && !shooting)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
-    public void Shoot()
+    public IEnumerator Shoot()
     {
-        LastRangAttackTime = Time.time;
+        shooting = true;
+        yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage);
+        shooting =false;
+        LastRangAttackTime = Time.time;
+    }
+    public void FixedUpdate()
+    {
+        direction = (player.transform.position - transform.position).normalized;
+        distance = Vector2.Distance(transform.position, player.transform.position);
     }
     public override void TakeDamage(int damage)
     {
