@@ -205,16 +205,17 @@ public class PlayerStats : MonoBehaviour
                     }
                     else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null)
                     {
-                        FindObjectOfType<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
+                        other.GetComponent<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
 
                     }
                     else if (GameObject.FindObjectOfType<WyvernControler>() != null)
                     {
-                        FindObjectOfType<WyvernControler>().TakeDamage(MeleeAttackDamage);
+                        other.GetComponent<WyvernControler>().TakeDamage(MeleeAttackDamage);
 
                     }
-
-
+                    else if (GameObject.FindObjectOfType<SeraphineControler>() != null){
+                        other.GetComponent<SeraphineControler>().TakeDamage(MeleeAttackDamage);
+                    }
                 }
                 else if (other.tag == "Chains")
                 {
@@ -235,9 +236,7 @@ public class PlayerStats : MonoBehaviour
                 {
                     other.GetComponent<UniversalEnemyNeeds>().TakeDamage(MeleeAttackDamage);
                 }
-
             }
-
         }
     }
     public void Heal()

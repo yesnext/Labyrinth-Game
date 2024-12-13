@@ -3,44 +3,90 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SeraphineControler : UniversalEnemyNeeds
 {
-    public int Bossphase;
-    
+    public int Bossphase = 1;
+    private bool attacking;
+    public float attackanimduration;
+    private checkpoint2 shadorealmpoint;
+    public float Shadowrealmperiod;
+    public float shootingcooldown = 100f;
+    public float lastshoottime;
+    public EnemyProjectilePoint projectilepoint;
+    public SeraphineProjectile projectile;
+    public int originalhealth;
+    private checkpoint1 playerstartposistion;
+    public  bool telepoted;
     // Start is called before the first frame update
     void Start()
     {
-        player =FindObjectOfType<PlayerStats>();
+        playerstartposistion = FindObjectOfType<checkpoint1>();
+        shadorealmpoint = FindObjectOfType<checkpoint2>();
+        player = FindObjectOfType<PlayerStats>();
+        projectilepoint = FindObjectOfType<EnemyProjectilePoint>();
+        originalhealth = Health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Followplayer();
-        ChangedDirectionFollow();
-        if(distance<meleeattackdistance && Time.time -lastMeleeAttackTime>meleeattackdistance){
-
+        if (Bossphase == 1)
+        {
+            if (!attacking)
+            {
+                Followplayer();
+            }
+            ChangedDirectionFollow();
+            if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !attacking && Bossphase == 1)
+            {
+                StartCoroutine(MeleeAttack());
+            }
+        }
+        else
+        {
+            if (!telepoted)
+            {
+                StartCoroutine(teleport());
+            }
+            if (Time.time - lastshoottime > shootingcooldown)
+            {
+                shoot();
+            }
         }
     }
-    public void MeleeAttack()
+    public IEnumerator teleport()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        telepoted=true;
+        Vector3 ShadowRealm = new Vector3(shadorealmpoint.transform.position.x, shadorealmpoint.transform.position.y, player.transform.position.z);
+        player.transform.position = ShadowRealm;
+        yield return new WaitForSeconds(Shadowrealmperiod);
+        if (Bossphase == 2)
         {
-            EnemySpeed = OriginalSpeed;
+            player.transform.position = new Vector3(playerstartposistion.transform.position.x, playerstartposistion.transform.position.y, player.transform.position.z);
+            Destroy(this.gameObject);
         }
+    }
+    public void shoot()
+    {
+        Instantiate(projectile, projectilepoint.transform.position, projectilepoint.transform.rotation);
+        lastshoottime = Time.time;
+    }
+    public IEnumerator MeleeAttack()
+    {
+        attacking = true;
+        //animation trigger
+        yield return new WaitForSeconds(attackanimduration);
         lastMeleeAttackTime = Time.time;
+        attacking = false;
     }
     public override void TakeDamage(int damage)
     {
         Health = Health - damage;
         if (Health <= 0)
         {
-            if (Bossphase == 2)
-            {
-                Destroy(this.gameObject);
-            }
+            Bossphase++;
         }
     }
     public void FixedUpdate()
@@ -50,9 +96,12 @@ public class SeraphineControler : UniversalEnemyNeeds
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (attackbox.enabled)
         {
-            player.TakeDamage(MeleeAttackDamage);
+            if (other.tag == "Player")
+            {
+                player.TakeDamage(MeleeAttackDamage);
+            }
         }
     }
 }

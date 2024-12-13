@@ -57,12 +57,6 @@ public class UniversalEnemyNeeds : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void FixedUpdate()
-    {
-        direction = (player.transform.position - transform.position).normalized;
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        
-    }
     public void ChangedDirectionFollow()
     {
         if (direction.x > 0 && !isFacingRight)

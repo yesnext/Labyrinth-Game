@@ -2,24 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class SeraphineProjectile : MonoBehaviour
 {
-    public float speed;
-    public UniversalEnemyNeeds enemy;
-    public PlayerStats player;
+    private SeraphineControler boss;
+    private PlayerStats player;
+    private checkpoint1 playerstartposistion;
+    private UniversalEnemyNeeds enemy;
     private Vector3 playerpos;
-    public int Damage;
-    public void Intialize(int damage)
-    {
-        Damage = damage;
-    }
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
+        playerstartposistion = FindObjectOfType<checkpoint1>();
+        boss = FindObjectOfType<SeraphineControler>();
         player = FindObjectOfType<PlayerStats>();
-
         enemy = FindObjectOfType<UniversalEnemyNeeds>();
-        if (enemy.isFacingRight== false)
+        if (enemy.isFacingRight == false)
         {
             playerpos = (player.transform.position - transform.position).normalized;
             this.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -37,14 +35,15 @@ public class EnemyProjectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Environment")
+        Debug.Log("this ain't right");
+        if (other.tag == "Player")
         {
             Destroy(this.gameObject);
-        }
-        else if (other.tag == "Player")
-        {
-            Destroy(this.gameObject);
-            player.TakeDamage(Damage);
+            boss.Bossphase = 1;
+            boss.Health = boss.originalhealth;
+            boss.telepoted =false;
+            Vector3 respawnPosition = new Vector3(playerstartposistion.transform.position.x, playerstartposistion.transform.position.y, player.transform.position.z);
+            player.transform.position = respawnPosition;
         }
     }
 }
