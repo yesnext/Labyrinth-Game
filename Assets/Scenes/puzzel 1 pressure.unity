@@ -3841,6 +3841,7 @@ GameObject:
   - component: {fileID: 1528469906}
   - component: {fileID: 1528469905}
   - component: {fileID: 1528469904}
+  - component: {fileID: 1528469907}
   m_Layer: 0
   m_Name: mcIdle_0
   m_TagString: Player
@@ -3887,7 +3888,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1172231183
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 22
   m_Sprite: {fileID: 1655514709, guid: 0a0eead49463689499aa442c1ffd8da5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3928,7 +3929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rb2d: {fileID: 1528469906}
+  rb: {fileID: 1528469906}
 --- !u!61 &1528469905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3976,6 +3977,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1528469907
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528469901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d21eed29f29f604e8e6b73e051292e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1558006872
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,6 +4116,7 @@ GameObject:
   - component: {fileID: 1719442278}
   - component: {fileID: 1719442282}
   - component: {fileID: 1719442280}
+  - component: {fileID: 1719442283}
   m_Layer: 0
   m_Name: wolf (idle)_0
   m_TagString: Untagged
@@ -4204,6 +4226,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1719442283
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719442277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94c8010d86ffe62459c908565d6cb989, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1719798955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6905,7 +6947,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2126682237
-  m_SortingLayer: 10
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1508859341, guid: da7731d41bd23794b89f380bf485d830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
