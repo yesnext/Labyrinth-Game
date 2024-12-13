@@ -16,7 +16,6 @@ public class AshenStalkerController : UniversalEnemyNeeds
     protected float LastRangAttackTime;
     protected float RangAttackCooldown = 2.0f;
     public float RangeAttackDistance = 5;
-
     public SpriteRenderer Disappear;
     public float appeardistance = 1;
     public GameObject minions;
