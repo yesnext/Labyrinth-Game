@@ -11,7 +11,7 @@ public class CalistaController : UniversalEnemyNeeds
     public EnemyProjectile Projectile;
     private Transform ProjectilePoint;
 
-    public float DoubleDamageTime=0.0f;
+    public float DoubleDamageTime = 0.0f;
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
@@ -22,14 +22,17 @@ public class CalistaController : UniversalEnemyNeeds
     void Update()
     {
         ChangedDirectionFollow();
-        Followplayer();
-        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank)
+        if (!MeleeAttacking && !RangAttacking)
         {
-            Shoot();
+            Followplayer();
         }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && !MeleeAttacking && !RangAttacking)
         {
-            MeleeAttack();//location to trigger animation
+            StartCoroutine(Shoot());
+        }
+        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
+        {
+            StartCoroutine(MeleeAttack());
         }
 
     }
@@ -37,19 +40,13 @@ public class CalistaController : UniversalEnemyNeeds
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
-        
+
     }
-    public void MeleeAttack()
+    public IEnumerator MeleeAttack()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            EnemySpeed = OriginalSpeed;
-            if(Time.time<DoubleDamageTime+10)
-            player.TakeDamage(MeleeAttackDamage*2);
-            else
-            player.TakeDamage(MeleeAttackDamage);
-        }
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
     }
     public override void TakeDamage(int damage)
@@ -66,18 +63,24 @@ public class CalistaController : UniversalEnemyNeeds
         {
             Health += damage;
         }
-        DoubleDamageTime=Time.time;
+        DoubleDamageTime = Time.time;
     }
-    public void Shoot()
+    public IEnumerator Shoot()
     {
-        LastRangAttackTime = Time.time;
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
         EnemyProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        if(Time.time<DoubleDamageTime+10){
-        projectileController.Intialize(RangeAttackDamage*2,RangeAttackSpeed);
-        }else{
-        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
+        if (Time.time < DoubleDamageTime + 10)
+        {
+            projectileController.Intialize(RangeAttackDamage * 2, RangeAttackSpeed);
         }
+        else
+        {
+            projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
+        }
+        RangAttacking = false;
+        LastRangAttackTime = Time.time;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -85,11 +88,11 @@ public class CalistaController : UniversalEnemyNeeds
         {
             if (attackbox.enabled)
             {
-                player = other.GetComponent<PlayerStats>();
-                if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-                {
-                    MeleeAttack();
-                }
+                if (Time.time < DoubleDamageTime + 10)
+                    player.TakeDamage(MeleeAttackDamage * 2);
+                else
+                    player.TakeDamage(MeleeAttackDamage);
+
             }
         }
     }

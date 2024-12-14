@@ -38,14 +38,14 @@ public class IgrisController : UniversalEnemyNeeds
                 LungAttack();
 
             }
-            else if (BossPhase == 1 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && player.firstencounter)
+            else if (BossPhase == 1 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && player.firstencounter && !MeleeAttacking)
             {
-                SwordSlash();
+                StartCoroutine(SwordSlash());
             }
-            else if (BossPhase == 2 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && !player.firstencounter)
+            else if (BossPhase == 2 && distance < meleeattackdistance && Time.time - lastMeleeAttackTime > meleeattackdistance && !player.firstencounter && !MeleeAttacking)
             {
                 Debug.Log("inside fist");
-                FistSwing();
+                StartCoroutine(FistSwing());
             }
         }
         else
@@ -91,26 +91,24 @@ public class IgrisController : UniversalEnemyNeeds
             }
         }
     }
-    public void SwordSlash()
+    public IEnumerator SwordSlash()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            EnemySpeed = OriginalSpeed;
-            IsLunging = false;
-            player.TakeDamage(MeleeAttackDamage);
-        }
+        //this is to trigger the sword fight animation
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        EnemySpeed = OriginalSpeed;
+        IsLunging = false;
+        MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
     }
-    public void FistSwing()
+    public IEnumerator FistSwing()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            EnemySpeed = OriginalSpeed;
-            IsLunging = false;
-            player.TakeDamage(MeleeAttackDamage);
-        }
+        //this is to trigger the fist fight animation
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        EnemySpeed = OriginalSpeed;
+        IsLunging = false;
+        MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
     }
     public override void TakeDamage(int damage)
@@ -131,13 +129,9 @@ public class IgrisController : UniversalEnemyNeeds
         if (attackbox.enabled)
         {
             if (other.tag == "Player")
-
-                player = other.GetComponent<PlayerStats>();
-            if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
             {
-                SwordSlash();
+                player.TakeDamage(MeleeAttackDamage);
             }
-
         }
         if (FistAttackBox.enabled)
         {

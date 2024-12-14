@@ -24,12 +24,15 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public float RangeAttackSpeed;
     public int RangeAttackDamage;
     public BoxCollider2D attackbox;
-    // Start is called before the first frame update
+    protected bool MeleeAttacking;
+    public float MeleeAttackAnimationDuration;
+    protected bool RangAttacking;
+    public float RangAttackAnimationDuration;
     void Start()
     {
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -37,19 +40,9 @@ public class UniversalEnemyNeeds : MonoBehaviour
 
     public void Followplayer()
     {
-        // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
 
         ChangedDirectionFollow();
-        if (distance < 4.0f)
-        {
-            // animator.SetBool("Walking", false);
-            // animator.SetBool("attack",true);
-        }
-        else
-        {
-            // animator.SetBool("attack",false);
-        }
     }
     public virtual void TakeDamage(int damage)
     {
@@ -78,5 +71,5 @@ public class UniversalEnemyNeeds : MonoBehaviour
             transform.localScale = scale;
         }
     }
-    
+
 }

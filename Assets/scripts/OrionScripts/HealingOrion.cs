@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class HealingOrion : UniversalEnemyNeeds
 {
-    private float teleportcooldown = 8.0f;
-    private float LastTeleportTime;
+    public float teleportcooldown = 8.0f;
+    public float LastTeleportTime;
     public bool agrue = false;
     public float agruedistance = 3.0f;
     public AttackingOrion Attackingorion;
@@ -16,6 +16,9 @@ public class HealingOrion : UniversalEnemyNeeds
     private SummonsSpawnLocation[] teleportlocations;
     private SummonsSpawnLocation previouslocation;
     private bool onetime = true;
+    private bool summoningOrion;
+    public float TeleportingAnimationDuration;
+    public bool Teleporting;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,55 +32,57 @@ public class HealingOrion : UniversalEnemyNeeds
     void Update()
     {
         ChangedDirectionFollow();
-        if (agrue)
+        if (agrue && Time.time - LastTeleportTime > teleportcooldown && !Teleporting)
         {
-            teleport();
+            StartCoroutine(teleport());
         }
         if (distance < agruedistance && onetime)
         {
-            SummonAttackOrion();
+            StartCoroutine(SummonAttackOrion());
             agrue = true;
         }
     }
-    public void teleport()
+    public IEnumerator teleport()
     {
-        if (Time.time - LastTeleportTime > teleportcooldown)
+        Teleporting =true;
+        yield return new WaitForSeconds(TeleportingAnimationDuration);
+        foreach (SummonsSpawnLocation teleport in teleportlocations)
         {
-            foreach (SummonsSpawnLocation teleport in teleportlocations)
+            if (!teleport.ocupied)
             {
-                if (!teleport.ocupied)
+                Vector3 respawnPosition = new Vector3(teleport.transform.position.x, teleport.transform.position.y, this.transform.position.z);
+                teleport.ocupied = true;
+                this.transform.position = respawnPosition;
+                if (previouslocation != null)
                 {
-                    Vector3 respawnPosition = new Vector3(teleport.transform.position.x, teleport.transform.position.y, this.transform.position.z);
-                    teleport.ocupied = true;
-                    this.transform.position = respawnPosition;
-                    if (previouslocation != null)
-                    {
-                        previouslocation.ocupied = false;
-                    }
-                    previouslocation = teleport;
-                    break;
+                    previouslocation.ocupied = false;
                 }
+                previouslocation = teleport;
+                break;
             }
-            foreach (SummonsSpawnLocation teleport in teleportlocations)
-            {
-                if (!teleport.ocupied)
-                {
-                    GameObject minion = Instantiate(fakes, teleport.transform.position, teleport.transform.rotation);
-                    FakeOrionImage minioncontroller = minion.GetComponent<FakeOrionImage>();
-                    minioncontroller.Intialize(teleport);
-                }
-            }
-            LastTeleportTime = Time.time;
-
         }
+        foreach (SummonsSpawnLocation teleport in teleportlocations)
+        {
+            if (!teleport.ocupied)
+            {
+                GameObject minion = Instantiate(fakes, teleport.transform.position, teleport.transform.rotation);
+                FakeOrionImage minioncontroller = minion.GetComponent<FakeOrionImage>();
+                minioncontroller.Intialize(teleport);
+            }
+        }
+        Teleporting =false;
+        LastTeleportTime = Time.time;
     }
-    public void SummonAttackOrion()
+    public IEnumerator SummonAttackOrion()
     {
+        summoningOrion = true;
+        yield return new WaitForSeconds(0);
         if (onetime)
         {
             Instantiate(Attackingorion, AttackingorionLocation.transform.position, Attackingorion.transform.rotation);
             onetime = false;
         }
+        summoningOrion = false;
     }
     public void FixedUpdate()
     {
@@ -91,7 +96,8 @@ public class HealingOrion : UniversalEnemyNeeds
         if (Health <= 0)
         {
             Attackingorion.IsImmune = false;
-            foreach(FakeOrionImage fake in FindObjectsOfType<FakeOrionImage>()){
+            foreach (FakeOrionImage fake in FindObjectsOfType<FakeOrionImage>())
+            {
                 Destroy(fake.gameObject);
             }
             Destroy(this.gameObject);

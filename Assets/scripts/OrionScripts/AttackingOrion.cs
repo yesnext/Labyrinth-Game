@@ -23,8 +23,8 @@ public class AttackingOrion : UniversalEnemyNeeds
         {
             IsImmune = false;
         }
-        if(distance<meleeattackdistance && Time.time-lastMeleeAttackTime>MeleeAttackCooldown){
-            Meleeattack();
+        if(distance<meleeattackdistance && Time.time-lastMeleeAttackTime>MeleeAttackCooldown && !MeleeAttacking){
+            StartCoroutine(MeleeAttack());
         }
     }
     public void FixedUpdate()
@@ -32,11 +32,13 @@ public class AttackingOrion : UniversalEnemyNeeds
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
     }
-    public void Meleeattack(){
-        // for animation
-        lastMeleeAttackTime=Time.time;
-    }
-    public override void TakeDamage(int damage)
+    public IEnumerator MeleeAttack()
+    {
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        MeleeAttacking = false;
+        lastMeleeAttackTime = Time.time;
+    }    public override void TakeDamage(int damage)
     {
         if (!IsImmune)
         {
@@ -54,7 +56,7 @@ public class AttackingOrion : UniversalEnemyNeeds
         {
             if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
             {
-                other.GetComponent<PlayerStats>().TakeDamage(MeleeAttackDamage);
+                player.TakeDamage(MeleeAttackDamage);
             }
         }
     }

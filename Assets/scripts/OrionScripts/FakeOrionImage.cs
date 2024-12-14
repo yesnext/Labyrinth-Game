@@ -5,6 +5,7 @@ using UnityEngine;
 public class FakeOrionImage : UniversalEnemyNeeds
 {
     public SummonsSpawnLocation spawnlocation;
+    public HealingOrion healingOrion;
     public void Intialize(SummonsSpawnLocation spawnloc)
     {
         spawnloc.ocupied = true;
@@ -12,6 +13,7 @@ public class FakeOrionImage : UniversalEnemyNeeds
     }
     void Start()
     {
+        healingOrion = FindObjectOfType<HealingOrion>();
         player = FindObjectOfType<PlayerStats>();
     }
 
@@ -19,6 +21,14 @@ public class FakeOrionImage : UniversalEnemyNeeds
     void Update()
     {
         ChangedDirectionFollow();
+        if (Time.time - healingOrion.LastTeleportTime > healingOrion.teleportcooldown && !healingOrion.Teleporting)
+        {
+            StartCoroutine(teleport());
+        }
+    }
+    public IEnumerator teleport()
+    { 
+        yield return new WaitForSeconds(healingOrion.TeleportingAnimationDuration);
     }
     public void FixedUpdate()
     {

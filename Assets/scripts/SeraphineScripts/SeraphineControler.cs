@@ -9,7 +9,6 @@ public class SeraphineControler : UniversalEnemyNeeds
 {
     public int Bossphase = 1;
     private bool attacking;
-    public float attackanimduration;
     private checkpoint2 shadorealmpoint;
     public float Shadowrealmperiod;
     public float shootingcooldown = 100f;
@@ -78,8 +77,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     public IEnumerator MeleeAttack()
     {
         attacking = true;
-        //animation trigger
-        yield return new WaitForSeconds(attackanimduration);
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         lastMeleeAttackTime = Time.time;
         attacking = false;
     }

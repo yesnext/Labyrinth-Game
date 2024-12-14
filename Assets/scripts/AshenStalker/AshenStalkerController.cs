@@ -23,6 +23,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     private SummonsSpawnLocation[] SpawnLocation;
     private Transform ProjectilePoint;
     private Rigidbody2D ShadoStep;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,19 +40,22 @@ public class AshenStalkerController : UniversalEnemyNeeds
     {
 
         ChangedDirectionFollow();
-        Followplayer();
-        if (distance > SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
-        Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        if (!MeleeAttacking && !RangAttacking)
+        {
+            Followplayer();
+        }
+        if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
+        Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
         {
             SurpriseAttack();
         }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
         {
-            MeleeAttack();
+            StartCoroutine(MeleeAttack());
         }
-        else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance)
+        else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
         if (distance < appeardistance)
         {
@@ -82,47 +86,43 @@ public class AshenStalkerController : UniversalEnemyNeeds
         lastSummonscooldown = Time.time;
         foreach (SummonsSpawnLocation spawnloc in SpawnLocation)
         {
-            if(!spawnloc.ocupied){
-            GameObject minion = Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
-            RangedAttackEnemies minioncontroller = minion.GetComponent<RangedAttackEnemies>();
-            minioncontroller.Intialize(spawnloc);
+            if (!spawnloc.ocupied)
+            {
+                GameObject minion = Instantiate(minions, spawnloc.transform.position, spawnloc.transform.rotation);
+                RangedAttackEnemies minioncontroller = minion.GetComponent<RangedAttackEnemies>();
+                minioncontroller.Intialize(spawnloc);
             }
         }
     }
 
     public void SurpriseAttack()
     {
+        IsLunging = true;
         Disappear.enabled = false;
         ShadoStep.gravityScale = 0;
-        if (Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown)
-        {
-            LastSurpriseMeleeAttackTime = Time.time;
-            EnemySpeed *= 1.5f;
-            Debug.Log(EnemySpeed);
-            if (!IsLunging)
-            {
-                IsLunging = true;
-            }
-        }
+        LastSurpriseMeleeAttackTime = Time.time;
+        EnemySpeed *= 1.5f;
+
     }
-    public void MeleeAttack()
+    public IEnumerator MeleeAttack()
     {
+        MeleeAttacking = true;
         Disappear.enabled = true;
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-        {
-            EnemySpeed = OriginalSpeed;
-            IsLunging = false;
-            player.TakeDamage(MeleeAttackDamage);
-        }
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        EnemySpeed = OriginalSpeed;
+        IsLunging = false;
         lastMeleeAttackTime = Time.time;
+        MeleeAttacking = false;
     }
-    public void Shoot()
+    public IEnumerator Shoot()
     {
-        LastRangAttackTime = Time.time;
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
+        LastRangAttackTime = Time.time;
+        RangAttacking = false;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -130,11 +130,9 @@ public class AshenStalkerController : UniversalEnemyNeeds
         {
             if (attackbox.enabled)
             {
-                player = other.GetComponent<PlayerStats>();
-                if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-                {
-                    MeleeAttack();
-                }
+
+                player.TakeDamage(MeleeAttackDamage);
+
             }
         }
     }

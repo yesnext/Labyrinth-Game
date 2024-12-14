@@ -21,10 +21,11 @@ public class Chains : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        ChangedDirectionFollow();
-        if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown)
+        
+        if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown && !MeleeAttacking)
         {
-            ChainWhipAttack();
+            ChangedDirectionFollow();
+            StartCoroutine(ChainWhipAttack());
         }
     }
     public void FixedUpdate()
@@ -44,15 +45,18 @@ public class Chains : UniversalEnemyNeeds
             Destroy(this.gameObject);
         }
     }
-    private void ChainWhipAttack()
+    private IEnumerator ChainWhipAttack()
     {
-        player.TakeDamage(ChainWhipDamage);
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        MeleeAttacking = false;
         LastChainWhipCooldown = Time.time;
     }
-    public void OnTriggerEnter2D(){
+    public void OnTriggerEnter2D()
+    {
         if (attackbox.enabled)
-                {
-                    ChainWhipAttack();
-                }
+        {
+            player.TakeDamage(ChainWhipDamage);
+        }
     }
 }

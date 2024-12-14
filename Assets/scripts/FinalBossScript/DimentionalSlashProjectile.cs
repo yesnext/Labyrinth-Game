@@ -9,6 +9,11 @@ public class DimentionalSlashProjectile : MonoBehaviour
     public PlayerStats player;
     private Vector3 playerpos;
     public int Damage;
+    public void Intialize(int damage, float Speed)
+    {
+        Damage = damage;
+        speed = Speed;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +30,7 @@ public class DimentionalSlashProjectile : MonoBehaviour
             playerpos = (player.transform.position - transform.position).normalized;
             this.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
-        
+
     }
 
     // Update is called once per frame
@@ -44,9 +49,11 @@ public class DimentionalSlashProjectile : MonoBehaviour
             player.TakeDamage(Damage);
             if (enemy.BossPhase == 1)
             {
-                
+
                 Destroy(this.gameObject);
-            }else{
+            }
+            else
+            {
                 enemy.Heal(Damage);
                 Destroy(this.gameObject);
             }

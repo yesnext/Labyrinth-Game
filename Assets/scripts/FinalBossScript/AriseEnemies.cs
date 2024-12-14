@@ -5,7 +5,6 @@ using UnityEngine;
 public class AriseEnemies : UniversalEnemyNeeds
 {
     protected Animator animator;
-    public float MeleeAttackDistance = 5.0f;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
     public short enemystate;
@@ -21,10 +20,12 @@ public class AriseEnemies : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
+        if(!MeleeAttacking){
         Followplayer();
-        if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
+        }
+        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown && distance < meleeattackdistance && !MeleeAttacking)
         {
-            meleeAttack();
+            StartCoroutine(meleeAttack());
         }
     }
     public override void TakeDamage(int damage)
@@ -40,16 +41,13 @@ public class AriseEnemies : UniversalEnemyNeeds
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
     }
-    public void meleeAttack()
+    public IEnumerator meleeAttack()
     {
-        if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown && distance < 5.0f)
-        {
-            player.TakeDamage(MeleeAttackDamage);
-            lastMeleeAttackTime = Time.time;
-        }
-
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        MeleeAttacking = false;
+        lastMeleeAttackTime = Time.time;
     }
-
     public void getdestroyed()
     {
         Destroy(this.gameObject);
@@ -60,7 +58,7 @@ public class AriseEnemies : UniversalEnemyNeeds
         {
             if (attackbox.enabled)
             {
-                meleeAttack();
+                 player.TakeDamage(MeleeAttackDamage);
             }
         }
     }

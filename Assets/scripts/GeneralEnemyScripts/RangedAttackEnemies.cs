@@ -37,6 +37,7 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     {
         shooting = true;
         yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FinalBossController : UniversalEnemyNeeds
 {
-    
+
     private Animator animator;
 
     protected float BossDodgeSpeed = 8f;
@@ -15,7 +15,7 @@ public class FinalBossController : UniversalEnemyNeeds
     protected float DodgeDurationCounter = 0.0f;
     public bool dodge;
     protected Transform ProjectilePoint;
-    public GameObject Projectile;
+    public DimentionalSlashProjectile Projectile;
     public int BossPhase = 1;
 
     protected float RangeAttackDistance = 5.0f;
@@ -40,6 +40,7 @@ public class FinalBossController : UniversalEnemyNeeds
     public BoxCollider2D BodyBox;
     protected bool onetime = true;
     protected bool secondtime = true;
+    protected bool arise;
 
 
     // Start is called before the first frame update
@@ -48,38 +49,38 @@ public class FinalBossController : UniversalEnemyNeeds
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
-        SpawnLocation =FindObjectOfType<SummonsSpawnLocation>().transform;
+        SpawnLocation = FindObjectOfType<SummonsSpawnLocation>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dodge == true && BossPhase == 1)
+        if (dodge == true && BossPhase == 1 && !MeleeAttacking && !RangAttacking)
         {
             StartCoroutine(Awareofeverymovedodge());
         }
-        else if (dodge == true && BossPhase >= 2)
+        else if (dodge == true && BossPhase >= 2 && !MeleeAttacking && !RangAttacking && !arise)
         {
             StartCoroutine(Dodge());
         }
-        if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3)
+        if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3 && !MeleeAttacking && !RangAttacking && !arise)
         {
             StartCoroutine(Arise());
         }
         ChangedDirectionFollow();
         Followplayer();
-        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
+        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
         {
-            RangeAttack();
+            StartCoroutine(RangeAttack());
         }
-        else if (distance >= LungAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && Time.time - LastLungAttackTime > LungAttackCooldown)
+        else if (distance >= LungAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && Time.time - LastLungAttackTime > LungAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
         {
             LungAttack();
 
         }
-        else if (distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+        else if (distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && !MeleeAttacking && !RangAttacking && !arise)
         {
-            ShadoAttack();
+            StartCoroutine(ShadoAttack());
         }
 
     }
@@ -93,47 +94,38 @@ public class FinalBossController : UniversalEnemyNeeds
         }
     }
 
-    public virtual void RangeAttack()
+    public IEnumerator RangeAttack()
     {
-        Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
+        DimentionalSlashProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
+        DimentionalSlashProjectile projectileController = projectile.GetComponent<DimentionalSlashProjectile>();
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
+        RangAttacking = false;
         LastRangAttackTime = Time.time;
     }
     public void LungAttack()
     {
-        if (Time.time - LastLungAttackTime > LungAttackCooldown)
+        LastLungAttackTime = Time.time;
+        EnemySpeed *= 1.5f;
+        if (!IsLunging)
         {
-            LastLungAttackTime = Time.time;
-            EnemySpeed *= 1.5f;
-            if (!IsLunging)
-            {
-                IsLunging = true;
-            }
+            IsLunging = true;
         }
-    }
-    public void ShadoAttack()
-    {
-        // lunganim=false;
-        // animator.SetBool("LungAnimation", lunganim);
-        // shadoslashanim = true;
-        // animator.SetBool("ShadoAnimation", shadoslashanim);
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
-        {
-            player.TakeDamage(ShadoAttackDamage);
 
-            if (BossPhase == 1)
-            {
-                Heal(ShadoAttackDamage);
-            }
-        }
-        lastShadoSwordSlashesTime = Time.time;
+    }
+    public IEnumerator ShadoAttack()
+    {
+        MeleeAttacking = true;
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        distance = Vector2.Distance(transform.position, player.transform.position);
         if (IsLunging)
         {
             EnemySpeed = EnemySpeed / 1.5f;
             IsLunging = false;
         }
-        // shadoslashanim=false;
-        // animator.SetBool("ShadoAnimation", shadoslashanim);
+        lastShadoSwordSlashesTime = Time.time;
+        MeleeAttacking = false;
     }
 
     public IEnumerator Awareofeverymovedodge()
@@ -180,6 +172,9 @@ public class FinalBossController : UniversalEnemyNeeds
         {
             if (Health <= 0 && BossPhase >= 3)
             {
+                foreach (AriseEnemies minions in FindObjectsOfType<AriseEnemies>()){
+                    minions.getdestroyed();
+                }
                 Destroy(this.gameObject);
             }
             else if (Health <= 0)
@@ -205,16 +200,17 @@ public class FinalBossController : UniversalEnemyNeeds
         if (attackbox.enabled)
         {
             if (other.tag == "Player")
+            {
                 if (attackbox.enabled)
                 {
-                    player = other.GetComponent<PlayerStats>();
-                    if (Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown)
+                    if (BossPhase == 1)
                     {
-                        ShadoAttack();
+                        Heal(ShadoAttackDamage);
                     }
+                    player.TakeDamage(ShadoAttackDamage);
                 }
+            }
         }
-
     }
     public void Heal(int heal)
     {
@@ -226,7 +222,7 @@ public class FinalBossController : UniversalEnemyNeeds
     }
     public IEnumerator Arise()
     {
-        LastArisetime = Time.time;
+        arise = true;
         Rigidbody2D BossRB = GetComponent<Rigidbody2D>();
         RigidbodyConstraints2D originalRB = BossRB.constraints;
         BossRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
@@ -257,6 +253,7 @@ public class FinalBossController : UniversalEnemyNeeds
         LastArisetime = Time.time;
         IsImmune = false;
         EnemySpeed = OriginalSpeed;
+        arise = false;
 
     }
 }

@@ -36,7 +36,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         ChangedDirectionFollow();
         if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
         if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
         {
@@ -47,12 +47,15 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
             StartCoroutine(ReversingTime());
         }
     }
-    public void Shoot()
+    public IEnumerator Shoot()
     {
-        LastRangeAttackTime = Time.time;
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
         MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
         projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed,SlowRate);
+        LastRangeAttackTime = Time.time;
+        RangAttacking = false;
     }
     public void FixedUpdate()
     {

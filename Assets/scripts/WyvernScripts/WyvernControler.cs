@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WyvernControler : UniversalEnemyNeeds
@@ -14,7 +15,6 @@ public class WyvernControler : UniversalEnemyNeeds
     public EnemyProjectile Projectile;
     private int CurrentPatrolPoint = 0;
     private float lastAttackTime = 0.0f;
-    private bool isAttacking = false;
     private float Patroldistance;
     private Vector2 PatrolDirection;
     private int numberofpatrolpoints;
@@ -32,13 +32,15 @@ public class WyvernControler : UniversalEnemyNeeds
 
     void Update()
     {
-        if (Time.time - lastAttackTime > attackCooldown)
+        ChangedDirectionFollow();
+        if (Time.time - lastAttackTime > attackCooldown && !RangAttacking)
         {
             Followplayer();
-            ChangedDirectionFollow();
-            Attack();
+            if (distance < attackRange)
+                StartCoroutine(Attack());
+
         }
-        else
+        else if (!RangAttacking)
         {
             Patrol();
             GhangedirectionPatrol();
@@ -84,25 +86,15 @@ public class WyvernControler : UniversalEnemyNeeds
         }
     }
 
-    void Attack()
+    public  IEnumerator Attack()
     {
-        if (distance < 6.0f)
-        {
-            EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
+        EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
-        }
-    }
-
-    System.Collections.IEnumerator PerformAttack()
-    {
-        isAttacking = true;
-
-        // Here you can add your attack animation logic
-        yield return new WaitForSeconds(attackDuration);
-
-        // After the attack, return to patrolling
-        isAttacking = false;
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
+        lastAttackTime = Time.time;
+        RangAttacking = false;
     }
 }
 
