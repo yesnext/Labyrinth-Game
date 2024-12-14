@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c93a90a6d328d247890886c3642bfc4
+guid: 4e9000c06a470834cafc7b9f23590abc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolf (idle)_0
+      name: wolf (walk)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 096922d4a69419241a8b017dce608237
-      internalID: 2089125723
+      spriteID: 7a6568b2233493d48912a2041c5752a1
+      internalID: -506401528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_1
+      name: wolf (walk)_1
       rect:
         serializedVersion: 2
         x: 128
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296463ef720349f4dbe5b529ac811f6a
-      internalID: -392002290
+      spriteID: b342e78f308f449408153a728f2a2c0c
+      internalID: 1105710244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_2
+      name: wolf (walk)_2
       rect:
         serializedVersion: 2
         x: 256
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d04348c6302f684693c30db6c00c9b6
-      internalID: -2042811997
+      spriteID: 5ffde6617bbabff41b7aea341e5b49a9
+      internalID: 1996764754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_3
+      name: wolf (walk)_3
       rect:
         serializedVersion: 2
         x: 384
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2997cdf673ec3af4cace5b15a7b32af6
-      internalID: -1542240405
+      spriteID: 633c6e82ede709946ab868cb5345a046
+      internalID: -2062727237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_4
+      name: wolf (walk)_4
       rect:
         serializedVersion: 2
         x: 512
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3afe6688583957f4c880ae105d94f8b8
-      internalID: 270959627
+      spriteID: 99453aaf0bb4913418f1bbd6055b16f2
+      internalID: 1072366304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_5
+      name: wolf (walk)_5
       rect:
         serializedVersion: 2
         x: 640
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f306aafe83fd9a24abd30a10b2b6db63
-      internalID: -339224294
+      spriteID: 32f8f9abd192de645867a39107bebf9c
+      internalID: -1886599205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf (idle)_6
+      name: wolf (walk)_6
       rect:
         serializedVersion: 2
         x: 768
@@ -245,8 +245,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b31f6d435c43c59419a71971b93bc5a3
-      internalID: -1911226980
+      spriteID: 3c5b060977b6fbe4bbbe1d9d71bc48bf
+      internalID: 1303829496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf (walk)_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74245732799003b4a93fc0be169f46a4
+      internalID: 1717492143
       vertices: []
       indices: 
       edges: []
@@ -262,13 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wolf (idle)_0: 2089125723
-      wolf (idle)_6: -1911226980
-      wolf (idle)_4: 270959627
-      wolf (idle)_3: -1542240405
-      wolf (idle)_2: -2042811997
-      wolf (idle)_1: -392002290
-      wolf (idle)_5: -339224294
+      wolf (walk)_6: 1303829496
+      wolf (walk)_5: -1886599205
+      wolf (walk)_0: -506401528
+      wolf (walk)_3: -2062727237
+      wolf (walk)_4: 1072366304
+      wolf (walk)_2: 1996764754
+      wolf (walk)_1: 1105710244
+      wolf (walk)_7: 1717492143
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

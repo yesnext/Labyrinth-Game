@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TileCollect : MonoBehaviour
 {
-    public int points = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +20,6 @@ public class TileCollect : MonoBehaviour
     {
         if (collision.tag == "Player"){
             Destroy(this.gameObject);
-            FindObjectOfType<PLayerStats>().totalpointsP1 += points;
-            Debug.Log("points " + FindObjectOfType<PLayerStats>().totalpointsP1);
         }
     }
 }
