@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,10 @@ using UnityEngine;
 public class controls : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
+    public float speed = 8f;
     private float jumpingPower = 16f;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
+    public bool frozen;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -15,6 +17,7 @@ public class controls : MonoBehaviour
 
     void Update()
     {
+        if(!frozen){
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -28,6 +31,8 @@ public class controls : MonoBehaviour
         }
 
         Flip();
+        }
+        
     }
 
     private void FixedUpdate()
@@ -35,7 +40,7 @@ public class controls : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
@@ -49,5 +54,7 @@ public class controls : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+        
     }
+   
 }

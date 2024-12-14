@@ -10,9 +10,24 @@ TagManager:
   - interactable object
   - InteractObject
   - WallSlot
-  - Redirector
-  - Goal
-  - Wind
+  - Enemy
+  - Environment
+  - Boss
+  - Projectile
+  - Arise Enemy
+  - Enemy Projectile
+  - Chains
+  - IgrisCheckPoint
+  - PlayerCheckPoint
+  - PlayerProjectilePoint
+  - Obelisk
+  - Without element or Phases
+  - TeleportLocations
+  - SpawnLocation
+  - AttackOrion
+  - HourGlass
+  - Checkpoint 1
+  - Checkpoint 2
   layers:
   - Default
   - TransparentFX
@@ -27,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Stairs
   - 
   - 
   - 
@@ -97,7 +112,4 @@ TagManager:
     locked: 0
   - name: mc
     uniqueID: 1172231183
-    locked: 0
-  - name: Wind
-    uniqueID: 909513481
     locked: 0
