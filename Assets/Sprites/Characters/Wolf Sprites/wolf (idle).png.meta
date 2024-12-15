@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b4fd4f8ff5fd8d448913cffefb6b66a
+guid: 0ad0a513b478fc84ab1584f0fdf0c5b3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hewg Dial_0
+      name: wolf (idle)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eca9b14150d4194ebaeb0ec835be91f
-      internalID: -2090845164
+      spriteID: ef4c28a128f52414ca56b52b8d8ef278
+      internalID: 774333824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_1
+      name: wolf (idle)_1
       rect:
         serializedVersion: 2
         x: 128
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8709d72f2e122b64bb95d8d1c27815fd
-      internalID: 297434073
+      spriteID: 7c27e66c5df19ef4782eaf1d9ff44093
+      internalID: -578599484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_2
+      name: wolf (idle)_2
       rect:
         serializedVersion: 2
         x: 256
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b9bb7ed794e3034abf60f099140aedf
-      internalID: -802630051
+      spriteID: d6b4beecd7f011d4a9a0c2ad478311fc
+      internalID: 1042931474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_3
+      name: wolf (idle)_3
       rect:
         serializedVersion: 2
         x: 384
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53ce24492dd6331449d0ea5bf2349981
-      internalID: -1566980392
+      spriteID: d45f7cf61d62d654ca42ea338c6483f3
+      internalID: 1783137196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_4
+      name: wolf (idle)_4
       rect:
         serializedVersion: 2
         x: 512
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf6a87349c33704d9251df0eb5eda82
-      internalID: 1423998576
+      spriteID: 5708417037d47234bb83d92957502025
+      internalID: -572242472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_5
+      name: wolf (idle)_5
       rect:
         serializedVersion: 2
         x: 640
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e97d11e4a876484c9e98478bd72c682
-      internalID: -1763468298
+      spriteID: 28a894ed31eece04bb9cbb9f7dbcbb6a
+      internalID: -1119502175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_6
+      name: wolf (idle)_6
       rect:
         serializedVersion: 2
         x: 768
@@ -245,92 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca9e2e7e9e54994b89ea80b0b9b1e50
-      internalID: -54774352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 710a717d11bca894e869cd3411bdf20c
-      internalID: -2104993827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_8
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e205d35f125dc7d48a2d1e96b27bdd2a
-      internalID: 401670508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_9
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d707df15df97de14d84dbacb066b694c
-      internalID: 1961062245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_10
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a8d35eb27af69a4fbff3a8eb7642bbc
-      internalID: -415003798
+      spriteID: 863080fb446567847930e7165b6dfd3e
+      internalID: -1801935174
       vertices: []
       indices: 
       edges: []
@@ -346,17 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hewg Dial_3: -1566980392
-      Hewg Dial_2: -802630051
-      Hewg Dial_5: -1763468298
-      Hewg Dial_8: 401670508
-      Hewg Dial_10: -415003798
-      Hewg Dial_7: -2104993827
-      Hewg Dial_9: 1961062245
-      Hewg Dial_1: 297434073
-      Hewg Dial_6: -54774352
-      Hewg Dial_4: 1423998576
-      Hewg Dial_0: -2090845164
+      wolf (idle)_0: 774333824
+      wolf (idle)_6: -1801935174
+      wolf (idle)_4: -572242472
+      wolf (idle)_3: 1783137196
+      wolf (idle)_2: 1042931474
+      wolf (idle)_1: -578599484
+      wolf (idle)_5: -1119502175
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
