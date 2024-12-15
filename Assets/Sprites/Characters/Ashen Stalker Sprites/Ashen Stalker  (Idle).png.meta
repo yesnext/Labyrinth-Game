@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b4fd4f8ff5fd8d448913cffefb6b66a
+guid: 9379fa6b1e842d44ea7c5632c14748e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hewg Dial_0
+      name: Ashen Stalker  (Idle)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eca9b14150d4194ebaeb0ec835be91f
-      internalID: -2090845164
+      spriteID: b4c3bad3dda09fc41b4b84b3172b4730
+      internalID: 565498350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_1
+      name: Ashen Stalker  (Idle)_1
       rect:
         serializedVersion: 2
         x: 128
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8709d72f2e122b64bb95d8d1c27815fd
-      internalID: 297434073
+      spriteID: 7fb9b63805dae28439914c9b69374493
+      internalID: 2126594442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_2
+      name: Ashen Stalker  (Idle)_2
       rect:
         serializedVersion: 2
         x: 256
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b9bb7ed794e3034abf60f099140aedf
-      internalID: -802630051
+      spriteID: 4dc685279f0328449998e36084f34edc
+      internalID: 1318219848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_3
+      name: Ashen Stalker  (Idle)_3
       rect:
         serializedVersion: 2
         x: 384
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53ce24492dd6331449d0ea5bf2349981
-      internalID: -1566980392
+      spriteID: f9bb020bbfafb164a8bbf00a5dadf57d
+      internalID: 265594127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_4
+      name: Ashen Stalker  (Idle)_4
       rect:
         serializedVersion: 2
         x: 512
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf6a87349c33704d9251df0eb5eda82
-      internalID: 1423998576
+      spriteID: a93170668312af34d9ecb44c98f174f3
+      internalID: -1259566214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_5
+      name: Ashen Stalker  (Idle)_5
       rect:
         serializedVersion: 2
         x: 640
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e97d11e4a876484c9e98478bd72c682
-      internalID: -1763468298
+      spriteID: ab219ee2655dcb74fbb9f5c7ae008bfa
+      internalID: -1659076091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_6
+      name: Ashen Stalker  (Idle)_6
       rect:
         serializedVersion: 2
         x: 768
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca9e2e7e9e54994b89ea80b0b9b1e50
-      internalID: -54774352
+      spriteID: a8fd8524e0fd3c54d833bcd15f1c2c95
+      internalID: -2016698200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_7
+      name: Ashen Stalker  (Idle)_7
       rect:
         serializedVersion: 2
         x: 896
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 710a717d11bca894e869cd3411bdf20c
-      internalID: -2104993827
+      spriteID: de7b7014b6f0498479bc9b528a3a043e
+      internalID: -2111291359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_8
+      name: Ashen Stalker  (Idle)_8
       rect:
         serializedVersion: 2
         x: 1024
@@ -287,50 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e205d35f125dc7d48a2d1e96b27bdd2a
-      internalID: 401670508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_9
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d707df15df97de14d84dbacb066b694c
-      internalID: 1961062245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hewg Dial_10
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a8d35eb27af69a4fbff3a8eb7642bbc
-      internalID: -415003798
+      spriteID: 947d4506dd401254da6deaa7ae7f9935
+      internalID: -260905397
       vertices: []
       indices: 
       edges: []
@@ -346,17 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hewg Dial_3: -1566980392
-      Hewg Dial_2: -802630051
-      Hewg Dial_5: -1763468298
-      Hewg Dial_8: 401670508
-      Hewg Dial_10: -415003798
-      Hewg Dial_7: -2104993827
-      Hewg Dial_9: 1961062245
-      Hewg Dial_1: 297434073
-      Hewg Dial_6: -54774352
-      Hewg Dial_4: 1423998576
-      Hewg Dial_0: -2090845164
+      Ashen Stalker  (Idle)_6: -2016698200
+      Ashen Stalker  (Idle)_3: 265594127
+      Ashen Stalker  (Idle)_8: -260905397
+      Ashen Stalker  (Idle)_0: 565498350
+      Ashen Stalker  (Idle)_1: 2126594442
+      Ashen Stalker  (Idle)_4: -1259566214
+      Ashen Stalker  (Idle)_7: -2111291359
+      Ashen Stalker  (Idle)_2: 1318219848
+      Ashen Stalker  (Idle)_5: -1659076091
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

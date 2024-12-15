@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: 006ceeb44fc86414dbb2947c53ade57d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40eef88f630ff8340a2d14105e72ff4b
+      internalID: -521089385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c675f3eac3d87264fae073f996723f61
+      internalID: -575492662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_2
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7357924fcc05153459dc345e808d63cc
+      internalID: -1799511682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_3
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e189cf7fd9ee4fe45bb16d08cf4c643f
+      internalID: 1114727070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_4
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb974dabcd65335479e57c00f7489735
+      internalID: 316504356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_5
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb2d44af65eeab498fcc4d15833cdc8
+      internalID: 270997136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_6
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45aa5012afa0b14585401c309f1687e
+      internalID: 324067889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_7
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 0
+        width: 191.55556
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7bc6570af291d443a3ad63a990cbfaa
+      internalID: -581359082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_8
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 0
+        width: 184
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a18478cf82c813469df36741982f0b2
+      internalID: 2043646353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_9
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 0
+        width: 183
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8150fd4e63de814b9210919c576cb8f
+      internalID: 672125031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_10
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 0
+        width: 185
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c338c753f7d9b514cb400b9871d26e5e
+      internalID: 799862392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_11
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 192
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1dbea257ed39e242beba8b417b5ccbf
+      internalID: -62059358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_12
+      rect:
+        serializedVersion: 2
+        x: 2272
+        y: 0
+        width: 193
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6ec4db26dff8c41a1d524afced9f9f
+      internalID: 1006033546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_13
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 0
+        width: 192
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7e2480793af3440a0bc904f060d5d1
+      internalID: -1329196195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_14
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 0
+        width: 192
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390d30c5f5d24a44d8107c8a001c3f51
+      internalID: 1078859713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_15
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 0
+        width: 185
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7c0a230b683ab4aab953d387b089af
+      internalID: 1235512159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_16
+      rect:
+        serializedVersion: 2
+        x: 3034
+        y: 0
+        width: 192
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72f41540efa68be4fbce68eef29d4281
+      internalID: -777602615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Light (Healing)_17
+      rect:
+        serializedVersion: 2
+        x: 3226
+        y: 0
+        width: 197
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84843aa55c3ae514db79fd304b368e7a
+      internalID: 105630352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Duel Sword Orion Light (Healing)_14: 1078859713
+      Duel Sword Orion Light (Healing)_2: -1799511682
+      Duel Sword Orion Light (Healing)_9: 672125031
+      Duel Sword Orion Light (Healing)_6: 324067889
+      Duel Sword Orion Light (Healing)_16: -777602615
+      Duel Sword Orion Light (Healing)_17: 105630352
+      Duel Sword Orion Light (Healing)_8: 2043646353
+      Duel Sword Orion Light (Healing)_4: 316504356
+      Duel Sword Orion Light (Healing)_7: -581359082
+      Duel Sword Orion Light (Healing)_5: 270997136
+      Duel Sword Orion Light (Healing)_13: -1329196195
+      Duel Sword Orion Light (Healing)_0: -521089385
+      Duel Sword Orion Light (Healing)_3: 1114727070
+      Duel Sword Orion Light (Healing)_11: -62059358
+      Duel Sword Orion Light (Healing)_15: 1235512159
+      Duel Sword Orion Light (Healing)_1: -575492662
+      Duel Sword Orion Light (Healing)_12: 1006033546
+      Duel Sword Orion Light (Healing)_10: 799862392
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

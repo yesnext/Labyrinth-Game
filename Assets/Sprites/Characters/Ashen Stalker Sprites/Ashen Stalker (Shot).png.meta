@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b4fd4f8ff5fd8d448913cffefb6b66a
+guid: d5fd6831f63c16749bf70fdc59ea90cc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hewg Dial_0
+      name: Ashen Stalker (Shot)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eca9b14150d4194ebaeb0ec835be91f
-      internalID: -2090845164
+      spriteID: c636ab3b1bb06ba489f2d610563e3e4c
+      internalID: -545009832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_1
+      name: Ashen Stalker (Shot)_1
       rect:
         serializedVersion: 2
         x: 128
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8709d72f2e122b64bb95d8d1c27815fd
-      internalID: 297434073
+      spriteID: a078a2dd9ba14b742a1998141cafefda
+      internalID: -540093832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_2
+      name: Ashen Stalker (Shot)_2
       rect:
         serializedVersion: 2
         x: 256
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b9bb7ed794e3034abf60f099140aedf
-      internalID: -802630051
+      spriteID: fedcf0bf99eb52348bc14dd61e133bf1
+      internalID: 1746112803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_3
+      name: Ashen Stalker (Shot)_3
       rect:
         serializedVersion: 2
         x: 384
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53ce24492dd6331449d0ea5bf2349981
-      internalID: -1566980392
+      spriteID: 52cc520cbbd07594eb41a584f9e29e04
+      internalID: -1169572317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_4
+      name: Ashen Stalker (Shot)_4
       rect:
         serializedVersion: 2
         x: 512
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf6a87349c33704d9251df0eb5eda82
-      internalID: 1423998576
+      spriteID: 86ae822aad74e4948b255b6bf0824c28
+      internalID: -455224923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_5
+      name: Ashen Stalker (Shot)_5
       rect:
         serializedVersion: 2
         x: 640
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e97d11e4a876484c9e98478bd72c682
-      internalID: -1763468298
+      spriteID: bc9ce0c0efb23084d87740df286fcf9d
+      internalID: 561357618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_6
+      name: Ashen Stalker (Shot)_6
       rect:
         serializedVersion: 2
         x: 768
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca9e2e7e9e54994b89ea80b0b9b1e50
-      internalID: -54774352
+      spriteID: 070c52ec466b51e4eb3a32b89a4cdb66
+      internalID: -1045236325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_7
+      name: Ashen Stalker (Shot)_7
       rect:
         serializedVersion: 2
         x: 896
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 710a717d11bca894e869cd3411bdf20c
-      internalID: -2104993827
+      spriteID: 0c2650b75840d204bb831c914058b77b
+      internalID: 1004331894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_8
+      name: Ashen Stalker (Shot)_8
       rect:
         serializedVersion: 2
         x: 1024
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e205d35f125dc7d48a2d1e96b27bdd2a
-      internalID: 401670508
+      spriteID: 8d25de8b1be783d4ca355ca2e6a24656
+      internalID: 1337049899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_9
+      name: Ashen Stalker (Shot)_9
       rect:
         serializedVersion: 2
         x: 1152
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d707df15df97de14d84dbacb066b694c
-      internalID: 1961062245
+      spriteID: 7bdcb8205dc29514e91156a0231e3283
+      internalID: -1711587062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_10
+      name: Ashen Stalker (Shot)_10
       rect:
         serializedVersion: 2
         x: 1280
@@ -329,8 +329,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a8d35eb27af69a4fbff3a8eb7642bbc
-      internalID: -415003798
+      spriteID: c1029065d01bfb04d8c427e8406f04a3
+      internalID: 943651172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ashen Stalker (Shot)_11
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28894bf928dcb444abe8acb0c2b424eb
+      internalID: -1384921162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ashen Stalker (Shot)_12
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d29e4efd2d0cd4d9478caf55eab105
+      internalID: 1613347470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ashen Stalker (Shot)_13
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e356a4adf1eb34aa63b5c541ccccea
+      internalID: -1775000062
       vertices: []
       indices: 
       edges: []
@@ -346,17 +409,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hewg Dial_3: -1566980392
-      Hewg Dial_2: -802630051
-      Hewg Dial_5: -1763468298
-      Hewg Dial_8: 401670508
-      Hewg Dial_10: -415003798
-      Hewg Dial_7: -2104993827
-      Hewg Dial_9: 1961062245
-      Hewg Dial_1: 297434073
-      Hewg Dial_6: -54774352
-      Hewg Dial_4: 1423998576
-      Hewg Dial_0: -2090845164
+      Ashen Stalker (Shot)_13: -1775000062
+      Ashen Stalker (Shot)_5: 561357618
+      Ashen Stalker (Shot)_11: -1384921162
+      Ashen Stalker (Shot)_7: 1004331894
+      Ashen Stalker (Shot)_9: -1711587062
+      Ashen Stalker (Shot)_1: -540093832
+      Ashen Stalker (Shot)_0: -545009832
+      Ashen Stalker (Shot)_6: -1045236325
+      Ashen Stalker (Shot)_10: 943651172
+      Ashen Stalker (Shot)_3: -1169572317
+      Ashen Stalker (Shot)_2: 1746112803
+      Ashen Stalker (Shot)_4: -455224923
+      Ashen Stalker (Shot)_12: 1613347470
+      Ashen Stalker (Shot)_8: 1337049899
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
