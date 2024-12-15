@@ -15,6 +15,10 @@ public class BossesDefeated : MonoBehaviour
     public bool seraphine;
     public bool warden;
     public bool wyvern;
+    public bool WeaponHallway;
+    public bool ChainedGirl;
+    public bool PostHarlquin;
+    public bool OutsideTheLabyrinth;
     public static BossesDefeated instance;
     void Awake()
     {
