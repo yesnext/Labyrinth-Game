@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class keyCollected : MonoBehaviour
 {
     public static keyCollected instance; // Singleton instance
     public bool KeyCollected = false;
+    public string sceneToLoad; 
 
     void Awake()
     {
@@ -28,7 +30,12 @@ public class keyCollected : MonoBehaviour
             Destroy(gameObject); // Destroy the key
             KeyCollected = true; // Mark key as collected
             Debug.Log("Key collected!");
+            SceneManager.LoadScene(sceneToLoad);
             //switch scene back to puzzle 3
         }
+    }
+
+    public bool isCollected(){
+        return KeyCollected;
     }
 }

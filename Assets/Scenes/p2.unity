@@ -1486,6 +1486,7 @@ MonoBehaviour:
   wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: 3d12f22d3a32e424fa632a51973ae4f2, type: 3}
   interactHintText: {fileID: 224490239}
+  p2ed: {fileID: 0}
   maxItemSize: {x: 1, y: 1}
 --- !u!61 &394294347
 BoxCollider2D:
@@ -1907,6 +1908,7 @@ MonoBehaviour:
   wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: da1262d33f94e0d42abb50bf6756a748, type: 3}
   interactHintText: {fileID: 224490239}
+  p2ed: {fileID: 0}
   maxItemSize: {x: 1, y: 1}
 --- !u!212 &481844491
 SpriteRenderer:
@@ -2623,6 +2625,7 @@ MonoBehaviour:
   wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: 510098041eb4b8740a1e340e1a9e873e, type: 3}
   interactHintText: {fileID: 224490239}
+  p2ed: {fileID: 0}
   maxItemSize: {x: 1, y: 1}
 --- !u!61 &768286749
 BoxCollider2D:
@@ -2999,6 +3002,7 @@ MonoBehaviour:
   wallSlotUIManager: {fileID: 1163825322}
   correctItemPrefab: {fileID: 21300000, guid: bc075c05a9497824990e5c0274e2aceb, type: 3}
   interactHintText: {fileID: 224490239}
+  p2ed: {fileID: 0}
   maxItemSize: {x: 1, y: 1}
 --- !u!212 &837720481
 SpriteRenderer:
@@ -3139,6 +3143,7 @@ GameObject:
   - component: {fileID: 1044557991}
   - component: {fileID: 1044557990}
   - component: {fileID: 1044557989}
+  - component: {fileID: 1044557992}
   m_Layer: 0
   m_Name: Door at End
   m_TagString: Untagged
@@ -3239,6 +3244,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044557992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044557988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b21f1c25ecb1cb4297d898b32d631cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfCorrectItems: 0
+  sceneToLoad: Harlequin King
+  interactHint: {fileID: 224490239}
+  canLoad: 0
 --- !u!1 &1049086672
 GameObject:
   m_ObjectHideFlags: 0

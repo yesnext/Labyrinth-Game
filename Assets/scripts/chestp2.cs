@@ -19,6 +19,7 @@ public class chestp2 : MonoBehaviour
     {
         if(Input.GetKeyDown(interact) && killchest){
                 Destroy(des);
+                Echos.instance.Add(10);
                 Debug.Log("chest taken");
             }
     }
@@ -27,12 +28,12 @@ public class chestp2 : MonoBehaviour
         if (collision.CompareTag("Player")){
             interactHint.SetActive(true);
             killchest = true;
-            Echos.instance.Add(10);
         }
     }
     void OnTriggerExit2D(Collider2D collision){
         if (collision.CompareTag("Player")){
             interactHint.SetActive(false);
+            killchest = false;
         }
     }
 }

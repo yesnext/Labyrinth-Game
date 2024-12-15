@@ -762,7 +762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545754297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.66, y: 0.96, z: -10}
+  m_LocalPosition: {x: -16.06, y: 0.41, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8377,6 +8377,7 @@ GameObject:
   - component: {fileID: 1329492587}
   - component: {fileID: 1329492586}
   - component: {fileID: 1329492588}
+  - component: {fileID: 1329492589}
   m_Layer: 0
   m_Name: broken mirror
   m_TagString: Untagged
@@ -8477,6 +8478,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3055487, y: 2.7939878}
   m_EdgeRadius: 0
+--- !u!114 &1329492589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329492585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63235e6b5d54b8646a052e5394c205c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactHint: {fileID: 155139830}
+  sceneToLoad: puzzle 3 top down
+  canLoad: 0
 --- !u!1001 &1358598764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9098,6 +9114,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1670884548}
   - component: {fileID: 1670884547}
+  - component: {fileID: 1670884549}
+  - component: {fileID: 1670884550}
   m_Layer: 0
   m_Name: door end
   m_TagString: Untagged
@@ -9172,6 +9190,47 @@ Transform:
   m_Father: {fileID: 80524337}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1670884549
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670884546}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.4, y: 3.7333333}
+    newSize: {x: 3.4, y: 3.7333333}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.4, y: 3.7333333}
+  m_EdgeRadius: 0
+--- !u!114 &1670884550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670884546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edaf45a73e949d49ac548e3598f9eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Orion
+  canLoad: 0
+  interactHint: {fileID: 155139830}
 --- !u!1001 &1718671734
 PrefabInstance:
   m_ObjectHideFlags: 0
