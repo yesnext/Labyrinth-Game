@@ -1413,9 +1413,9 @@ RectTransform:
   m_Father: {fileID: 1163825317}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.830048, y: -232}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -47, y: 25}
   m_SizeDelta: {x: 204.3399, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &357501638
@@ -1442,7 +1442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357501638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.359, z: 0}
+  m_LocalPosition: {x: 0, y: -0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3320,6 +3320,7 @@ MonoBehaviour:
   maxX: 19.5
   minY: -1.5
   maxY: -1.5
+  offset: 0
 --- !u!114 &1049086675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7526,6 +7527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe89f77d1038dca4cb741cd00f05971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  isFacingRight: 1
+  frozen: 0
   rb: {fileID: 1639304856}
   groundCheck: {fileID: 357501639}
   groundLayer:
@@ -7565,18 +7569,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.029717192, y: -0.285036}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.71}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.28, y: 0.71}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 0.71}
+  m_Size: {x: 0.28000012, y: 0.7095006}
   m_EdgeRadius: 0
 --- !u!212 &1639304858
 SpriteRenderer:
@@ -7638,7 +7642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639304854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.05, y: -3.67, z: 0}
+  m_LocalPosition: {x: -4.7, y: -2.38, z: 0}
   m_LocalScale: {x: 3.0652, y: 3.0652, z: 3.0652}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7979,6 +7983,7 @@ GameObject:
   - component: {fileID: 1909196935}
   - component: {fileID: 1909196934}
   - component: {fileID: 1909196933}
+  - component: {fileID: 1909196936}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -8079,6 +8084,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1909196936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909196932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44266b38bd1b5b47bcab11b0d5020ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactHint: {fileID: 224490239}
+  interact: 101
+  des: {fileID: 1909196932}
 --- !u!1 &1953502598
 GameObject:
   m_ObjectHideFlags: 0

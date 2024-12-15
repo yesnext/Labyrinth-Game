@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b4fd4f8ff5fd8d448913cffefb6b66a
+guid: 5ce21b9867398a84c97e02967eedf0b1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,12 +105,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hewg Dial_0
+      name: Duel Sword Orion Dark (Attack 1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,19 +119,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eca9b14150d4194ebaeb0ec835be91f
-      internalID: -2090845164
+      spriteID: 1f9cd6be4630ae445aa63566bc6d1b0f
+      internalID: -527621525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_1
+      name: Duel Sword Orion Dark (Attack 1)_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 190
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,19 +140,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8709d72f2e122b64bb95d8d1c27815fd
-      internalID: 297434073
+      spriteID: 7c1a6a27fb1a88344a2d245027d4b880
+      internalID: -1601780798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_2
+      name: Duel Sword Orion Dark (Attack 1)_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 380
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -161,19 +161,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b9bb7ed794e3034abf60f099140aedf
-      internalID: -802630051
+      spriteID: 3dd26cee4d4ad8640afaef8d1ecb4043
+      internalID: -195228390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_3
+      name: Duel Sword Orion Dark (Attack 1)_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 570
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -182,19 +182,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53ce24492dd6331449d0ea5bf2349981
-      internalID: -1566980392
+      spriteID: 39c4848134116db428924a6559df50a6
+      internalID: 1100941563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_4
+      name: Duel Sword Orion Dark (Attack 1)_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 760
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -203,19 +203,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf6a87349c33704d9251df0eb5eda82
-      internalID: 1423998576
+      spriteID: b55e7fc26dd6a4e409b4263a7dc1d296
+      internalID: 1587189430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_5
+      name: Duel Sword Orion Dark (Attack 1)_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 950
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -224,19 +224,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e97d11e4a876484c9e98478bd72c682
-      internalID: -1763468298
+      spriteID: cd3514f7f5660eb40ac2df82dfa1de51
+      internalID: -895201802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_6
+      name: Duel Sword Orion Dark (Attack 1)_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1140
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -245,19 +245,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca9e2e7e9e54994b89ea80b0b9b1e50
-      internalID: -54774352
+      spriteID: a629224496bcca449adfecbd506c9a9c
+      internalID: 1285874283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_7
+      name: Duel Sword Orion Dark (Attack 1)_7
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1330
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -266,19 +266,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 710a717d11bca894e869cd3411bdf20c
-      internalID: -2104993827
+      spriteID: 12a789cc01846db4d9672ba047e05ad4
+      internalID: -1290425024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_8
+      name: Duel Sword Orion Dark (Attack 1)_8
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1520
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -287,19 +287,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e205d35f125dc7d48a2d1e96b27bdd2a
-      internalID: 401670508
+      spriteID: 6aa66233e974837498b2383f08242944
+      internalID: 110880613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_9
+      name: Duel Sword Orion Dark (Attack 1)_9
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1710
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -308,19 +308,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d707df15df97de14d84dbacb066b694c
-      internalID: 1961062245
+      spriteID: b7b0cf128e326374dbcd16743ce99fba
+      internalID: -846636131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hewg Dial_10
+      name: Duel Sword Orion Dark (Attack 1)_10
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1900
         y: 0
-        width: 128
+        width: 190
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -329,8 +329,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a8d35eb27af69a4fbff3a8eb7642bbc
-      internalID: -415003798
+      spriteID: 8e7e73b6d3bde92438a62f6509780395
+      internalID: 531821914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duel Sword Orion Dark (Attack 1)_11
+      rect:
+        serializedVersion: 2
+        x: 2090
+        y: 0
+        width: 190
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c3f7a2d7ddcf7418db75bbd41b9834
+      internalID: -1034777510
       vertices: []
       indices: 
       edges: []
@@ -346,17 +367,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hewg Dial_3: -1566980392
-      Hewg Dial_2: -802630051
-      Hewg Dial_5: -1763468298
-      Hewg Dial_8: 401670508
-      Hewg Dial_10: -415003798
-      Hewg Dial_7: -2104993827
-      Hewg Dial_9: 1961062245
-      Hewg Dial_1: 297434073
-      Hewg Dial_6: -54774352
-      Hewg Dial_4: 1423998576
-      Hewg Dial_0: -2090845164
+      Duel Sword Orion Dark (Attack 1)_5: -895201802
+      Duel Sword Orion Dark (Attack 1)_10: 531821914
+      Duel Sword Orion Dark (Attack 1)_11: -1034777510
+      Duel Sword Orion Dark (Attack 1)_0: -527621525
+      Duel Sword Orion Dark (Attack 1)_9: -846636131
+      Duel Sword Orion Dark (Attack 1)_8: 110880613
+      Duel Sword Orion Dark (Attack 1)_1: -1601780798
+      Duel Sword Orion Dark (Attack 1)_2: -195228390
+      Duel Sword Orion Dark (Attack 1)_4: 1587189430
+      Duel Sword Orion Dark (Attack 1)_3: 1100941563
+      Duel Sword Orion Dark (Attack 1)_7: -1290425024
+      Duel Sword Orion Dark (Attack 1)_6: 1285874283
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
