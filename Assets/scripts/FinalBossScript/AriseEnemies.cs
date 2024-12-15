@@ -15,6 +15,9 @@ public class AriseEnemies : UniversalEnemyNeeds
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
+        if(player.GetComponent<BossesDefeated>().FinalBoss){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class AshenStalkerController : UniversalEnemyNeeds
 {
-    protected float Summonscooldown = 100;
+    public float Summonscooldown = 100;
     protected float summondistance = 15;
     protected float lastSummonscooldown = -100;
 
-    protected float SurpriseMeleeAttackCooldown = 3.0f;
+    public float SurpriseMeleeAttackCooldown = 3.0f;
     protected float LastSurpriseMeleeAttackTime;
     protected float SurpriseAttackDistance = 7.0f;
 
     protected float LastRangAttackTime;
-    protected float RangAttackCooldown = 2.0f;
+    public float RangAttackCooldown = 2.0f;
     public float RangeAttackDistance = 5;
     public SpriteRenderer Disappear;
     public float appeardistance = 1;
@@ -33,39 +33,44 @@ public class AshenStalkerController : UniversalEnemyNeeds
         ShadoStep = GetComponent<Rigidbody2D>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
         SpawnLocation = FindObjectsOfType<SummonsSpawnLocation>();
+        if(player.GetComponent<BossesDefeated>().AshenStalker){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        ChangedDirectionFollow();
-        if (!MeleeAttacking && !RangAttacking)
+        if (aggro)
         {
-            Followplayer();
-        }
-        if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
-        Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
-            SurpriseAttack();
-        }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(MeleeAttack());
-        }
-        else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(Shoot());
-        }
-        if (distance < appeardistance)
-        {
-            Disappear.enabled = true;
-            ShadoStep.gravityScale = 1;
-        }
-        if (Time.time - lastSummonscooldown > Summonscooldown)
-        {
-            lastSummonscooldown = Time.time;
-            Summon();
+            ChangedDirectionFollow();
+            if (!MeleeAttacking && !RangAttacking)
+            {
+                Followplayer();
+            }
+            if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
+            Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
+            {
+                SurpriseAttack();
+            }
+            else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(MeleeAttack());
+            }
+            else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(Shoot());
+            }
+            if (distance < appeardistance)
+            {
+                Disappear.enabled = true;
+                ShadoStep.gravityScale = 1;
+            }
+            if (Time.time - lastSummonscooldown > Summonscooldown)
+            {
+                lastSummonscooldown = Time.time;
+                Summon();
+            }
         }
     }
     public void FixedUpdate()
@@ -79,6 +84,10 @@ public class AshenStalkerController : UniversalEnemyNeeds
         else
         {
             IsImmune = false;
+        }
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
         }
     }
     public void Summon()
@@ -123,6 +132,18 @@ public class AshenStalkerController : UniversalEnemyNeeds
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         LastRangAttackTime = Time.time;
         RangAttacking = false;
+    }
+    public override void TakeDamage(int damage)
+    {
+        if (aggro)
+        {
+            Health = Health - damage;
+            if (Health <= 0)
+            {
+                player.GetComponent<BossesDefeated>().AshenStalker = true;
+                Destroy(this.gameObject);
+            }
+        }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {

@@ -19,27 +19,38 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = false;
         LastRangAttackTime = -RangAttackCooldown;
+        if(player.GetComponent<BossesDefeated>().chainedgirl){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangedDirectionFollow();
-        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
+        if (aggro)
         {
-            RangeAttack();
+            ChangedDirectionFollow();
+            if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
+            {
+                RangeAttack();
+            }
+            Begone();
         }
-        Begone();
     }
     public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public void Begone()
     {
         if (chains[0] == null && chains[1] == null)
         {
+            player.GetComponent<BossesDefeated>().chainedgirl = true;
             Destroy(this.gameObject);
         }
     }
@@ -47,7 +58,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     {
         EnemyProjectile projectile = Instantiate(Projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
-        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         LastRangAttackTime = Time.time;
     }
 }

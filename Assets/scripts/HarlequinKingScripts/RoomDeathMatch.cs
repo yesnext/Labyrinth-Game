@@ -17,6 +17,9 @@ public class RoomDeathMatch : UniversalEnemyNeeds
         player =FindObjectOfType<PlayerStats>();
         summonsSpawnLocations = FindObjectsOfType<SummonsSpawnLocation>();
         nextpuzzel = FindObjectOfType<checkpoint2>();
+        if(player.GetComponent<BossesDefeated>().Harlequinking){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

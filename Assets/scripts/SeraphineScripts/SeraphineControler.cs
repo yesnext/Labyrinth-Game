@@ -17,7 +17,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     public SeraphineProjectile projectile;
     public int originalhealth;
     private checkpoint1 playerstartposistion;
-    public  bool telepoted;
+    public bool telepoted;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,38 +26,44 @@ public class SeraphineControler : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         projectilepoint = FindObjectOfType<EnemyProjectilePoint>();
         originalhealth = Health;
+        if(player.GetComponent<BossesDefeated>().seraphine){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Bossphase == 1)
+        if (aggro)
         {
-            if (!attacking)
+            if (Bossphase == 1)
             {
-                Followplayer();
+                if (!attacking)
+                {
+                    Followplayer();
+                }
+                ChangedDirectionFollow();
+                if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !attacking && Bossphase == 1)
+                {
+                    StartCoroutine(MeleeAttack());
+                }
             }
-            ChangedDirectionFollow();
-            if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !attacking && Bossphase == 1)
+            else
             {
-                StartCoroutine(MeleeAttack());
-            }
-        }
-        else
-        {
-            if (!telepoted)
-            {
-                StartCoroutine(teleport());
-            }
-            if (Time.time - lastshoottime > shootingcooldown)
-            {
-                shoot();
+                if (!telepoted)
+                {
+                    StartCoroutine(teleport());
+                }
+                if (Time.time - lastshoottime > shootingcooldown)
+                {
+                    shoot();
+                }
             }
         }
     }
     public IEnumerator teleport()
     {
-        telepoted=true;
+        telepoted = true;
         Vector3 ShadowRealm = new Vector3(shadorealmpoint.transform.position.x, shadorealmpoint.transform.position.y, player.transform.position.z);
         player.transform.position = ShadowRealm;
         yield return new WaitForSeconds(Shadowrealmperiod);
@@ -83,16 +89,24 @@ public class SeraphineControler : UniversalEnemyNeeds
     }
     public override void TakeDamage(int damage)
     {
-        Health = Health - damage;
-        if (Health <= 0)
+        if (aggro)
         {
-            Bossphase++;
+            Health = Health - damage;
+            if (Health <= 0)
+            {
+                player.GetComponent<BossesDefeated>().seraphine = true;
+                Destroy(this.gameObject);
+            }
         }
     }
     public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {

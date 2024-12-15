@@ -66,7 +66,7 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (GameObject.FindObjectOfType<HealingOrion>() != null && other.tag == "Boss")
         {
-            if (other.GetComponent<HealingOrion>().agrue)
+            if (other.GetComponent<HealingOrion>())
             {
                 other.GetComponent<HealingOrion>().TakeDamage(Damage);
             }

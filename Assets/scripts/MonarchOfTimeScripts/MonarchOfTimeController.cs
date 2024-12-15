@@ -20,31 +20,36 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     private float LastTimeTimeReversal;
     private float freezintimeduration = 2.0f;
     public float SlowRate;
-    private int originalhealth;    void Start()
+    private int originalhealth; void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
         LastTimeStop -= TimestopChooldown;
         LastTimeTimeReversal -= ReversingTimeCooldown;
         originalhealth = Health;
-
+        if(player.GetComponent<BossesDefeated>().Monarchoftime){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangedDirectionFollow();
-        if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
+        if (aggro)
         {
-            StartCoroutine(Shoot());
-        }
-        if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
-        {
-            StartCoroutine(StopingTime());
-        }
-        if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
-        {
-            StartCoroutine(ReversingTime());
+            ChangedDirectionFollow();
+            if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
+            {
+                StartCoroutine(Shoot());
+            }
+            if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
+            {
+                StartCoroutine(StopingTime());
+            }
+            if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
+            {
+                StartCoroutine(ReversingTime());
+            }
         }
     }
     public IEnumerator Shoot()
@@ -53,7 +58,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
-        projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed,SlowRate);
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed, SlowRate);
         LastRangeAttackTime = Time.time;
         RangAttacking = false;
     }
@@ -61,6 +66,10 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public IEnumerator StopingTime()
     {
@@ -80,6 +89,18 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         TimeStopped = false;
         LastTimeStop = Time.time;
 
+    }
+    public override void TakeDamage(int damage)
+    {
+        if (aggro)
+        {
+            Health = Health - damage;
+            if (Health <= 0)
+            {
+                player.GetComponent<BossesDefeated>().Monarchoftime = true;
+                Destroy(this.gameObject);
+            }
+        }
     }
     public IEnumerator ReversingTime()
     {

@@ -6,7 +6,6 @@ using UnityEngine;
 public class IgrisController : UniversalEnemyNeeds
 {
     public BoxCollider2D FistAttackBox;
-    public float AgrueDistance = 10.0f;
     public bool state;
     public int BossPhase = 1;
     public bool dodge;
@@ -20,6 +19,9 @@ public class IgrisController : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = true;
         FistAttackBox.enabled = false;
+        if(player.GetComponent<BossesDefeated>().Igris){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class IgrisController : UniversalEnemyNeeds
         }
         else
         {
-            if (distance < AgrueDistance)
+            if (distance < aggrodistance)
             {
                 state = true;
             }
@@ -130,6 +132,7 @@ public class IgrisController : UniversalEnemyNeeds
         {
             if (other.tag == "Player")
             {
+                player.GetComponent<BossesDefeated>().Igris = true;
                 player.TakeDamage(MeleeAttackDamage);
             }
         }

@@ -28,6 +28,8 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public float MeleeAttackAnimationDuration;
     protected bool RangAttacking;
     public float RangAttackAnimationDuration;
+    public float aggrodistance;
+    public bool aggro;
     void Start()
     {
     }
