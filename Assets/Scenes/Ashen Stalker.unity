@@ -6536,6 +6536,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4307296316687342585, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307296316687342585, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307296316687342586, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307296316687342586, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4307296316687342590, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
       propertyPath: m_Name
       value: Idle 1_0
@@ -6586,6 +6602,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+--- !u!1 &2057006296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4307296316687342590, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+  m_PrefabInstance: {fileID: 2057006295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2057006297
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057006296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 304fb336cb030a544b3ec6f3fc1c5a8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2079605597
 PrefabInstance:
   m_ObjectHideFlags: 0
