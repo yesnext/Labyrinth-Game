@@ -8,8 +8,6 @@ public class HealingOrion : UniversalEnemyNeeds
 {
     public float teleportcooldown = 8.0f;
     public float LastTeleportTime;
-    public bool agrue = false;
-    public float agruedistance = 3.0f;
     public AttackingOrion Attackingorion;
     public GameObject fakes;
     private Attackorionloction AttackingorionLocation;
@@ -32,19 +30,19 @@ public class HealingOrion : UniversalEnemyNeeds
     void Update()
     {
         ChangedDirectionFollow();
-        if (agrue && Time.time - LastTeleportTime > teleportcooldown && !Teleporting)
+        if (aggro && Time.time - LastTeleportTime > teleportcooldown && !Teleporting)
         {
             StartCoroutine(teleport());
         }
-        if (distance < agruedistance && onetime)
+        if (distance < aggrodistance && onetime)
         {
             StartCoroutine(SummonAttackOrion());
-            agrue = true;
+            aggro = true;
         }
     }
     public IEnumerator teleport()
     {
-        Teleporting =true;
+        Teleporting = true;
         yield return new WaitForSeconds(TeleportingAnimationDuration);
         foreach (SummonsSpawnLocation teleport in teleportlocations)
         {
@@ -70,7 +68,7 @@ public class HealingOrion : UniversalEnemyNeeds
                 minioncontroller.Intialize(teleport);
             }
         }
-        Teleporting =false;
+        Teleporting = false;
         LastTeleportTime = Time.time;
     }
     public IEnumerator SummonAttackOrion()
@@ -92,15 +90,18 @@ public class HealingOrion : UniversalEnemyNeeds
     }
     public override void TakeDamage(int damage)
     {
-        Health = Health - damage;
-        if (Health <= 0)
+        if (aggro)
         {
-            Attackingorion.IsImmune = false;
-            foreach (FakeOrionImage fake in FindObjectsOfType<FakeOrionImage>())
+            Health = Health - damage;
+            if (Health <= 0)
             {
-                Destroy(fake.gameObject);
+                Attackingorion.IsImmune = false;
+                foreach (FakeOrionImage fake in FindObjectsOfType<FakeOrionImage>())
+                {
+                    Destroy(fake.gameObject);
+                }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
         }
     }
 

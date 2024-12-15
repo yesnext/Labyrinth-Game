@@ -38,34 +38,36 @@ public class AshenStalkerController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-
-        ChangedDirectionFollow();
-        if (!MeleeAttacking && !RangAttacking)
+        if (aggro)
         {
-            Followplayer();
-        }
-        if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
-        Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
-            SurpriseAttack();
-        }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(MeleeAttack());
-        }
-        else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(Shoot());
-        }
-        if (distance < appeardistance)
-        {
-            Disappear.enabled = true;
-            ShadoStep.gravityScale = 1;
-        }
-        if (Time.time - lastSummonscooldown > Summonscooldown)
-        {
-            lastSummonscooldown = Time.time;
-            Summon();
+            ChangedDirectionFollow();
+            if (!MeleeAttacking && !RangAttacking)
+            {
+                Followplayer();
+            }
+            if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
+            Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
+            {
+                SurpriseAttack();
+            }
+            else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(MeleeAttack());
+            }
+            else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(Shoot());
+            }
+            if (distance < appeardistance)
+            {
+                Disappear.enabled = true;
+                ShadoStep.gravityScale = 1;
+            }
+            if (Time.time - lastSummonscooldown > Summonscooldown)
+            {
+                lastSummonscooldown = Time.time;
+                Summon();
+            }
         }
     }
     public void FixedUpdate()
@@ -79,6 +81,10 @@ public class AshenStalkerController : UniversalEnemyNeeds
         else
         {
             IsImmune = false;
+        }
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
         }
     }
     public void Summon()

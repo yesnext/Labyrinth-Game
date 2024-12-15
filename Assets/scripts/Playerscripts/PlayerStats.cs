@@ -200,7 +200,7 @@ public class PlayerStats : MonoBehaviour
                     }
                     else if (GameObject.FindObjectOfType<HealingOrion>() != null)
                     {
-                        if (other.GetComponent<HealingOrion>().agrue)
+                        if (other.GetComponent<HealingOrion>().aggro)
                         {
                             other.GetComponent<HealingOrion>().TakeDamage(MeleeAttackDamage);
                         }

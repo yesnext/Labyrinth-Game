@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
@@ -21,18 +22,21 @@ public class CalistaController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        ChangedDirectionFollow();
-        if (!MeleeAttacking && !RangAttacking)
+        if (aggro)
         {
-            Followplayer();
-        }
-        if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(Shoot());
-        }
-        else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
-        {
-            StartCoroutine(MeleeAttack());
+            ChangedDirectionFollow();
+            if (!MeleeAttacking && !RangAttacking)
+            {
+                Followplayer();
+            }
+            if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(Shoot());
+            }
+            else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(MeleeAttack());
+            }
         }
 
     }
@@ -40,7 +44,10 @@ public class CalistaController : UniversalEnemyNeeds
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
-
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public IEnumerator MeleeAttack()
     {
@@ -51,19 +58,22 @@ public class CalistaController : UniversalEnemyNeeds
     }
     public override void TakeDamage(int damage)
     {
-        if (Random.Range(1, 101) > 29)
+        if (aggro)
         {
-            Health = Health - damage;
-            if (Health <= 0)
+            if (UnityEngine.Random.Range(1, 101) > 29)
             {
-                Destroy(this.gameObject);
+                Health = Health - damage;
+                if (Health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
             }
+            else
+            {
+                Health += damage;
+            }
+            DoubleDamageTime = Time.time;
         }
-        else
-        {
-            Health += damage;
-        }
-        DoubleDamageTime = Time.time;
     }
     public IEnumerator Shoot()
     {

@@ -6,7 +6,6 @@ using UnityEngine;
 public class IgrisController : UniversalEnemyNeeds
 {
     public BoxCollider2D FistAttackBox;
-    public float AgrueDistance = 10.0f;
     public bool state;
     public int BossPhase = 1;
     public bool dodge;
@@ -50,7 +49,7 @@ public class IgrisController : UniversalEnemyNeeds
         }
         else
         {
-            if (distance < AgrueDistance)
+            if (distance < aggrodistance)
             {
                 state = true;
             }

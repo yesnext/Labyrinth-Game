@@ -32,19 +32,22 @@ public class WyvernControler : UniversalEnemyNeeds
 
     void Update()
     {
-        ChangedDirectionFollow();
-        if (Time.time - lastAttackTime > attackCooldown && !RangAttacking)
+        if (aggro)
         {
-            Followplayer();
-            if (distance < attackRange)
-                StartCoroutine(Attack());
+            ChangedDirectionFollow();
+            if (Time.time - lastAttackTime > attackCooldown && !RangAttacking)
+            {
+                Followplayer();
+                if (distance < attackRange)
+                    StartCoroutine(Attack());
 
-        }
-        else if (!RangAttacking)
-        {
-            Patrol();
-            GhangedirectionPatrol();
+            }
+            else if (!RangAttacking)
+            {
+                Patrol();
+                GhangedirectionPatrol();
 
+            }
         }
     }
     public void FixedUpdate()
@@ -53,6 +56,10 @@ public class WyvernControler : UniversalEnemyNeeds
         distance = Vector2.Distance(transform.position, player.transform.position);
         Patroldistance = Vector2.Distance(transform.position, PatrolPoints[CurrentPatrolPoint].transform.position);
         PatrolDirection = (PatrolPoints[CurrentPatrolPoint].transform.position - transform.position).normalized;
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     void Patrol()
     {
@@ -85,8 +92,19 @@ public class WyvernControler : UniversalEnemyNeeds
             transform.localScale = scale;
         }
     }
+    public override void TakeDamage(int damage)
+    {
+        if (aggro)
+        {
+            Health = Health - damage;
+            if (Health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
-    public  IEnumerator Attack()
+    public IEnumerator Attack()
     {
         RangAttacking = true;
         yield return new WaitForSeconds(RangAttackAnimationDuration);

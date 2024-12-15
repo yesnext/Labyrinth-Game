@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -55,32 +56,35 @@ public class FinalBossController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        if (dodge == true && BossPhase == 1 && !MeleeAttacking && !RangAttacking)
+        if (aggro)
         {
-            StartCoroutine(Awareofeverymovedodge());
-        }
-        else if (dodge == true && BossPhase >= 2 && !MeleeAttacking && !RangAttacking && !arise)
-        {
-            StartCoroutine(Dodge());
-        }
-        if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3 && !MeleeAttacking && !RangAttacking && !arise)
-        {
-            StartCoroutine(Arise());
-        }
-        ChangedDirectionFollow();
-        Followplayer();
-        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
-        {
-            StartCoroutine(RangeAttack());
-        }
-        else if (distance >= LungAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && Time.time - LastLungAttackTime > LungAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
-        {
-            LungAttack();
+            if (dodge == true && BossPhase == 1 && !MeleeAttacking && !RangAttacking)
+            {
+                StartCoroutine(Awareofeverymovedodge());
+            }
+            else if (dodge == true && BossPhase >= 2 && !MeleeAttacking && !RangAttacking && !arise)
+            {
+                StartCoroutine(Dodge());
+            }
+            if (Time.time - LastArisetime > AriseCooldown && BossPhase == 3 && !MeleeAttacking && !RangAttacking && !arise)
+            {
+                StartCoroutine(Arise());
+            }
+            ChangedDirectionFollow();
+            Followplayer();
+            if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
+            {
+                StartCoroutine(RangeAttack());
+            }
+            else if (distance >= LungAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && Time.time - LastLungAttackTime > LungAttackCooldown && !MeleeAttacking && !RangAttacking && !arise)
+            {
+                LungAttack();
 
-        }
-        else if (distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && !MeleeAttacking && !RangAttacking && !arise)
-        {
-            StartCoroutine(ShadoAttack());
+            }
+            else if (distance < ShadoAttackDistance && Time.time - lastShadoSwordSlashesTime > ShadoSwordSlashesCooldown && !MeleeAttacking && !RangAttacking && !arise)
+            {
+                StartCoroutine(ShadoAttack());
+            }
         }
 
     }
@@ -91,6 +95,10 @@ public class FinalBossController : UniversalEnemyNeeds
         if (BossPhase == 1)
         {
             IsImmune = PlayerStats.ProjectileCount < 3;
+        }
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
         }
     }
 
@@ -166,31 +174,35 @@ public class FinalBossController : UniversalEnemyNeeds
 
     public override void TakeDamage(int damage)
     {
-        Health = Health - damage;
-
-        if (!IsImmune)
+        if (aggro)
         {
-            if (Health <= 0 && BossPhase >= 3)
+            Health = Health - damage;
+
+            if (!IsImmune)
             {
-                foreach (AriseEnemies minions in FindObjectsOfType<AriseEnemies>()){
-                    minions.getdestroyed();
-                }
-                Destroy(this.gameObject);
-            }
-            else if (Health <= 0)
-            {
-                Health = 500;
-                BossPhase++;
-                if (BossPhase == 2 && onetime)
+                if (Health <= 0 && BossPhase >= 3)
                 {
-                    OriginalSpeed *= 1.5f;
-                    onetime = false;
-                    IsImmune = false;
+                    foreach (AriseEnemies minions in FindObjectsOfType<AriseEnemies>())
+                    {
+                        minions.getdestroyed();
+                    }
+                    Destroy(this.gameObject);
                 }
-                else if (BossPhase == 3 && secondtime)
+                else if (Health <= 0)
                 {
-                    OriginalSpeed /= 1.5f;
-                    onetime = false;
+                    Health = 500;
+                    BossPhase++;
+                    if (BossPhase == 2 && onetime)
+                    {
+                        OriginalSpeed *= 1.5f;
+                        onetime = false;
+                        IsImmune = false;
+                    }
+                    else if (BossPhase == 3 && secondtime)
+                    {
+                        OriginalSpeed /= 1.5f;
+                        onetime = false;
+                    }
                 }
             }
         }
@@ -236,7 +248,7 @@ public class FinalBossController : UniversalEnemyNeeds
             if (Time.time - LastTimebetweenspawns > Timebetweenspawns)
             {
                 LastTimebetweenspawns = Time.time;
-                int randomIndex = Random.Range(0, ariseEnemies.Length);
+                int randomIndex = UnityEngine.Random.Range(0, ariseEnemies.Length);
                 Instantiate(ariseEnemies[randomIndex], SpawnLocation.position, SpawnLocation.rotation);
                 lastspawnduration += Timebetweenspawns;
                 yield return new WaitForSeconds(Timebetweenspawns);

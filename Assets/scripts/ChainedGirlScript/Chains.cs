@@ -21,28 +21,37 @@ public class Chains : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        
-        if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown && !MeleeAttacking)
+        if (aggro)
         {
-            ChangedDirectionFollow();
-            StartCoroutine(ChainWhipAttack());
+            if (distance < ChainWhipDistance && Time.time - LastChainWhipCooldown > ChainWhipCooldown && !MeleeAttacking)
+            {
+                ChangedDirectionFollow();
+                StartCoroutine(ChainWhipAttack());
+            }
         }
     }
     public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public void TakeDamage(int damage, bool element)
     {
-        if (!element)
+        if (aggro)
         {
-            Health -= damage;
-        }
-        if (Health <= 0)
-        {
-            TheChainedGirl.Begone();
-            Destroy(this.gameObject);
+            if (!element)
+            {
+                Health -= damage;
+            }
+            if (Health <= 0)
+            {
+                TheChainedGirl.Begone();
+                Destroy(this.gameObject);
+            }
         }
     }
     private IEnumerator ChainWhipAttack()
