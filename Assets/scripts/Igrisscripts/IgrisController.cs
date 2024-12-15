@@ -13,6 +13,14 @@ public class IgrisController : UniversalEnemyNeeds
     protected float dodgeDuration = 0.1f;
     protected float BossDodgeSpeed = 8f;
     // Start is called before the first frame update
+
+
+
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
     void Start()
     {
         OriginalSpeed = EnemySpeed;
@@ -22,6 +30,14 @@ public class IgrisController : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().Igris){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -49,7 +65,15 @@ public class IgrisController : UniversalEnemyNeeds
                 Debug.Log("inside fist");
                 StartCoroutine(FistSwing());
             }
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
+        
+        
+    
+        
+       
+    
         else
         {
             if (distance < aggrodistance)

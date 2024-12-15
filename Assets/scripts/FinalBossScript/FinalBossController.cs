@@ -43,6 +43,11 @@ public class FinalBossController : UniversalEnemyNeeds
     protected bool secondtime = true;
     protected bool arise;
 
+//bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +59,15 @@ public class FinalBossController : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().FinalBoss){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
+
     }
 
     // Update is called once per frame
@@ -88,7 +102,14 @@ public class FinalBossController : UniversalEnemyNeeds
             {
                 StartCoroutine(ShadoAttack());
             }
+            //bob addition
+             enemyCanvas.SetActive(true);
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
 
     }
     public void FixedUpdate()
@@ -180,7 +201,8 @@ public class FinalBossController : UniversalEnemyNeeds
         if (aggro)
         {
             Health = Health - damage;
-
+            //bob addition
+            healthbar.SetHealth(Health);
             if (!IsImmune)
             {
                 if (Health <= 0 && BossPhase >= 3)
@@ -191,6 +213,8 @@ public class FinalBossController : UniversalEnemyNeeds
                     }
                     player.GetComponent<BossesDefeated>().FinalBoss = true;
                     Destroy(this.gameObject);
+                    //bob addition
+                     Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
                 }
                 else if (Health <= 0)
                 {

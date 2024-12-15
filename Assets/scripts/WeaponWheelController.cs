@@ -11,9 +11,17 @@ public class WeaponWheelController : MonoBehaviour
     public Image selectedItem;
     public Sprite noImage ;
     public static int weaponID;
+
+     private PlayerStats playerStats;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
+        if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats not found in the scene!");
+        }
         
     }
 
@@ -21,7 +29,7 @@ public class WeaponWheelController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.I)){
+        if (Input.GetKeyDown(KeyCode.Tab)){
             weaponWheelSelected=!weaponWheelSelected;
         }
         if (weaponWheelSelected){
@@ -39,14 +47,18 @@ public class WeaponWheelController : MonoBehaviour
 
             case 1://Melee
             Debug.Log ("Melee");
-            
+            playerStats.ThrowingHands = true;
             break;
         case 2://Ice
             Debug.Log ("Ice");
+             playerStats.ThrowingHands = false;
+                    playerStats.element = true;
             break;
 
             case 3://Fire
             Debug.Log ("Fire");
+            playerStats.ThrowingHands = false;
+                    playerStats.element = false;
             break;
 
        
