@@ -6339,11 +6339,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   cameraSpeed: 10
-  minX: -999
-  maxX: 999
+  minX: 0
+  maxX: 102.1
   minY: -999
-  maxY: 999
-  offset: 0.5
+  maxY: 5.63
+  offset: 0.86
 --- !u!1 &1932646307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6543,6 +6543,10 @@ PrefabInstance:
     - target: {fileID: 5380447084604301156, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
       propertyPath: Health
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380447084604301156, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5380447084604301156, guid: a6dee769e65f1dd4c9f6e2f51add7994, type: 3}
       propertyPath: EnemySpeed
@@ -7217,8 +7221,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 116.48123, y: 15.029928}
-  - {x: -16.86582, y: 15.023403}
-  - {x: -16.773634, y: -2.0896134}
+  - {x: -13.707822, y: 15.518029}
+  - {x: -13.597373, y: -2.0011966}
   - {x: 7.7644653, y: -2.0257065}
   - {x: 9.534131, y: -2.604111}
   - {x: 18.985214, y: -2.6474814}

@@ -8,7 +8,7 @@ public class AwareOfEveryMoveSense : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = FindObjectOfType<FinalBossController>();
     }
 
     // Update is called once per frame

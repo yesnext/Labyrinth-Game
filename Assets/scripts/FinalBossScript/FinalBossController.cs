@@ -11,32 +11,29 @@ public class FinalBossController : UniversalEnemyNeeds
 
     private Animator animator;
 
-    protected float BossDodgeSpeed = 8f;
-    protected float dodgeDuration = 0.1f;
+    public float BossDodgeSpeed = 8f;
+    public float dodgeDuration = 0.1f;
     protected float DodgeDurationCounter = 0.0f;
     public bool dodge;
     protected Transform ProjectilePoint;
     public DimentionalSlashProjectile Projectile;
     public int BossPhase = 1;
 
-    protected float RangeAttackDistance = 5.0f;
-    protected float RangAttackCooldown = 5f;
+    public float RangeAttackDistance = 5.0f;
+    public float RangAttackCooldown = 5f;
     protected float LastRangAttackTime = -5.0f;
-    protected bool Rangeanim;
-    protected bool lunganim;
 
-
-    protected float ShadoAttackDistance = 4.0f;
-    protected int ShadoAttackDamage = 6;
-    protected float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
+    public float ShadoAttackDistance = 4.0f;
+    public int ShadoAttackDamage = 6;
+    public float ShadoSwordSlashesCooldown = 5f; //time in seconds for the cooldown
     protected float lastShadoSwordSlashesTime = -5.0f;
-    protected float AriseCooldown = 45.0f;
+    public float AriseCooldown = 45.0f;
     protected float LastArisetime = -45.0f;
-    protected float spwanduration = 10f;
+    public float spwanduration = 10f;
     protected float lastspawnduration = 0;
     protected float Timebetweenspawns = 1f;
     protected float LastTimebetweenspawns = 0f;
-    public AriseEnemies[] ariseEnemies = new AriseEnemies[10];
+    public AriseEnemies ariseEnemies;
     public Transform SpawnLocation;
     public BoxCollider2D BodyBox;
     protected bool onetime = true;
@@ -252,8 +249,7 @@ public class FinalBossController : UniversalEnemyNeeds
             if (Time.time - LastTimebetweenspawns > Timebetweenspawns)
             {
                 LastTimebetweenspawns = Time.time;
-                int randomIndex = UnityEngine.Random.Range(0, ariseEnemies.Length);
-                Instantiate(ariseEnemies[randomIndex], SpawnLocation.position, SpawnLocation.rotation);
+                Instantiate(ariseEnemies, SpawnLocation.position, SpawnLocation.rotation);
                 lastspawnduration += Timebetweenspawns;
                 yield return new WaitForSeconds(Timebetweenspawns);
             }

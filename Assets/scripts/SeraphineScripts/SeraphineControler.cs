@@ -18,6 +18,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     public int originalhealth;
     private checkpoint1 playerstartposistion;
     public bool telepoted;
+    public GameObject wall;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,14 @@ public class SeraphineControler : UniversalEnemyNeeds
                 }
             }
         }
+        if (aggro)
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
     public IEnumerator teleport()
     {
@@ -94,6 +103,7 @@ public class SeraphineControler : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                wall.GetComponent<BoxCollider2D>().enabled = false;
                 player.GetComponent<BossesDefeated>().seraphine = true;
                 Destroy(this.gameObject);
             }

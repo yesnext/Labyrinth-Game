@@ -33,6 +33,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
         ShadoStep = GetComponent<Rigidbody2D>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
         SpawnLocation = FindObjectsOfType<SummonsSpawnLocation>();
+        OriginalSpeed=EnemySpeed;
         if(player.GetComponent<BossesDefeated>().AshenStalker){
             Destroy(this.gameObject);
         }
