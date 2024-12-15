@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/RoomDeathMatch.cs.meta
+guid: 3385282661f41bc49af218d4f854cf86
+========
 guid: 7cb4d857293de0a47b10928ef1eb31d5
+>>>>>>>> elbolbol:Assets/scripts/Echos.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

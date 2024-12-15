@@ -19,6 +19,13 @@ public class WyvernControler : UniversalEnemyNeeds
     private Vector2 PatrolDirection;
     private int numberofpatrolpoints;
     private int nextpatrolpoint;
+
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
+
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
@@ -28,6 +35,14 @@ public class WyvernControler : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().wyvern){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -50,7 +65,14 @@ public class WyvernControler : UniversalEnemyNeeds
                 GhangedirectionPatrol();
 
             }
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
     }
     public void FixedUpdate()
     {
@@ -99,10 +121,14 @@ public class WyvernControler : UniversalEnemyNeeds
         if (aggro)
         {
             Health = Health - damage;
+             //bob addition
+            healthbar.SetHealth(Health);
             if (Health <= 0)
             {
                 player.GetComponent<BossesDefeated>().wyvern = true;
                 Destroy(this.gameObject);
+                //bob addition
+            Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
             }
         }
     }

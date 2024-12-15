@@ -17,6 +17,12 @@ public class HealingOrion : UniversalEnemyNeeds
     private bool summoningOrion;
     public float TeleportingAnimationDuration;
     public bool Teleporting;
+
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,14 @@ public class HealingOrion : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().orion){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -36,12 +50,19 @@ public class HealingOrion : UniversalEnemyNeeds
         if (aggro && Time.time - LastTeleportTime > teleportcooldown && !Teleporting &&!summoningOrion)
         {
             StartCoroutine(teleport());
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
         if (distance < aggrodistance && onetime)
         {
             StartCoroutine(SummonAttackOrion());
             aggro = true;
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
     }
     public IEnumerator teleport()
     {

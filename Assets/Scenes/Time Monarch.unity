@@ -123,6 +123,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &18949879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5201092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.1464396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690309438172610423, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347200451151317712, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+      propertyPath: m_Name
+      value: TestHourGlassMonarchOfTime
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+--- !u!114 &18949880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4790619019701794584, guid: 6f4f509a52ef88845b2ac665d1816bc2, type: 3}
+  m_PrefabInstance: {fileID: 18949879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2fb0cc31d5e534992332ad17dcda3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &32678487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,9 +1742,10 @@ GameObject:
   - component: {fileID: 1920318217}
   - component: {fileID: 1920318219}
   - component: {fileID: 1920318218}
-  m_Layer: 0
+  - component: {fileID: 1920318220}
+  m_Layer: 7
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

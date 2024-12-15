@@ -18,6 +18,13 @@ public class SeraphineControler : UniversalEnemyNeeds
     public int originalhealth;
     private checkpoint1 playerstartposistion;
     public bool telepoted;
+
+
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,13 @@ public class SeraphineControler : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().seraphine){
             Destroy(this.gameObject);
         }
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -59,7 +73,14 @@ public class SeraphineControler : UniversalEnemyNeeds
                     shoot();
                 }
             }
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
     }
     public IEnumerator teleport()
     {
