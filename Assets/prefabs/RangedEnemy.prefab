@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6076448578153813099}
   - component: {fileID: 6076448578153813098}
-  - component: {fileID: 6076448578153813109}
   - component: {fileID: 6076448578153813108}
+  - component: {fileID: 5355777600731413016}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Without element or Phases
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &6076448578153813109
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076448578153813111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24561244, y: 0.48854607, z: 0.2}
-  m_Center: {x: -0.0031146777, y: 0.00622908, z: 0}
 --- !u!114 &6076448578153813108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,12 +101,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 1
   EnemySpeed: 0
-  OriginalSpeed: 0
-  Health: 0
+  Health: 11
   IsImmune: 0
   MeleeAttackDamage: 0
+  meleeattackdistance: 0
+  RangeAttackSpeed: 4.24
+  RangeAttackDamage: 9
   attackbox: {fileID: 0}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
+  RangAttackCooldown: 1
+  RangeAttackRange: 10
   Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
+--- !u!61 &5355777600731413016
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076448578153813111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &6076448579489301346
 GameObject:
   m_ObjectHideFlags: 0

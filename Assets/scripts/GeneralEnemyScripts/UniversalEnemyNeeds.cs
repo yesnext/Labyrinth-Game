@@ -21,19 +21,27 @@ public class UniversalEnemyNeeds : MonoBehaviour
     protected float LungAttackCooldown = 5f; //time in seconds for the cooldown
     protected float LastLungAttackTime = -5.0f;
     protected bool IsLunging = false;
+    public float RangeAttackSpeed;
+    public int RangeAttackDamage;
     public BoxCollider2D attackbox;
     //bob addition
     public HealthBar healthbar;
 
 
     // Start is called before the first frame update
+    protected bool MeleeAttacking;
+    public float MeleeAttackAnimationDuration;
+    protected bool RangAttacking;
+    public float RangAttackAnimationDuration;
+    public float aggrodistance;
+    public bool aggro;
     void Start()
     {
         //bob addition
         healthbar.SetMaxHealth(Health);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -41,19 +49,9 @@ public class UniversalEnemyNeeds : MonoBehaviour
 
     public void Followplayer()
     {
-        // animator.SetBool("Walking", true);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
 
-        GhangedirectionFollow();
-        if (distance < 4.0f)
-        {
-            // animator.SetBool("Walking", false);
-            // animator.SetBool("attack",true);
-        }
-        else
-        {
-            // animator.SetBool("attack",false);
-        }
+        ChangedDirectionFollow();
     }
     public virtual void TakeDamage(int damage)
     {
@@ -67,7 +65,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
         //bob addition
             healthbar.SetHealth(Health);
     }
-    public void GhangedirectionFollow()
+    public void ChangedDirectionFollow()
     {
         if (direction.x > 0 && !isFacingRight)
         {
@@ -86,5 +84,4 @@ public class UniversalEnemyNeeds : MonoBehaviour
             transform.localScale = scale;
         }
     }
-    
 }

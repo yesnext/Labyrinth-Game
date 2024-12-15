@@ -12,19 +12,21 @@ public class TheWarden : MonoBehaviour
     public GameObject minions;
     public Transform spawnlocation;
     public bool state = false;
+    private PlayerStats player;
     // Start is called before the first frame update
     void Start()
     {
-            spawnlocation = FindObjectOfType<SummonsSpawnLocation>().transform;
-            CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
+        player=FindObjectOfType<PlayerStats>();
+        spawnlocation = FindObjectOfType<SummonsSpawnLocation>().transform;
+        CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckObelisks();
         if (state)
         {
-            CheckObelisks();
             if (Time.time - lastWardenSummonscooldown > WardenSummonscooldown)
             {
                 Summon();
@@ -43,6 +45,7 @@ public class TheWarden : MonoBehaviour
             CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
             if (CurrentNumOfObelisks == 0)
             {
+                player.GetComponent<BossesDefeated>().warden = true;
                 Destroy(this.gameObject);
             }
         }
@@ -50,6 +53,6 @@ public class TheWarden : MonoBehaviour
     public void OnTriggerEnter2D()
     {
         state = true;
-        WardenObelisks.state=true;
+        WardenObelisks.state = true;
     }
 }

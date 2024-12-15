@@ -28,7 +28,6 @@ TagManager:
   - HourGlass
   - Checkpoint 1
   - Checkpoint 2
-  - EnemyCanvas
   layers:
   - Default
   - TransparentFX
@@ -68,6 +67,9 @@ TagManager:
     locked: 0
   - name: 'backest 2 '
     uniqueID: 3881364885
+    locked: 0
+  - name: New Layer 17
+    uniqueID: 3405429979
     locked: 0
   - name: backest 1
     uniqueID: 509840677

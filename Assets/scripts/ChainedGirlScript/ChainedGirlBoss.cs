@@ -7,7 +7,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
 {
     public Chains[] chains;
     private EnemyProjectilePoint Projectilepoint;
-    public EnemyProjectile projectile;
+    public EnemyProjectile Projectile;
     public float RangeAttackDistance;
     private float LastRangAttackTime;
     public float RangAttackCooldown;
@@ -19,33 +19,46 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = false;
         LastRangAttackTime = -RangAttackCooldown;
+        if(player.GetComponent<BossesDefeated>().chainedgirl){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
-        if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
+        if (aggro)
         {
-            RangeAttack();
+            ChangedDirectionFollow();
+            if (distance >= RangeAttackDistance && Time.time - LastRangAttackTime > RangAttackCooldown)
+            {
+                RangeAttack();
+            }
+            Begone();
         }
-        Begone();
     }
     public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public void Begone()
     {
         if (chains[0] == null && chains[1] == null)
         {
+            player.GetComponent<BossesDefeated>().chainedgirl = true;
             Destroy(this.gameObject);
         }
     }
     public void RangeAttack()
     {
-        Instantiate(projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
+        EnemyProjectile projectile = Instantiate(Projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
+        EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         LastRangAttackTime = Time.time;
     }
 }

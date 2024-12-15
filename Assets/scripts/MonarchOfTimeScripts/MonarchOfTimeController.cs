@@ -7,7 +7,6 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     private EnemyProjectilePoint projectilePoint;
     public float rangeAttackCooldown = 2.0f;
     private float LastRangeAttackTime;
-    public int RangeAttackDamage;
     public MonarchOfTimeProjectile Projectile;
     public float TimestopInturuptionDuration = 5f;
     private float LastTimeStop;
@@ -20,45 +19,57 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     public float ReversingTimeCooldown = 20.0f;
     private float LastTimeTimeReversal;
     private float freezintimeduration = 2.0f;
-    private int originalhealth;
-    void Start()
+    public float SlowRate;
+    private int originalhealth; void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
         LastTimeStop -= TimestopChooldown;
         LastTimeTimeReversal -= ReversingTimeCooldown;
         originalhealth = Health;
-
+        if(player.GetComponent<BossesDefeated>().Monarchoftime){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        GhangedirectionFollow();
-        if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
+        if (aggro)
         {
-            Shoot();
-        }
-        if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
-        {
-            StartCoroutine(StopingTime());
-        }
-        if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
-        {
-            StartCoroutine(ReversingTime());
+            ChangedDirectionFollow();
+            if (Time.time - LastRangeAttackTime > rangeAttackCooldown)
+            {
+                StartCoroutine(Shoot());
+            }
+            if (Time.time - LastTimeStop > TimestopChooldown && !Timerevered)
+            {
+                StartCoroutine(StopingTime());
+            }
+            if (Time.time - LastTimeTimeReversal > ReversingTimeCooldown && !TimeStopped)
+            {
+                StartCoroutine(ReversingTime());
+            }
         }
     }
-    public void Shoot()
+    public IEnumerator Shoot()
     {
-        LastRangeAttackTime = Time.time;
+        RangAttacking = true;
+        yield return new WaitForSeconds(RangAttackAnimationDuration);
         MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         MonarchOfTimeProjectile projectileController = projectile.GetComponent<MonarchOfTimeProjectile>();
-        projectileController.Intialize(RangeAttackDamage);
+        projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed, SlowRate);
+        LastRangeAttackTime = Time.time;
+        RangAttacking = false;
     }
     public void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
     }
     public IEnumerator StopingTime()
     {
@@ -78,6 +89,18 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         TimeStopped = false;
         LastTimeStop = Time.time;
 
+    }
+    public override void TakeDamage(int damage)
+    {
+        if (aggro)
+        {
+            Health = Health - damage;
+            if (Health <= 0)
+            {
+                player.GetComponent<BossesDefeated>().Monarchoftime = true;
+                Destroy(this.gameObject);
+            }
+        }
     }
     public IEnumerator ReversingTime()
     {

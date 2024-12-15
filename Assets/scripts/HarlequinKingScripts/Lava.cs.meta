@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/Lava.cs.meta
 guid: e2e273d45ae0a6c4fa932a25b607c22f
+========
+guid: e8cef16ea118170459fbd903e237ff25
+>>>>>>>> elbolbol:Assets/scripts/HarlequinKingScripts/HarlequinLevelManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

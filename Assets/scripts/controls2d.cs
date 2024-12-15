@@ -5,13 +5,14 @@ using UnityEngine;
 public class controls2d : MonoBehaviour
 {
     public float moveSpeed;
-    public Rigidbody2D rb2d;
+    public Rigidbody2D rb;
     private Vector2 moveInput;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,19 +23,10 @@ public class controls2d : MonoBehaviour
 
         moveInput.Normalize();
 
-        rb2d.velocity = moveInput * moveSpeed;
+        rb.velocity = moveInput * moveSpeed;
+        animator.SetFloat("Horizontal",moveInput.x);
+        animator.SetFloat("Vertical",moveInput.y);
+        animator.SetFloat("speed",moveInput.sqrMagnitude);
 
-        if (Input.GetKey(KeyCode.W)){
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f);
-        }
-        if (Input.GetKey(KeyCode.S)){
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 270f);
-        }
-        if (Input.GetKey(KeyCode.D)){
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0f);
-        }
-        if (Input.GetKey(KeyCode.A)){
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180f);
-        }
     }
 }

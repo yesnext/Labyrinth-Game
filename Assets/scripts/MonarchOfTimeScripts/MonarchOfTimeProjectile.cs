@@ -10,9 +10,12 @@ public class MonarchOfTimeProjectile : MonoBehaviour
     private Vector3 playerpos;
     public int Damage;
     public float SlowRate;
-    public void Intialize(int damage)
+    public float Speed;
+    public void Intialize(int damage,float speed,float slowingrate)
     {
         Damage = damage;
+        SlowRate = slowingrate;
+        Speed = speed;
     }
 
     void Start()

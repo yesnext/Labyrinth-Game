@@ -24,6 +24,9 @@ public class PlayerStats : MonoBehaviour
     public int MeleeAttackDamage = 6;
     public float MeleeAttackCooldown = 3.0f; //time in seconds for the cooldown
     private float lastMeleeAttackTime = 0f;
+    private bool meleeattacking;
+    public float ThrowingHandsAnimationDuration;
+    public float ElementMeleeAttackAnimationDuration;
     public bool attackanim = false;
     public bool element = false; // if false it will be fire if tru will be ice
     public KeyCode SwitchElement;
@@ -37,20 +40,29 @@ public class PlayerStats : MonoBehaviour
 
     //bob addition
     public HealthBar healthbar;
+    public float rangeattaccooldown;
+    public float lastrangeattack;
+    public int RangeAttackDamage;
+    public float RangeAttackSpeed;
+    private bool Rangeattacking;
+    public float FireRangeAttackAnimationDuration;
+    public float IceRangeAttackAnimationDuration;
+    private static PlayerStats instance;
 
-    // void Awake()
-    // {
-    //     // if (instance != null && instance != this)
-    //     // {
-    //     //     Destroy(gameObject);
-    //     // }
-    //     // else
-    //     // {
 
-    //     //     instance = this;
-    //     //     DontDestroyOnLoad(gameObject);
-    //     // }
-    // }
+    void Awake()
+    {
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
@@ -60,6 +72,7 @@ public class PlayerStats : MonoBehaviour
 
         //bob addition
         healthbar.SetMaxHealth(Health);
+        lastrangeattack = -rangeattaccooldown;
     }
 
     void Update()
@@ -68,55 +81,86 @@ public class PlayerStats : MonoBehaviour
         {
             if (Input.GetKeyDown(MeleeAttackkey))
             {
-
-                MeleeAnimation();
+                if (Time.timeAsDouble - lastMeleeAttackTime > MeleeAttackCooldown && !meleeattacking && !Rangeattacking)
+                {
+                    StartCoroutine(MeleeAnimation());
+                }
             }
-            if (Input.GetKeyDown(SwitchElement))
+            if (Input.GetKeyDown(SwitchElement) && !Rangeattacking)
             {
                 if (!ThrowingHands)
                 {
                     ChangeElement();
                 }
             }
-            if (Input.GetKeyDown(RangeAttackKey))
+            if (Input.GetKeyDown(RangeAttackKey) && !meleeattacking && !Rangeattacking)
             {
-                if (!ThrowingHands)
+                if (Time.time - lastrangeattack > rangeattaccooldown)
                 {
-                    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    mousePosition.z = 0;
-                    direction = (mousePosition - ProjectilePoint.position).normalized;
-                    bool IsMouseOnRight = mousePosition.x > transform.position.x;
-                    if (controls.isFacingRight == IsMouseOnRight)
+                    if (!ThrowingHands)
                     {
-                        ProjectileCount++;
-                        Shoot();
+                        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        mousePosition.z = 0;
+                        direction = (mousePosition - ProjectilePoint.position).normalized;
+                        bool IsMouseOnRight = mousePosition.x > transform.position.x;
+                        if (controls.isFacingRight == IsMouseOnRight)
+                        {
+                            ProjectileCount++;
+                            StartCoroutine(Shoot());
+                        }
                     }
                 }
             }
-            if (Input.GetKeyDown(FightMode))
+            if (Input.GetKeyDown(FightMode) && !meleeattacking && !Rangeattacking)
             {
                 ChangeFightMode();
             }
-            if (Input.GetKeyDown(Healing))
+            if (Input.GetKeyDown(Healing) && !meleeattacking && !Rangeattacking)
             {
                 Heal();
             }
         }
     }
 
-    private void MeleeAnimation()
+    private IEnumerator MeleeAnimation()
     {
+        meleeattacking = true;
         //decide which animation to run
         if (ThrowingHands)
         {
-
+            yield return new WaitForSeconds(ThrowingHandsAnimationDuration);
         }
-        else
+        else if (!element)// for fire
         {
-
+            yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
+        else//for Ice
+        {
+            yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
+        }
+        meleeattacking = false;
+        lastMeleeAttackTime = Time.time;
     }
-
+    public IEnumerator Shoot()
+    {
+        Rangeattacking = true;
+        if (!element)//for fire
+        {
+            yield return new WaitForSeconds(FireRangeAttackAnimationDuration);
+            GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
+            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
+            projectileController.Intialize(ProjectilePoint, RangeAttackDamage, RangeAttackSpeed);
+        }
+        else// for Ice
+        {
+            yield return new WaitForSeconds(IceRangeAttackAnimationDuration);
+            GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
+            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
+            projectileController.Intialize(ProjectilePoint, RangeAttackDamage, RangeAttackSpeed);
+        }
+        Rangeattacking = false;
+        lastrangeattack = Time.time;
+    }
     private void ChangeFightMode()
     {
         ThrowingHands = !ThrowingHands;
@@ -125,22 +169,6 @@ public class PlayerStats : MonoBehaviour
     private void ChangeElement()
     {
         element = !element;
-    }
-
-    public void Shoot()
-    {
-        if (!element)
-        {
-            GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
-            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-            projectileController.Intialize(ProjectilePoint);
-        }
-        else
-        {
-            GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
-            PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
-            projectileController.Intialize(ProjectilePoint);
-        }
     }
     public void TakeDamage(int damage)
     {
@@ -157,11 +185,6 @@ public class PlayerStats : MonoBehaviour
             firstencounter = false;
             Health = 100; ;
         }
-    }
-
-    public void MeleeAttack()
-    {
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -182,13 +205,6 @@ public class PlayerStats : MonoBehaviour
                         other.GetComponent<FinalBossController>().TakeDamage(MeleeAttackDamage);
 
                     }
-                    else if (GameObject.FindObjectOfType<IgrisController>() != null)
-                    {
-                        if (ThrowingHands && !Boss.GetComponent<IgrisController>().IsImmune)
-                        {
-                            other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
-                        }
-                    }
                     else if (GameObject.FindObjectOfType<AshenStalkerController>() != null)
                     {
                         other.GetComponent<AshenStalkerController>().TakeDamage(MeleeAttackDamage);
@@ -199,17 +215,32 @@ public class PlayerStats : MonoBehaviour
                     }
                     else if (GameObject.FindObjectOfType<HealingOrion>() != null)
                     {
-                        if (other.GetComponent<HealingOrion>().agrue)
+                        if (other.GetComponent<HealingOrion>().aggro)
                         {
                             other.GetComponent<HealingOrion>().TakeDamage(MeleeAttackDamage);
                         }
                     }
                     else if (GameObject.FindObjectOfType<MonarchOfTimeController>() != null)
                     {
-                        FindObjectOfType<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
-                        Destroy(this.gameObject);
-                    }
+                        other.GetComponent<MonarchOfTimeController>().TakeDamage(MeleeAttackDamage);
 
+                    }
+                    else if (GameObject.FindObjectOfType<WyvernControler>() != null)
+                    {
+                        other.GetComponent<WyvernControler>().TakeDamage(MeleeAttackDamage);
+
+                    }
+                    else if (GameObject.FindObjectOfType<SeraphineControler>() != null)
+                    {
+                        other.GetComponent<SeraphineControler>().TakeDamage(MeleeAttackDamage);
+                    }
+                }
+                else if (GameObject.FindObjectOfType<IgrisController>() != null && other.tag == "Boss" && fistmode)
+                {
+                    if (ThrowingHands && !Boss.GetComponent<IgrisController>().IsImmune)
+                    {
+                        other.GetComponent<IgrisController>().TakeDamage(MeleeAttackDamage);
+                    }
                 }
                 else if (other.tag == "Chains")
                 {
@@ -229,16 +260,13 @@ public class PlayerStats : MonoBehaviour
                 else if (other.tag == "Without element or Phases")
                 {
                     other.GetComponent<UniversalEnemyNeeds>().TakeDamage(MeleeAttackDamage);
-                    PlayerStats.ProjectileCount--;
                 }
-
             }
-
         }
     }
     public void Heal()
     {
-        if (FindObjectOfType<FinalBossController>() == null)
+        if (FindObjectOfType<FinalBossController>() == null && FindObjectOfType<FinalBossController>().BossPhase == 1)
         {
             if (Time.time - LastHealCooldown > HealCooldown)
             {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/HarlequinRespawnTriggers.cs.meta
+guid: 074626d415379d74b804b7f47b912a60
+========
+guid: 7cb4d857293de0a47b10928ef1eb31d5
+>>>>>>>> elbolbol:Assets/scripts/Echos.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

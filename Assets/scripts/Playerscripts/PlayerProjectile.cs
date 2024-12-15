@@ -13,9 +13,11 @@ public class PlayerProjectile : MonoBehaviour
     public bool element;
     public int Damage = 3;
     public PlayerStats Player;
-    public void Intialize(Transform Firepoint)
+    public void Intialize(Transform Firepoint, int RangeAttackDamage, float RangeAttackSpeed)
     {
         ProjectilePoint = Firepoint;
+        Damage = RangeAttackDamage;
+        speed = RangeAttackSpeed;
     }
     void Start()
     {
@@ -59,17 +61,26 @@ public class PlayerProjectile : MonoBehaviour
         }
         else if (GameObject.FindObjectOfType<CalistaController>() != null && other.tag == "Boss")
         {
-            FindObjectOfType<CalistaController>().TakeDamage(Damage);
+            other.GetComponent<CalistaController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
         else if (GameObject.FindObjectOfType<HealingOrion>() != null && other.tag == "Boss")
         {
-            if (other.GetComponent<HealingOrion>().agrue)
+            if (other.GetComponent<HealingOrion>())
             {
                 other.GetComponent<HealingOrion>().TakeDamage(Damage);
             }
             Destroy(this.gameObject);
-
+        }
+        else if (GameObject.FindObjectOfType<WyvernControler>() != null && other.tag == "Boss")
+        {
+            other.GetComponent<WyvernControler>().TakeDamage(Damage);
+            Destroy(this.gameObject);
+        }
+        else if (GameObject.FindObjectOfType<SeraphineControler>() != null && other.tag == "Boss")
+        {
+            other.GetComponent<SeraphineControler>().TakeDamage(Damage);
+            Destroy(this.gameObject);
         }
         else if (GameObject.FindObjectOfType<AttackingOrion>() != null && other.tag == "AttackOrion")
         {
@@ -108,7 +119,8 @@ public class PlayerProjectile : MonoBehaviour
             FindObjectOfType<MonarchOfTimeController>().TakeDamage(Damage);
             Destroy(this.gameObject);
         }
-        else if(other.tag == "HourGlass"){
+        else if (other.tag == "HourGlass")
+        {
             other.GetComponent<HourGlass>().Takedamage(Damage);
             Destroy(this.gameObject);
         }

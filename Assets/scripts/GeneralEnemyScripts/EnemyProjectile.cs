@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float speed;
+    public float Speed;
     public UniversalEnemyNeeds enemy;
     public PlayerStats player;
     private Vector3 playerpos;
     public int Damage;
-    public void Intialize(int damage)
+    public void Intialize(int damage,float speed)
     {
         Damage = damage;
+        Speed = speed;
     }
     // Start is called before the first frame update
     void Start()
@@ -31,11 +32,9 @@ public class EnemyProjectile : MonoBehaviour
         }
 
     }
-
-    // Update is called once per frame
     void Update()
     {
-        transform.position += playerpos * speed * Time.deltaTime;
+        transform.position += playerpos * Speed * Time.deltaTime;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
