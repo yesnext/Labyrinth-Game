@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NavigationController : MonoBehaviour
 {
-    
+
 
     public void Quit()
     {
@@ -12,15 +13,15 @@ public class NavigationController : MonoBehaviour
         Application.Quit();
     }
     public void GoToIntroScene()
-{
-    AudioManager.Instance.StopAllAudio();
-    Application.LoadLevel(0);
+    {
+        AudioManager.Instance.StopAllAudio();
+         SceneManager.LoadScene(0);
 
 
-}
-public void GoToGameScene()
-{
-    AudioManager.Instance.StopAllAudio();
-    Application.LoadLevel(1);
-}
+    }
+    public void GoToGameScene()
+    {
+        AudioManager.Instance.StopAllAudio();
+        SceneManager.LoadScene(1);
+    }
 }
