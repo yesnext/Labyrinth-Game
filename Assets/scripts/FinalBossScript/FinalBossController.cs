@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class FinalBossController : UniversalEnemyNeeds
 {
+
     private Animator animator;
 
     protected float BossDodgeSpeed = 8f;

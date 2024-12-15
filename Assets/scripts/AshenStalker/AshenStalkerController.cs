@@ -46,30 +46,30 @@ public class AshenStalkerController : UniversalEnemyNeeds
             ChangedDirectionFollow();
             if (!MeleeAttacking && !RangAttacking)
             {
-        Followplayer();
+                Followplayer();
             }
             if (distance < SurpriseAttackDistance && Time.time - LastSurpriseMeleeAttackTime > SurpriseMeleeAttackCooldown &&
             Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
-            SurpriseAttack();
-        }
+            {
+                SurpriseAttack();
+            }
             else if (distance < meleeattackdistance && Time.time - lastMeleeAttackTime > MeleeAttackCooldown && !MeleeAttacking && !RangAttacking)
-        {
+            {
                 StartCoroutine(MeleeAttack());
-        }
+            }
             else if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > SurpriseAttackDistance && !IsLunging && !MeleeAttacking && !RangAttacking)
-        {
+            {
                 StartCoroutine(Shoot());
-        }
-        if (distance < appeardistance)
-        {
-            Disappear.enabled = true;
-            ShadoStep.gravityScale = 1;
-        }
-        if (Time.time - lastSummonscooldown > Summonscooldown)
-        {
-            lastSummonscooldown = Time.time;
-            Summon();
+            }
+            if (distance < appeardistance)
+            {
+                Disappear.enabled = true;
+                ShadoStep.gravityScale = 1;
+            }
+            if (Time.time - lastSummonscooldown > Summonscooldown)
+            {
+                lastSummonscooldown = Time.time;
+                Summon();
             }
         }
     }
@@ -109,8 +109,8 @@ public class AshenStalkerController : UniversalEnemyNeeds
         IsLunging = true;
         Disappear.enabled = false;
         ShadoStep.gravityScale = 0;
-            LastSurpriseMeleeAttackTime = Time.time;
-            EnemySpeed *= 1.5f;
+        LastSurpriseMeleeAttackTime = Time.time;
+        EnemySpeed *= 1.5f;
 
     }
     public IEnumerator MeleeAttack()
@@ -118,8 +118,8 @@ public class AshenStalkerController : UniversalEnemyNeeds
         MeleeAttacking = true;
         Disappear.enabled = true;
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
-            EnemySpeed = OriginalSpeed;
-            IsLunging = false;
+        EnemySpeed = OriginalSpeed;
+        IsLunging = false;
         lastMeleeAttackTime = Time.time;
         MeleeAttacking = false;
     }

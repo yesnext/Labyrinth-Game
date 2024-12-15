@@ -24,11 +24,6 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public float RangeAttackSpeed;
     public int RangeAttackDamage;
     public BoxCollider2D attackbox;
-    //bob addition
-    public HealthBar healthbar;
-
-
-    // Start is called before the first frame update
     protected bool MeleeAttacking;
     public float MeleeAttackAnimationDuration;
     protected bool RangAttacking;
@@ -37,8 +32,6 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public bool aggro;
     void Start()
     {
-        //bob addition
-        healthbar.SetMaxHealth(Health);
     }
 
 
@@ -59,11 +52,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(this.gameObject);
-            //bob addition
-            Destroy(GameObject.FindWithTag("EnemyCanvas"));
         }
-        //bob addition
-            healthbar.SetHealth(Health);
     }
     public void ChangedDirectionFollow()
     {
@@ -84,4 +73,5 @@ public class UniversalEnemyNeeds : MonoBehaviour
             transform.localScale = scale;
         }
     }
+
 }

@@ -58,13 +58,4 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
             Destroy(this.gameObject);
         }
     }
-    public override void TakeDamage(int damage)
-    {
-        Health = Health - damage;
-        if (Health <= 0)
-        {
-            spawnlocation.ocupied = false;
-            Destroy(this.gameObject);
-        }
-    }
 }

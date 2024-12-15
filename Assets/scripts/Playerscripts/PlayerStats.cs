@@ -37,9 +37,6 @@ public class PlayerStats : MonoBehaviour
     public KeyCode Healing;
     public bool ThrowingHands = false;
     public bool firstencounter = true;
-
-    //bob addition
-    public HealthBar healthbar;
     public float rangeattaccooldown;
     public float lastrangeattack;
     public int RangeAttackDamage;
@@ -68,10 +65,6 @@ public class PlayerStats : MonoBehaviour
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
-
-
-        //bob addition
-        healthbar.SetMaxHealth(Health);
         lastrangeattack = -rangeattaccooldown;
     }
 
@@ -174,7 +167,6 @@ public class PlayerStats : MonoBehaviour
     {
         Health = Health - damage;
         Debug.Log("Health" + Health);
-        healthbar.SetHealth(Health);
     }
     public void TakeDamagefromigris(int damage)
     {

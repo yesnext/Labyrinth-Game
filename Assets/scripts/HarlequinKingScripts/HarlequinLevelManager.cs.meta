@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/HarlequinLevelManager.cs.meta
-guid: e8cef16ea118170459fbd903e237ff25
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/checkpoint1.cs.meta
+guid: 72702cab167b943439802db585417baf
 ========
-guid: 7c6fdd1742d9b194aa86a5c6865bc850
->>>>>>>> elbolbol:Assets/scripts/AudioManager.cs.meta
+guid: e8cef16ea118170459fbd903e237ff25
+>>>>>>>> elbolbol:Assets/scripts/HarlequinKingScripts/HarlequinLevelManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

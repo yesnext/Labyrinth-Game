@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/checkpoint1.cs.meta
 guid: 72702cab167b943439802db585417baf
+========
+guid: e8cef16ea118170459fbd903e237ff25
+>>>>>>>> elbolbol:Assets/scripts/HarlequinKingScripts/HarlequinLevelManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
