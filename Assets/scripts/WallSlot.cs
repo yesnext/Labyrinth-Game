@@ -10,11 +10,15 @@ public class WallSlot : MonoBehaviour
     private bool isPlayerNearby = false;
     public Sprite correctItemPrefab;
     public GameObject interactHintText;
-
+    public p2ExitDoor p2ed;
     public Vector2 maxItemSize = new Vector2(1f, 1f); // Maximum allowed width and height for the sprite
+    private bool isCorrect = false;
+    public delegate void WallSlotChanged();
+    public event WallSlotChanged OnWallSlotChanged;
 
     void Start()
     {
+        p2ed = FindObjectOfType<p2ExitDoor>();
         wallSlotUI.SetActive(false); // Hide the UI at the start
         interactHintText.SetActive(false);
         // Ensure that the wallSlotUIManager is assigned (otherwise log an error)
@@ -80,7 +84,16 @@ public class WallSlot : MonoBehaviour
             itemFrameRenderer.transform.localScale = new Vector3(scale, scale, 1);
 
             Debug.Log($"Placed item with sprite: {itemSprite.name} (scaled to max size)");
-            CheckIfCorrectItem();
+            bool wasCorrect = isCorrect;
+
+            itemFrameRenderer.sprite = itemSprite;
+            isCorrect = CheckIfCorrectItem(); // Recheck if the item is correct
+
+            // Only notify if the item changed state
+            if (wasCorrect != isCorrect)
+            {
+                OnWallSlotChanged?.Invoke(); // Notify the event listener (p2ExitDoor)
+            }
         }
         else
         {
@@ -90,15 +103,6 @@ public class WallSlot : MonoBehaviour
 
     public bool CheckIfCorrectItem()
     {
-        if (itemFrameRenderer.sprite == correctItemPrefab)
-        {
-            Debug.Log("Correct item placed!");
-            return true; // The placed item matches the prefab
-        }
-        else
-        {
-            Debug.Log("Incorrect item placed.");
-            return false; // The placed item does not match the prefab
-        }
+        return itemFrameRenderer.sprite == correctItemPrefab;
     }
 }
