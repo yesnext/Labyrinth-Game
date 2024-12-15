@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5421252592560289705}
   - component: {fileID: 5421252592560289706}
   - component: {fileID: 5421252592560289621}
+  - component: {fileID: 8008115841495452701}
   m_Layer: 0
   m_Name: TestOrionAttack
   m_TagString: AttackOrion
@@ -102,11 +103,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 1
   EnemySpeed: 2.59
-  OriginalSpeed: 3.04
   Health: 100
   IsImmune: 0
   MeleeAttackDamage: 4
+  meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
   attackbox: {fileID: 5421252592560289706}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
 --- !u!61 &5421252592560289705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +187,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &8008115841495452701
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5421252592560289707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 336c25a9752c92f43bc90c63679fa6ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

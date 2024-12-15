@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2550070489801241492}
   - component: {fileID: 2550070489801241493}
   - component: {fileID: 2550070489801241494}
+  - component: {fileID: -8526415182777501249}
   m_Layer: 0
   m_Name: TestOrionHealer
   m_TagString: Untagged
@@ -100,13 +101,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 1
   EnemySpeed: 0
-  OriginalSpeed: 0
   Health: 0
   IsImmune: 0
   MeleeAttackDamage: 0
+  meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
   attackbox: {fileID: 0}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
+  teleportcooldown: 8
+  LastTeleportTime: 0
   Attackingorion: {fileID: 0}
   fakes: {fileID: 0}
+  TeleportingAnimationDuration: 0
+  Teleporting: 0
 --- !u!61 &2550070489801241494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +144,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29456976, y: 0.32872033}
   m_EdgeRadius: 0
+--- !u!95 &-8526415182777501249
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550070489801241495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 336c25a9752c92f43bc90c63679fa6ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
