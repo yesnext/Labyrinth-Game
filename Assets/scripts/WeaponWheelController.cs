@@ -48,6 +48,7 @@ public class WeaponWheelController : MonoBehaviour
             case 1://Melee
             Debug.Log ("Melee");
             playerStats.ThrowingHands = true;
+             playerStats.element = false;
             break;
         case 2://Ice
             Debug.Log ("Ice");
