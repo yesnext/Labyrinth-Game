@@ -19,6 +19,9 @@ public class IgrisController : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = true;
         FistAttackBox.enabled = false;
+        if(player.GetComponent<BossesDefeated>().Igris){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -129,6 +132,7 @@ public class IgrisController : UniversalEnemyNeeds
         {
             if (other.tag == "Player")
             {
+                player.GetComponent<BossesDefeated>().Igris = true;
                 player.TakeDamage(MeleeAttackDamage);
             }
         }

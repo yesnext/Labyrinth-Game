@@ -18,6 +18,9 @@ public class WardenObelisks : UniversalEnemyNeeds
     {
         CurrentNumOfObelisks = FindObjectsOfType<WardenObelisks>().Length;
         player = FindObjectOfType<PlayerStats>();
+        if(player.GetComponent<BossesDefeated>().warden){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

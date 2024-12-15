@@ -51,6 +51,9 @@ public class FinalBossController : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
         SpawnLocation = FindObjectOfType<SummonsSpawnLocation>().transform;
+        if(player.GetComponent<BossesDefeated>().FinalBoss){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -186,6 +189,7 @@ public class FinalBossController : UniversalEnemyNeeds
                     {
                         minions.getdestroyed();
                     }
+                    player.GetComponent<BossesDefeated>().FinalBoss = true;
                     Destroy(this.gameObject);
                 }
                 else if (Health <= 0)

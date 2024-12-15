@@ -103,12 +103,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 0
   EnemySpeed: 0
-  OriginalSpeed: 0
+  Health: 0
+  IsImmune: 0
+  MeleeAttackDamage: 0
+  meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
+  attackbox: {fileID: 4307296316687342585}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
+  RangeAttackDistance: 5
   Disappear: {fileID: 0}
   appeardistance: 2
-  minions: {fileID: 0}
-  Projectile: {fileID: 0}
-  attackbox: {fileID: 0}
+  minions: {fileID: 6076448578153813111, guid: b37f051caaf23a24180bb90a6ac3d5dc, type: 3}
+  Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
 --- !u!61 &4307296316687342586
 BoxCollider2D:
   m_ObjectHideFlags: 0

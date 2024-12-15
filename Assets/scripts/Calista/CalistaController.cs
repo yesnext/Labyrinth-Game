@@ -17,6 +17,9 @@ public class CalistaController : UniversalEnemyNeeds
     {
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
+        if(player.GetComponent<BossesDefeated>().Calista){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class CalistaController : UniversalEnemyNeeds
                 Health = Health - damage;
                 if (Health <= 0)
                 {
+                    player.GetComponent<BossesDefeated>().Calista = true;
                     Destroy(this.gameObject);
                 }
             }

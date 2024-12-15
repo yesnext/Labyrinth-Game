@@ -25,7 +25,9 @@ public class WyvernControler : UniversalEnemyNeeds
         PatrolPoints = FindObjectsOfType<PatrolPoints>();
         numberofpatrolpoints = PatrolPoints.Length;
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
-        Debug.Log(FindObjectsOfType<EnemyProjectilePoint>().Length);
+        if(player.GetComponent<BossesDefeated>().wyvern){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -99,6 +101,7 @@ public class WyvernControler : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                player.GetComponent<BossesDefeated>().wyvern = true;
                 Destroy(this.gameObject);
             }
         }

@@ -24,13 +24,16 @@ public class HealingOrion : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         teleportlocations = FindObjectsOfType<SummonsSpawnLocation>();
         AttackingorionLocation = FindObjectOfType<Attackorionloction>();
+        if(player.GetComponent<BossesDefeated>().orion){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         ChangedDirectionFollow();
-        if (aggro && Time.time - LastTeleportTime > teleportcooldown && !Teleporting)
+        if (aggro && Time.time - LastTeleportTime > teleportcooldown && !Teleporting &&!summoningOrion)
         {
             StartCoroutine(teleport());
         }
@@ -100,6 +103,7 @@ public class HealingOrion : UniversalEnemyNeeds
                 {
                     Destroy(fake.gameObject);
                 }
+                player.GetComponent<BossesDefeated>().orion = true;
                 Destroy(this.gameObject);
             }
         }

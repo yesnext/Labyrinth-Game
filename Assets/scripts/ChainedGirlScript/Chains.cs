@@ -16,6 +16,9 @@ public class Chains : UniversalEnemyNeeds
     {
         player = FindObjectOfType<PlayerStats>();
         TheChainedGirl = FindObjectOfType<ChainedGirlBoss>();
+        if(player.GetComponent<BossesDefeated>().chainedgirl){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

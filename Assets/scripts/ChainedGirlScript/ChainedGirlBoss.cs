@@ -19,6 +19,9 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = false;
         LastRangAttackTime = -RangAttackCooldown;
+        if(player.GetComponent<BossesDefeated>().chainedgirl){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     {
         if (chains[0] == null && chains[1] == null)
         {
+            player.GetComponent<BossesDefeated>().chainedgirl = true;
             Destroy(this.gameObject);
         }
     }

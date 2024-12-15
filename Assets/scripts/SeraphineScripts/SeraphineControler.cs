@@ -26,6 +26,9 @@ public class SeraphineControler : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         projectilepoint = FindObjectOfType<EnemyProjectilePoint>();
         originalhealth = Health;
+        if(player.GetComponent<BossesDefeated>().seraphine){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -91,6 +94,7 @@ public class SeraphineControler : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                player.GetComponent<BossesDefeated>().seraphine = true;
                 Destroy(this.gameObject);
             }
         }

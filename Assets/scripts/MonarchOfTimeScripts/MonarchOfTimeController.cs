@@ -27,7 +27,9 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         LastTimeStop -= TimestopChooldown;
         LastTimeTimeReversal -= ReversingTimeCooldown;
         originalhealth = Health;
-
+        if(player.GetComponent<BossesDefeated>().Monarchoftime){
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -95,6 +97,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                player.GetComponent<BossesDefeated>().Monarchoftime = true;
                 Destroy(this.gameObject);
             }
         }

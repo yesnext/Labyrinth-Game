@@ -38,20 +38,21 @@ public class PlayerStats : MonoBehaviour
     public float lastrangeattack;
     public int RangeAttackDamage;
     public float RangeAttackSpeed;
+    private static PlayerStats instance;
 
-    // void Awake()
-    // {
-    //     // if (instance != null && instance != this)
-    //     // {
-    //     //     Destroy(gameObject);
-    //     // }
-    //     // else
-    //     // {
-
-    //     //     instance = this;
-    //     //     DontDestroyOnLoad(gameObject);
-    //     // }
-    // }
+void Awake()
+    {
+        
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this; 
+            DontDestroyOnLoad(gameObject); 
+        }
+    }
     void Start()
     {
         ProjectilePoint = FindObjectOfType<ProjectilePoint>().transform;
