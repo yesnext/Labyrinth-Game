@@ -47,10 +47,14 @@ public class FinalBossController : UniversalEnemyNeeds
 
     //bob addition
     private GameObject enemyCanvas;
+    private Rigidbody2D rb;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
@@ -74,6 +78,7 @@ public class FinalBossController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("speed",rb.velocity.magnitude);
         if (aggro)
         {
             if (dodge == true && BossPhase == 1 && !MeleeAttacking && !RangAttacking)
@@ -131,11 +136,13 @@ public class FinalBossController : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
+        anim.SetBool("isShoot",RangAttacking);
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         DimentionalSlashProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         DimentionalSlashProjectile projectileController = projectile.GetComponent<DimentionalSlashProjectile>();
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         RangAttacking = false;
+        anim.SetBool("isShoot",RangAttacking);
         LastRangAttackTime = Time.time;
     }
     public void LungAttack()
@@ -152,6 +159,7 @@ public class FinalBossController : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
+        anim.SetBool("isAttack",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         distance = Vector2.Distance(transform.position, player.transform.position);
         if (IsLunging)
@@ -161,6 +169,7 @@ public class FinalBossController : UniversalEnemyNeeds
         }
         lastShadoSwordSlashesTime = Time.time;
         MeleeAttacking = false;
+        anim.SetBool("isAttack",MeleeAttacking);
     }
 
     public IEnumerator Awareofeverymovedodge()
