@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,13 +12,29 @@ public class CalistaController : UniversalEnemyNeeds
     private Transform ProjectilePoint;
 
     public float DoubleDamageTime = 0.0f;
+
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
+
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
-        if(player.GetComponent<BossesDefeated>().Calista){
+
+        if (player.GetComponent<BossesDefeated>().Calista)
+        {
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+        //bob addition
+        enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false); // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -33,6 +47,7 @@ public class CalistaController : UniversalEnemyNeeds
             {
                 Followplayer();
             }
+
             if (Time.time - LastRangAttackTime > RangAttackCooldown && distance > PointBlank && !MeleeAttacking && !RangAttacking)
             {
                 StartCoroutine(Shoot());
@@ -41,18 +56,28 @@ public class CalistaController : UniversalEnemyNeeds
             {
                 StartCoroutine(MeleeAttack());
             }
-        }
 
+            //bob addition: Show the health bar when aggro
+            enemyCanvas.SetActive(true);
+        }
+        else
+        {
+            //bob addition: Hide the health bar when not aggro
+            enemyCanvas.SetActive(false);
+        }
     }
-    public void FixedUpdate()
+
+    void FixedUpdate()
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+
         if (distance < aggrodistance && !aggro)
         {
             aggro = true;
         }
     }
+
     public IEnumerator MeleeAttack()
     {
         MeleeAttacking = true;
@@ -60,33 +85,44 @@ public class CalistaController : UniversalEnemyNeeds
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
     }
+
     public override void TakeDamage(int damage)
     {
         if (aggro)
         {
             if (UnityEngine.Random.Range(1, 101) > 29)
             {
-                Health = Health - damage;
+                Health -= damage;
+                //bob addition
+                healthbar.SetHealth(Health);
+
                 if (Health <= 0)
                 {
                     player.GetComponent<BossesDefeated>().Calista = true;
                     SceneManager.LoadScene("Time Monarch");
                     Destroy(this.gameObject);
+
+                    //bob addition
+                    Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
                 }
             }
             else
             {
-                Health += damage;
+                Health += damage; // Heal enemy for missed attacks
             }
+
             DoubleDamageTime = Time.time;
         }
     }
+
     public IEnumerator Shoot()
     {
         RangAttacking = true;
         yield return new WaitForSeconds(RangAttackAnimationDuration);
+
         EnemyProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
+
         if (Time.time < DoubleDamageTime + 10)
         {
             projectileController.Intialize(RangeAttackDamage * 2, RangeAttackSpeed);
@@ -95,10 +131,12 @@ public class CalistaController : UniversalEnemyNeeds
         {
             projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         }
+
         RangAttacking = false;
         LastRangAttackTime = Time.time;
     }
-    public void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -108,7 +146,6 @@ public class CalistaController : UniversalEnemyNeeds
                     player.TakeDamage(MeleeAttackDamage * 2);
                 else
                     player.TakeDamage(MeleeAttackDamage);
-
             }
         }
     }

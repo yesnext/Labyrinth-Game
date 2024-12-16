@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/checkpoint2.cs.meta
+guid: 7a62838163c888f44b776053a2d7d4b4
+========
 guid: 5b604ac8dfbc2ac478188f54243fe307
+>>>>>>>> elbolbol:Assets/scripts/HarlequinKingScripts/HarlequinRespawnTriggers.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -20,7 +20,15 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     private float LastTimeTimeReversal;
     private float freezintimeduration = 2.0f;
     public float SlowRate;
-    private int originalhealth; void Start()
+    private int originalhealth; 
+    
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
+    
+    void Start()
     {
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
@@ -30,6 +38,14 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().Monarchoftime){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -50,7 +66,14 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
             {
                 StartCoroutine(ReversingTime());
             }
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
     }
     public IEnumerator Shoot()
     {

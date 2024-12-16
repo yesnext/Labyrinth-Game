@@ -11,6 +11,12 @@ public class Chains : UniversalEnemyNeeds
     public float ChainWhipCooldown = 2.0f;
     public float LastChainWhipCooldown = 0.0f;
 
+
+//bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +25,14 @@ public class Chains : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().chainedgirl){
             Destroy(this.gameObject);
         }
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -31,7 +45,14 @@ public class Chains : UniversalEnemyNeeds
                 ChangedDirectionFollow();
                 StartCoroutine(ChainWhipAttack());
             }
+             //bob addition
+             enemyCanvas.SetActive(true);
         }
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
     }
     public void FixedUpdate()
     {
@@ -48,12 +69,16 @@ public class Chains : UniversalEnemyNeeds
         {
             if (!element)
             {
+                //bob addition
+            healthbar.SetHealth(Health);
                 Health -= damage;
             }
             if (Health <= 0)
             {
                 TheChainedGirl.Begone();
                 Destroy(this.gameObject);
+                //bob addition
+            Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
             }
         }
     }

@@ -45,7 +45,8 @@ public class PlayerStats : MonoBehaviour
     public float FireRangeAttackAnimationDuration;
     public float IceRangeAttackAnimationDuration;
     private static PlayerStats instance;
-
+//bob addition
+    public HealthBar healthbar;
 
     void Awake()
     {
@@ -67,6 +68,9 @@ public class PlayerStats : MonoBehaviour
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
         lastrangeattack = -rangeattaccooldown;
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
     }
 
     void Update()
@@ -171,6 +175,8 @@ public class PlayerStats : MonoBehaviour
     {
         Health = Health - damage;
         Debug.Log("Health" + Health);
+        healthbar.SetHealth(Health);
+
     }
     public void TakeDamagefromigris(int damage)
     {

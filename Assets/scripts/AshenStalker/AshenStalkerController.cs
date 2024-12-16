@@ -28,7 +28,13 @@ public class AshenStalkerController : UniversalEnemyNeeds
     private Rigidbody2D ShadoStep;
     private Animator anim;
     private BossesDefeated bs;
+//bob addition
+    public HealthBar healthbar;
 
+//bob addition
+    private GameObject enemyCanvas;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +51,18 @@ public class AshenStalkerController : UniversalEnemyNeeds
             Destroy(this.gameObject);
         }
         OriginalSpeed = EnemySpeed;
+
+
+
+        //bob addition
+        healthbar.SetMaxHealth(Health);
+
+
+        //bob addition
+       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
+
+        
     }
 
     // Update is called once per frame
@@ -82,7 +100,17 @@ public class AshenStalkerController : UniversalEnemyNeeds
                 lastSummonscooldown = Time.time;
                 Summon();
             }
+            
+            //bob addition
+             enemyCanvas.SetActive(true);
         }
+        //bob addition
+        else
+    {
+        // Hide the health bar when not aggro
+        enemyCanvas.SetActive(false);
+    }
+
     }
     public void FixedUpdate()
     {
@@ -166,6 +194,9 @@ public class AshenStalkerController : UniversalEnemyNeeds
         if (aggro)
         {
             Health = Health - damage;
+            //bob addition
+            healthbar.SetHealth(Health);
+
             if (Health <= 0)
             {
                 player.GetComponent<BossesDefeated>().AshenStalker = true;
@@ -175,6 +206,9 @@ public class AshenStalkerController : UniversalEnemyNeeds
                 }
                 SceneManager.LoadScene("Calista");
                 Destroy(this.gameObject);
+                //bob addition
+            Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
+
             }
         }
     }

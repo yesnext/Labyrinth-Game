@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scripts/HarlequinKingScripts/Parkour.cs.meta
 guid: c70a47cb242def744b0572f06df570a0
+========
+guid: 7c6fdd1742d9b194aa86a5c6865bc850
+>>>>>>>> elbolbol:Assets/scripts/AudioManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

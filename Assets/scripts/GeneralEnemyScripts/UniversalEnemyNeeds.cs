@@ -30,8 +30,13 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public float RangAttackAnimationDuration;
     public float aggrodistance;
     public bool aggro;
+    
+     
     void Start()
     {
+        
+
+
     }
 
 
@@ -49,9 +54,14 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         Health = Health - damage;
+        
         if (Health <= 0)
         {
+            //bob addition
+            Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
+
             Destroy(this.gameObject);
+
         }
     }
     public void ChangedDirectionFollow()
