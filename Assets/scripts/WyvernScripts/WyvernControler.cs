@@ -138,12 +138,14 @@ public class WyvernControler : UniversalEnemyNeeds
     public IEnumerator Attack()
     {
         RangAttacking = true;
+        anim.SetBool("isAttacking",RangAttacking);
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         lastAttackTime = Time.time;
         RangAttacking = false;
+        anim.SetBool("isAttacking",RangAttacking);
     }
 }
 
