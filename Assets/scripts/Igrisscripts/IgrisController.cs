@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IgrisController : UniversalEnemyNeeds
 {
@@ -141,6 +142,7 @@ public class IgrisController : UniversalEnemyNeeds
             {
                 player.GetComponent<BossesDefeated>().Igris = true;
                 wall.GetComponent<BoxCollider2D>().enabled = false;
+                SceneManager.LoadScene("Seraphine");
                 Destroy(this.gameObject);
             }
 

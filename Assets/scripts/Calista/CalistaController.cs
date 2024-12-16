@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CalistaController : UniversalEnemyNeeds
 {
@@ -69,6 +70,7 @@ public class CalistaController : UniversalEnemyNeeds
                 if (Health <= 0)
                 {
                     player.GetComponent<BossesDefeated>().Calista = true;
+                    SceneManager.LoadScene("Time Monarch");
                     Destroy(this.gameObject);
                 }
             }

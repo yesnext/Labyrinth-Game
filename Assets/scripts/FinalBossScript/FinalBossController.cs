@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalBossController : UniversalEnemyNeeds
@@ -187,6 +188,7 @@ public class FinalBossController : UniversalEnemyNeeds
                         minions.getdestroyed();
                     }
                     player.GetComponent<BossesDefeated>().FinalBoss = true;
+                    SceneManager.LoadScene("FinalCurScene");
                     Destroy(this.gameObject);
                 }
                 else if (Health <= 0)

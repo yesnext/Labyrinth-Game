@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SeraphineControler : UniversalEnemyNeeds
@@ -105,6 +106,7 @@ public class SeraphineControler : UniversalEnemyNeeds
             {
                 wall.GetComponent<BoxCollider2D>().enabled = false;
                 player.GetComponent<BossesDefeated>().seraphine = true;
+                SceneManager.LoadScene("Puzzle 3");
                 Destroy(this.gameObject);
             }
         }

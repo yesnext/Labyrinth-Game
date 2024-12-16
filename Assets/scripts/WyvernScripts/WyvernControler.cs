@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WyvernControler : UniversalEnemyNeeds
 {
@@ -102,6 +103,7 @@ public class WyvernControler : UniversalEnemyNeeds
             if (Health <= 0)
             {
                 player.GetComponent<BossesDefeated>().wyvern = true;
+                SceneManager.LoadScene("FinalIntro");
                 Destroy(this.gameObject);
             }
         }
