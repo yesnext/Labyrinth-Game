@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 5864445527281894792}
   - component: {fileID: 5864445527281894793}
   - component: {fileID: 5864445527281894795}
-  - component: {fileID: 5864445527281894797}
   - component: {fileID: 5864445527281894794}
+  - component: {fileID: 5864445527281894797}
   - component: {fileID: 5864445527281894799}
   - component: {fileID: 5864445527281894796}
+  - component: {fileID: 5604226077104919834}
   m_Layer: 0
   m_Name: TestIgris
   m_TagString: Boss
@@ -108,38 +109,18 @@ MonoBehaviour:
   IsImmune: 1
   MeleeAttackDamage: 0
   meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
   attackbox: {fileID: 5864445527281894799}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
   FistAttackBox: {fileID: 5864445527281894794}
-  AgrueDistance: 10
   state: 0
   BossPhase: 1
   dodge: 0
---- !u!61 &5864445527281894797
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5864445527281894806}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1c8612b40ba92914a8bb45342dc27ab7, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.045764796, y: -0.08756414}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.35694796, y: 0.2910329}
-  m_EdgeRadius: 0
+  healthbar: {fileID: 0}
 --- !u!61 &5864445527281894794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +147,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2407195, y: 0.26803255}
   m_EdgeRadius: 0
---- !u!61 &5864445527281894799
+--- !u!61 &5864445527281894797
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,6 +155,32 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5864445527281894806}
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.045764796, y: -0.08756414}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.35694796, y: 0.2910329}
+  m_EdgeRadius: 0
+--- !u!61 &5864445527281894799
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864445527281894806}
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -213,6 +220,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &5604226077104919834
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864445527281894806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e606b3ea5bb6053418da77c475e6aaee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5864445527683172813
 GameObject:
   m_ObjectHideFlags: 0
