@@ -20,9 +20,13 @@ public class SeraphineControler : UniversalEnemyNeeds
     private checkpoint1 playerstartposistion;
     public bool telepoted;
     public GameObject wall;
+    private Rigidbody2D rb;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         playerstartposistion = FindObjectOfType<checkpoint1>();
         shadorealmpoint = FindObjectOfType<checkpoint2>();
         player = FindObjectOfType<PlayerStats>();
@@ -38,6 +42,8 @@ public class SeraphineControler : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("speed",rb.velocity.magnitude);
+
         if (aggro)
         {
             if (Bossphase == 1)
@@ -97,9 +103,11 @@ public class SeraphineControler : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(meleeAttackClip1);
         attacking = true;
+        anim.SetBool("isAttack",attacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         lastMeleeAttackTime = Time.time;
         attacking = false;
+        anim.SetBool("isAttack",attacking);
     }
     public override void TakeDamage(int damage)
     {

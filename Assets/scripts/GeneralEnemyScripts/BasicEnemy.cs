@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class BasicEnemy : UniversalEnemyNeeds
 {
     protected Animator animator;
+    private Rigidbody2D rb;
     public float MeleeAttackDistance = 5.0f;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
@@ -20,6 +21,7 @@ public class BasicEnemy : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
         originalhealth = Health;
@@ -31,6 +33,7 @@ public class BasicEnemy : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("speed",rb.velocity.magnitude);
         ChangedDirectionFollow();
         if (enemystate == 0)
         {
@@ -83,9 +86,11 @@ public class BasicEnemy : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
+        animator.SetBool("isAttacking",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
+        animator.SetBool("isAttacking",MeleeAttacking);
     }
     public void FixedUpdate()
     {
@@ -100,6 +105,7 @@ public class BasicEnemy : UniversalEnemyNeeds
 
             if (Health < 0)
             {
+                animator.SetBool("IsDead",true);
                 Destroy(this.gameObject);
             }
         }
