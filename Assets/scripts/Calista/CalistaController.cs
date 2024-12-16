@@ -58,12 +58,12 @@ public class CalistaController : UniversalEnemyNeeds
             }
 
             //bob addition: Show the health bar when aggro
-            enemyCanvas.SetActive(true);
+            //enemyCanvas.SetActive(true);
         }
         else
         {
             //bob addition: Hide the health bar when not aggro
-            enemyCanvas.SetActive(false);
+            //enemyCanvas.SetActive(false);
         }
     }
 
