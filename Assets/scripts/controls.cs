@@ -17,13 +17,19 @@ public class controls : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
+    private Animator anim;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    void Start(){
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
+        anim.SetFloat("speed",rb.velocity.magnitude);
+
         if(isDashing){
             return;
         }
@@ -40,6 +46,7 @@ public class controls : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+        anim.SetBool("isGrounded",IsGrounded());
         Flip();
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){
@@ -80,9 +87,11 @@ public class controls : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        anim.SetBool("isDashing",isDashing);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
+        anim.SetBool("isDashing",isDashing);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }

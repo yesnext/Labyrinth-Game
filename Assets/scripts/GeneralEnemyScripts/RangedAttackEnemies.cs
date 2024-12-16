@@ -12,9 +12,11 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     private Transform ProjectilePoint;
     private SummonsSpawnLocation spawnlocation;
     private bool shooting;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = GetComponentInChildren<EnemyProjectilePoint>().transform;
     }
@@ -36,12 +38,14 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
     public IEnumerator Shoot()
     {
         shooting = true;
+        anim.SetBool("isShoot",shooting);
         yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage,RangeAttackSpeed);
         shooting =false;
+        anim.SetBool("isShoot",shooting);
         LastRangAttackTime = Time.time;
     }
     public void FixedUpdate()
