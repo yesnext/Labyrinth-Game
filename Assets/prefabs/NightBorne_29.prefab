@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1876899275
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -523170441, guid: 4d98a3c5aa248d94e9833eb6e05db4c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,22 +101,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFacingRight: 1
-  EnemySpeed: 1
+  EnemySpeed: 5.74
   Health: 20
-  MeleeAttackDistance: 5
+  IsImmune: 0
   MeleeAttackDamage: 6
-  MeleeAttackCooldown: 5
-  lastMeleeAttackTime: -5
-  distance: 0
+  meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
+  attackbox: {fileID: 1462249931473324584}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
   Element: 0
   playerFolowDistance: 10
   enemystate: 0
-  scale: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0}
   decision: 0
   decisioncooldown: 3
   lastdecisioncooldown: 0
-  attackbox: {fileID: 1462249931473324584}
 --- !u!61 &1462249931473324587
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening Scene.unity
     guid: aa51a194e1a1c7442bde449a74503e78
   - enabled: 1
+    path: Assets/Scenes/OpeningCutscene.unity
+    guid: a527bc4d8edfb974b8f50d5e08d6b4a7
+  - enabled: 1
     path: Assets/Scenes/entering the laborinth.unity
     guid: d8f309f5b453d024e930cc42a7288cea
   - enabled: 1

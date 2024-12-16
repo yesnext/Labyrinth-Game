@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SeraphineControler : UniversalEnemyNeeds
@@ -18,13 +19,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     public int originalhealth;
     private checkpoint1 playerstartposistion;
     public bool telepoted;
-
-
-    //bob addition
-    public HealthBar healthbar;
-
-    //bob addition
-    private GameObject enemyCanvas;
+    public GameObject wall;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +31,6 @@ public class SeraphineControler : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().seraphine){
             Destroy(this.gameObject);
         }
-        //bob addition
-        healthbar.SetMaxHealth(Health);
-
-
-        //bob addition
-       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -73,14 +61,15 @@ public class SeraphineControler : UniversalEnemyNeeds
                     shoot();
                 }
             }
-             //bob addition
-             enemyCanvas.SetActive(true);
+        }
+        if (aggro)
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = true;
         }
         else
-    {
-        // Hide the health bar when not aggro
-        enemyCanvas.SetActive(false);
-    }
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
     public IEnumerator teleport()
     {
@@ -115,7 +104,9 @@ public class SeraphineControler : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                wall.GetComponent<BoxCollider2D>().enabled = false;
                 player.GetComponent<BossesDefeated>().seraphine = true;
+                SceneManager.LoadScene("Puzzle 3");
                 Destroy(this.gameObject);
             }
         }
