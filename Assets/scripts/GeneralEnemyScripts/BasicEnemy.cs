@@ -6,7 +6,11 @@ using UnityEngine.UIElements;
 
 public class BasicEnemy : UniversalEnemyNeeds
 {
+<<<<<<< Updated upstream
     protected Animator animator;
+=======
+    private Rigidbody2D rb;
+>>>>>>> Stashed changes
     public float MeleeAttackDistance = 5.0f;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
@@ -23,14 +27,18 @@ public class BasicEnemy : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
         originalhealth = Health;
-       audioSource = GetComponent<AudioSource>();
-
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
+=======
+        animator.SetFloat("speed", rb.velocity.magnitude);
+>>>>>>> Stashed changes
         ChangedDirectionFollow();
         if (enemystate == 0)
         {
@@ -83,9 +91,17 @@ public class BasicEnemy : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
+<<<<<<< Updated upstream
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
+=======
+        animator.SetBool("isAttacking", MeleeAttacking);
+        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
+        MeleeAttacking = false;
+        lastMeleeAttackTime = Time.time;
+        animator.SetBool("isAttacking", MeleeAttacking);
+>>>>>>> Stashed changes
     }
     public void FixedUpdate()
     {
@@ -100,6 +116,10 @@ public class BasicEnemy : UniversalEnemyNeeds
 
             if (Health < 0)
             {
+<<<<<<< Updated upstream
+=======
+                animator.SetBool("IsDead", true);
+>>>>>>> Stashed changes
                 Destroy(this.gameObject);
             }
         }

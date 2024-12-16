@@ -25,6 +25,12 @@ public class IgrisController : UniversalEnemyNeeds
     private GameObject enemyCanvas;
     void Start()
     {
+<<<<<<< Updated upstream
+=======
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+>>>>>>> Stashed changes
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         IsImmune = true;
