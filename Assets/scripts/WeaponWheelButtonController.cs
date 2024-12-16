@@ -17,34 +17,27 @@ public class WeaponWheelButtonController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update the selected item image and text when the button is active
-    void Update()
-    {
-        if (selected)
-        {
-            selectedItem.sprite = icon;  // Set the icon of the weapon
-            itemText.text = itemName;    // Display weapon name
-        }
-    }
-
     public void Selected()
-    {
-        selected = true;
-        WeaponWheelController.weaponID = ID; // Update the weaponID when selected
-        Debug.Log("Weapon selected with ID: " + ID);
-    }
+{
+    selected = true;
+    WeaponWheelController.weaponID = ID; // Notify the controller of the selected ID
+    WeaponWheelController.Instance.UpdateSelectedWeapon(icon); // Update the displayed image immediately
+    Debug.Log("Weapon selected with ID: " + ID);
+}
+
 
     public void Deselected()
     {
         selected = false;
-        WeaponWheelController.weaponID = 0; // Reset weaponID when deselected
+        WeaponWheelController.weaponID = 0; // Reset weaponID
+        WeaponWheelController.Instance.UpdateSelectedWeapon(null); // Reset the displayed image
         Debug.Log("Weapon deselected");
     }
 
     public void HoverEnter()
     {
         anim.SetBool("Hover", true);
-        itemText.text = itemName;  // Show weapon name when hovered
+        itemText.text = itemName; // Show weapon name when hovered
     }
 
     public void HoverExit()
