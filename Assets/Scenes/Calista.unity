@@ -2122,6 +2122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestCalista
       objectReference: {fileID: 0}
+    - target: {fileID: 3977938879226881638, guid: 1214c93c17f0c4e4789a175ce31fe8cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1660931298, guid: cf15940190f205f4c90cf080a3a581bd, type: 3}
     - target: {fileID: 3977938879226881657, guid: 1214c93c17f0c4e4789a175ce31fe8cb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2168,6 +2172,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1214c93c17f0c4e4789a175ce31fe8cb, type: 3}
+--- !u!1 &1541840410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3977938879226881634, guid: 1214c93c17f0c4e4789a175ce31fe8cb, type: 3}
+  m_PrefabInstance: {fileID: 1541840409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1541840411
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541840410}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a01d842e2072cab4dbc647ab1c9e43c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1591514169
 GameObject:
   m_ObjectHideFlags: 0
