@@ -15,6 +15,8 @@ public class FakeOrionImage : UniversalEnemyNeeds
     {
         healingOrion = FindObjectOfType<HealingOrion>();
         player = FindObjectOfType<PlayerStats>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class FakeOrionImage : UniversalEnemyNeeds
     }
     public IEnumerator teleport()
     { 
+        audioSource.PlayOneShot(RangeAttackClip);
         yield return new WaitForSeconds(healingOrion.TeleportingAnimationDuration);
     }
     public void FixedUpdate()

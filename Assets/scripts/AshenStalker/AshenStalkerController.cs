@@ -28,13 +28,13 @@ public class AshenStalkerController : UniversalEnemyNeeds
     private Rigidbody2D ShadoStep;
     private Animator anim;
     private BossesDefeated bs;
-//bob addition
+    //bob addition
     public HealthBar healthbar;
 
-//bob addition
+    //bob addition
     private GameObject enemyCanvas;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +51,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
             Destroy(this.gameObject);
         }
         OriginalSpeed = EnemySpeed;
-
+        audioSource = GetComponent<AudioSource>();
 
 
         //bob addition
@@ -59,10 +59,10 @@ public class AshenStalkerController : UniversalEnemyNeeds
 
 
         //bob addition
-       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
         enemyCanvas.SetActive(false);  // Hide health bar initially
 
-        
+
     }
 
     // Update is called once per frame
@@ -100,16 +100,16 @@ public class AshenStalkerController : UniversalEnemyNeeds
                 lastSummonscooldown = Time.time;
                 Summon();
             }
-            
+
             //bob addition
-             enemyCanvas.SetActive(true);
+            enemyCanvas.SetActive(true);
         }
         //bob addition
         else
-    {
-        // Hide the health bar when not aggro
-        enemyCanvas.SetActive(false);
-    }
+        {
+            // Hide the health bar when not aggro
+            enemyCanvas.SetActive(false);
+        }
 
     }
     public void FixedUpdate()
@@ -156,6 +156,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     {
         MeleeAttacking = true;
         Disappear.enabled = true;
+        audioSource.PlayOneShot(meleeAttackClip1);
         //anim
         int rnd = Random.Range(0, 3);
         switch (rnd)
@@ -178,6 +179,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     }
     public IEnumerator Shoot()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
         //anim
         anim.SetBool("isShoot", RangAttacking);
@@ -207,7 +209,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
                 SceneManager.LoadScene("Calista");
                 Destroy(this.gameObject);
                 //bob addition
-            Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
+                Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
 
             }
         }

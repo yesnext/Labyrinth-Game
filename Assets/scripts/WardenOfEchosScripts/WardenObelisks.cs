@@ -21,6 +21,7 @@ public class WardenObelisks : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().warden){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +43,7 @@ public class WardenObelisks : UniversalEnemyNeeds
     }
     public void Shoot()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         LastAttackCooldown = Time.time;
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();

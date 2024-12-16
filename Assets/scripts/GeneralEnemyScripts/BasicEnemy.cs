@@ -23,6 +23,8 @@ public class BasicEnemy : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
         originalhealth = Health;
+       audioSource = GetComponent<AudioSource>();
+
 
     }
 
@@ -79,6 +81,7 @@ public class BasicEnemy : UniversalEnemyNeeds
     }
     public IEnumerator meleeAttack()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;

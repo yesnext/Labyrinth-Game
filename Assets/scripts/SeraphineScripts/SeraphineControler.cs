@@ -31,6 +31,8 @@ public class SeraphineControler : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().seraphine){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -85,6 +87,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     }
     public void shoot()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         SeraphineProjectile Projectile = Instantiate(projectile, projectilepoint.transform.position, projectilepoint.transform.rotation);
         SeraphineProjectile projectileController = Projectile.GetComponent<SeraphineProjectile>();
         projectileController.Intialize(RangeAttackSpeed);
@@ -92,6 +95,7 @@ public class SeraphineControler : UniversalEnemyNeeds
     }
     public IEnumerator MeleeAttack()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         attacking = true;
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         lastMeleeAttackTime = Time.time;
