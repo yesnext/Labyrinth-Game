@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AriseEnemies : UniversalEnemyNeeds
 {
-    protected Animator animator;
+
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
     public short enemystate;
@@ -14,6 +14,7 @@ public class AriseEnemies : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         if(player.GetComponent<BossesDefeated>().FinalBoss){
             Destroy(this.gameObject);

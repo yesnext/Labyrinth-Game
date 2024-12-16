@@ -9,9 +9,6 @@ using UnityEngine.UI;
 
 public class FinalBossController : UniversalEnemyNeeds
 {
-
-    private Animator animator;
-
     public float BossDodgeSpeed = 8f;
     public float dodgeDuration = 0.1f;
     protected float DodgeDurationCounter = 0.0f;
@@ -51,6 +48,7 @@ public class FinalBossController : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;

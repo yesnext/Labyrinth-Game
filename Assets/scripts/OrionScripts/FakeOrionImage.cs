@@ -13,6 +13,7 @@ public class FakeOrionImage : UniversalEnemyNeeds
     }
     void Start()
     {
+        animator = GetComponent<Animator>();
         healingOrion = FindObjectOfType<HealingOrion>();
         player = FindObjectOfType<PlayerStats>();
         audioSource = GetComponent<AudioSource>();

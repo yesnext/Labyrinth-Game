@@ -32,6 +32,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         projectilePoint = FindObjectOfType<EnemyProjectilePoint>();
         LastTimeStop -= TimestopChooldown;

@@ -20,6 +20,7 @@ public class Chains : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         TheChainedGirl = FindObjectOfType<ChainedGirlBoss>();
         if(player.GetComponent<BossesDefeated>().chainedgirl){

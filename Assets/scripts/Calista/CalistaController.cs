@@ -21,6 +21,7 @@ public class CalistaController : UniversalEnemyNeeds
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
 

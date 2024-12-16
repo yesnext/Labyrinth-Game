@@ -38,6 +38,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        
         bs = FindObjectOfType<BossesDefeated>();
         anim = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
@@ -52,8 +53,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
         }
         OriginalSpeed = EnemySpeed;
         audioSource = GetComponent<AudioSource>();
-
-
+        animator = GetComponent<Animator>();
         //bob addition
         healthbar.SetMaxHealth(Health);
 

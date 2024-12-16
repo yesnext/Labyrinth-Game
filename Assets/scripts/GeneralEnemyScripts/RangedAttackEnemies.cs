@@ -18,6 +18,7 @@ public class RangedAttackEnemies : UniversalEnemyNeeds
         audioSource = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = GetComponentInChildren<EnemyProjectilePoint>().transform;
+        animator = GetComponent<Animator>();
     }
     public void Intialize(SummonsSpawnLocation spawnloc)
     {

@@ -36,6 +36,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public AudioClip RangeAttackClip;
     public AudioClip healClip;
     public AudioClip walking;
+    public Animator animator;
     
      
     void Start()
