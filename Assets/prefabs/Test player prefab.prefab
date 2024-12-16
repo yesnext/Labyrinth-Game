@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 4947733945724240212}
   - component: {fileID: 4947733945724240210}
   - component: {fileID: 4947733945724240205}
-  - component: {fileID: 1021187486}
   - component: {fileID: 6312331035739340935}
   m_Layer: 0
   m_Name: Test player prefab
@@ -156,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a625fe9f382b6d34fa23f8f718b26a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockedIce: 0
   controls: {fileID: 0}
   ProjectilePoint: {fileID: 0}
   Projectile:
@@ -178,7 +178,6 @@ MonoBehaviour:
   SwitchElement: 324
   Boss: {fileID: 0}
   attackbox: {fileID: 4947733945724240205}
-  fistmode: {fileID: 1021187486}
   FightMode: 116
   Healing: 0
   ThrowingHands: 0
@@ -189,6 +188,7 @@ MonoBehaviour:
   RangeAttackSpeed: 0
   FireRangeAttackAnimationDuration: 0
   IceRangeAttackAnimationDuration: 0
+  healthbar: {fileID: 0}
 --- !u!50 &4947733945724240212
 Rigidbody2D:
   serializedVersion: 4
@@ -223,18 +223,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0118086785, y: -0.27786937}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.71}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.5, y: 1.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 0.71}
+  m_Size: {x: 0.3036174, y: 0.72737855}
   m_EdgeRadius: 0
 --- !u!61 &4947733945724240205
 BoxCollider2D:
@@ -249,44 +249,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4366434, y: 0.09196499}
+  m_Offset: {x: 0.32403782, y: -0.14540298}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.71}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.5, y: 1.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.57109565, y: 0.52606994}
-  m_EdgeRadius: 0
---- !u!61 &1021187486
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4947733945724240218}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.4109953, y: 0.16426805}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.71}
-    newSize: {x: 0.5, y: 1.03}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4679393, y: 0.38146394}
+  m_Size: {x: 0.34588462, y: 0.4037154}
   m_EdgeRadius: 0
 --- !u!114 &6312331035739340935
 MonoBehaviour:
@@ -311,6 +285,10 @@ MonoBehaviour:
   seraphine: 0
   warden: 0
   wyvern: 0
+  WeaponHallway: 0
+  ChainedGirl: 0
+  PostHarlquin: 0
+  OutsideTheLabyrinth: 0
 --- !u!1 &4947733945876137573
 GameObject:
   m_ObjectHideFlags: 0

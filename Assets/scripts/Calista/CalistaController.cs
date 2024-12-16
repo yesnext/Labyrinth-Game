@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CalistaController : UniversalEnemyNeeds
 {
@@ -57,12 +58,12 @@ public class CalistaController : UniversalEnemyNeeds
             }
 
             //bob addition: Show the health bar when aggro
-            enemyCanvas.SetActive(true);
+            //enemyCanvas.SetActive(true);
         }
         else
         {
             //bob addition: Hide the health bar when not aggro
-            enemyCanvas.SetActive(false);
+            //enemyCanvas.SetActive(false);
         }
     }
 
@@ -98,6 +99,7 @@ public class CalistaController : UniversalEnemyNeeds
                 if (Health <= 0)
                 {
                     player.GetComponent<BossesDefeated>().Calista = true;
+                    SceneManager.LoadScene("Time Monarch");
                     Destroy(this.gameObject);
 
                     //bob addition

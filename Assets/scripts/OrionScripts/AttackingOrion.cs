@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttackingOrion : UniversalEnemyNeeds
 {
@@ -64,6 +65,7 @@ public class AttackingOrion : UniversalEnemyNeeds
         {
             if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
             {
+                SceneManager.LoadScene("Warden");
                 player.TakeDamage(MeleeAttackDamage);
             }
         }

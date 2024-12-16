@@ -3,16 +3,24 @@ using UnityEngine.UI;
 
 public class WeaponWheelController : MonoBehaviour
 {
+    public static WeaponWheelController Instance; // Singleton instance for easy access
+
     public Animator anim;
     private bool weaponWheelSelected = false;
     public Image selectedItem;
-    public Sprite noImage;  // Ensure this is your "empty" sprite (e.g., no weapon selected)
+    public Sprite noImage; // Ensure this is your "empty" sprite (e.g., no weapon selected)
     public static int weaponID;
 
     private PlayerStats playerStats;
 
     private int currentWeaponID = -1; // Keep track of the currently selected weapon
-    private bool isWeaponIDSetManually = false; 
+    private bool isWeaponIDSetManually = false;
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -45,32 +53,7 @@ public class WeaponWheelController : MonoBehaviour
                 currentWeaponID = weaponID; // Update the tracked weaponID
                 Debug.Log("WeaponID changed to: " + currentWeaponID);
 
-                switch (weaponID)
-                {
-                    case 0: // No weapon selected
-                        selectedItem.sprite = noImage; // Empty sprite
-                        UpdatePlayerStats(throwingHands: false, element: false);
-                        break;
-
-                    case 1: // Melee
-                        selectedItem.sprite = noImage; // Replace with melee icon
-                        UpdatePlayerStats(throwingHands: true, element: false);
-                        break;
-
-                    case 2: // Ice
-                        selectedItem.sprite = noImage; // Replace with ice icon
-                        UpdatePlayerStats(throwingHands: false, element: true);
-                        break;
-
-                    case 3: // Fire
-                        selectedItem.sprite = noImage; // Replace with fire icon
-                        UpdatePlayerStats(throwingHands: false, element: false);
-                        break;
-
-                    default:
-                        Debug.LogWarning("Unknown weaponID: " + weaponID);
-                        break;
-                }
+                UpdateSelectedWeaponByID(currentWeaponID);
             }
         }
 
@@ -78,6 +61,61 @@ public class WeaponWheelController : MonoBehaviour
         if (!weaponWheelSelected)
         {
             isWeaponIDSetManually = false;
+        }
+    }
+
+    public void UpdateSelectedWeapon(Sprite weaponIcon)
+{
+    if (selectedItem == null)
+    {
+        Debug.LogError("SelectedItem Image reference is missing!");
+        return;
+    }
+
+    if (weaponIcon == null)
+    {
+        Debug.Log("No weapon icon selected, using default 'noImage' sprite.");
+        selectedItem.sprite = noImage;
+    }
+    else
+    {
+        Debug.Log("Setting weapon icon: " + weaponIcon.name);
+        selectedItem.sprite = weaponIcon;
+    }
+
+    // Ensure the Image component is enabled
+    selectedItem.enabled = selectedItem.sprite != null;
+}
+
+
+
+    private void UpdateSelectedWeaponByID(int id)
+    {
+        switch (id)
+        {
+            case 0: // No weapon selected
+                selectedItem.sprite = noImage; // Empty sprite
+                UpdatePlayerStats(throwingHands: false, element: false);
+                break;
+
+            case 1: // Melee
+                selectedItem.sprite = noImage; // Replace with melee icon
+                UpdatePlayerStats(throwingHands: true, element: false);
+                break;
+
+            case 2: // Ice
+                selectedItem.sprite = noImage; // Replace with ice icon
+                UpdatePlayerStats(throwingHands: false, element: true);
+                break;
+
+            case 3: // Fire
+                selectedItem.sprite = noImage; // Replace with fire icon
+                UpdatePlayerStats(throwingHands: false, element: false);
+                break;
+
+            default:
+                Debug.LogWarning("Unknown weaponID: " + id);
+                break;
         }
     }
 
