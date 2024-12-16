@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1271024842749808148}
   - component: {fileID: 1167144527905841314}
   - component: {fileID: 7893945736697507411}
-  - component: {fileID: 1596000194701045009}
   m_Layer: 0
   m_Name: TestHarlequinKing
   m_TagString: Untagged
@@ -111,28 +110,14 @@ MonoBehaviour:
   RangAttackAnimationDuration: 0
   aggrodistance: 0
   aggro: 0
+  audioSource: {fileID: 0}
+  meleeAttackClip1: {fileID: 0}
+  meleeAttackClip2: {fileID: 0}
+  RangeAttackClip: {fileID: 0}
+  healClip: {fileID: 0}
+  walking: {fileID: 0}
   onetime: 1
   spwanduration: 6
   Timebetweenspawns: 3
   SpawnEnemy: {fileID: 0}
   nextpuzzel: {fileID: 0}
---- !u!95 &1596000194701045009
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4193638581639678661}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0cea3e5c1b9407047b3c09d316f42635, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
