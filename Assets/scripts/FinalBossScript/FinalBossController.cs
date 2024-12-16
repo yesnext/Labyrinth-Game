@@ -40,8 +40,9 @@ public class FinalBossController : UniversalEnemyNeeds
     protected bool onetime = true;
     protected bool secondtime = true;
     protected bool arise;
+    public AudioClip AriseClip;
 
-//bob addition
+    //bob addition
     public HealthBar healthbar;
 
     //bob addition
@@ -54,17 +55,19 @@ public class FinalBossController : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
         SpawnLocation = FindObjectOfType<SummonsSpawnLocation>().transform;
-        if(player.GetComponent<BossesDefeated>().FinalBoss){
+        if (player.GetComponent<BossesDefeated>().FinalBoss)
+        {
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
 
         //bob addition
-        healthbar.SetMaxHealth(Health);
+        //healthbar.SetMaxHealth(Health);
 
 
         //bob addition
-       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-        enemyCanvas.SetActive(false);  // Hide health bar initially
+        //enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        //enemyCanvas.SetActive(false);  // Hide health bar initially
 
     }
 
@@ -101,13 +104,13 @@ public class FinalBossController : UniversalEnemyNeeds
                 StartCoroutine(ShadoAttack());
             }
             //bob addition
-             enemyCanvas.SetActive(true);
+            enemyCanvas.SetActive(true);
         }
         else
-    {
-        // Hide the health bar when not aggro
-        enemyCanvas.SetActive(false);
-    }
+        {
+            // Hide the health bar when not aggro
+            //enemyCanvas.SetActive(false);
+        }
 
     }
     public void FixedUpdate()
@@ -126,6 +129,7 @@ public class FinalBossController : UniversalEnemyNeeds
 
     public IEnumerator RangeAttack()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         DimentionalSlashProjectile projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
@@ -146,6 +150,7 @@ public class FinalBossController : UniversalEnemyNeeds
     }
     public IEnumerator ShadoAttack()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -213,7 +218,7 @@ public class FinalBossController : UniversalEnemyNeeds
                     SceneManager.LoadScene("FinalCurScene");
                     Destroy(this.gameObject);
                     //bob addition
-                     Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
+                    Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
                 }
                 else if (Health <= 0)
                 {
@@ -253,6 +258,7 @@ public class FinalBossController : UniversalEnemyNeeds
     }
     public void Heal(int heal)
     {
+        audioSource.PlayOneShot(healClip);
         Health += heal;
         if (Health > 500)
         {
@@ -261,6 +267,7 @@ public class FinalBossController : UniversalEnemyNeeds
     }
     public IEnumerator Arise()
     {
+        
         arise = true;
         Rigidbody2D BossRB = GetComponent<Rigidbody2D>();
         RigidbodyConstraints2D originalRB = BossRB.constraints;
@@ -272,8 +279,10 @@ public class FinalBossController : UniversalEnemyNeeds
         lastspawnduration = 0f;
         while (lastspawnduration < spwanduration)
         {
+            
             if (Time.time - LastTimebetweenspawns > Timebetweenspawns)
             {
+                audioSource.PlayOneShot(AriseClip);
                 LastTimebetweenspawns = Time.time;
                 Instantiate(ariseEnemies, SpawnLocation.position, SpawnLocation.rotation);
                 lastspawnduration += Timebetweenspawns;

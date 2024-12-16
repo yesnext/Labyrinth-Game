@@ -35,6 +35,7 @@ public class HealingOrion : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().orion){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
 
         //bob addition
         healthbar.SetMaxHealth(Health);
@@ -68,6 +69,7 @@ public class HealingOrion : UniversalEnemyNeeds
     }
     public IEnumerator teleport()
     {
+        audioSource.PlayOneShot(healClip);
         Teleporting = true;
         yield return new WaitForSeconds(TeleportingAnimationDuration);
         foreach (SummonsSpawnLocation teleport in teleportlocations)

@@ -23,6 +23,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().chainedgirl){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +58,7 @@ public class ChainedGirlBoss : UniversalEnemyNeeds
     }
     public void RangeAttack()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         EnemyProjectile projectile = Instantiate(Projectile, Projectilepoint.transform.position, Projectilepoint.transform.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);

@@ -45,7 +45,13 @@ public class PlayerStats : MonoBehaviour
     public float FireRangeAttackAnimationDuration;
     public float IceRangeAttackAnimationDuration;
     private static PlayerStats instance;
-//bob addition
+    public AudioSource audioSource;
+    public AudioClip meleeAttackClip1;
+    public AudioClip meleeAttackClip2;
+    public AudioClip FireRangeAttackClip;
+    public AudioClip IceRangeAttackClip;
+    public AudioClip healClip;
+    //bob addition
     public HealthBar healthbar;
 
     void Awake()
@@ -68,8 +74,10 @@ public class PlayerStats : MonoBehaviour
         controls = GetComponent<controls>();
         animator = GetComponent<Animator>();
         lastrangeattack = -rangeattaccooldown;
+        audioSource = GetComponent<AudioSource>();
         //bob addition
-        healthbar.SetMaxHealth(Health);
+        //healthbar.SetMaxHealth(Health);
+
 
     }
 
@@ -160,6 +168,7 @@ public class PlayerStats : MonoBehaviour
         else if (unlockedIce && element)
         {
             animator.SetBool("isShoot",Rangeattacking);
+            audioSource.PlayOneShot(IceRangeAttackClip);
             yield return new WaitForSeconds(IceRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
@@ -283,6 +292,7 @@ public class PlayerStats : MonoBehaviour
             if (Time.time - LastHealCooldown > HealCooldown)
             {
                 Health += 40;
+                audioSource.PlayOneShot(healClip);
                 if (Health > 100)
                 {
                     Health = 100;

@@ -38,6 +38,7 @@ public class WyvernControler : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().wyvern){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
 
         //bob addition
         healthbar.SetMaxHealth(Health);
@@ -139,6 +140,7 @@ public class WyvernControler : UniversalEnemyNeeds
 
     public IEnumerator Attack()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
         anim.SetBool("isAttacking",RangAttacking);
         yield return new WaitForSeconds(RangAttackAnimationDuration);

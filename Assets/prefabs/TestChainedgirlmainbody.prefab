@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8406121612457528428}
   - component: {fileID: 8406121612457528429}
   - component: {fileID: 8406121612457528426}
+  - component: {fileID: 6757452502650378256}
   m_Layer: 0
   m_Name: TestChainedgirlmainbody
   m_TagString: Untagged
@@ -105,9 +106,21 @@ MonoBehaviour:
   IsImmune: 1
   MeleeAttackDamage: 0
   meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
   attackbox: {fileID: 0}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
+  audioSource: {fileID: 0}
+  meleeAttackClip1: {fileID: 0}
+  meleeAttackClip2: {fileID: 0}
+  RangeAttackClip: {fileID: 8300000, guid: f4dd81da55a0d4f4dac358b6bead4823, type: 3}
+  healClip: {fileID: 0}
+  walking: {fileID: 0}
   chains: []
-  projectile: {fileID: -5174452042634123271, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
+  Projectile: {fileID: 0}
   RangeAttackDistance: 5
   RangAttackCooldown: 5
 --- !u!50 &8406121612457528426
@@ -131,6 +144,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!82 &6757452502650378256
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406121612457528430}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8406121612582295197
 GameObject:
   m_ObjectHideFlags: 0

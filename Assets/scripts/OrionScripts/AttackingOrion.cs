@@ -17,6 +17,8 @@ public class AttackingOrion : UniversalEnemyNeeds
         IsImmune = true;
         healingorion = FindObjectOfType<HealingOrion>();
         player = FindObjectOfType<PlayerStats>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class AttackingOrion : UniversalEnemyNeeds
     }
     public IEnumerator MeleeAttack()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
         anim.SetBool("isAttacking",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);

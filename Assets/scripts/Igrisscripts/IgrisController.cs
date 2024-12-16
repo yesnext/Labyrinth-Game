@@ -36,6 +36,7 @@ public class IgrisController : UniversalEnemyNeeds
         {
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
 
         //bob addition
         healthbar.SetMaxHealth(Health);
@@ -147,6 +148,7 @@ public class IgrisController : UniversalEnemyNeeds
     }
     public IEnumerator SwordSlash()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         //this is to trigger the sword fight animation
         MeleeAttacking = true;
         anim.SetBool("stkSword",MeleeAttacking);
@@ -159,6 +161,7 @@ public class IgrisController : UniversalEnemyNeeds
     }
     public IEnumerator FistSwing()
     {
+        audioSource.PlayOneShot(meleeAttackClip2);
         //this is to trigger the fist fight animation
         MeleeAttacking = true;
         anim.SetBool("stkHand",MeleeAttacking);

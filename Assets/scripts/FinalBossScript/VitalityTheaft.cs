@@ -9,29 +9,37 @@ public class VitalityTheaft : MonoBehaviour
     public PlayerStats player;
     public KeyCode healing;
     public int heal = 40;
+    public AudioClip healClip;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Boss = FindObjectOfType<FinalBossController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Boss.BossPhase >= 2)
+        if (Boss != null)
         {
-            if (Input.GetKeyDown(healing))
+            if (Boss.BossPhase >= 2)
             {
-                if (Random.Range(1, 3) == 2)
+                if (Input.GetKeyDown(healing))
                 {
-                    Boss.Heal(heal);
+                    audioSource.PlayOneShot(healClip);
+                    if (Random.Range(1, 3) == 2)
+                    {
+                        Boss.Heal(heal);
+                    }
+                    else
+                    {
+                        player.Heal();
+                    }
                 }
-                else
-                {
-                    player.Heal();
-                }
-            }
 
+            }
         }
     }
 }
