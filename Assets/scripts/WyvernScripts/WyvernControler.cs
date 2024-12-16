@@ -19,6 +19,7 @@ public class WyvernControler : UniversalEnemyNeeds
     private Vector2 PatrolDirection;
     private int numberofpatrolpoints;
     private int nextpatrolpoint;
+    private Animator anim;
 
     //bob addition
     public HealthBar healthbar;
@@ -28,6 +29,7 @@ public class WyvernControler : UniversalEnemyNeeds
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         PatrolPoints = FindObjectsOfType<PatrolPoints>();
         numberofpatrolpoints = PatrolPoints.Length;

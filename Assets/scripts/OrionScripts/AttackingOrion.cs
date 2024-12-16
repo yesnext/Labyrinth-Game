@@ -5,10 +5,14 @@ using UnityEngine;
 public class AttackingOrion : UniversalEnemyNeeds
 {
     private HealingOrion healingorion;
+    private Rigidbody2D rb;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         IsImmune = true;
         healingorion = FindObjectOfType<HealingOrion>();
         player = FindObjectOfType<PlayerStats>();
@@ -26,6 +30,7 @@ public class AttackingOrion : UniversalEnemyNeeds
         if(distance<meleeattackdistance && Time.time-lastMeleeAttackTime>MeleeAttackCooldown && !MeleeAttacking){
             StartCoroutine(MeleeAttack());
         }
+        anim.SetFloat("speed",rb.velocity.magnitude);
     }
     public void FixedUpdate()
     {
@@ -35,9 +40,11 @@ public class AttackingOrion : UniversalEnemyNeeds
     public IEnumerator MeleeAttack()
     {
         MeleeAttacking = true;
+        anim.SetBool("isAttacking",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
+        anim.SetBool("isAttacking",MeleeAttacking);
     }    public override void TakeDamage(int damage)
     {
         if (!IsImmune)
@@ -45,6 +52,7 @@ public class AttackingOrion : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0)
             {
+                anim.SetBool("isDead",true);
                 Destroy(this.gameObject);
             }
         }

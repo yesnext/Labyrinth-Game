@@ -17,6 +17,7 @@ public class HealingOrion : UniversalEnemyNeeds
     private bool summoningOrion;
     public float TeleportingAnimationDuration;
     public bool Teleporting;
+    private Animator anim;
 
     //bob addition
     public HealthBar healthbar;
@@ -26,6 +27,7 @@ public class HealingOrion : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         LastTeleportTime = -teleportcooldown;
         player = FindObjectOfType<PlayerStats>();
         teleportlocations = FindObjectsOfType<SummonsSpawnLocation>();
@@ -98,6 +100,7 @@ public class HealingOrion : UniversalEnemyNeeds
     public IEnumerator SummonAttackOrion()
     {
         summoningOrion = true;
+        anim.SetBool("IsHealing",summoningOrion);
         yield return new WaitForSeconds(0);
         if (onetime)
         {
@@ -105,6 +108,7 @@ public class HealingOrion : UniversalEnemyNeeds
             onetime = false;
         }
         summoningOrion = false;
+        anim.SetBool("IsHealing",summoningOrion);
     }
     public void FixedUpdate()
     {
@@ -122,6 +126,7 @@ public class HealingOrion : UniversalEnemyNeeds
                 Attackingorion.IsImmune = false;
                 foreach (FakeOrionImage fake in FindObjectsOfType<FakeOrionImage>())
                 {
+                    anim.SetBool("IsDead",true);
                     Destroy(fake.gameObject);
                 }
                 player.GetComponent<BossesDefeated>().orion = true;
