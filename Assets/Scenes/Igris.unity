@@ -48174,51 +48174,55 @@ PrefabInstance:
       objectReference: {fileID: 215260075, guid: 43e347865fae08248b4be5984cedc6a4, type: 3}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Size.x
-      value: 0.18546385
+      value: 0.24740714
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Size.y
-      value: 0.35666662
+      value: 0.50530535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Offset.x
-      value: 0.28169212
+      value: 0.34750986
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Offset.y
-      value: -0.036112547
+      value: 0.044400193
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.74
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894794, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.94
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Size.x
-      value: 0.46449208
+      value: 0.39479566
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Size.y
-      value: 0.704073
+      value: 0.7354031
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Offset.x
-      value: -0.1325109
+      value: -0.0018390045
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Offset.y
-      value: -0.11728514
+      value: -0.030008346
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.74
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894797, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.94
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527281894799, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Size.x
@@ -48254,19 +48258,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527683172814, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Points.Array.data[1].x
-      value: 0.4210018
+      value: 0.5114113
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527683172814, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Points.Array.data[1].y
-      value: 0.53700376
+      value: 0.54010046
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527683172814, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Points.Array.data[2].x
-      value: 0.425777
+      value: 0.5424661
       objectReference: {fileID: 0}
     - target: {fileID: 5864445527683172814, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}
       propertyPath: m_Points.Array.data[2].y
-      value: -0.37011728
+      value: -0.327849
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5864445527281894799, guid: 4ecd813da3ccba641bbe287036c69d63, type: 3}

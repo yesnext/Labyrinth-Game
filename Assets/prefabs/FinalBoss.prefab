@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5125555672172791316}
   - component: {fileID: 5125555672172791315}
-  - component: {fileID: 5125555672172791314}
   - component: {fileID: 5125555672172791313}
+  - component: {fileID: 5125555672172791314}
   - component: {fileID: 5125555672172791312}
   - component: {fileID: 5125555672172791317}
   - component: {fileID: 744982316}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 1113701241
   m_SortingLayer: 9
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1140206110, guid: 4d98a3c5aa248d94e9833eb6e05db4c3, type: 3}
+  m_Sprite: {fileID: -1736479810, guid: 165edd642833d1441b350c8dd9bb5144, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,32 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5125555672172791314
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5125555672172791327}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.024321362, y: -0.097287476}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.37301692, y: 0.31356263}
-  m_EdgeRadius: 0
 --- !u!61 &5125555672172791313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,18 +105,44 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3030944, y: -0.040412597}
+  m_Offset: {x: 0.4886663, y: -0.24189027}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.8, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24769491, y: 0.20728113}
+  m_Size: {x: 0.2936461, y: 0.4335017}
+  m_EdgeRadius: 0
+--- !u!61 &5125555672172791314
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125555672172791327}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.030466199, y: -0.26872027}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.51793885, y: 0.48676252}
   m_EdgeRadius: 0
 --- !u!114 &5125555672172791312
 MonoBehaviour:
@@ -175,6 +175,7 @@ MonoBehaviour:
   RangeAttackClip: {fileID: 8300000, guid: 4a17d6d27a484354daf030f61efb8c2a, type: 3}
   healClip: {fileID: 8300000, guid: 9b45d795dfce7e9498919d8bef9a3abb, type: 3}
   walking: {fileID: 8300000, guid: 3733d87f71875064486b8dd5021e3632, type: 3}
+  animator: {fileID: 0}
   BossDodgeSpeed: 13.35
   dodgeDuration: 0.4
   dodge: 0
@@ -378,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5125555672567971692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.608, y: 0.078, z: -1.5566076}
+  m_LocalPosition: {x: 0.742, y: -0.092, z: -1.5566076}
   m_LocalScale: {x: 0.09973539, y: 0.09973539, z: 0.09973539}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -424,7 +425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5125555672857965950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.238, y: 0.026, z: 0}
+  m_LocalPosition: {x: 0.305, y: -0.108, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
