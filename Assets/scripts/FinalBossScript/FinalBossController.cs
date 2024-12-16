@@ -10,8 +10,6 @@ using UnityEngine.UI;
 public class FinalBossController : UniversalEnemyNeeds
 {
 
-    private Animator animator;
-
     public float BossDodgeSpeed = 8f;
     public float dodgeDuration = 0.1f;
     protected float DodgeDurationCounter = 0.0f;
