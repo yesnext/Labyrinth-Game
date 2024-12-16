@@ -20,6 +20,7 @@ public class WyvernControler : UniversalEnemyNeeds
     private Vector2 PatrolDirection;
     private int numberofpatrolpoints;
     private int nextpatrolpoint;
+    private Animator anim;
 
     //bob addition
     public HealthBar healthbar;
@@ -29,6 +30,7 @@ public class WyvernControler : UniversalEnemyNeeds
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         player = FindObjectOfType<PlayerStats>();
         PatrolPoints = FindObjectsOfType<PatrolPoints>();
         numberofpatrolpoints = PatrolPoints.Length;
@@ -140,12 +142,14 @@ public class WyvernControler : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
+        anim.SetBool("isAttacking",RangAttacking);
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         EnemyProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         lastAttackTime = Time.time;
         RangAttacking = false;
+        anim.SetBool("isAttacking",RangAttacking);
     }
 }
 

@@ -16,7 +16,8 @@ public class IgrisController : UniversalEnemyNeeds
     public GameObject wall;
     // Start is called before the first frame update
 
-
+    private Animator anim;
+    private Rigidbody2D rb;
 
     //bob addition
     public HealthBar healthbar;
@@ -25,12 +26,8 @@ public class IgrisController : UniversalEnemyNeeds
     private GameObject enemyCanvas;
     void Start()
     {
-<<<<<<< Updated upstream
-=======
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
->>>>>>> Stashed changes
         OriginalSpeed = EnemySpeed;
         player = FindObjectOfType<PlayerStats>();
         IsImmune = true;
@@ -53,6 +50,11 @@ public class IgrisController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
+        if(player.firstencounter){
+            anim.SetFloat("speedSword",rb.velocity.magnitude);
+        }else{
+            anim.SetFloat("speedHand",rb.velocity.magnitude);
+        }
         if (aggro)
         {
 
@@ -149,10 +151,12 @@ public class IgrisController : UniversalEnemyNeeds
         audioSource.PlayOneShot(meleeAttackClip1);
         //this is to trigger the sword fight animation
         MeleeAttacking = true;
+        anim.SetBool("stkSword",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         EnemySpeed = OriginalSpeed;
         IsLunging = false;
         MeleeAttacking = false;
+        anim.SetBool("stkSword",MeleeAttacking);
         lastMeleeAttackTime = Time.time;
     }
     public IEnumerator FistSwing()
@@ -160,10 +164,12 @@ public class IgrisController : UniversalEnemyNeeds
         audioSource.PlayOneShot(meleeAttackClip2);
         //this is to trigger the fist fight animation
         MeleeAttacking = true;
+        anim.SetBool("stkHand",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         EnemySpeed = OriginalSpeed;
         IsLunging = false;
         MeleeAttacking = false;
+        anim.SetBool("stkHand",MeleeAttacking);
         lastMeleeAttackTime = Time.time;
     }
     public override void TakeDamage(int damage)

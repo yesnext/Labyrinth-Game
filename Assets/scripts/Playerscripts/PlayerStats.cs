@@ -134,17 +134,21 @@ public class PlayerStats : MonoBehaviour
         //decide which animation to run
         if (ThrowingHands)
         {
-             
+            animator.SetBool("isPunch",true);
+            animator.SetBool("isPunch",false);
             yield return new WaitForSeconds(ThrowingHandsAnimationDuration);
+            
         }
         else if (!element)// for fire
         {
-             audioSource.PlayOneShot(meleeAttackClip1);
+            animator.SetBool("isSlash",true);
+            animator.SetBool("isSlash",false);
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
         else if (unlockedIce && element)
         {
-             audioSource.PlayOneShot(meleeAttackClip2);
+            animator.SetBool("isSlash",true);
+            animator.SetBool("isSlash",false);
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
         meleeattacking = false;
@@ -155,7 +159,7 @@ public class PlayerStats : MonoBehaviour
         Rangeattacking = true;
         if (!element)//for fire
         {
-            audioSource.PlayOneShot(FireRangeAttackClip);
+            animator.SetBool("isShoot",Rangeattacking);
             yield return new WaitForSeconds(FireRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
@@ -163,6 +167,7 @@ public class PlayerStats : MonoBehaviour
         }
         else if (unlockedIce && element)
         {
+            animator.SetBool("isShoot",Rangeattacking);
             audioSource.PlayOneShot(IceRangeAttackClip);
             yield return new WaitForSeconds(IceRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
@@ -170,6 +175,7 @@ public class PlayerStats : MonoBehaviour
             projectileController.Intialize(ProjectilePoint, RangeAttackDamage, RangeAttackSpeed);
         }
         Rangeattacking = false;
+        animator.SetBool("isShoot",Rangeattacking);
         lastrangeattack = Time.time;
     }
     private void ChangeFightMode()

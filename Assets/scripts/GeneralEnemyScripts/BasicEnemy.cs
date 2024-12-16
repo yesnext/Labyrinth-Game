@@ -6,11 +6,8 @@ using UnityEngine.UIElements;
 
 public class BasicEnemy : UniversalEnemyNeeds
 {
-<<<<<<< Updated upstream
     protected Animator animator;
-=======
     private Rigidbody2D rb;
->>>>>>> Stashed changes
     public float MeleeAttackDistance = 5.0f;
     public bool Element = false;
     public float playerFolowDistance = 10.0f;
@@ -24,21 +21,19 @@ public class BasicEnemy : UniversalEnemyNeeds
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerStats>();
         animator = GetComponent<Animator>();
         originalhealth = Health;
-        audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
+       audioSource = GetComponent<AudioSource>();
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-=======
-        animator.SetFloat("speed", rb.velocity.magnitude);
->>>>>>> Stashed changes
+        animator.SetFloat("speed",rb.velocity.magnitude);
         ChangedDirectionFollow();
         if (enemystate == 0)
         {
@@ -91,17 +86,11 @@ public class BasicEnemy : UniversalEnemyNeeds
     {
         audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
-<<<<<<< Updated upstream
+        animator.SetBool("isAttacking",MeleeAttacking);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
-=======
-        animator.SetBool("isAttacking", MeleeAttacking);
-        yield return new WaitForSeconds(MeleeAttackAnimationDuration);
-        MeleeAttacking = false;
-        lastMeleeAttackTime = Time.time;
-        animator.SetBool("isAttacking", MeleeAttacking);
->>>>>>> Stashed changes
+        animator.SetBool("isAttacking",MeleeAttacking);
     }
     public void FixedUpdate()
     {
@@ -116,10 +105,7 @@ public class BasicEnemy : UniversalEnemyNeeds
 
             if (Health < 0)
             {
-<<<<<<< Updated upstream
-=======
-                animator.SetBool("IsDead", true);
->>>>>>> Stashed changes
+                animator.SetBool("IsDead",true);
                 Destroy(this.gameObject);
             }
         }
