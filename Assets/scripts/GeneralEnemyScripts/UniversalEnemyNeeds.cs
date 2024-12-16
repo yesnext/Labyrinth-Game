@@ -30,6 +30,12 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public float RangAttackAnimationDuration;
     public float aggrodistance;
     public bool aggro;
+    public AudioSource audioSource;
+    public AudioClip meleeAttackClip1;
+    public AudioClip meleeAttackClip2;
+    public AudioClip RangeAttackClip;
+    public AudioClip healClip;
+    public AudioClip walking;
     
      
     void Start()
@@ -48,7 +54,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public void Followplayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
-
+        audioSource.PlayOneShot(walking);
         ChangedDirectionFollow();
     }
     public virtual void TakeDamage(int damage)

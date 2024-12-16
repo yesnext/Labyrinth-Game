@@ -134,14 +134,17 @@ public class PlayerStats : MonoBehaviour
         //decide which animation to run
         if (ThrowingHands)
         {
+             
             yield return new WaitForSeconds(ThrowingHandsAnimationDuration);
         }
         else if (!element)// for fire
         {
+             audioSource.PlayOneShot(meleeAttackClip1);
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
         else if (unlockedIce && element)
         {
+             audioSource.PlayOneShot(meleeAttackClip2);
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
         meleeattacking = false;
@@ -152,6 +155,7 @@ public class PlayerStats : MonoBehaviour
         Rangeattacking = true;
         if (!element)//for fire
         {
+            audioSource.PlayOneShot(FireRangeAttackClip);
             yield return new WaitForSeconds(FireRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[0], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
@@ -159,6 +163,7 @@ public class PlayerStats : MonoBehaviour
         }
         else if (unlockedIce && element)
         {
+            audioSource.PlayOneShot(IceRangeAttackClip);
             yield return new WaitForSeconds(IceRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
@@ -281,6 +286,7 @@ public class PlayerStats : MonoBehaviour
             if (Time.time - LastHealCooldown > HealCooldown)
             {
                 Health += 40;
+                audioSource.PlayOneShot(healClip);
                 if (Health > 100)
                 {
                     Health = 100;

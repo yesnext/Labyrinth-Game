@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4653963617764710859}
   - component: {fileID: 4653963617764710856}
   - component: {fileID: 4653963617764710857}
+  - component: {fileID: 1272620147}
   m_Layer: 0
   m_Name: Warden Obelisk prefab
   m_TagString: Obelisk
@@ -100,18 +101,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edb50f307af08449a040102c9b30601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
-  Damage: 3
-  Damageincreaseby: 3
+  isFacingRight: 0
+  EnemySpeed: 0
   Health: 0
-  distance: 0
-  player: {fileID: 0}
+  IsImmune: 0
+  MeleeAttackDamage: 0
+  meleeattackdistance: 0
+  RangeAttackSpeed: 0
+  RangeAttackDamage: 0
+  attackbox: {fileID: 0}
+  MeleeAttackAnimationDuration: 0
+  RangAttackAnimationDuration: 0
+  aggrodistance: 0
+  aggro: 0
+  audioSource: {fileID: 0}
+  meleeAttackClip1: {fileID: 0}
+  meleeAttackClip2: {fileID: 0}
+  RangeAttackClip: {fileID: 8300000, guid: f4dd81da55a0d4f4dac358b6bead4823, type: 3}
+  healClip: {fileID: 0}
+  walking: {fileID: 0}
+  Projectile: {fileID: 2379832077980450258, guid: 2ca348327ace4c74ead91abd7df46f53, type: 3}
+  Damageincreaseby: 3
   AttackCooldown: 1
   LastAttackCooldown: 0
-  direction: {x: 0, y: 0}
   ProjectilePoint: {fileID: 0}
-  isFacingRight: 0
-  scale: {x: 0, y: 0, z: 0}
   CurrentNumOfObelisks: 0
 --- !u!95 &4653963617764710856
 Animator:
@@ -160,6 +173,102 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!82 &1272620147
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653963617764710870}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4653963618933291810
 GameObject:
   m_ObjectHideFlags: 0
