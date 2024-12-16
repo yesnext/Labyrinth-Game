@@ -84,6 +84,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Wyvern.unity
     guid: 39c048c68bbf3a243a5450b9d441ec7d
   - enabled: 1
+    path: Assets/Scenes/FinalIntro.unity
+    guid: aee9e7316f5e19d4c930ceb20248f9ac
+  - enabled: 1
     path: Assets/Scenes/YOU.unity
     guid: fb1fb4a84bf952244807a932f68c0a79
+  - enabled: 1
+    path: Assets/Scenes/FinalCustScene.unity
+    guid: cbcedb09dfd6c9d40ab0ee303c9f04ce
   m_configObjects: {}

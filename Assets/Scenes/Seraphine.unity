@@ -795,6 +795,17 @@ PrefabInstance:
     - target: {fileID: 4947733945724240205, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.28
+    - target: {fileID: 1676137155856941729, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: SwitchElement
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676137155856941729, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: MeleeAttackkey
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676137155856941729, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: RangeAttackKey
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_RootOrder
@@ -1069,6 +1080,7 @@ MonoBehaviour:
   MeleeAttackAnimationDuration: 0
   RangAttackAnimationDuration: 0
   aggrodistance: 0
+  aggrodistance: 7.24
   aggro: 0
   Bossphase: 1
   Shadowrealmperiod: 9.77
@@ -1078,8 +1090,8 @@ MonoBehaviour:
   projectile: {fileID: 4778962854198058863, guid: a20920f8f369da849bfbc57cbcd086ba, type: 3}
   originalhealth: 0
   telepoted: 0
-  wall: {fileID: 92582213}
   healthbar: {fileID: 0}
+  wall: {fileID: 92582213}
 --- !u!1 &819348374
 GameObject:
   m_ObjectHideFlags: 0
