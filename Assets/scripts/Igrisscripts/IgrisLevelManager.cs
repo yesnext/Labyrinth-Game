@@ -22,7 +22,7 @@ public class IgrisLevelManager : MonoBehaviour
     {
         if (player.firstencounter && player.Health <= 0)
         {
-            Igris.state = false;
+            Igris.aggro = false;
             Igris.BossPhase = 2;
             Igris.Health = 500;
             player.Health = 100;

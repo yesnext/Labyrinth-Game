@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class AshenStalkerController : UniversalEnemyNeeds
@@ -44,7 +45,9 @@ public class AshenStalkerController : UniversalEnemyNeeds
         ShadoStep = GetComponent<Rigidbody2D>();
         ProjectilePoint = FindObjectOfType<EnemyProjectilePoint>().transform;
         SpawnLocation = FindObjectsOfType<SummonsSpawnLocation>();
-        if(player.GetComponent<BossesDefeated>().AshenStalker){
+        OriginalSpeed = EnemySpeed;
+        if (player.GetComponent<BossesDefeated>().AshenStalker)
+        {
             Destroy(this.gameObject);
         }
         OriginalSpeed = EnemySpeed;
@@ -66,7 +69,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
     void Update()
     {
         CurrentSpeed = ShadoStep.velocity.magnitude;
-        anim.SetFloat("Speed",CurrentSpeed);
+        anim.SetFloat("Speed", CurrentSpeed);
         if (aggro)
         {
             ChangedDirectionFollow();
@@ -155,15 +158,16 @@ public class AshenStalkerController : UniversalEnemyNeeds
         Disappear.enabled = true;
         //anim
         int rnd = Random.Range(0, 3);
-        switch(rnd){
+        switch (rnd)
+        {
             case 0:
-                anim.SetInteger("attackSelect",rnd);
+                anim.SetInteger("attackSelect", rnd);
                 break;
             case 1:
-                anim.SetInteger("attackSelect",rnd);
+                anim.SetInteger("attackSelect", rnd);
                 break;
             case 2:
-                anim.SetInteger("attackSelect",rnd);
+                anim.SetInteger("attackSelect", rnd);
                 break;
         }
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
@@ -176,14 +180,14 @@ public class AshenStalkerController : UniversalEnemyNeeds
     {
         RangAttacking = true;
         //anim
-        anim.SetBool("isShoot",RangAttacking);
+        anim.SetBool("isShoot", RangAttacking);
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         GameObject projectile = Instantiate(Projectile, ProjectilePoint.position, ProjectilePoint.rotation);
         EnemyProjectile projectileController = projectile.GetComponent<EnemyProjectile>();
         projectileController.Intialize(RangeAttackDamage, RangeAttackSpeed);
         LastRangAttackTime = Time.time;
         RangAttacking = false;
-        anim.SetBool("isShoot",RangAttacking);
+        anim.SetBool("isShoot", RangAttacking);
     }
     public override void TakeDamage(int damage)
     {
@@ -196,10 +200,11 @@ public class AshenStalkerController : UniversalEnemyNeeds
             if (Health <= 0)
             {
                 player.GetComponent<BossesDefeated>().AshenStalker = true;
-                if(bs.AshenStalker){
-                    anim.SetBool("IsDead",bs.AshenStalker);
-
+                if (bs.AshenStalker)
+                {
+                    anim.SetBool("IsDead", bs.AshenStalker);
                 }
+                SceneManager.LoadScene("Calista");
                 Destroy(this.gameObject);
                 //bob addition
             Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));

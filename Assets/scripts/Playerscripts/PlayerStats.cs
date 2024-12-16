@@ -8,6 +8,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
+    public bool unlockedIce;
     public controls controls;
     public Transform ProjectilePoint;
     public GameObject[] Projectile = new GameObject[2];
@@ -32,7 +33,6 @@ public class PlayerStats : MonoBehaviour
     public KeyCode SwitchElement;
     public UniversalEnemyNeeds Boss;
     public BoxCollider2D attackbox;
-    public BoxCollider2D fistmode;
     public KeyCode FightMode;
     public KeyCode Healing;
     public bool ThrowingHands = false;
@@ -53,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 
         if (instance != null && instance != this)
         {
+            instance.transform.position = this.transform.position;
             Destroy(gameObject);
         }
         else
@@ -131,7 +132,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
-        else//for Ice
+        else if (unlockedIce && element)
         {
             yield return new WaitForSeconds(ElementMeleeAttackAnimationDuration);
         }
@@ -148,7 +149,7 @@ public class PlayerStats : MonoBehaviour
             PlayerProjectile projectileController = projectile.GetComponent<PlayerProjectile>();
             projectileController.Intialize(ProjectilePoint, RangeAttackDamage, RangeAttackSpeed);
         }
-        else// for Ice
+        else if (unlockedIce && element)
         {
             yield return new WaitForSeconds(IceRangeAttackAnimationDuration);
             GameObject projectile = Instantiate(Projectile[1], transform.position, Quaternion.identity);
@@ -165,7 +166,10 @@ public class PlayerStats : MonoBehaviour
 
     private void ChangeElement()
     {
-        element = !element;
+        if (unlockedIce)
+        {
+            element = !element;
+        }
     }
     public void TakeDamage(int damage)
     {
@@ -233,7 +237,7 @@ public class PlayerStats : MonoBehaviour
                         other.GetComponent<SeraphineControler>().TakeDamage(MeleeAttackDamage);
                     }
                 }
-                else if (GameObject.FindObjectOfType<IgrisController>() != null && other.tag == "Boss" && fistmode)
+                else if (GameObject.FindObjectOfType<IgrisController>() != null && other.tag == "Boss")
                 {
                     if (ThrowingHands && !Boss.GetComponent<IgrisController>().IsImmune)
                     {
