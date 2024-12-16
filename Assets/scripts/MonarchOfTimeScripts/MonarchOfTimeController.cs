@@ -21,6 +21,8 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     private float freezintimeduration = 2.0f;
     public float SlowRate;
     private int originalhealth; 
+    public AudioClip TimeStopClip;
+    public AudioClip timereversalClip;
     
     //bob addition
     public HealthBar healthbar;
@@ -38,6 +40,8 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().Monarchoftime){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
+
 
         //bob addition
         healthbar.SetMaxHealth(Health);
@@ -77,6 +81,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
     }
     public IEnumerator Shoot()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
         yield return new WaitForSeconds(RangAttackAnimationDuration);
         MonarchOfTimeProjectile projectile = Instantiate(Projectile, projectilePoint.transform.position, projectilePoint.transform.rotation);
@@ -101,6 +106,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         yield return new WaitForSeconds(TimestopInturuptionDuration);
         if (TimeStopHourGlass.Health > 0)
         {
+            audioSource.PlayOneShot(TimeStopClip);
             player.GetComponent<controls>().frozen = true;
             Rigidbody2D playerrb = player.GetComponent<Rigidbody2D>();
             RigidbodyConstraints2D originalRB = playerrb.constraints;
@@ -133,6 +139,7 @@ public class MonarchOfTimeController : UniversalEnemyNeeds
         Timerevered = false;
         if (ReversingTimeHourGlass.Health > 0)
         {
+            audioSource.PlayOneShot(timereversalClip);
             Health = originalhealth;
         }
         LastTimeTimeReversal = Time.time;

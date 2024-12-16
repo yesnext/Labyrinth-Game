@@ -28,6 +28,7 @@ public class CalistaController : UniversalEnemyNeeds
         {
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
 
         //bob addition
         healthbar.SetMaxHealth(Health);
@@ -81,6 +82,7 @@ public class CalistaController : UniversalEnemyNeeds
     public IEnumerator MeleeAttack()
     {
         MeleeAttacking = true;
+        audioSource.PlayOneShot(meleeAttackClip1);
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
         lastMeleeAttackTime = Time.time;
@@ -117,6 +119,7 @@ public class CalistaController : UniversalEnemyNeeds
 
     public IEnumerator Shoot()
     {
+        audioSource.PlayOneShot(RangeAttackClip);
         RangAttacking = true;
         yield return new WaitForSeconds(RangAttackAnimationDuration);
 

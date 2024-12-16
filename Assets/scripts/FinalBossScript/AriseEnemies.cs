@@ -18,6 +18,7 @@ public class AriseEnemies : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().FinalBoss){
             Destroy(this.gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,6 +47,7 @@ public class AriseEnemies : UniversalEnemyNeeds
     }
     public IEnumerator meleeAttack()
     {
+        audioSource.PlayOneShot(meleeAttackClip1);
         MeleeAttacking = true;
         yield return new WaitForSeconds(MeleeAttackAnimationDuration);
         MeleeAttacking = false;
