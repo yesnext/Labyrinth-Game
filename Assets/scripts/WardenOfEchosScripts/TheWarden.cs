@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TheWarden : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class TheWarden : MonoBehaviour
             if (CurrentNumOfObelisks == 0)
             {
                 player.GetComponent<BossesDefeated>().warden = true;
+                SceneManager.LoadScene("Outside The Labyrinth");
                 Destroy(this.gameObject);
             }
         }

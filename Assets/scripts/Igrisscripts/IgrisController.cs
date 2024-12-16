@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IgrisController : UniversalEnemyNeeds
 {
     public BoxCollider2D FistAttackBox;
-    public bool state;
     public int BossPhase = 1;
     public bool dodge;
     protected float DodgeDurationCounter = 0.0f;
     protected float dodgeDuration = 0.1f;
     protected float BossDodgeSpeed = 8f;
+    public GameObject wall;
     // Start is called before the first frame update
 
 
@@ -27,7 +29,8 @@ public class IgrisController : UniversalEnemyNeeds
         player = FindObjectOfType<PlayerStats>();
         IsImmune = true;
         FistAttackBox.enabled = false;
-        if(player.GetComponent<BossesDefeated>().Igris){
+        if (player.GetComponent<BossesDefeated>().Igris)
+        {
             Destroy(this.gameObject);
         }
 
@@ -43,8 +46,9 @@ public class IgrisController : UniversalEnemyNeeds
     // Update is called once per frame
     void Update()
     {
-        if (state)
+        if (aggro)
         {
+
             ChangedDirectionFollow();
             Followplayer();
             if (BossPhase == 1 && IsImmune && dodge && player.firstencounter)
@@ -78,8 +82,16 @@ public class IgrisController : UniversalEnemyNeeds
         {
             if (distance < aggrodistance)
             {
-                state = true;
+                aggro = true;
             }
+        }
+        if (aggro)
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            wall.GetComponent<BoxCollider2D>().enabled = false;
         }
 
     }
@@ -87,6 +99,14 @@ public class IgrisController : UniversalEnemyNeeds
     {
         direction = (player.transform.position - transform.position).normalized;
         distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < aggrodistance && !aggro)
+        {
+            aggro = true;
+        }
+        if (player.Health <= 0)
+        {
+            aggro = false;
+        }
     }
     public IEnumerator Awareofeverymovedodge()
     {
@@ -144,6 +164,9 @@ public class IgrisController : UniversalEnemyNeeds
             Health = Health - damage;
             if (Health <= 0 && BossPhase >= 2)
             {
+                player.GetComponent<BossesDefeated>().Igris = true;
+                wall.GetComponent<BoxCollider2D>().enabled = false;
+                SceneManager.LoadScene("Seraphine");
                 Destroy(this.gameObject);
             }
 
@@ -152,23 +175,12 @@ public class IgrisController : UniversalEnemyNeeds
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (attackbox.enabled)
+        if (attackbox.enabled || FistAttackBox.enabled)
         {
             if (other.tag == "Player")
             {
-                player.GetComponent<BossesDefeated>().Igris = true;
                 player.TakeDamage(MeleeAttackDamage);
             }
         }
-        if (FistAttackBox.enabled)
-        {
-            if (other.tag == "Player")
-                player = other.GetComponent<PlayerStats>();
-            if (Time.time - lastMeleeAttackTime > MeleeAttackCooldown)
-            {
-                FistSwing();
-            }
-        }
-
     }
 }
