@@ -25,10 +25,10 @@ public class AshenStalkerController : UniversalEnemyNeeds
     private SummonsSpawnLocation[] SpawnLocation;
     private Transform ProjectilePoint;
     private Rigidbody2D ShadoStep;
-//bob addition
-    public HealthBar healthbar;
     private Animator anim;
     private BossesDefeated bs;
+//bob addition
+    public HealthBar healthbar;
 
 //bob addition
     private GameObject enemyCanvas;
@@ -47,6 +47,7 @@ public class AshenStalkerController : UniversalEnemyNeeds
         if(player.GetComponent<BossesDefeated>().AshenStalker){
             Destroy(this.gameObject);
         }
+        OriginalSpeed = EnemySpeed;
 
 
 
@@ -59,7 +60,6 @@ public class AshenStalkerController : UniversalEnemyNeeds
         enemyCanvas.SetActive(false);  // Hide health bar initially
 
         
-        OriginalSpeed = EnemySpeed;
     }
 
     // Update is called once per frame
