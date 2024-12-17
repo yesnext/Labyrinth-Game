@@ -103,12 +103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFacingRight: 1
   EnemySpeed: 3
-  Health: 20
+  Health: 78
   IsImmune: 0
-  MeleeAttackDamage: 6
-  meleeattackdistance: 0
-  RangeAttackSpeed: 0
-  RangeAttackDamage: 0
+  MeleeAttackDamage: 62
+  meleeattackdistance: 1.89
+  RangeAttackSpeed: 0.72
+  RangeAttackDamage: 44
   attackbox: {fileID: 3166433402275648144}
   MeleeAttackAnimationDuration: 0
   RangAttackAnimationDuration: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   RangeAttackClip: {fileID: 0}
   healClip: {fileID: 0}
   walking: {fileID: 0}
+  animator: {fileID: 0}
   strongercooldown: 2
   laststronger: 0
   strongerdamageamount: 2

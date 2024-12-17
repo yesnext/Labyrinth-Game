@@ -353,6 +353,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8878401576386445599, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
+      propertyPath: MinDistance
+      value: 1.7561208
+      objectReference: {fileID: 0}
     - target: {fileID: 1676137155856941729, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: healClip
       value: 
@@ -399,11 +403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.83
+      value: 79.4
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: -14.9
       objectReference: {fileID: 0}
     - target: {fileID: 4947733945724240209, guid: 0d1353b4565468746a6f8e551b3a2fe6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63471,6 +63475,10 @@ PrefabInstance:
     - target: {fileID: 5125555672172791316, guid: 17d60453ee53f324db1b5f775fc88dea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125555672172791317, guid: 17d60453ee53f324db1b5f775fc88dea, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5125555672172791327, guid: 17d60453ee53f324db1b5f775fc88dea, type: 3}
       propertyPath: m_Name

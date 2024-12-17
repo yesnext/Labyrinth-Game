@@ -55,7 +55,7 @@ public class UniversalEnemyNeeds : MonoBehaviour
     public void Followplayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
-        audioSource.PlayOneShot(walking);
+        //audioSource.PlayOneShot(walking);
         ChangedDirectionFollow();
     }
     public virtual void TakeDamage(int damage)

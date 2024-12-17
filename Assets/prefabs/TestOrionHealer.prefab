@@ -101,17 +101,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFacingRight: 1
-  EnemySpeed: 0
-  Health: 0
+  EnemySpeed: 1.05
+  Health: 41
   IsImmune: 0
-  MeleeAttackDamage: 0
-  meleeattackdistance: 0
-  RangeAttackSpeed: 0
-  RangeAttackDamage: 0
+  MeleeAttackDamage: 46
+  meleeattackdistance: 1.44
+  RangeAttackSpeed: 0.66
+  RangeAttackDamage: 40
   attackbox: {fileID: 0}
-  MeleeAttackAnimationDuration: 0
-  RangAttackAnimationDuration: 0
-  aggrodistance: 0
+  MeleeAttackAnimationDuration: 1.44
+  RangAttackAnimationDuration: 1.29
+  aggrodistance: 1.33
   aggro: 0
   audioSource: {fileID: 0}
   meleeAttackClip1: {fileID: 0}
@@ -119,11 +119,12 @@ MonoBehaviour:
   RangeAttackClip: {fileID: 8300000, guid: d157a0ef492461147aaa73b13b315dd8, type: 3}
   healClip: {fileID: 0}
   walking: {fileID: 0}
-  teleportcooldown: 8
-  LastTeleportTime: 0
+  animator: {fileID: 0}
+  teleportcooldown: 9.02
+  LastTeleportTime: 0.25
   Attackingorion: {fileID: 0}
   fakes: {fileID: 0}
-  TeleportingAnimationDuration: 0
+  TeleportingAnimationDuration: 1.63
   Teleporting: 0
   healthbar: {fileID: 0}
 --- !u!61 &2550070489801241494

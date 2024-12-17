@@ -108,14 +108,14 @@ MonoBehaviour:
   EnemySpeed: 5
   Health: 500
   IsImmune: 1
-  MeleeAttackDamage: 0
-  meleeattackdistance: 0
-  RangeAttackSpeed: 0
-  RangeAttackDamage: 0
+  MeleeAttackDamage: 19
+  meleeattackdistance: 0.84
+  RangeAttackSpeed: 1.29
+  RangeAttackDamage: 57
   attackbox: {fileID: 5864445527281894799}
-  MeleeAttackAnimationDuration: 0
-  RangAttackAnimationDuration: 0
-  aggrodistance: 0
+  MeleeAttackAnimationDuration: 0.49
+  RangAttackAnimationDuration: 0.85
+  aggrodistance: 24.6
   aggro: 0
   audioSource: {fileID: 0}
   meleeAttackClip1: {fileID: 8300000, guid: 52e5dc4f6584641458fe1f0ef14a5400, type: 3}
@@ -123,6 +123,7 @@ MonoBehaviour:
   RangeAttackClip: {fileID: 0}
   healClip: {fileID: 0}
   walking: {fileID: 8300000, guid: 3fa9e86ab20d86044a5aca2615a6b1d1, type: 3}
+  animator: {fileID: 0}
   FistAttackBox: {fileID: 5864445527281894794}
   BossPhase: 1
   dodge: 0

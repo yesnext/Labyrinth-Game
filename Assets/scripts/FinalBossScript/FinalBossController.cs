@@ -107,7 +107,7 @@ public class FinalBossController : UniversalEnemyNeeds
                 StartCoroutine(ShadoAttack());
             }
             //bob addition
-            enemyCanvas.SetActive(true);
+            //enemyCanvas.SetActive(true);
         }
         else
         {
@@ -212,7 +212,6 @@ public class FinalBossController : UniversalEnemyNeeds
         {
             Health = Health - damage;
             //bob addition
-            healthbar.SetHealth(Health);
             if (!IsImmune)
             {
                 if (Health <= 0 && BossPhase >= 3)

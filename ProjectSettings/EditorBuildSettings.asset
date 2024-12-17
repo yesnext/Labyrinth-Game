@@ -90,6 +90,9 @@ EditorBuildSettings:
     path: Assets/Scenes/YOU.unity
     guid: fb1fb4a84bf952244807a932f68c0a79
   - enabled: 1
+    path: Assets/Scenes/End Credits.unity
+    guid: 73f758f8df4021f46a42073472bac3fa
+  - enabled: 1
     path: Assets/Scenes/FinalCustScene.unity
     guid: cbcedb09dfd6c9d40ab0ee303c9f04ce
   m_configObjects: {}

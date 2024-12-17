@@ -216,16 +216,16 @@ MonoBehaviour:
   firstencounter: 1
   rangeattaccooldown: 0
   lastrangeattack: 0
-  RangeAttackDamage: 0
-  RangeAttackSpeed: 0
-  FireRangeAttackAnimationDuration: 0
-  IceRangeAttackAnimationDuration: 0
+  RangeAttackDamage: 45
+  RangeAttackSpeed: 5.46
+  FireRangeAttackAnimationDuration: 1.27
+  IceRangeAttackAnimationDuration: 1.18
   audioSource: {fileID: 0}
-  meleeAttackClip1: {fileID: 0}
-  meleeAttackClip2: {fileID: 0}
-  FireRangeAttackClip: {fileID: 0}
-  IceRangeAttackClip: {fileID: 0}
-  healClip: {fileID: 0}
+  meleeAttackClip1: {fileID: 8300000, guid: 52e5dc4f6584641458fe1f0ef14a5400, type: 3}
+  meleeAttackClip2: {fileID: 8300000, guid: 09dd611ce076bd74ea2203b163d02ebc, type: 3}
+  FireRangeAttackClip: {fileID: 8300000, guid: f4dd81da55a0d4f4dac358b6bead4823, type: 3}
+  IceRangeAttackClip: {fileID: 8300000, guid: 9b45d795dfce7e9498919d8bef9a3abb, type: 3}
+  healClip: {fileID: 8300000, guid: 9b45d795dfce7e9498919d8bef9a3abb, type: 3}
   healthbar: {fileID: 0}
 --- !u!114 &7585383509764433826
 MonoBehaviour:

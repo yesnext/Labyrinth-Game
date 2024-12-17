@@ -148,13 +148,13 @@ MonoBehaviour:
   EnemySpeed: 10
   Health: 0
   IsImmune: 0
-  MeleeAttackDamage: 0
-  meleeattackdistance: 0
-  RangeAttackSpeed: 0
-  RangeAttackDamage: 0
+  MeleeAttackDamage: 78
+  meleeattackdistance: 0.57
+  RangeAttackSpeed: 1.5
+  RangeAttackDamage: 48
   attackbox: {fileID: 0}
-  MeleeAttackAnimationDuration: 0
-  RangAttackAnimationDuration: 0
+  MeleeAttackAnimationDuration: 0.52
+  RangAttackAnimationDuration: 1.56
   aggrodistance: 0
   aggro: 0
   audioSource: {fileID: 0}
@@ -163,10 +163,11 @@ MonoBehaviour:
   RangeAttackClip: {fileID: 8300000, guid: a1a0b02be1ba0a1479c35acfd5f53191, type: 3}
   healClip: {fileID: 0}
   walking: {fileID: 8300000, guid: 38c13c69d9cc62545add43fa5da40d6b, type: 3}
+  animator: {fileID: 0}
   PatrolPoints: []
-  speed: 3
+  speed: 4.17
   attackRange: 10
-  attackCooldown: 2
+  attackCooldown: 3.71
   attackDuration: 1
   Projectile: {fileID: 0}
   healthbar: {fileID: 0}

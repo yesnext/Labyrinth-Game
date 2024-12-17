@@ -28,12 +28,12 @@ public class Chains : UniversalEnemyNeeds
         }
 
         //bob addition
-        healthbar.SetMaxHealth(Health);
+        //healthbar.SetMaxHealth(Health);
 
 
         //bob addition
-       enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-        enemyCanvas.SetActive(false);  // Hide health bar initially
+       //enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        //enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -47,12 +47,12 @@ public class Chains : UniversalEnemyNeeds
                 StartCoroutine(ChainWhipAttack());
             }
              //bob addition
-             enemyCanvas.SetActive(true);
+             //enemyCanvas.SetActive(true);
         }
         else
     {
         // Hide the health bar when not aggro
-        enemyCanvas.SetActive(false);
+        //enemyCanvas.SetActive(false);
     }
     }
     public void FixedUpdate()

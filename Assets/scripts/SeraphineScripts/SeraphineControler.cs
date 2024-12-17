@@ -22,6 +22,11 @@ public class SeraphineControler : UniversalEnemyNeeds
     public GameObject wall;
     private Rigidbody2D rb;
     private Animator anim;
+    //bob addition
+    public HealthBar healthbar;
+
+    //bob addition
+    private GameObject enemyCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +41,13 @@ public class SeraphineControler : UniversalEnemyNeeds
             Destroy(this.gameObject);
         }
         audioSource = GetComponent<AudioSource>();
+         //bob addition
+        healthbar.SetMaxHealth(Health);
 
+
+        //bob addition
+        enemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        enemyCanvas.SetActive(false);  // Hide health bar initially
     }
 
     // Update is called once per frame
@@ -69,6 +80,8 @@ public class SeraphineControler : UniversalEnemyNeeds
                     shoot();
                 }
             }
+             //bob addition
+            enemyCanvas.SetActive(true);
         }
         if (aggro)
         {
@@ -114,12 +127,16 @@ public class SeraphineControler : UniversalEnemyNeeds
         if (aggro)
         {
             Health = Health - damage;
+            //bob addition
+            healthbar.SetHealth(Health);
             if (Health <= 0)
             {
                 wall.GetComponent<BoxCollider2D>().enabled = false;
                 player.GetComponent<BossesDefeated>().seraphine = true;
                 SceneManager.LoadScene("Puzzle 3");
                 Destroy(this.gameObject);
+                //bob addition
+                Destroy(GameObject.FindGameObjectWithTag("EnemyCanvas"));
             }
         }
     }

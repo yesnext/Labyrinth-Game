@@ -14,14 +14,8 @@ public class NavigationController : MonoBehaviour
     }
     public void GoToIntroScene()
     {
-        AudioManager.Instance.StopAllAudio();
-         SceneManager.LoadScene(0);
+         SceneManager.LoadScene(1);
 
 
-    }
-    public void GoToGameScene()
-    {
-        AudioManager.Instance.StopAllAudio();
-        SceneManager.LoadScene(1);
     }
 }
